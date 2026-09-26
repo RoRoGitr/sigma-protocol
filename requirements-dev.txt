@@ -1,0 +1,2 @@
+# Test/dev dependencies — the runtime itself needs only bash, node >= 20, python3, jq, and git.
+pytest>=8

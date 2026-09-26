@@ -1,0 +1,12 @@
+{
+  "$comment": "Fixture bundle — exists to exercise Track A detection. Real bundles are produced by Claude Design's export, format TBD.",
+  "meta": {
+    "source": "claude-design-e2e-fixture",
+    "generated": "2026-04-19",
+    "flow": "01-auth"
+  },
+  "components": {
+    "LoginForm": { "tokens": { "primary": "#4f46e5" }, "copy": { "cta": "Sign in" } },
+    "SignupForm": { "tokens": { "primary": "#4f46e5" }, "copy": { "cta": "Create account" } }
+  }
+}

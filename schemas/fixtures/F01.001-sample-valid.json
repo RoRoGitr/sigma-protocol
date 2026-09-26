@@ -1,0 +1,74 @@
+{
+  "$schema": "../sigma-prd-canonical.schema.json",
+  "prd_id": "F01.001",
+  "title": "User authentication with email + password",
+  "slug": "user-authentication",
+  "version": "1.0.0",
+  "status": "ready",
+  "wave": 1,
+  "dependencies": ["F01.000"],
+  "goal": {
+    "objective": "Ship POST /auth/login + POST /auth/register endpoints with JWT issuance, Argon2 hashing, and rate limiting (5 req/min/IP).",
+    "stopping_condition": "All tests in tests/auth/*.test.ts pass, npm run typecheck exits 0, and curl POST /auth/login with valid creds returns 200 with a JWT in the response body.",
+    "files_to_read_first": [
+      "src/auth/index.ts",
+      "src/db/schema/users.ts",
+      "docs/architecture/auth.md"
+    ],
+    "proof_commands": [
+      "npm test -- src/auth",
+      "npm run typecheck",
+      "npm run lint -- src/auth"
+    ],
+    "max_turns": 25,
+    "out_of_scope": [
+      "OAuth/social login providers",
+      "Password reset flow (separate PRD F01.002)",
+      "Changes to src/billing/ or src/admin/",
+      "New dependencies beyond what's already in package.json"
+    ]
+  },
+  "mission": {
+    "milestone": "M1: Auth foundation",
+    "preconditions": [
+      "PRD F01.000 (User model + DB schema) complete and merged to main",
+      "JWT_SECRET set in .env.example and documented"
+    ],
+    "expected_behavior": "Given a user submits valid email and password to POST /auth/login, when the credentials match a stored Argon2 hash, then the response is 200 with {token, user} JSON and the token verifies against JWT_SECRET. Given invalid credentials, the response is 401 with {error: 'invalid_credentials'}. Given more than 5 requests in 60 seconds from the same IP, the response is 429 with Retry-After header.",
+    "verification_steps": [
+      "VC-AUTH-001",
+      "VC-AUTH-002",
+      "VC-AUTH-003",
+      "VC-AUTH-RATE-001"
+    ],
+    "fulfills": [
+      "VC-AUTH-001",
+      "VC-AUTH-002",
+      "VC-AUTH-003"
+    ],
+    "skill_name": "backend-engineer",
+    "estimated_complexity": "medium"
+  },
+  "slices": [
+    {
+      "id": "F01.001.a",
+      "title": "DB migration + user_credentials table",
+      "proof": "npx prisma migrate dev exits 0 and SELECT exists in user_credentials table verified via npx prisma studio"
+    },
+    {
+      "id": "F01.001.b",
+      "title": "POST /auth/register with Argon2 hashing",
+      "proof": "tests/auth/register.test.ts passes including hash-strength assertion"
+    },
+    {
+      "id": "F01.001.c",
+      "title": "POST /auth/login with JWT issuance",
+      "proof": "tests/auth/login.test.ts passes and emitted JWT verifies against JWT_SECRET"
+    },
+    {
+      "id": "F01.001.d",
+      "title": "Rate limiting middleware (5 req/min/IP)",
+      "proof": "tests/auth/rate-limit.test.ts demonstrates 6th request in 60s window returns 429"
+    }
+  ]
+}

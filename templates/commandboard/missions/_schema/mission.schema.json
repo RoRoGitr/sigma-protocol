@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma.local/missions/mission.schema.json",
+  "title": "Mission",
+  "description": "A declared north-star outcome with success criteria, constraints, and budget. Survives compactions and sessions; drives /mission, /dev-loop, /continue behavior.",
+  "type": "object",
+  "required": ["id", "title", "workspace", "status", "created", "halt_on", "overall_goal_condition"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "description": "URL-safe slug. Must be unique per workspace."
+    },
+    "overall_goal_condition": {
+      "type": "string",
+      "minLength": 50,
+      "description": "Single measurable + transcript-observable statement that, when true, means the entire mission is complete. This is the /goal argument when the mission is dispatched to Claude Code or Codex. Must contain: (a) one measurable end state, (b) a stated check, (c) constraints that matter. Minimum 50 characters to prevent vague entries. Example: 'All 11 PRDs in Phase 1 of the auth-rebuild mission ship to main with 8 pipeline gates green; no gap-analysis rounds find new issues.' Anti-examples: 'we are done' (not measurable), 'tests pass' (not specific), 'good vibes' (not anything)."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 140,
+      "description": "Human-readable outcome statement."
+    },
+    "workspace": {
+      "type": "string",
+      "pattern": "^(products|clients|community|tools|personal|missions)/[a-z0-9][a-z0-9-]*$",
+      "description": "SigmaHQ workspace path under ~/.commandboard/workspaces/. Use 'missions/' category for cross-project missions."
+    },
+    "parent_id": {
+      "type": ["string", "null"],
+      "description": "ID of parent mission if this is a sub-mission. null for top-level."
+    },
+    "children": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "IDs of sub-missions. Forms a DAG with parent_id."
+    },
+    "status": {
+      "enum": ["draft", "runnable", "active", "paused", "completed", "abandoned"],
+      "description": "Lifecycle state. 'runnable' = ready to become active but not currently the leaf; used by stack resolver to find the next sibling after a child completes."
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "default": null
+    },
+    "deadline": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Soft deadline for mission completion. Triggers halt_on.deadline_passed when reached."
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "usd": { "type": "number", "minimum": 0 },
+        "tokens": { "type": "integer", "minimum": 0 },
+        "hours": { "type": "number", "minimum": 0 }
+      },
+      "description": "Resource caps. Exceeding any triggers halt_on.budget_exceeded."
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "do_not_touch": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Projects/paths this mission must never modify."
+        },
+        "audience": {
+          "type": "string",
+          "description": "Target audience (retail/institutional/etc)."
+        }
+      }
+    },
+    "machine_checks": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "enum": [
+              "file_exists",
+              "file_not_exists",
+              "command_exit_zero",
+              "counter_gte",
+              "counter_lte",
+              "regex_match_in_file",
+              "url_returns_200"
+            ]
+          },
+          "path": { "type": "string" },
+          "command": { "type": "string" },
+          "source": { "type": "string" },
+          "threshold": { "type": "number" },
+          "pattern": { "type": "string" },
+          "url": { "type": "string" },
+          "last_check": { "type": ["string", "null"], "format": "date-time" },
+          "last_result": {
+            "enum": ["pass", "fail", "unknown", null],
+            "default": null,
+            "description": "Tri-state. 'unknown' when source file missing, command errors, or URL unreachable — never silently treated as 'fail'."
+          },
+          "last_evidence": {
+            "type": ["string", "null"],
+            "description": "Observed value/output at last_check time. Snapshot for ledger replay."
+          },
+          "latched_pass": {
+            "type": "boolean",
+            "default": false,
+            "description": "Once true, remains true until mission is explicitly re-opened. Prevents oscillation if a source file disappears post-completion."
+          },
+          "latched_at": {
+            "type": ["string", "null"],
+            "format": "date-time",
+            "description": "Timestamp when latched_pass flipped to true."
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Runnable predicates. Halt oracle counts these as deterministic PASS/FAIL/UNKNOWN evidence. Completion is latched (latched_pass=true) — once a check passes it stays passed even if the source goes missing."
+    },
+    "soft_criteria": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": ["id", "prompt"],
+        "properties": {
+          "id": { "type": "string" },
+          "prompt": { "type": "string", "description": "Question to put to the user or LLM evaluator." },
+          "requires_human": { "type": "boolean", "default": true },
+          "last_check": { "type": ["string", "null"], "format": "date-time" },
+          "last_answer": { "enum": ["yes", "no", "partial", null], "default": null },
+          "last_evidence": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      },
+      "description": "LLM-assessed criteria. Must include human sign-off for completion."
+    },
+    "halt_on": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "all_checks_pass",
+          "budget_exceeded",
+          "deadline_passed",
+          "user_paused",
+          "parent_halted"
+        ]
+      },
+      "minItems": 1,
+      "description": "Conditions that end the mission loop. 'all_checks_pass' requires machine_checks true AND every soft_criteria.last_answer == 'yes'."
+    },
+    "auto_research": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean", "default": false },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Exa search terms. Scored for relevance before ledger entry."
+        },
+        "cadence": {
+          "enum": ["daily_3am", "session_end", "manual"],
+          "default": "daily_3am"
+        },
+        "last_run": { "type": ["string", "null"], "format": "date-time" },
+        "relevance_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.6,
+          "description": "0.0-1.0. Findings below this relevance are discarded."
+        }
+      }
+    },
+    "ledger_path": {
+      "type": "string",
+      "default": "ledger.jsonl",
+      "description": "Path relative to the mission directory for the append-only OODA log."
+    },
+    "workspace_links": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional workspace paths this mission touches (for reconciliation scans)."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+- `holes` — mandatory pre-approval gap pass (invoke via `$holes` or Skill tool at the step's final gate)

@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sss.dev/schemas/sigma-prd-canonical.schema.json",
+  "title": "Sigma Canonical PRD",
+  "description": "CLI-agnostic canonical PRD schema. Authored once per PRD, then transformed by per-CLI emitters into Claude /goal bundles, Codex /goal bundles, and Droid mission.md + features.json + validation-contract.md bundles. The `goal` block feeds /goal-style autonomous execution (Claude Code v2.1.139+, Codex /goal). The `mission` block feeds Factory Droid's mission/features.json schema. The `slices` block lets large PRDs be split into context-window-sized sub-goals. See docs/strategy/2026-05-23-cli-native-prd-upgrade.md for full design rationale.",
+  "type": "object",
+  "required": ["prd_id", "title", "slug", "goal", "mission"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference (informational)."
+    },
+    "prd_id": {
+      "type": "string",
+      "description": "Stable PRD identifier. Accepts either F-numeric (e.g. F11.001) for new PRDs or legacy PRD-SLUG (e.g. PRD-CLI-CLEANUP) for back-compat. Emitters use this as the dispatch filename stem.",
+      "pattern": "^(F\\d+\\.\\d+|PRD-[A-Z0-9][A-Z0-9-]*)$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable PRD title. Surface in dashboards and emitted bundle headers.",
+      "minLength": 3,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "string",
+      "description": "Kebab-case slug used in emitter filenames and as a stable URL fragment. Required by all emitters.",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "version": {
+      "type": "string",
+      "description": "Semver of this PRD revision.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status.",
+      "enum": ["draft", "ready", "in_progress", "completed", "archived", "blocked"]
+    },
+    "wave": {
+      "description": "Optional sprint wave grouping (integer or string label).",
+      "type": ["integer", "string"]
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Other PRD IDs that must be complete before this one starts.",
+      "items": { "type": "string" }
+    },
+    "goal": {
+      "type": "object",
+      "description": "Autonomous-execution metadata consumed by Claude /goal and Codex /goal emitters. The {objective, stopping_condition} pair gets concatenated with surrounding context when emitted; aim for <=300 chars each so the combined prompt fits Claude's 4000-char /goal limit with headroom.",
+      "required": ["objective", "stopping_condition", "files_to_read_first", "proof_commands"],
+      "additionalProperties": false,
+      "properties": {
+        "objective": {
+          "type": "string",
+          "description": "Single-sentence statement of what success looks like. Keep <=300 chars to fit /goal limits when concatenated with context.",
+          "minLength": 10,
+          "maxLength": 400
+        },
+        "stopping_condition": {
+          "type": "string",
+          "description": "Measurable, transcript-observable proof of done. Must be checkable from the agent's own output (test name, file diff, command exit code). Keep <=300 chars.",
+          "minLength": 10,
+          "maxLength": 400
+        },
+        "files_to_read_first": {
+          "type": "array",
+          "description": "Repo-relative paths the agent should read before editing. Codex /goal expects this front-loaded; Claude emitter places it in <context> block.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "proof_commands": {
+          "type": "array",
+          "description": "Literal shell commands that prove progress. Used by stopping_condition checkers and emitted into the Done-when section of each bundle.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "max_turns": {
+          "type": "integer",
+          "description": "Upper bound on agent turns for /goal execution. Defaults to 20 when omitted by emitters.",
+          "minimum": 1,
+          "maximum": 200,
+          "default": 20
+        },
+        "out_of_scope": {
+          "type": "array",
+          "description": "Explicit non-goals. Emitted into each bundle as guardrails.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "mission": {
+      "type": "object",
+      "description": "Factory-Droid-compatible mission metadata. Drives mission.md + features.json emission. `expected_behavior` is the BDD scenario block reference; `fulfills` IDs MUST match assertion IDs in the companion validation-contract.md (emitter-time check, not schema-time).",
+      "required": ["milestone", "expected_behavior", "verification_steps", "fulfills", "skill_name", "estimated_complexity"],
+      "additionalProperties": false,
+      "properties": {
+        "milestone": {
+          "type": "string",
+          "description": "Milestone grouping for Droid's mission planner (e.g. 'M1: Auth foundation').",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "preconditions": {
+          "type": "array",
+          "description": "What must be true before this PRD starts (other PRDs complete, infra available, etc).",
+          "items": { "type": "string" }
+        },
+        "expected_behavior": {
+          "type": "string",
+          "description": "BDD scenario block (Given/When/Then) or reference to the PRD's BDD section. Semantically aligned with Factory features.json `expectedBehavior` field.",
+          "minLength": 10
+        },
+        "verification_steps": {
+          "type": "array",
+          "description": "Validation-contract assertion IDs (VC-* pattern). Each ID resolves to a behavioral check in validation-contract.md.",
+          "items": {
+            "type": "string",
+            "pattern": "^VC-[A-Z0-9][A-Z0-9-]*$"
+          },
+          "minItems": 1
+        },
+        "fulfills": {
+          "type": "array",
+          "description": "Validation-contract assertion IDs this PRD claims to fulfill. Often overlaps verification_steps but may be a subset (verification = what we'll check, fulfills = what we promise).",
+          "items": {
+            "type": "string",
+            "pattern": "^VC-[A-Z0-9][A-Z0-9-]*$"
+          },
+          "minItems": 1
+        },
+        "skill_name": {
+          "type": "string",
+          "description": "Free-form skill/agent identifier (e.g. backend-engineer, frontend-engineer, mobile-engineer). Free-form rather than enum to avoid blocking new agent types; emitters may warn on unknown values.",
+          "minLength": 2,
+          "maxLength": 60,
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "estimated_complexity": {
+          "type": "string",
+          "description": "Coarse sizing. Drives swarm sizing per swarm-orchestration.md.",
+          "enum": ["small", "medium", "large"]
+        }
+      }
+    },
+    "slices": {
+      "type": "array",
+      "description": "Optional sub-goal decomposition for PRDs too big for a single /goal turn budget. Each slice becomes its own dispatch bundle; slice IDs use the parent PRD id + .letter (e.g. F11.001.a).",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "proof"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Slice identifier: parent prd_id + .letter (e.g. F11.001.a).",
+            "pattern": "^(F\\d+\\.\\d+|PRD-[A-Z0-9][A-Z0-9-]*)\\.[a-z]$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "proof": {
+            "type": "string",
+            "description": "Measurable success criterion for this slice. Same shape as goal.stopping_condition but slice-scoped.",
+            "minLength": 5,
+            "maxLength": 400
+          }
+        }
+      }
+    }
+  }
+}

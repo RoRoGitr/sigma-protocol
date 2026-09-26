@@ -1,0 +1,5 @@
+{ "files": [
+    {"path": "CLAUDE.md", "description": "Project configuration and conventions"},
+    {"path": "AGENTS.md", "description": "Agent team definitions and file ownership boundaries"}
+  ]
+}

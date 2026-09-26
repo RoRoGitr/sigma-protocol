@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/landing-page-template-catalog.schema.json",
+  "title": "Landing Page Template Catalog",
+  "type": "object",
+  "required": ["version", "templates"],
+  "properties": {
+    "version": { "type": "string" },
+    "updated": { "type": "string" },
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "target_page_type", "orientation"],
+        "properties": {
+          "name": { "type": "string" },
+          "target_page_type": { "type": "string" },
+          "stack": { "type": "string" },
+          "orientation": { "enum": ["web", "mobile"] }
+        }
+      }
+    }
+  }
+}

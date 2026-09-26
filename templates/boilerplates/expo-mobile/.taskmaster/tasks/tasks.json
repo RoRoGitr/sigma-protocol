@@ -1,0 +1,106 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Implement Onboarding Flow",
+        "description": "Create a multi-step onboarding experience with welcome screen, feature carousel, permission requests, account prompt, and skip option using Expo Router.",
+        "details": "Use Expo Router to create onboarding stack with conditional redirect based on AsyncStorage flag for first launch. Implement swipeable carousel with react-native-reanimated for smooth animations (pagination dots, swipe gestures). Include 3-4 feature highlight screens with Lottie animations for logo/performant visuals. Integrate Expo Notifications for permission screen with graceful handling. Add account creation prompt linking to auth flow. Use NativeWind for Tailwind styling. Track completion in Supabase user profile.",
+        "testStrategy": "Test on iOS/Android simulators: verify first-launch only display, smooth 60fps swipes/animations, permission dialogs trigger correctly, skip button bypasses to home, completion flag persists across restarts. Check offline behavior and accessibility.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Build Authentication Screens",
+        "description": "Develop login, signup, forgot password screens with email/password, social logins (Apple/Google), and biometric support integrated with Supabase Auth.",
+        "details": "Create screens in Expo Router under /auth group. Use @supabase/supabase-js for email/password auth with validation (zod schema). Implement social providers with expo-auth-session for Apple/Google OAuth. Add react-native-keychain for biometric storage (expo-local-authentication). Handle keyboard avoidance with KeyboardAvoidingView. Include error toasts with react-hot-toast. Smooth transitions with Layout animations.",
+        "testStrategy": "Unit test auth hooks with MSW. E2E test full flows: successful login/signup, social redirects, forgot password email, biometric prompt/fallback. Verify error states, keyboard handling, offline queueing with supabase offline support.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Complete Home Tab Dashboard",
+        "description": "Build home tab with welcome header, quick action cards, recent activity list, pull-to-refresh, and empty states.",
+        "details": "Extend existing tab structure in Expo Router. Fetch user data/recent activity from Supabase real-time subscriptions. Use FlatList with react-native-reanimated for pull-to-refresh and smooth scrolling. Implement personalized welcome with user avatar/name. Quick action cards navigate to features. Empty state with Lottie animation for new users. Offline support via supabase offline-first queries and AsyncStorage cache.",
+        "testStrategy": "Test data loading <2s, pull-to-refresh updates real-time data, offline shows cached content, navigation to details works. Snapshot test empty states and loading skeletons. Verify 60fps scroll performance.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Develop Settings Tab",
+        "description": "Implement settings screen with profile, notifications, appearance, account, and about sections.",
+        "details": "Create settings screen in tabs group. Profile: avatar upload to Supabase Storage, editable fields synced to user profile. Notifications: toggles saved to Supabase. Appearance: theme/haptics with expo-haptics and AsyncStorage. Account: password change/delete via Supabase. About: dynamic version from app.json, external links with expo-linking. Use List components with dividers.",
+        "testStrategy": "Test persistence across restarts, avatar upload/download, theme switching immediate effect, delete account confirmation flow. Verify accessibility labels and VoiceOver/TalkBack navigation.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Integrate Purchases Tab with RevenueCat",
+        "description": "Build subscription UI displaying plans, purchase flow, restore, and status using RevenueCat SDK.",
+        "details": "Install @revenuecat/purchases-react-native. Create purchases tab screen. Use Purchases.getOfferings() to display plans with pricing. Implement purchase flow with Purchases.purchasePackage(). Add restore purchases button. Show current entitlement status with customerInfo. Handle upgrade/downgrade. Sync subscription status to Supabase user profile. Test mode for development.",
+        "testStrategy": "Sandbox test purchases on iOS/Android TestFlight/Play Store internal. Verify restore works across devices, status updates real-time, upgrade paths. Mock RevenueCat in unit tests. Check offline status display.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Create Reusable UI Component Library",
+        "description": "Build consistent UI components: buttons, inputs, cards, modals/bottom sheets, loading skeletons with NativeWind and dark mode support.",
+        "details": "Create /components directory. Button: Pressable variants (primary/secondary/ghost) with haptic feedback (expo-haptics). Input: TextInput with validation states, labels, errors. Cards/ListItems: responsive with shadows. Modal/BottomSheet: react-native-modal or gorhom/bottom-sheet with backdrop. Skeletons: react-native-skeleton-placeholder. Ensure NativeWind dark: variants, a11y labels, TypeScript props.",
+        "testStrategy": "Storybook tests for all variants/states. Visual regression snapshots. Accessibility scanner (expo-dev-client). Test haptic feedback on devices. Verify dark mode toggle.",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Add Push Notifications Support",
+        "description": "Setup Expo Notifications with permissions, token registration to Supabase, handling, and preferences sync.",
+        "details": "Configure expo-notifications in app.json. Request permissions during onboarding. Register device token with Supabase on auth. Handle foreground/background notifications with setNotificationHandler. Deep linking with Expo Router. Sync preferences from settings to Supabase. Use @supabase/supabase-js realtime for preference updates.",
+        "testStrategy": "Test permission flow, token generation/saving to Supabase, foreground/background display, deep links open correct screens. Verify toggle sync across devices. Test on physical devices for push delivery.",
+        "priority": "low",
+        "dependencies": [
+          1,
+          2,
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-13T01:16:36.515Z",
+      "updated": "2026-01-13T01:16:36.515Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

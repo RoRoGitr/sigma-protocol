@@ -1,0 +1,123 @@
+{
+  "$schema": "../../../schemas/modules-manifest.schema.json",
+  "template": "nextjs-saas",
+  "platform": "web",
+  "framework": "nextjs",
+  "modules": {
+    "marketing": {
+      "enabled": true,
+      "files": [
+        "src/app/(marketing)/page.tsx",
+        "src/app/(marketing)/pricing/page.tsx",
+        "src/app/(marketing)/blog/page.tsx",
+        "src/app/(marketing)/blog/[slug]/page.tsx",
+        "src/app/(marketing)/docs/page.tsx",
+        "src/app/(marketing)/contact/page.tsx",
+        "src/app/(marketing)/terms/page.tsx",
+        "src/app/(marketing)/privacy/page.tsx",
+        "src/app/(marketing)/layout.tsx"
+      ],
+      "navItems": [
+        { "label": "Pricing", "href": "/pricing", "location": "header" },
+        { "label": "Blog", "href": "/blog", "location": "header" }
+      ],
+      "envVars": []
+    },
+    "auth": {
+      "enabled": true,
+      "files": [
+        "src/app/(auth)/login/page.tsx",
+        "src/app/(auth)/signup/page.tsx",
+        "src/app/(auth)/forgot-password/page.tsx",
+        "src/app/(auth)/callback/page.tsx",
+        "src/app/(auth)/layout.tsx",
+        "src/hooks/use-auth.ts",
+        "src/lib/supabase/"
+      ],
+      "navItems": [],
+      "envVars": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+      ]
+    },
+    "dashboard": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/layout.tsx",
+        "src/app/(app)/app/page.tsx",
+        "src/components/navigation/sidebar.tsx",
+        "src/components/navigation/header.tsx",
+        "src/config/navigation.ts"
+      ],
+      "navItems": [
+        { "label": "Dashboard", "href": "/app", "location": "sidebar", "icon": "home" }
+      ],
+      "envVars": []
+    },
+    "settings": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/app/settings/page.tsx"
+      ],
+      "navItems": [
+        { "label": "Settings", "href": "/app/settings", "location": "sidebar", "icon": "settings" }
+      ],
+      "envVars": []
+    },
+    "billing": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/app/billing/page.tsx",
+        "src/hooks/use-subscription.ts"
+      ],
+      "navItems": [
+        { "label": "Billing", "href": "/app/billing", "location": "sidebar", "icon": "credit-card" }
+      ],
+      "envVars": [
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+      ]
+    },
+    "admin": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/app/admin/page.tsx"
+      ],
+      "navItems": [
+        { "label": "Admin", "href": "/app/admin", "location": "sidebar", "icon": "shield" }
+      ],
+      "envVars": []
+    },
+    "aiChat": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/app/chat/page.tsx",
+        "src/components/ui/chat-bubble.tsx",
+        "src/components/ui/message-loading.tsx"
+      ],
+      "navItems": [
+        { "label": "Chat", "href": "/app/chat", "location": "sidebar", "icon": "message-square" }
+      ],
+      "envVars": [
+        "OPENAI_API_KEY"
+      ]
+    },
+    "crudExample": {
+      "enabled": true,
+      "files": [
+        "src/app/(app)/app/items/page.tsx"
+      ],
+      "navItems": [
+        { "label": "Items", "href": "/app/items", "location": "sidebar", "icon": "list" }
+      ],
+      "envVars": []
+    },
+    "errorStates": {
+      "enabled": true,
+      "files": [],
+      "navItems": [],
+      "envVars": []
+    }
+  }
+}

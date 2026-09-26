@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Shared pre-push hook: enforce the PR file budget before anything leaves the
+# machine, so review tooling never gets skipped for oversized pushes.
+# Wired by scripts/setup-git-hooks.sh (git config core.hooksPath .githooks).
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+BUDGET_SCRIPT="$REPO_ROOT/scripts/check-pr-file-budget.sh"
+
+if [[ ! -f "$BUDGET_SCRIPT" ]]; then
+  echo "[pre-push] scripts/check-pr-file-budget.sh missing — skipping budget check." >&2
+  exit 0
+fi
+
+UPSTREAM="origin/main"
+git rev-parse --verify --quiet "$UPSTREAM" >/dev/null || exit 0
+
+bash "$BUDGET_SCRIPT" "$UPSTREAM" HEAD

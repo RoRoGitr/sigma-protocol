@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/boilerplate-catalog.schema.json",
+  "title": "Sigma Boilerplate Catalog",
+  "type": "object",
+  "required": ["version", "framework_templates"],
+  "properties": {
+    "version": { "type": "string" },
+    "updated": { "type": "string" },
+    "module_catalog": { "type": "string" },
+    "framework_templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "platform", "path", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "platform": { "enum": ["web", "mobile", "both", "desktop"] },
+          "status": { "enum": ["ready", "stub", "deprecated"] },
+          "path": { "type": "string" },
+          "component_library": { "type": "string" }
+        }
+      }
+    },
+    "product_templates": { "type": "array" }
+  }
+}

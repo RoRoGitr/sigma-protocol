@@ -1,0 +1,60 @@
+title = "Sigma Protocol gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "kie-ai-api-key-prefixed"
+description = "kie.ai API key with kie_ prefix"
+regex = '''(?i)\bkie_[a-z0-9]{32,}\b'''
+keywords = ["kie_"]
+tags = ["key", "kie-ai", "content-tooling"]
+
+[[rules]]
+id = "kie-ai-bearer-token"
+description = "kie.ai bearer token assignment"
+regex = '''(?i)\b(?:KIE_AI_API_KEY|KIE_API_KEY|kie\.ai|kie-ai|kie_ai)\b.{0,80}\bBearer\s+[a-z0-9._~+/=-]{32,}\b'''
+keywords = ["kie", "Bearer"]
+tags = ["key", "kie-ai", "content-tooling"]
+
+[[rules]]
+id = "supadata-api-key"
+description = "Supadata API key"
+regex = '''\bsd_[a-f0-9]{32}\b'''
+keywords = ["sd_"]
+tags = ["key", "supadata", "content-tooling"]
+
+[[rules]]
+id = "scrapecreators-api-key"
+description = "ScrapeCreators API key"
+regex = '''\bsc_[a-zA-Z0-9]{32,}\b'''
+keywords = ["sc_"]
+tags = ["key", "scrapecreators", "content-tooling"]
+
+[[rules]]
+id = "scrapecreators-generic-token"
+description = "ScrapeCreators API key assignment"
+regex = '''(?i)\b(?:SCRAPECREATORS_API_KEY|SCRAPE_CREATORS_API_KEY|scrapecreators|scrape-creators)\b.{0,80}['"]?[a-z0-9._~+/=-]{32,}['"]?'''
+keywords = ["SCRAPECREATORS", "scrapecreators", "scrape-creators"]
+tags = ["key", "scrapecreators", "content-tooling"]
+
+[[allowlists]]
+description = "Environment templates may contain placeholder values."
+paths = [
+  '''(^|/)\.env\.example$''',
+  '''(^|/)[^/]+\.env\.example$''',
+]
+
+[[allowlists]]
+description = "Documentation may show literal placeholder keys only."
+condition = "AND"
+paths = [
+  '''\.md$''',
+]
+regexes = [
+  '''<YOUR_[A-Z0-9_]+>''',
+  '''<OPTIONAL_[A-Z0-9_]+>''',
+  '''sk-XXXX''',
+  '''sk-[Xx]{4,}''',
+  '''[a-z]{2}_[Xx]{4,}''',
+]

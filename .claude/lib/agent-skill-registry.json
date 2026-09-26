@@ -1,0 +1,4444 @@
+{
+  "_doc": "Sigma Protocol repo-local cascade registry. Student-safe, self-contained, and resolved relative to this repository. INTENTIONAL 13-department layout (engineering, security, legal, marketing, content, finance, ops, sales, product, community, trading, design, qa): this is the full firm org so the routing covers every Sigma workflow surface and a paying client gets a complete bench. Leaner installs MAY collapse departments (e.g. fold finance into product, trading out entirely, content into marketing) but the validators expect exactly 13 here — keep the count at 13 and use config.department_aliases to remap, do not delete a department. Every department head + bench sub-agent resolves to a file under .claude/agents/<dept>/, and every skill ref resolves to .claude/skills/<slug>/SKILL.md; refs that only exist in the global ~/.claude pool are deliberately NOT used here (student-safe self-containment).",
+  "version": "1.1.0",
+  "updated": "2026-06-29",
+  "config": {
+    "max_skills_injected_per_prompt": 16,
+    "repo_relative": true,
+    "department_aliases": {
+      "operations": "ops",
+      "operation": "ops",
+      "support": "community",
+      "design_system": "design",
+      "content_marketing": "content",
+      "gtm": "marketing",
+      "go-to-market": "marketing",
+      "ads": "marketing",
+      "growth": "marketing"
+    }
+  },
+  "departments": {
+    "engineering": {
+      "keywords": "\\b(engineering|engineer|api|backend|endpoint|service|server|frontend|component|react|next|ui|page|css|tailwind|mobile|ios|android|expo|swift|db|schema|migration|sql|postgres|devops|ci|cd|deploy|docker|infra|test|build|implement|wire|refactor|bug|fix|architecture|technical spec|context engine|skillpack|agent runtime|x402|observability|telemetry|logging)\\b",
+      "head": "lead-architect",
+      "head_skills": [
+        "senior-architect",
+        "architecture-patterns",
+        "api-design-principles"
+      ],
+      "agents": {
+        "backend-engineer": {
+          "trigger_regex": "\\b(api|backend|endpoint|service|server|auth|webhook|worker|db|schema|migration|sql|postgres)\\b",
+          "skills": [
+            "api-design-principles",
+            "architecture-patterns"
+          ]
+        },
+        "compound-engineer": {
+          "trigger_regex": "\\b(compound|multi-agent|agentic|orchestrat|parallel|build system)\\b",
+          "skills": [
+            "agent-development",
+            "harness-creator"
+          ]
+        },
+        "devops": {
+          "trigger_regex": "\\b(devops|ci|cd|pipeline|deploy|docker|infra|release|secrets)\\b",
+          "skills": [
+            "quality-gates",
+            "dependency-security",
+            "secrets-detection"
+          ]
+        },
+        "dream-engineer": {
+          "trigger_regex": "\\b(ideat|dream|concept|strategy|explore|brainstorm)\\b",
+          "skills": [
+            "brainstorming",
+            "deep-research"
+          ]
+        },
+        "frontend-engineer": {
+          "trigger_regex": "\\b(frontend|component|react|next|ui|page|css|tailwind|screen|layout|responsive|prototype|wireframe)\\b",
+          "skills": [
+            "frontend-design",
+            "tailwind-design-system",
+            "web-design-guidelines"
+          ]
+        },
+        "harness-architect": {
+          "trigger_regex": "\\b(harness|agent runtime|skillpack|registry|hook|cascade|claude|codex|droid)\\b",
+          "skills": [
+            "harness-creator",
+            "agent-development",
+            "skill-registry"
+          ]
+        },
+        "mobile-developer": {
+          "trigger_regex": "\\b(mobile|ios|android|expo|swift|phone app|tablet)\\b",
+          "skills": [
+            "mobile-app-security",
+            "audit-accessibility-audit"
+          ]
+        },
+        "observability-engineer": {
+          "trigger_regex": "\\b(logging|telemetry|observability|alert|analytics|monitoring)\\b",
+          "skills": [
+            "observability",
+            "quality-gates"
+          ]
+        },
+        "x402-engineer": {
+          "trigger_regex": "\\b(x402|payment protocol|paid endpoint|machine payment|agent payment)\\b",
+          "skills": [
+            "api-design-principles",
+            "monetization"
+          ]
+        }
+      }
+    },
+    "security": {
+      "keywords": "\\b(security|auth review|vulnerability|owasp|xss|injection|threat|pentest|secrets|compliance|privacy|prompt injection|supply chain|dependency)\\b",
+      "head": "security-lead",
+      "head_skills": [
+        "owasp-web-security",
+        "owasp-api-security",
+        "owasp-llm-security",
+        "secrets-detection",
+        "dependency-security"
+      ],
+      "agents": {
+        "security-ai-safety": {
+          "trigger_regex": "\\b(ai safety|prompt injection|llm|agent safety)\\b",
+          "skills": [
+            "owasp-llm-security"
+          ]
+        },
+        "security-compliance": {
+          "trigger_regex": "\\b(compliance|privacy|gdpr|soc2|policy)\\b",
+          "skills": [
+            "owasp-api-security",
+            "secrets-detection"
+          ]
+        },
+        "security-infra": {
+          "trigger_regex": "\\b(infra|container|dependency|supply chain|secrets|ci)\\b",
+          "skills": [
+            "dependency-security",
+            "secrets-detection"
+          ]
+        },
+        "security-mobile": {
+          "trigger_regex": "\\b(mobile|ios|android|react native|secure storage)\\b",
+          "skills": [
+            "mobile-app-security",
+            "owasp-api-security"
+          ]
+        },
+        "security-web-api": {
+          "trigger_regex": "\\b(web|api|xss|injection|auth|owasp)\\b",
+          "skills": [
+            "owasp-web-security",
+            "owasp-api-security"
+          ]
+        }
+      }
+    },
+    "legal": {
+      "keywords": "\\b(legal|contract|nda|ip|trademark|vendor terms|demand letter|terms of service|privacy policy|case law|litigation|settlement|redline|liability|ethics)\\b",
+      "head": "general-counsel",
+      "head_skills": [
+        "legal",
+        "contract",
+        "deep-research"
+      ],
+      "agents": {
+        "donna-paulsen": {
+          "trigger_regex": "\\b(diplomatic|relationship|stakeholder|conversation|politics|timing)\\b",
+          "skills": [
+            "legal",
+            "deep-research"
+          ]
+        },
+        "harvey-specter": {
+          "trigger_regex": "\\b(demand|cease|negotiate|settle|hardball|close)\\b",
+          "skills": [
+            "contract",
+            "objection-handling"
+          ]
+        },
+        "jessica-pearson": {
+          "trigger_regex": "\\b(crisis|board|executive|risk|decision)\\b",
+          "skills": [
+            "legal",
+            "deep-research"
+          ]
+        },
+        "louis-litt": {
+          "trigger_regex": "\\b(due diligence|forensics|document review|audit trail|litigation hold)\\b",
+          "skills": [
+            "legal",
+            "contract"
+          ]
+        },
+        "mike-ross": {
+          "trigger_regex": "\\b(case law|precedent|cite|research|witness)\\b",
+          "skills": [
+            "deep-research",
+            "legal"
+          ]
+        },
+        "rachel-zane": {
+          "trigger_regex": "\\b(first draft|draft|brief|agreement|terms|privacy policy|nda)\\b",
+          "skills": [
+            "contract",
+            "legal"
+          ]
+        }
+      }
+    },
+    "marketing": {
+      "keywords": "\\b(marketing|brand|positioning|offer|gtm|campaign|funnel|conversion|competitor|ad\\b|ads|lead capture|seo|email sequence|paid media|advertis|copywriting|sales letter|direct response|landing page copy|sales page|swipe file)\\b",
+      "head": "cmo",
+      "head_skills": [
+        "marketing-copywriting",
+        "direct-response-copy",
+        "conversion-optimization"
+      ],
+      "agents": {
+        "growth-engineer": {
+          "trigger_regex": "\\b(cro|funnel|conversion|experiment|retention|pricing|analytics)\\b",
+          "skills": [
+            "conversion-optimization",
+            "pricing-strategy"
+          ]
+        },
+        "manychat": {
+          "trigger_regex": "\\b(dm funnel|manychat|lead flow|automation|subscriber)\\b",
+          "skills": [
+            "marketing-copywriting",
+            "social-content"
+          ]
+        },
+        "paid-media-director": {
+          "trigger_regex": "\\b(ad|ads|ad creative|creative|campaign|advertis|paid media|ugc)\\b",
+          "skills": [
+            "ads",
+            "marketing-copywriting",
+            "direct-response-copy"
+          ]
+        },
+        "copywriter": {
+          "trigger_regex": "\\b(copy|copywriting|headline|sales copy|email copy|value proposition|tagline|microcopy|cta copy|long.?form copy)\\b",
+          "skills": [
+            "copywriting",
+            "direct-response-copy",
+            "marketing-copywriting"
+          ]
+        },
+        "landing-page-specialist": {
+          "trigger_regex": "\\b(landing page|sales page|page conversion|hero section|above the fold|cro|conversion rate|signup page|opt.?in page)\\b",
+          "skills": [
+            "conversion-optimization",
+            "ux-psychology-pro"
+          ]
+        }
+      }
+    },
+    "content": {
+      "keywords": "\\b(content|video|script|reel|short|youtube|podcast|thumbnail|atomize|copywriting|messaging|graphic|hero image)\\b",
+      "head": "content-director",
+      "head_skills": [
+        "video-hooks",
+        "content-atomizer",
+        "copywriting"
+      ],
+      "agents": {
+        "media-gen": {
+          "trigger_regex": "\\b(generate image|ai image|banner|thumbnail|image|video generation|visual asset|graphic|hero)\\b",
+          "skills": [
+            "image-to-code",
+            "design-taste"
+          ]
+        },
+        "notebooklm": {
+          "trigger_regex": "\\b(notebooklm|audio overview|podcast|video overview)\\b",
+          "skills": [
+            "content-atomizer",
+            "copywriting"
+          ]
+        },
+        "research-media": {
+          "trigger_regex": "\\b(transcribe|transcript|video research|instagram|tiktok|reel|youtube|short-form|media research)\\b",
+          "skills": [
+            "deep-research",
+            "youtube-transcription"
+          ]
+        }
+      }
+    },
+    "finance": {
+      "keywords": "\\b(finance|pricing|unit economics|cost|margin|runway|fundraising|budget|valuation|projection|forecast|cash flow|raise|break even|profitability|burn)\\b",
+      "head": "finance-director",
+      "head_skills": [
+        "finance",
+        "pricing-strategy",
+        "monetization"
+      ],
+      "agents": {
+        "pricing-strategist": {
+          "trigger_regex": "\\b(pricing|price|tier|tiers|packaging|monetiz|anchor|discount|value metric|good better best|price point)\\b",
+          "skills": [
+            "pricing-strategy",
+            "pricing-psychology",
+            "monetization"
+          ]
+        },
+        "unit-economics-analyst": {
+          "trigger_regex": "\\b(unit economics|cac|ltv|payback|gross margin|contribution margin|cohort|burn|runway|break even)\\b",
+          "skills": [
+            "finance",
+            "monetization"
+          ]
+        },
+        "due-diligence-analyst": {
+          "trigger_regex": "\\b(due diligence|valuation|data room|fundraise|fundraising|raise|projection|forecast|scenario|sensitivity|financial model)\\b",
+          "skills": [
+            "finance",
+            "pricing-strategy"
+          ]
+        }
+      }
+    },
+    "ops": {
+      "keywords": "\\b(ops|operations|sprint|qa gate|incident|weekly review|sop|standup|backlog|deploy|pipeline|release|regression|coverage|harness|hooks|staging)\\b",
+      "head": "ops-director",
+      "head_skills": [
+        "quality-gates",
+        "verification",
+        "observability"
+      ],
+      "agents": {
+        "devops": {
+          "trigger_regex": "\\b(ci|cd|deploy|infra|pipeline|secrets|docker|release)\\b",
+          "skills": [
+            "quality-gates",
+            "dependency-security",
+            "secrets-detection"
+          ]
+        },
+        "observability-engineer": {
+          "trigger_regex": "\\b(incident|monitoring|logs|telemetry|observability|alert)\\b",
+          "skills": [
+            "observability",
+            "quality-gates"
+          ]
+        },
+        "qa-engineer": {
+          "trigger_regex": "\\b(qa|test|verify|verification|bdd|regression|coverage|flaking)\\b",
+          "skills": [
+            "quality-gates",
+            "verification",
+            "bdd-scenarios"
+          ]
+        }
+      }
+    },
+    "sales": {
+      "keywords": "\\b(sales|outbound|pipeline|partnership|proposal|sdr|close|closing|discovery|negotiation|account|follow up|prospect|objection|lead|qualify|cold email|linkedin|upsell)\\b",
+      "head": "cso",
+      "head_skills": [
+        "sales",
+        "lead-qualification",
+        "objection-handling"
+      ],
+      "agents": {
+        "outbound-systems-architect": {
+          "trigger_regex": "\\b(outbound|prospect|prospecting|sdr|cold email|cold call|sequence|cadence|icp|ideal customer|top of funnel|pipeline generation|lead gen)\\b",
+          "skills": [
+            "icp-definition",
+            "lead-qualification"
+          ]
+        },
+        "discovery-specialist": {
+          "trigger_regex": "\\b(discovery|qualify|qualification|pain|need|meddpicc|spin|bant|demo prep|first call|diagnose)\\b",
+          "skills": [
+            "lead-qualification",
+            "icp-definition"
+          ]
+        },
+        "negotiation-specialist": {
+          "trigger_regex": "\\b(objection|negotiat|close|closing|high.?ticket|price objection|too expensive|stall|anchor|concession|terms)\\b",
+          "skills": [
+            "objection-handling",
+            "pricing-psychology"
+          ]
+        },
+        "follow-up-systemizer": {
+          "trigger_regex": "\\b(follow.?up|nurture|drip|email sequence|cadence|touchpoint|re.?engage|break.?up email|stay in touch)\\b",
+          "skills": [
+            "email-sequence",
+            "conversion-optimization"
+          ]
+        }
+      }
+    },
+    "product": {
+      "keywords": "\\b(product|prd|roadmap|feature|prioritization|requirements|user research|market validation|business model|mission|ideation|offer architecture)\\b",
+      "head": "cpo",
+      "head_skills": [
+        "prd-patterns",
+        "hormozi-frameworks",
+        "brainstorming"
+      ],
+      "agents": {
+        "product-owner": {
+          "trigger_regex": "\\b(prd|feature breakdown|requirements|sprint|acceptance criteria)\\b",
+          "skills": [
+            "prd-patterns",
+            "bdd-scenarios"
+          ]
+        },
+        "venture-studio-partner": {
+          "trigger_regex": "\\b(ideation|market validation|business model|offer|pricing|mission)\\b",
+          "skills": [
+            "hormozi-frameworks",
+            "deep-research"
+          ]
+        }
+      }
+    },
+    "community": {
+      "keywords": "\\b(community|retention|churn|onboarding|support|nps|discord|telegram|customer success|engagement|moderation|broadcast|announce|cohort)\\b",
+      "head": "community-lead",
+      "head_skills": [
+        "community-analytics",
+        "social-content",
+        "telegram-community-management"
+      ],
+      "agents": {
+        "cs-director": {
+          "trigger_regex": "\\b(customer success|retention|churn|onboarding|nps|support)\\b",
+          "skills": [
+            "community-analytics",
+            "email-sequence"
+          ]
+        },
+        "discord": {
+          "trigger_regex": "\\b(discord|server|channel|moderation)\\b",
+          "skills": [
+            "community-analytics",
+            "social-content"
+          ]
+        },
+        "telegram": {
+          "trigger_regex": "\\b(telegram|bot|forum topic|group)\\b",
+          "skills": [
+            "telegram-community-management",
+            "social-content"
+          ]
+        }
+      }
+    },
+    "trading": {
+      "keywords": "\\b(trading|trade|backtest|strategy|broker|market data|base hit|pine|risk|portfolio|futures|chart|signal)\\b",
+      "head": "chief-trading-officer",
+      "head_skills": [
+        "trading",
+        "market-state-awareness",
+        "deep-research"
+      ],
+      "agents": {
+        "market-data-engineer": {
+          "trigger_regex": "\\b(market data|feed|chart|data pipeline|ohlcv|tick)\\b",
+          "skills": [
+            "market-state-awareness"
+          ]
+        },
+        "quant-strategist": {
+          "trigger_regex": "\\b(strategy|backtest|base hit|optimize|pine|risk|signal)\\b",
+          "skills": [
+            "trading",
+            "deep-research"
+          ]
+        }
+      }
+    },
+    "design": {
+      "keywords": "\\b(design|ux|wireframe|flow|brand identity|visual|accessibility|interface state|design system|tokens|dashboard|prototype|layout|responsive)\\b",
+      "head": "design-director",
+      "head_skills": [
+        "design-taste",
+        "ux-designer",
+        "web-design-guidelines"
+      ],
+      "agents": {
+        "design-systems-architect": {
+          "trigger_regex": "\\b(design system|tokens|theme|component library|tailwind|brand|style guide|wireframes?)\\b",
+          "skills": [
+            "design-tokens",
+            "tailwind-design-system",
+            "theme-factory"
+          ]
+        },
+        "ux-director": {
+          "trigger_regex": "\\b(ux|journey|flow|wireframes?|prototype|accessibility|interface state|screen|responsive)\\b",
+          "skills": [
+            "ux-designer",
+            "ux-psychology-pro",
+            "audit-accessibility-audit"
+          ]
+        }
+      }
+    },
+    "qa": {
+      "keywords": "\\b(qa|quality|verify|verification|test|regression|coverage|gap analysis|devil|review|acceptance|evidence)\\b",
+      "head": "qa-engineer",
+      "head_skills": [
+        "verification",
+        "quality-gates",
+        "bdd-scenarios"
+      ],
+      "agents": {
+        "devils-advocate": {
+          "trigger_regex": "\\b(devil|adversarial|challenge|risk|critique)\\b",
+          "skills": [
+            "verification",
+            "quality-gates"
+          ]
+        },
+        "knowledge-distiller": {
+          "trigger_regex": "\\b(distill|summary|handoff|knowledge|lessons)\\b",
+          "skills": [
+            "memory-systems",
+            "verification"
+          ]
+        },
+        "verification-loop": {
+          "trigger_regex": "\\b(loop|repeat|until clean|evidence|physical test|acceptance)\\b",
+          "skills": [
+            "verification",
+            "quality-gates"
+          ]
+        }
+      }
+    }
+  },
+  "steps": {
+    "step-0": {
+      "command": "commands/step-0-environment-setup.md",
+      "department": "ops",
+      "skills": [
+        "sigma-protocol-guide"
+      ]
+    },
+    "step-1": {
+      "command": "commands/step-1-ideation.md",
+      "department": "product",
+      "skills": [
+        "hormozi-frameworks",
+        "brainstorming",
+        "deep-research",
+        "icp-definition"
+      ],
+      "skill_phases": {
+        "brainstorming": "Phase A (Discovery Interview)",
+        "icp-definition": "Phase A (Target Users)",
+        "deep-research": "Phase B (Evidence-Backed Research)",
+        "hormozi-frameworks": "Phase D (Value Equation Assessment)"
+      }
+    },
+    "step-1.5": {
+      "command": "commands/step-1.5-offer-architecture.md",
+      "department": "sales",
+      "skills": [
+        "hormozi-frameworks",
+        "pricing-psychology",
+        "monetization",
+        "pricing-strategy"
+      ]
+    },
+    "step-10": {
+      "command": "commands/step-10-feature-breakdown.md",
+      "department": "product",
+      "skills": [
+        "prd-patterns",
+        "hormozi-frameworks"
+      ]
+    },
+    "step-11": {
+      "command": "commands/step-11-prd-generation.md",
+      "department": "product",
+      "skills": [
+        "prd-patterns",
+        "bdd-scenarios"
+      ]
+    },
+    "step-11.5": {
+      "command": "commands/step-11.5-task-handoff.md",
+      "department": "product",
+      "skills": [
+        "prd-patterns",
+        "quality-gates"
+      ]
+    },
+    "step-12": {
+      "command": "commands/step-12-context-engine.md",
+      "department": "engineering",
+      "skills": [
+        "memory-systems",
+        "prompt-engineering-patterns"
+      ]
+    },
+    "step-13": {
+      "command": "commands/step-13-skillpack-generator.md",
+      "department": "engineering",
+      "skills": [
+        "skill-creator",
+        "skill-writer",
+        "skill-optimizer"
+      ]
+    },
+    "step-14": {
+      "command": "commands/step-14-agent-runtime-bootstrap.md",
+      "department": "engineering",
+      "skills": [
+        "agent-development",
+        "harness-creator"
+      ]
+    },
+    "step-15": {
+      "command": "commands/step-15-observability-contract.md",
+      "department": "engineering",
+      "skills": [
+        "observability",
+        "quality-gates"
+      ]
+    },
+    "step-2": {
+      "command": "commands/step-2-architecture.md",
+      "department": "engineering",
+      "skills": [
+        "senior-architect",
+        "architecture-patterns",
+        "api-design-principles",
+        "deep-research"
+      ]
+    },
+    "step-3": {
+      "command": "commands/step-3-ux-design.md",
+      "department": "design",
+      "skills": [
+        "ux-designer",
+        "design-taste",
+        "ux-psychology-pro",
+        "web-design-guidelines"
+      ]
+    },
+    "step-4": {
+      "command": "commands/step-4-flow-tree.md",
+      "department": "design",
+      "skills": [
+        "ux-designer",
+        "web-design-guidelines",
+        "wireframe"
+      ]
+    },
+    "step-5": {
+      "command": "commands/step-5-wireframe-prototypes.md",
+      "department": "design",
+      "skills": [
+        "frontend-design",
+        "wireframe",
+        "image-to-code",
+        "design-tokens",
+        "web-design-guidelines"
+      ]
+    },
+    "step-6": {
+      "command": "commands/step-6-design-system.md",
+      "department": "design",
+      "skills": [
+        "design-tokens",
+        "tailwind-design-system",
+        "theme-factory",
+        "applying-brand-guidelines",
+        "design-taste"
+      ]
+    },
+    "step-7": {
+      "command": "commands/step-7-interface-states.md",
+      "department": "design",
+      "skills": [
+        "frontend-design",
+        "design-tokens",
+        "audit-accessibility-audit",
+        "ux-psychology-pro"
+      ]
+    },
+    "step-8": {
+      "command": "commands/step-8-technical-spec.md",
+      "department": "engineering",
+      "skills": [
+        "senior-architect",
+        "architecture-patterns",
+        "api-design-principles"
+      ]
+    },
+    "step-9": {
+      "command": "commands/step-9-landing-page.md",
+      "department": "marketing",
+      "skills": [
+        "direct-response-copy",
+        "copywriting",
+        "marketing-copywriting",
+        "conversion-optimization",
+        "frontend-design",
+        "motion-landing-design",
+        "threejs"
+      ],
+      "skill_phases": {
+        "motion-landing-design": "Phase D (Divergence + Motion Concept)",
+        "threejs": "Phase D (3D/WebGL hero, when the direction calls for it)"
+      }
+    },
+    "step-verify.md": {
+      "command": "commands/step-verify.md",
+      "department": "engineering",
+      "skills": [
+        "verification",
+        "quality-gates"
+      ]
+    },
+    "run-marketing": {
+      "command": "commands/run-marketing.md",
+      "department": "marketing",
+      "skills": [
+        "gtm-stack-setup",
+        "01-market-research",
+        "10-launch-playbook"
+      ]
+    },
+    "run-sales": {
+      "command": "commands/run-sales.md",
+      "department": "sales",
+      "skills": [
+        "crm-pipeline-setup",
+        "outreach-sequencing",
+        "discovery"
+      ]
+    },
+    "run-m-1-gtm-audit": {
+      "command": "commands/run-m-1-gtm-audit.md",
+      "department": "marketing",
+      "skills": [
+        "01-market-research"
+      ]
+    },
+    "run-m-2-avatar-positioning": {
+      "command": "commands/run-m-2-avatar-positioning.md",
+      "department": "marketing",
+      "skills": [
+        "02-customer-avatar",
+        "icp-definition"
+      ]
+    },
+    "run-m-3-stack-tracking": {
+      "command": "commands/run-m-3-stack-tracking.md",
+      "department": "marketing",
+      "skills": [
+        "gtm-stack-setup"
+      ]
+    },
+    "run-m-4-messaging-system": {
+      "command": "commands/run-m-4-messaging-system.md",
+      "department": "marketing",
+      "skills": [
+        "03-brand-voice",
+        "04-offer-architect"
+      ]
+    },
+    "run-m-5-channel-plan": {
+      "command": "commands/run-m-5-channel-plan.md",
+      "department": "marketing",
+      "skills": [
+        "08-ads-strategy",
+        "09-retargeting-strategy"
+      ]
+    },
+    "run-m-6-content-engine": {
+      "command": "commands/run-m-6-content-engine.md",
+      "department": "marketing",
+      "skills": [
+        "12-content-ideation",
+        "13-content-matrix"
+      ]
+    },
+    "run-m-7-lifecycle-email": {
+      "command": "commands/run-m-7-lifecycle-email.md",
+      "department": "marketing",
+      "skills": [
+        "06-email-sequences"
+      ]
+    },
+    "run-m-8-launch-runbook": {
+      "command": "commands/run-m-8-launch-runbook.md",
+      "department": "marketing",
+      "skills": [
+        "10-launch-playbook"
+      ]
+    },
+    "run-m-9-optimize-cadence": {
+      "command": "commands/run-m-9-optimize-cadence.md",
+      "department": "marketing",
+      "skills": [
+        "09-retargeting-strategy"
+      ]
+    },
+    "run-m-10-retention-loop": {
+      "command": "commands/run-m-10-retention-loop.md",
+      "department": "marketing",
+      "skills": [
+        "retention-engine",
+        "17-community-update"
+      ]
+    },
+    "run-s-1-icp-accounts": {
+      "command": "commands/run-s-1-icp-accounts.md",
+      "department": "sales",
+      "skills": [
+        "icp-definition",
+        "lead-qualification"
+      ]
+    },
+    "run-s-2-crm-pipeline": {
+      "command": "commands/run-s-2-crm-pipeline.md",
+      "department": "sales",
+      "skills": [
+        "crm-pipeline-setup"
+      ]
+    },
+    "run-s-3-outbound-playbook": {
+      "command": "commands/run-s-3-outbound-playbook.md",
+      "department": "sales",
+      "skills": [
+        "outreach-sequencing"
+      ]
+    },
+    "run-s-4-discovery-sop": {
+      "command": "commands/run-s-4-discovery-sop.md",
+      "department": "sales",
+      "skills": [
+        "discovery",
+        "lead-qualification"
+      ]
+    },
+    "run-s-5-proposal-system": {
+      "command": "commands/run-s-5-proposal-system.md",
+      "department": "sales",
+      "skills": [
+        "high-ticket-closing",
+        "pricing-psychology"
+      ]
+    },
+    "run-s-6-inbound-dm": {
+      "command": "commands/run-s-6-inbound-dm.md",
+      "department": "sales",
+      "skills": [
+        "dm-funnel",
+        "content-to-client"
+      ]
+    },
+    "run-s-7-followup-system": {
+      "command": "commands/run-s-7-followup-system.md",
+      "department": "sales",
+      "skills": [
+        "follow-up-system"
+      ]
+    },
+    "run-s-8-pipeline-ops": {
+      "command": "commands/run-s-8-pipeline-ops.md",
+      "department": "sales",
+      "skills": [
+        "objection-handling"
+      ]
+    },
+    "run-content": {
+      "command": "commands/run-content.md",
+      "department": "content",
+      "skills": [
+        "content-production-queue",
+        "12-content-ideation"
+      ]
+    },
+    "run-growth": {
+      "command": "commands/run-growth.md",
+      "department": "growth",
+      "skills": [
+        "funnel-instrumentation-setup",
+        "ab-test-spec"
+      ]
+    },
+    "run-community": {
+      "command": "commands/run-community.md",
+      "department": "community",
+      "skills": [
+        "community-analytics",
+        "17-community-update"
+      ]
+    },
+    "run-ops": {
+      "command": "commands/run-ops.md",
+      "department": "ops",
+      "skills": [
+        "sprint-plan",
+        "quality-gates",
+        "weekly-review"
+      ]
+    },
+    "run-finance": {
+      "command": "commands/run-finance.md",
+      "department": "finance",
+      "skills": [
+        "cost-optimizer",
+        "estimation-engine"
+      ]
+    },
+    "run-legal": {
+      "command": "commands/run-legal.md",
+      "department": "legal",
+      "skills": [
+        "writing-clearly",
+        "saas-security-patterns",
+        "entity-formation-setup"
+      ]
+    },
+    "run-c-1-brief-intake": {
+      "command": "commands/run-c-1-brief-intake.md",
+      "department": "content",
+      "skills": [
+        "03-brand-voice"
+      ]
+    },
+    "run-c-2-video-research": {
+      "command": "commands/run-c-2-video-research.md",
+      "department": "content",
+      "skills": [
+        "22-video-research"
+      ]
+    },
+    "run-c-3-longform-scripts": {
+      "command": "commands/run-c-3-longform-scripts.md",
+      "department": "content",
+      "skills": [
+        "14-video-script",
+        "18-youtube-script-writer"
+      ]
+    },
+    "run-c-4-thumbnails-titles": {
+      "command": "commands/run-c-4-thumbnails-titles.md",
+      "department": "content",
+      "skills": [
+        "15-thumbnail-prompts"
+      ]
+    },
+    "run-c-5-shortform-pack": {
+      "command": "commands/run-c-5-shortform-pack.md",
+      "department": "content",
+      "skills": [
+        "19-short-form-scripts"
+      ]
+    },
+    "run-c-6-social-copy": {
+      "command": "commands/run-c-6-social-copy.md",
+      "department": "content",
+      "skills": [
+        "20-linkedin-writer",
+        "21-twitter-threads",
+        "23-story-posts"
+      ]
+    },
+    "run-c-7-atomization-map": {
+      "command": "commands/run-c-7-atomization-map.md",
+      "department": "content",
+      "skills": [
+        "13-content-matrix"
+      ]
+    },
+    "run-c-8-publish-handoff": {
+      "command": "commands/run-c-8-publish-handoff.md",
+      "department": "content",
+      "skills": [
+        "17-community-update",
+        "content-production-queue"
+      ]
+    },
+    "run-g-1-funnel-map": {
+      "command": "commands/run-g-1-funnel-map.md",
+      "department": "growth",
+      "skills": [
+        "funnel-instrumentation-setup"
+      ]
+    },
+    "run-g-2-baseline-metrics": {
+      "command": "commands/run-g-2-baseline-metrics.md",
+      "department": "growth",
+      "skills": [
+        "funnel-instrumentation-setup"
+      ]
+    },
+    "run-g-3-hypothesis-backlog": {
+      "command": "commands/run-g-3-hypothesis-backlog.md",
+      "department": "growth",
+      "skills": [
+        "ab-test-spec"
+      ]
+    },
+    "run-g-4-ab-test-spec": {
+      "command": "commands/run-g-4-ab-test-spec.md",
+      "department": "growth",
+      "skills": [
+        "ab-test-spec"
+      ]
+    },
+    "run-g-5-cro-sprint": {
+      "command": "commands/run-g-5-cro-sprint.md",
+      "department": "growth",
+      "skills": [
+        "ab-test-spec"
+      ]
+    },
+    "run-g-6-retargeting-arch": {
+      "command": "commands/run-g-6-retargeting-arch.md",
+      "department": "growth",
+      "skills": [
+        "09-retargeting-strategy"
+      ]
+    },
+    "run-g-7-activation-cohorts": {
+      "command": "commands/run-g-7-activation-cohorts.md",
+      "department": "growth",
+      "skills": [
+        "retention-engine",
+        "06-email-sequences"
+      ]
+    },
+    "run-g-8-seo-organic-loop": {
+      "command": "commands/run-g-8-seo-organic-loop.md",
+      "department": "growth",
+      "skills": [
+        "16-seo-content"
+      ]
+    },
+    "run-co-1-platform-audit": {
+      "command": "commands/run-co-1-platform-audit.md",
+      "department": "community",
+      "skills": [
+        "community-analytics"
+      ]
+    },
+    "run-co-2-welcome-flow": {
+      "command": "commands/run-co-2-welcome-flow.md",
+      "department": "community",
+      "skills": [
+        "17-community-update"
+      ]
+    },
+    "run-co-3-content-rhythm": {
+      "command": "commands/run-co-3-content-rhythm.md",
+      "department": "community",
+      "skills": [
+        "17-community-update"
+      ]
+    },
+    "run-co-4-moderation": {
+      "command": "commands/run-co-4-moderation.md",
+      "department": "community",
+      "skills": [
+        "community-analytics"
+      ]
+    },
+    "run-co-5-feedback-loop": {
+      "command": "commands/run-co-5-feedback-loop.md",
+      "department": "community",
+      "skills": [
+        "community-analytics"
+      ]
+    },
+    "run-co-6-advocacy": {
+      "command": "commands/run-co-6-advocacy.md",
+      "department": "community",
+      "skills": [
+        "retention-engine"
+      ]
+    },
+    "run-o-1-ops-baseline": {
+      "command": "commands/run-o-1-ops-baseline.md",
+      "department": "ops",
+      "skills": [
+        "system-health",
+        "doctor-fix"
+      ]
+    },
+    "run-o-2-sprint-rhythm": {
+      "command": "commands/run-o-2-sprint-rhythm.md",
+      "department": "ops",
+      "skills": [
+        "sprint-plan",
+        "backlog-groom",
+        "daily-standup"
+      ]
+    },
+    "run-o-3-release-gates": {
+      "command": "commands/run-o-3-release-gates.md",
+      "department": "ops",
+      "skills": [
+        "qa-plan",
+        "release-review",
+        "quality-gates"
+      ]
+    },
+    "run-o-4-observability": {
+      "command": "commands/run-o-4-observability.md",
+      "department": "ops",
+      "skills": [
+        "observability",
+        "system-health"
+      ]
+    },
+    "run-o-5-incident-response": {
+      "command": "commands/run-o-5-incident-response.md",
+      "department": "ops",
+      "skills": [
+        "maintenance-plan",
+        "doctor-fix"
+      ]
+    },
+    "run-o-6-wbr": {
+      "command": "commands/run-o-6-wbr.md",
+      "department": "ops",
+      "skills": [
+        "weekly-review"
+      ]
+    },
+    "run-o-7-sop-vendors": {
+      "command": "commands/run-o-7-sop-vendors.md",
+      "department": "ops",
+      "skills": [
+        "maintenance-plan"
+      ]
+    },
+    "run-o-8-contractor-onboarding": {
+      "command": "commands/run-o-8-contractor-onboarding.md",
+      "department": "ops",
+      "skills": [
+        "maintenance-plan"
+      ]
+    },
+    "run-fn-1-unit-economics": {
+      "command": "commands/run-fn-1-unit-economics.md",
+      "department": "finance",
+      "skills": [
+        "cost-optimizer"
+      ]
+    },
+    "run-fn-2-pricing-architecture": {
+      "command": "commands/run-fn-2-pricing-architecture.md",
+      "department": "finance",
+      "skills": [
+        "04-offer-architect",
+        "pricing-psychology"
+      ]
+    },
+    "run-fn-3-forecast": {
+      "command": "commands/run-fn-3-forecast.md",
+      "department": "finance",
+      "skills": [
+        "estimation-engine"
+      ]
+    },
+    "run-fn-4-cost-audit": {
+      "command": "commands/run-fn-4-cost-audit.md",
+      "department": "finance",
+      "skills": [
+        "cost-optimizer"
+      ]
+    },
+    "run-fn-5-runway": {
+      "command": "commands/run-fn-5-runway.md",
+      "department": "finance",
+      "skills": [
+        "cost-optimizer"
+      ]
+    },
+    "run-fn-6-spend-gates": {
+      "command": "commands/run-fn-6-spend-gates.md",
+      "department": "finance",
+      "skills": [
+        "cost-optimizer"
+      ]
+    },
+    "run-fn-7-data-room": {
+      "command": "commands/run-fn-7-data-room.md",
+      "department": "finance",
+      "skills": [
+        "estimation-engine"
+      ]
+    },
+    "run-l-1-intake-batna": {
+      "command": "commands/run-l-1-intake-batna.md",
+      "department": "legal",
+      "skills": [
+        "writing-clearly"
+      ]
+    },
+    "run-l-2-msa-baseline": {
+      "command": "commands/run-l-2-msa-baseline.md",
+      "department": "legal",
+      "skills": [
+        "writing-clearly"
+      ]
+    },
+    "run-l-3-nda-strategy": {
+      "command": "commands/run-l-3-nda-strategy.md",
+      "department": "legal",
+      "skills": [
+        "writing-clearly"
+      ]
+    },
+    "run-l-4-ip-trademark": {
+      "command": "commands/run-l-4-ip-trademark.md",
+      "department": "legal",
+      "skills": [
+        "deep-research"
+      ]
+    },
+    "run-l-5-vendor-dpa": {
+      "command": "commands/run-l-5-vendor-dpa.md",
+      "department": "legal",
+      "skills": [
+        "saas-security-patterns"
+      ]
+    },
+    "run-l-6-compliance": {
+      "command": "commands/run-l-6-compliance.md",
+      "department": "legal",
+      "skills": [
+        "saas-security-patterns"
+      ]
+    },
+    "run-l-7-incident-narratives": {
+      "command": "commands/run-l-7-incident-narratives.md",
+      "department": "legal",
+      "skills": [
+        "saas-security-patterns"
+      ]
+    },
+    "run-l-8-demand-playbook": {
+      "command": "commands/run-l-8-demand-playbook.md",
+      "department": "legal",
+      "skills": [
+        "deep-research"
+      ]
+    },
+    "run-l-0-entity-formation": {
+      "command": "commands/run-l-0-entity-formation.md",
+      "department": "legal",
+      "skills": [
+        "entity-formation-setup"
+      ]
+    }
+  },
+  "skills": {
+    "ads": {
+      "trigger_keywords": [
+        "ads",
+        "paid media",
+        "roas",
+        "campaign budget"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "paid-media-director"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "agent-development": {
+      "trigger_keywords": [
+        "agent-development",
+        "agent development",
+        "create-agent",
+        "agent-design",
+        "subagent-development",
+        "autonomous-agent",
+        "agent-system-prompt",
+        "engineering agent development",
+        "step-14"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "compound-engineer",
+        "harness-architect",
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-14"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "api-design-principles": {
+      "trigger_keywords": [
+        "api design",
+        "endpoint contract",
+        "openapi",
+        "trpc",
+        "zod schema",
+        "pagination",
+        "idempotency",
+        "rest api",
+        "ts-rest",
+        "orpc",
+        "api contract",
+        "idempotency key",
+        "api versioning",
+        "step-2-architecture",
+        "step-8-technical-spec",
+        "api-design-principles",
+        "api design principles",
+        "step-2",
+        "step-8"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect",
+        "backend-engineer",
+        "x402-engineer"
+      ],
+      "sigma_steps": [
+        "step-2",
+        "step-8"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "applying-brand-guidelines": {
+      "trigger_keywords": [
+        "brand guidelines",
+        "apply brand",
+        "brand consistency",
+        "brand-application",
+        "design-system",
+        "marketing-content",
+        "documentation-styling",
+        "client-handoff",
+        "applying-brand-guidelines",
+        "applying brand guidelines",
+        "step-6"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "community-lead",
+        "discord",
+        "media-gen",
+        "notebooklm",
+        "research-media",
+        "telegram"
+      ],
+      "sigma_steps": [
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "architecture-patterns": {
+      "trigger_keywords": [
+        "architecture pattern",
+        "clean architecture",
+        "hexagonal architecture",
+        "ddd",
+        "domain model",
+        "step-2-architecture",
+        "step-8-technical-spec",
+        "scaffold",
+        "new-project",
+        "refactoring",
+        "architecture-patterns",
+        "architecture patterns",
+        "step-2",
+        "step-8"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect",
+        "backend-engineer"
+      ],
+      "sigma_steps": [
+        "step-2",
+        "step-8"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "audit-accessibility-audit": {
+      "trigger_keywords": [
+        "audit-accessibility-audit",
+        "audit accessibility audit",
+        "design audit accessibility audit",
+        "step-7"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "mobile-developer",
+        "ux-director"
+      ],
+      "sigma_steps": [
+        "step-7"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "bdd-scenarios": {
+      "trigger_keywords": [
+        "bdd",
+        "given when then",
+        "acceptance scenarios",
+        "behavior scenarios",
+        "acceptance scenario",
+        "behavior driven",
+        "bdd-scenarios",
+        "bdd scenarios",
+        "step-11"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "qa-engineer",
+        "product-owner"
+      ],
+      "sigma_steps": [
+        "step-11"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "brainstorming": {
+      "trigger_keywords": [
+        "brainstorming",
+        "ideation",
+        "concept generation",
+        "idea review",
+        "step-1-ideation",
+        "step-3-ux-design",
+        "step-10-feature-breakdown",
+        "new-feature",
+        "design-discussion",
+        "brainstorm\\",
+        "ideate\\",
+        "explore options\\",
+        "what if\\",
+        "design thinking\\",
+        "\\brainstorm\\",
+        "\\ideate\\",
+        "\\explore options\\",
+        "\\what if\\",
+        "\\design thinking\\",
+        "step-1"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "dream-engineer",
+        "cpo",
+        "product-owner"
+      ],
+      "sigma_steps": [
+        "step-1"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "community-analytics": {
+      "trigger_keywords": [
+        "community analytics",
+        "community metrics",
+        "retention analytics",
+        "community",
+        "analytics",
+        "engagement",
+        "health-report",
+        "member growth",
+        "community health",
+        "community-analytics"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cs-director",
+        "community-lead",
+        "discord"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-co-1-platform-audit",
+        "run-co-4-moderation",
+        "run-co-5-feedback-loop",
+        "run-community"
+      ]
+    },
+    "content-atomizer": {
+      "trigger_keywords": [
+        "content atomizer",
+        "repurpose content",
+        "content repurposing",
+        "social posts",
+        "repurpose",
+        "content",
+        "social media",
+        "atomize",
+        "transform",
+        "content distribution",
+        "pillar content",
+        "content-atomizer"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "content-director",
+        "notebooklm",
+        "cs-director"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "contract": {
+      "trigger_keywords": [
+        "contract",
+        ": contract",
+        "sales contract"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "general-counsel",
+        "harvey-specter",
+        "louis-litt",
+        "rachel-zane",
+        "cso"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "conversion-optimization": {
+      "trigger_keywords": [
+        "conversion optimization",
+        "cro",
+        "signup conversion",
+        "funnel optimization",
+        "conversion",
+        "signup flow",
+        "onboarding",
+        "paywall optimization",
+        "conversion-optimization",
+        "step-9"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo",
+        "growth-engineer",
+        "follow-up-systemizer",
+        "landing-page-specialist"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "copywriting": {
+      "trigger_keywords": [
+        "copywriting",
+        "marketing copy",
+        "sales copy",
+        "headline",
+        "write copy",
+        "value proposition",
+        "step-9"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "content-director",
+        "notebooklm",
+        "copywriter"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "deep-research": {
+      "trigger_keywords": [
+        "deep research",
+        "research brief",
+        "market research",
+        "source research",
+        "step-1-ideation",
+        "step-2-architecture",
+        "step-8-technical-spec",
+        "01-market-research",
+        "plan",
+        "sigma-planner",
+        "research",
+        "investigate",
+        "deep-research",
+        "step-1",
+        "step-2"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "dream-engineer",
+        "general-counsel",
+        "donna-paulsen",
+        "jessica-pearson",
+        "mike-ross",
+        "research-media",
+        "venture-studio-partner",
+        "chief-trading-officer",
+        "quant-strategist",
+        "cpo",
+        "harvey-specter",
+        "louis-litt",
+        "rachel-zane"
+      ],
+      "sigma_steps": [
+        "step-1",
+        "step-2"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-l-4-ip-trademark",
+        "run-l-8-demand-playbook"
+      ]
+    },
+    "dependency-security": {
+      "trigger_keywords": [
+        "dependency audit",
+        "supply chain",
+        "sbom",
+        "npm audit",
+        "vulnerability scanning",
+        "security-audit",
+        "dependency-update",
+        "implement-prd",
+        "step-8-technical-spec",
+        "pr-review",
+        "dependency audit\\",
+        "supply chain\\",
+        "sbom\\",
+        "npm audit\\",
+        "vulnerability scan\\",
+        "\\dependency audit\\",
+        "\\supply chain\\",
+        "\\sbom\\",
+        "\\npm audit\\",
+        "\\vulnerability scan\\",
+        "dependency-security",
+        "dependency security"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "devops",
+        "security-lead",
+        "security-infra",
+        "security-ai-safety"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "design-taste": {
+      "trigger_keywords": [
+        "design taste",
+        "aesthetic direction",
+        "visual polish",
+        "make it look premium",
+        "design quality",
+        "premium ui",
+        "anti-slop ui",
+        "design-taste",
+        "premium-ui",
+        "awwwards",
+        "anti-slop-ui",
+        "high-end-design",
+        "redesign",
+        "editorial-minimal",
+        "brutalist-ui",
+        "design-mode",
+        "expensive ui",
+        "anti-generic design",
+        "redesign this",
+        "why does this look like ai made it",
+        "step-3",
+        "step-6"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "media-gen",
+        "design-director",
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-3",
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "design-tokens": {
+      "trigger_keywords": [
+        "design tokens",
+        "token architecture",
+        "theming system",
+        "design token",
+        "css variables system",
+        "css variables",
+        "theme tokens",
+        "design-tokens",
+        "design-system",
+        "theming",
+        "dark-mode",
+        "tailwind-v4",
+        "dtcg",
+        "shadcn-registry",
+        "tweakcn",
+        "token-architecture",
+        "oklch",
+        "design system tokens",
+        "dark mode tokens",
+        "tailwind v4 theme",
+        "step-5",
+        "step-6",
+        "step-7"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-systems-architect",
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-5",
+        "step-6",
+        "step-7"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "direct-response-copy": {
+      "trigger_keywords": [
+        "direct response",
+        "sales page",
+        "vsl",
+        "conversion copy",
+        "copy",
+        "conversion",
+        "landing page",
+        "sales",
+        "email",
+        "ads",
+        "long-form copy",
+        "persuasion",
+        "direct-response-copy",
+        "direct response copy",
+        "step-9"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo",
+        "paid-media-director",
+        "content-director",
+        "growth-engineer",
+        "copywriter"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "email-sequence": {
+      "trigger_keywords": [
+        "email sequence",
+        "email campaign",
+        "nurture sequence",
+        "drip campaign",
+        "email automation",
+        "welcome series",
+        "email-sequence"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cs-director",
+        "follow-up-systemizer"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "finance": {
+      "trigger_keywords": [
+        "finance",
+        "unit economics",
+        "runway",
+        "gross margin"
+      ],
+      "department": "finance",
+      "departments": [
+        "finance"
+      ],
+      "owning_agents": [
+        "finance-director",
+        "unit-economics-analyst",
+        "due-diligence-analyst"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "frontend-design": {
+      "trigger_keywords": [
+        "frontend",
+        "ui component",
+        "react component",
+        "build the ui",
+        "component variants",
+        "accessible component",
+        "cva pattern",
+        "shadcn component",
+        "heal the ui",
+        "dashboard ui",
+        "landing page",
+        "cva",
+        "ui-healer",
+        "implement-prd",
+        "frontend-design",
+        "frontend design",
+        "step-5",
+        "step-7",
+        "step-9"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-5",
+        "step-7",
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "harness-creator": {
+      "trigger_keywords": [
+        "harness-creator",
+        "harness creator",
+        "step-14"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "compound-engineer",
+        "harness-architect"
+      ],
+      "sigma_steps": [
+        "step-14"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "hormozi-frameworks": {
+      "trigger_keywords": [
+        "hormozi",
+        "offer framework",
+        "value equation",
+        "grand slam offer",
+        "ideation",
+        "offer-architecture",
+        "pricing",
+        "value-proposition",
+        "$100m leads",
+        "offer stack",
+        "risk ladder",
+        "pareto pricing",
+        "retention cohort",
+        "value per second",
+        "trim and stack",
+        "fusion reactor",
+        "1-1-1 rule",
+        "cac ltv",
+        "hormozi-frameworks",
+        "hormozi frameworks",
+        "step-1",
+        "step-1.5",
+        "step-10"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "cpo",
+        "venture-studio-partner",
+        "cso",
+        "product-owner"
+      ],
+      "sigma_steps": [
+        "step-1",
+        "step-1.5",
+        "step-10"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "icp-definition": {
+      "trigger_keywords": [
+        "icp",
+        "ideal customer profile",
+        "customer profile",
+        "prospecting list",
+        "ideal-customer-profile",
+        "negative-icp",
+        "buyer-persona",
+        "customer-sorting",
+        ",",
+        "negative icp",
+        "who to sell to",
+        "buyer persona",
+        "whale vs goldfish",
+        "target customer",
+        "disqualify customers",
+        "icp-definition",
+        "icp definition",
+        "step-1"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "cpo",
+        "outbound-systems-architect",
+        "discovery-specialist"
+      ],
+      "sigma_steps": [
+        "step-1"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-1-icp-accounts",
+        "run-m-2-avatar-positioning"
+      ]
+    },
+    "image-to-code": {
+      "trigger_keywords": [
+        "image to code",
+        "screenshot to code",
+        "figma to code",
+        "mockup to code",
+        "design to component",
+        "convert design",
+        "implement from mockup",
+        "design handoff",
+        "pixel perfect",
+        "design fidelity",
+        "image-to-code",
+        "step-5"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "media-gen",
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "lead-qualification": {
+      "trigger_keywords": [
+        "lead qualification",
+        "qualified lead",
+        "sales qualification",
+        "lead score",
+        "lead-qualification",
+        "bant",
+        "meddic",
+        "lead-scoring",
+        "disqualification",
+        ",",
+        "qualify lead",
+        "opportunity score",
+        "grade this lead",
+        "is this a good lead",
+        "disqualify",
+        "cac ltv"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso",
+        "outbound-systems-architect",
+        "discovery-specialist"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-1-icp-accounts",
+        "run-s-4-discovery-sop"
+      ]
+    },
+    "legal": {
+      "trigger_keywords": [
+        "legal",
+        "legal legal"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "general-counsel",
+        "donna-paulsen",
+        "jessica-pearson",
+        "louis-litt",
+        "mike-ross",
+        "rachel-zane"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "market-state-awareness": {
+      "trigger_keywords": [
+        "market state",
+        "market data",
+        "chart capture",
+        "feed health",
+        "market hours",
+        "market open",
+        "market closed",
+        "broker disconnected",
+        "daemon wont start",
+        "tradovate auth",
+        "weekend maintenance",
+        "globex",
+        "rth",
+        "futures hours",
+        "cme",
+        "broker won",
+        "market-state-awareness",
+        "market state awareness"
+      ],
+      "department": "trading",
+      "departments": [
+        "trading"
+      ],
+      "owning_agents": [
+        "chief-trading-officer",
+        "market-data-engineer"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "marketing-copywriting": {
+      "trigger_keywords": [
+        "marketing copywriting",
+        "ad copy",
+        "campaign copy",
+        "07-landing-page-copy",
+        "step-9-landing-page",
+        "proposal",
+        "06-email-sequences",
+        "20-linkedin-writer",
+        "21-twitter-threads",
+        "marketing-copywriting",
+        "step-9"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo",
+        "manychat",
+        "paid-media-director",
+        "copywriter"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "memory-systems": {
+      "trigger_keywords": [
+        "memory-systems",
+        "memory systems",
+        "long-running project",
+        "multi-session development",
+        "context persistence",
+        "knowledge retention",
+        "project memory",
+        "\\memory system\\",
+        "\\persistent memory\\",
+        "\\agent memory\\",
+        "\\conversation memory\\",
+        "step-12"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "knowledge-distiller"
+      ],
+      "sigma_steps": [
+        "step-12"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "mission": {
+      "trigger_keywords": [
+        "mission",
+        "lifecycle",
+        "dispatcher",
+        "sigmahq",
+        "/mission",
+        "start mission",
+        "switch mission",
+        "complete mission",
+        "list missions",
+        "product mission"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "cpo"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "mobile-app-security": {
+      "trigger_keywords": [
+        "mobile app security",
+        "masvs",
+        "secure storage",
+        "certificate pinning",
+        "mobile owasp",
+        "mobile security",
+        "secure storage mobile",
+        "react native security",
+        "ios keychain",
+        "android keystore",
+        "security-audit",
+        "implement-prd",
+        "mobile-feature",
+        "mobile-app-security"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "mobile-developer",
+        "security-mobile"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "monetization": {
+      "trigger_keywords": [
+        "monetization",
+        "revenue model",
+        "billing model",
+        "packaging",
+        "step-1.5"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "x402-engineer",
+        "finance-director",
+        "pricing-strategist",
+        "unit-economics-analyst"
+      ],
+      "sigma_steps": [
+        "step-1.5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "motion-landing-design": {
+      "trigger_keywords": [
+        "motion design",
+        "scroll animation",
+        "scrolltrigger",
+        "gsap",
+        "scroll-driven",
+        "pinned canvas",
+        "image sequence",
+        "landing page motion",
+        "hero animation",
+        "prefers-reduced-motion",
+        "motion-landing-design",
+        "step-9"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "frontend-engineer",
+        "design-director"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "threejs": {
+      "trigger_keywords": [
+        "threejs",
+        "three.js",
+        "webgl",
+        "3d hero",
+        "3d scene",
+        "react three fiber",
+        "r3f",
+        "shader",
+        "3d landing",
+        "threejs",
+        "step-9"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "frontend-engineer",
+        "design-director"
+      ],
+      "sigma_steps": [
+        "step-9"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "objection-handling": {
+      "trigger_keywords": [
+        "objection handling",
+        "sales objection",
+        "price objection",
+        "negotiation objection",
+        "objection",
+        "too expensive",
+        "send me info",
+        "think about it",
+        "competitor cheaper",
+        "timing stall",
+        "price flinch",
+        "s verbatim scripts + a 15-objection laer playbook + hormozi",
+        "just send me the info",
+        "let me think about it",
+        "objection-handling"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "harvey-specter",
+        "cso",
+        "negotiation-specialist"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-8-pipeline-ops"
+      ]
+    },
+    "observability": {
+      "trigger_keywords": [
+        "observability",
+        "sentry",
+        "telemetry",
+        "opentelemetry",
+        "posthog",
+        "logs metrics traces",
+        "monitoring",
+        "logging",
+        "tracing",
+        "metrics",
+        "error tracking",
+        "analytics",
+        "slo",
+        "burn rate",
+        "gen_ai spans",
+        "llm observability",
+        "structured logging",
+        "otlp",
+        "collector",
+        "session replay"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "observability-engineer",
+        "ops-director",
+        "security-infra"
+      ],
+      "sigma_steps": [
+        "step-15"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-4-observability"
+      ]
+    },
+    "owasp-api-security": {
+      "trigger_keywords": [
+        "owasp api",
+        "api security",
+        "authorization flaw",
+        "broken object level auth",
+        "security-audit",
+        "implement-prd",
+        "step-8-technical-spec",
+        "api-design",
+        "pr-review",
+        "api security\\",
+        "bola\\",
+        "api rate limit\\",
+        "api auth\\",
+        "owasp api\\",
+        "\\api security\\",
+        "\\bola\\",
+        "\\api rate limit\\",
+        "\\api auth\\",
+        "\\owasp api\\",
+        "owasp-api-security",
+        "owasp api security"
+      ],
+      "department": "security",
+      "departments": [
+        "security"
+      ],
+      "owning_agents": [
+        "security-lead",
+        "security-compliance",
+        "security-mobile",
+        "security-web-api"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "owasp-llm-security": {
+      "trigger_keywords": [
+        "owasp llm",
+        "prompt injection",
+        "llm security",
+        "agent security",
+        "security-audit",
+        "implement-prd",
+        "step-8-technical-spec",
+        "llm-integration",
+        "ai-feature",
+        "llm security\\",
+        "prompt injection\\",
+        "ai safety\\",
+        "llm owasp\\",
+        "data poisoning\\",
+        "\\llm security\\",
+        "\\prompt injection\\",
+        "\\ai safety\\",
+        "\\llm owasp\\",
+        "\\data poisoning\\",
+        "owasp-llm-security",
+        "owasp llm security"
+      ],
+      "department": "security",
+      "departments": [
+        "security"
+      ],
+      "owning_agents": [
+        "security-lead",
+        "security-ai-safety"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "owasp-web-security": {
+      "trigger_keywords": [
+        "owasp web",
+        "xss",
+        "csrf",
+        "web security",
+        "injection",
+        "security-audit",
+        "implement-prd",
+        "pr-review",
+        "step-8-technical-spec",
+        "code-review",
+        "web security\\",
+        "xss\\",
+        "sql injection\\",
+        "csrf\\",
+        "owasp top 10\\",
+        "\\web security\\",
+        "\\xss\\",
+        "\\sql injection\\",
+        "\\csrf\\",
+        "\\owasp top 10\\",
+        "owasp-web-security",
+        "owasp web security"
+      ],
+      "department": "security",
+      "departments": [
+        "security"
+      ],
+      "owning_agents": [
+        "security-lead",
+        "security-web-api",
+        "security-mobile"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "prd-patterns": {
+      "trigger_keywords": [
+        "prd-patterns",
+        "prd patterns",
+        ": prd",
+        "feature breakdown",
+        "specs",
+        "prd-refresh",
+        "step 11",
+        "docs/prds/",
+        "coverage expansion",
+        "backend wiring spec",
+        "feature audit",
+        "product prd patterns",
+        "step-10",
+        "step-11"
+      ],
+      "department": "product",
+      "departments": [
+        "product"
+      ],
+      "owning_agents": [
+        "cpo",
+        "product-owner"
+      ],
+      "sigma_steps": [
+        "step-10",
+        "step-11",
+        "step-11.5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "pricing-psychology": {
+      "trigger_keywords": [
+        "pricing psychology",
+        "price anchoring",
+        "offer anchor",
+        "raise my prices",
+        "stop rounding down",
+        "price tiers",
+        "risk ladder",
+        "whale clients",
+        "your price is your posture",
+        "pricing-psychology",
+        "step-1.5"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso",
+        "harvey-specter",
+        "pricing-strategist",
+        "negotiation-specialist"
+      ],
+      "sigma_steps": [
+        "step-1.5"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-5-proposal-system",
+        "run-fn-2-pricing-architecture"
+      ]
+    },
+    "pricing-strategy": {
+      "trigger_keywords": [
+        "pricing strategy",
+        "pricing tiers",
+        "value pricing",
+        "price test",
+        "pricing",
+        "price point",
+        "pricing model",
+        "pricing-strategy",
+        "step-1.5"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "growth-engineer",
+        "finance-director",
+        "cso",
+        "pricing-strategist",
+        "due-diligence-analyst"
+      ],
+      "sigma_steps": [
+        "step-1.5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "prompt-engineering-patterns": {
+      "trigger_keywords": [
+        "prompt-engineering-patterns",
+        "prompt engineering patterns",
+        "llm-development",
+        "prompt-optimization",
+        "ai-integration",
+        "agent-development",
+        "chatbot-development",
+        "prompt engineering",
+        "step-12"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-12"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "quality-gates": {
+      "trigger_keywords": [
+        "quality gates",
+        "pre-commit",
+        "ci gate",
+        "verification gate",
+        "pipeline gate",
+        "step-0-environment-setup",
+        "implement-prd",
+        "ship-check",
+        "ship-stage",
+        "ship-prod",
+        "new-project",
+        "quality-gates",
+        "step-verify.md"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "devops",
+        "observability-engineer",
+        "ops-director",
+        "qa-engineer",
+        "devils-advocate",
+        "verification-loop"
+      ],
+      "sigma_steps": [
+        "step-verify.md",
+        "step-11.5",
+        "step-15"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-ops",
+        "run-o-3-release-gates"
+      ]
+    },
+    "sales": {
+      "trigger_keywords": [
+        "sales",
+        "pipeline",
+        "close",
+        "proposal",
+        "partnership"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cso",
+        "cmo"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "secrets-detection": {
+      "trigger_keywords": [
+        "secrets detection",
+        "secret scan",
+        "gitleaks",
+        "leaked credential",
+        "pre-commit secret",
+        "security-audit",
+        "step-0-environment-setup",
+        "implement-prd",
+        "pr-review",
+        "new-project",
+        "secrets detection\\",
+        "credential leak\\",
+        "secret scan\\",
+        "pre-commit secrets\\",
+        "gitleaks\\",
+        "\\secrets detection\\",
+        "\\credential leak\\",
+        "\\secret scan\\",
+        "\\pre-commit secrets\\",
+        "\\gitleaks\\",
+        "secrets-detection"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "devops",
+        "security-lead",
+        "security-compliance",
+        "security-infra"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "senior-architect": {
+      "trigger_keywords": [
+        "system design",
+        "architecture decision",
+        "adr",
+        "technical architecture",
+        "step-2-architecture",
+        "step-8-technical-spec",
+        "system-design",
+        "tech-stack-decision",
+        "scalability-review",
+        "senior-architect",
+        "senior architect",
+        "step-2",
+        "step-8"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-2",
+        "step-8"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "sigma-protocol-guide": {
+      "trigger_keywords": [
+        "sigma-protocol-guide",
+        "sigma protocol guide",
+        "install sigma",
+        "set up sigma",
+        "sigma protocol",
+        "teach me sigma",
+        "what is step",
+        "explain step",
+        "\\sigma protocol\\",
+        "\\sss steps\\",
+        "\\methodology guide\\",
+        "\\13 step\\",
+        "product sigma protocol guide",
+        "step-0"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "cpo"
+      ],
+      "sigma_steps": [
+        "step-0"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "skill-creator": {
+      "trigger_keywords": [
+        "skill-creator",
+        "skill creator",
+        "step-13"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-13"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "skill-optimizer": {
+      "trigger_keywords": [
+        "skill-optimizer",
+        "skill optimizer",
+        ": skill-optimize",
+        "dna-audit",
+        "agent-adherence",
+        "evaluate-agents",
+        "overnight-optimize",
+        "agent-drift",
+        "step-13"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-13"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "skill-registry": {
+      "trigger_keywords": [
+        "skill-registry",
+        "skill registry",
+        "step-12-context-engine",
+        "step-13-skillpack-generator",
+        "orchestrate",
+        "prd-orchestrate"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "harness-architect"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "skill-writer": {
+      "trigger_keywords": [
+        "skill-writer",
+        "skill writer",
+        "write skill",
+        "create skill",
+        "skill template",
+        "new skill",
+        "step-13"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-13"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "social-content": {
+      "trigger_keywords": [
+        "social-content",
+        "social content",
+        "social post",
+        "linkedin post",
+        "twitter thread",
+        "social media strategy",
+        "content social content"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "manychat",
+        "community-lead",
+        "discord",
+        "telegram",
+        "content-director"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "tailwind-design-system": {
+      "trigger_keywords": [
+        "tailwind",
+        "tailwind v4",
+        "shadcn",
+        "design system",
+        "theme tokens",
+        "@theme",
+        "shadcn registry",
+        "shadcn preset",
+        "tailwind config",
+        "shadcn init",
+        "design tokens in tailwind",
+        "tailwind-design-system",
+        "tailwind design system",
+        "step-6"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "frontend-engineer",
+        "design-systems-architect"
+      ],
+      "sigma_steps": [
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "telegram-community-management": {
+      "trigger_keywords": [
+        "telegram community",
+        "telegram group",
+        "forum topic",
+        "telegram",
+        "community",
+        "group",
+        "channel",
+        "telegram group\\",
+        "telegram channel\\",
+        "telegram admin\\",
+        "telegram moderation\\",
+        "\\telegram group\\",
+        "\\telegram channel\\",
+        "\\telegram admin\\",
+        "\\telegram moderation\\",
+        "telegram-community-management",
+        "telegram community management"
+      ],
+      "department": "community",
+      "departments": [
+        "community"
+      ],
+      "owning_agents": [
+        "community-lead",
+        "telegram"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "theme-factory": {
+      "trigger_keywords": [
+        "theme-factory",
+        "theme factory",
+        "\\apply theme\\",
+        "\\color palette\\",
+        "\\font pairing\\",
+        "\\theme selection\\",
+        "\\styling artifacts\\",
+        "design theme factory",
+        "step-6"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-systems-architect"
+      ],
+      "sigma_steps": [
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "trading": {
+      "trigger_keywords": [
+        "trading",
+        "trading trading"
+      ],
+      "department": "trading",
+      "departments": [
+        "trading"
+      ],
+      "owning_agents": [
+        "chief-trading-officer",
+        "quant-strategist"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "ux-designer": {
+      "trigger_keywords": [
+        "ux-designer",
+        "ux designer",
+        "step-3-ux-design",
+        "step-4-flow-tree",
+        "step-5-wireframe-prototypes",
+        "accessibility-audit",
+        "user-flow-design",
+        "design ux designer",
+        "step-3",
+        "step-4"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-director",
+        "ux-director"
+      ],
+      "sigma_steps": [
+        "step-3",
+        "step-4"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "ux-psychology-pro": {
+      "trigger_keywords": [
+        "ux psychology",
+        "user research",
+        "cognitive load",
+        "ux flow",
+        "behavioral design",
+        "user journey design",
+        "ux-psychology",
+        "conversion-review",
+        "behavioral-design",
+        "pricing-psychology",
+        "onboarding-ux",
+        "dark-pattern-check",
+        "wcag-2.2",
+        "accessibility-audit",
+        ",",
+        "t users convert",
+        "pricing page psychology",
+        "onboarding flow",
+        "dark pattern check",
+        "wcag 2.2",
+        "ux-psychology-pro",
+        "ux psychology pro",
+        "step-3",
+        "step-7"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "ux-director",
+        "landing-page-specialist"
+      ],
+      "sigma_steps": [
+        "step-3",
+        "step-7"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "verification": {
+      "trigger_keywords": [
+        "verification",
+        "verify",
+        "check work",
+        "acceptance criteria",
+        "validation",
+        "did it work",
+        "ops verification",
+        "step-verify.md"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "ops-director",
+        "qa-engineer",
+        "devils-advocate",
+        "knowledge-distiller",
+        "verification-loop"
+      ],
+      "sigma_steps": [
+        "step-verify.md"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "video-hooks": {
+      "trigger_keywords": [
+        "video hook",
+        "hook writing",
+        "retention hook",
+        "short-form script",
+        "hooks",
+        "viral",
+        "attention",
+        "scroll-stopping",
+        "first 3 seconds",
+        "opening",
+        "script opening",
+        "video script",
+        "hook formula",
+        "retention",
+        "video-hooks",
+        "video hooks"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "web-design-guidelines": {
+      "trigger_keywords": [
+        "web design guidelines",
+        "design guidelines",
+        "visual hierarchy",
+        "layout system",
+        "spacing scale",
+        "web-design-guidelines",
+        "ui-review",
+        "accessibility-check",
+        "design-audit",
+        "responsive-review",
+        "ux-review",
+        "review my ui",
+        "check accessibility",
+        "audit design",
+        "review ux",
+        "check my site against best practices",
+        "web interface guidelines",
+        "responsive review",
+        "ux review",
+        "step-3",
+        "step-4",
+        "step-5"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "frontend-engineer",
+        "design-director"
+      ],
+      "sigma_steps": [
+        "step-3",
+        "step-4",
+        "step-5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "wireframe": {
+      "trigger_keywords": [
+        "wireframe",
+        "step-4",
+        "step-5"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-director"
+      ],
+      "sigma_steps": [
+        "step-4",
+        "step-5"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "youtube-transcription": {
+      "trigger_keywords": [
+        "youtube transcription",
+        "youtube transcript",
+        "video transcript",
+        "transcript",
+        "youtube",
+        "video",
+        "transcribe",
+        "youtube transcript\\",
+        "video transcription\\",
+        "yt-dlp\\",
+        "whisper\\",
+        "\\youtube transcript\\",
+        "\\video transcription\\",
+        "\\yt-dlp\\",
+        "\\whisper\\",
+        "youtube-transcription"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "research-media"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "architecture-template": {
+      "trigger_keywords": [
+        "architecture template",
+        "arc42",
+        "c4 model",
+        "architecture doc",
+        "system design template"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect",
+        "backend-engineer"
+      ],
+      "sigma_steps": [
+        "step-2"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "sprint-patterns": {
+      "trigger_keywords": [
+        "sprint",
+        "sprint planning",
+        "sprint execution",
+        "wave",
+        "pipeline gate",
+        "sprint protocol"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "sigma_steps": [
+        "step-14"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "agent-goal-skill": {
+      "trigger_keywords": [
+        "goal",
+        "autonomous goal",
+        "goal-driven",
+        "native goal primitive",
+        "goal loop"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "compound-engineer",
+        "harness-architect"
+      ],
+      "sigma_steps": [
+        "step-14"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "self-healing-loop": {
+      "trigger_keywords": [
+        "self-healing",
+        "verify loop",
+        "fix and verify",
+        "retry loop",
+        "make it pass"
+      ],
+      "department": "qa",
+      "departments": [
+        "qa"
+      ],
+      "owning_agents": [
+        "verification-loop",
+        "qa-engineer"
+      ],
+      "sigma_steps": [
+        "step-14"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "gotchas-patterns": {
+      "trigger_keywords": [
+        "gotcha",
+        "gotchas",
+        "cross-platform edge case",
+        "compatibility gotcha",
+        "footgun"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect",
+        "knowledge-distiller"
+      ],
+      "sigma_steps": [
+        "step-12"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "decisions-patterns": {
+      "trigger_keywords": [
+        "decisions.md",
+        "decision log",
+        "decision record",
+        "adr convention",
+        "agent-readable decisions"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect"
+      ],
+      "sigma_steps": [
+        "step-12"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "curriculum-patterns": {
+      "trigger_keywords": [
+        "curriculum",
+        "module placement",
+        "prerequisite ordering",
+        "step sequencing",
+        "learning path"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "harness-architect"
+      ],
+      "sigma_steps": [
+        "step-13"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "audit-verify-prd": {
+      "trigger_keywords": [
+        "verify prd",
+        "prd verification",
+        "prd gate",
+        "prd quality",
+        "verifier gate"
+      ],
+      "department": "qa",
+      "departments": [
+        "qa"
+      ],
+      "owning_agents": [
+        "qa-engineer",
+        "devils-advocate"
+      ],
+      "sigma_steps": [
+        "step-11"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "audit-step-verify": {
+      "trigger_keywords": [
+        "step verify",
+        "verify step",
+        "step gate",
+        "methodology gate",
+        "step verification"
+      ],
+      "department": "qa",
+      "departments": [
+        "qa"
+      ],
+      "owning_agents": [
+        "qa-engineer"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "sentry": {
+      "trigger_keywords": [
+        "sentry",
+        "error tracking",
+        "crash reporting",
+        "exception monitoring",
+        "observability sentry"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "observability-engineer"
+      ],
+      "sigma_steps": [
+        "step-15"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "shadcn": {
+      "trigger_keywords": [
+        "shadcn",
+        "shadcn/ui",
+        "component library",
+        "ui blocks",
+        "radix"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-director",
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "macos-design": {
+      "trigger_keywords": [
+        "macos design",
+        "desktop app design",
+        "traffic lights",
+        "sidebar layout",
+        "vibrancy"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "design-director"
+      ],
+      "sigma_steps": [
+        "step-3",
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "expo-cinematic-motion": {
+      "trigger_keywords": [
+        "expo motion",
+        "cinematic motion",
+        "reanimated",
+        "mobile animation",
+        "expo animation"
+      ],
+      "department": "design",
+      "departments": [
+        "design"
+      ],
+      "owning_agents": [
+        "mobile-developer",
+        "frontend-engineer"
+      ],
+      "sigma_steps": [
+        "step-6"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "ponytail": {
+      "trigger_keywords": [
+        "ponytail",
+        "yagni",
+        "apply yagni",
+        "minimize this code",
+        "lazy senior",
+        "over-engineered"
+      ],
+      "department": "engineering",
+      "departments": [
+        "engineering"
+      ],
+      "owning_agents": [
+        "lead-architect",
+        "backend-engineer"
+      ],
+      "sigma_steps": [],
+      "quality_tier": "student-safe"
+    },
+    "gtm-stack-setup": {
+      "trigger_keywords": [
+        "gtm stack",
+        "posthog setup",
+        "marketing pixel",
+        "run-m-3"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "run_steps": [
+        "run-m-3-stack-tracking",
+        "run-marketing"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "crm-pipeline-setup": {
+      "trigger_keywords": [
+        "crm pipeline",
+        "hubspot setup",
+        "ghl pipeline",
+        "run-s-2"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "run_steps": [
+        "run-s-2-crm-pipeline",
+        "run-sales"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-marketing": {
+      "trigger_keywords": [
+        "run marketing",
+        "run-track marketing",
+        "start marketing",
+        "m1 gtm"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "run_steps": [
+        "run-marketing"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-sales": {
+      "trigger_keywords": [
+        "run sales",
+        "run-track sales",
+        "start sales",
+        "s1 icp"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "run_steps": [
+        "run-sales"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-content": {
+      "trigger_keywords": [
+        "run content",
+        "run-track content",
+        "c1 brief",
+        "content production"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "run_steps": [
+        "run-content"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-growth": {
+      "trigger_keywords": [
+        "run growth",
+        "run-track growth",
+        "g1 funnel",
+        "cro sprint"
+      ],
+      "department": "growth",
+      "departments": [
+        "growth"
+      ],
+      "owning_agents": [
+        "growth-engineer"
+      ],
+      "run_steps": [
+        "run-growth"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-community": {
+      "trigger_keywords": [
+        "run community",
+        "run-track community",
+        "co1 platform"
+      ],
+      "department": "community",
+      "departments": [
+        "community"
+      ],
+      "owning_agents": [
+        "community-lead"
+      ],
+      "run_steps": [
+        "run-community"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-ops": {
+      "trigger_keywords": [
+        "run ops",
+        "run-track ops",
+        "wbr cadence",
+        "release gates"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "run_steps": [
+        "run-ops"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-finance": {
+      "trigger_keywords": [
+        "run finance",
+        "run-track finance",
+        "unit economics",
+        "runway model"
+      ],
+      "department": "finance",
+      "departments": [
+        "finance"
+      ],
+      "owning_agents": [
+        "finance-director"
+      ],
+      "run_steps": [
+        "run-finance"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "run-legal": {
+      "trigger_keywords": [
+        "run legal",
+        "run-track legal",
+        "msa template",
+        "nda strategy"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "general-counsel"
+      ],
+      "run_steps": [
+        "run-legal"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "content-production-queue": {
+      "trigger_keywords": [
+        "content production",
+        "publish queue",
+        "run-c-8",
+        "publish schedule"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "run_steps": [
+        "run-c-8-publish-handoff",
+        "run-content"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "funnel-instrumentation-setup": {
+      "trigger_keywords": [
+        "funnel map",
+        "posthog events",
+        "run-g-1",
+        "instrumentation"
+      ],
+      "department": "growth",
+      "departments": [
+        "growth"
+      ],
+      "owning_agents": [
+        "growth-engineer"
+      ],
+      "run_steps": [
+        "run-g-1-funnel-map",
+        "run-g-2-baseline-metrics",
+        "run-growth"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "ab-test-spec": {
+      "trigger_keywords": [
+        "ab test spec",
+        "hypothesis test",
+        "run-g-4",
+        "cro test"
+      ],
+      "department": "growth",
+      "departments": [
+        "growth"
+      ],
+      "owning_agents": [
+        "growth-engineer"
+      ],
+      "run_steps": [
+        "run-g-3-hypothesis-backlog",
+        "run-g-4-ab-test-spec",
+        "run-g-5-cro-sprint",
+        "run-growth"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "weekly-review": {
+      "trigger_keywords": [
+        "weekly review",
+        "wbr",
+        "run-o-6",
+        "weekly business review"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "run_steps": [
+        "run-o-6-wbr",
+        "run-ops"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "entity-formation-setup": {
+      "trigger_keywords": [
+        "llc setup",
+        "s-corp",
+        "s corp",
+        "incorporate",
+        "ein",
+        "registered agent",
+        "run-l-0",
+        "entity formation"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "general-counsel"
+      ],
+      "run_steps": [
+        "run-l-0-entity-formation",
+        "run-legal"
+      ],
+      "quality_tier": "student-safe"
+    },
+    "01-market-research": {
+      "trigger_keywords": [
+        "market research",
+        "01-market-research"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-marketing",
+        "run-m-1-gtm-audit"
+      ]
+    },
+    "10-launch-playbook": {
+      "trigger_keywords": [
+        "launch playbook",
+        "10-launch-playbook"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-marketing",
+        "run-m-8-launch-runbook"
+      ]
+    },
+    "outreach-sequencing": {
+      "trigger_keywords": [
+        "outreach sequencing",
+        "outreach-sequencing"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-sales",
+        "run-s-3-outbound-playbook"
+      ]
+    },
+    "discovery": {
+      "trigger_keywords": [
+        "discovery",
+        "discovery"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-sales",
+        "run-s-4-discovery-sop"
+      ]
+    },
+    "02-customer-avatar": {
+      "trigger_keywords": [
+        "customer avatar",
+        "02-customer-avatar"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-2-avatar-positioning"
+      ]
+    },
+    "03-brand-voice": {
+      "trigger_keywords": [
+        "brand voice",
+        "03-brand-voice"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "content"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-4-messaging-system",
+        "run-c-1-brief-intake"
+      ]
+    },
+    "04-offer-architect": {
+      "trigger_keywords": [
+        "offer architect",
+        "04-offer-architect"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "finance"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-4-messaging-system",
+        "run-fn-2-pricing-architecture"
+      ]
+    },
+    "08-ads-strategy": {
+      "trigger_keywords": [
+        "ads strategy",
+        "08-ads-strategy"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-5-channel-plan"
+      ]
+    },
+    "09-retargeting-strategy": {
+      "trigger_keywords": [
+        "retargeting strategy",
+        "09-retargeting-strategy"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "growth"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-5-channel-plan",
+        "run-m-9-optimize-cadence",
+        "run-g-6-retargeting-arch"
+      ]
+    },
+    "12-content-ideation": {
+      "trigger_keywords": [
+        "content ideation",
+        "12-content-ideation"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "content"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-6-content-engine",
+        "run-content"
+      ]
+    },
+    "13-content-matrix": {
+      "trigger_keywords": [
+        "content matrix",
+        "13-content-matrix"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "content"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-6-content-engine",
+        "run-c-7-atomization-map"
+      ]
+    },
+    "06-email-sequences": {
+      "trigger_keywords": [
+        "email sequences",
+        "06-email-sequences"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "growth"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-7-lifecycle-email",
+        "run-g-7-activation-cohorts"
+      ]
+    },
+    "retention-engine": {
+      "trigger_keywords": [
+        "retention engine",
+        "retention-engine"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "growth",
+        "community"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-10-retention-loop",
+        "run-g-7-activation-cohorts",
+        "run-co-6-advocacy"
+      ]
+    },
+    "17-community-update": {
+      "trigger_keywords": [
+        "community update",
+        "17-community-update"
+      ],
+      "department": "marketing",
+      "departments": [
+        "marketing",
+        "community",
+        "content"
+      ],
+      "owning_agents": [
+        "cmo"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-m-10-retention-loop",
+        "run-community",
+        "run-c-8-publish-handoff",
+        "run-co-2-welcome-flow",
+        "run-co-3-content-rhythm"
+      ]
+    },
+    "high-ticket-closing": {
+      "trigger_keywords": [
+        "high ticket closing",
+        "high-ticket-closing"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-5-proposal-system"
+      ]
+    },
+    "dm-funnel": {
+      "trigger_keywords": [
+        "dm funnel",
+        "dm-funnel"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-6-inbound-dm"
+      ]
+    },
+    "content-to-client": {
+      "trigger_keywords": [
+        "content to client",
+        "content-to-client"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-6-inbound-dm"
+      ]
+    },
+    "follow-up-system": {
+      "trigger_keywords": [
+        "follow up system",
+        "follow-up-system"
+      ],
+      "department": "sales",
+      "departments": [
+        "sales"
+      ],
+      "owning_agents": [
+        "cso"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-s-7-followup-system"
+      ]
+    },
+    "sprint-plan": {
+      "trigger_keywords": [
+        "sprint plan",
+        "sprint-plan"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-ops",
+        "run-o-2-sprint-rhythm"
+      ]
+    },
+    "cost-optimizer": {
+      "trigger_keywords": [
+        "cost optimizer",
+        "cost-optimizer"
+      ],
+      "department": "finance",
+      "departments": [
+        "finance"
+      ],
+      "owning_agents": [
+        "finance-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-finance",
+        "run-fn-1-unit-economics",
+        "run-fn-4-cost-audit",
+        "run-fn-5-runway",
+        "run-fn-6-spend-gates"
+      ]
+    },
+    "estimation-engine": {
+      "trigger_keywords": [
+        "estimation engine",
+        "estimation-engine"
+      ],
+      "department": "finance",
+      "departments": [
+        "finance"
+      ],
+      "owning_agents": [
+        "finance-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-finance",
+        "run-fn-3-forecast",
+        "run-fn-7-data-room"
+      ]
+    },
+    "writing-clearly": {
+      "trigger_keywords": [
+        "writing clearly",
+        "writing-clearly"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "general-counsel"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-legal",
+        "run-l-1-intake-batna",
+        "run-l-2-msa-baseline",
+        "run-l-3-nda-strategy"
+      ]
+    },
+    "saas-security-patterns": {
+      "trigger_keywords": [
+        "saas security patterns",
+        "saas-security-patterns"
+      ],
+      "department": "legal",
+      "departments": [
+        "legal"
+      ],
+      "owning_agents": [
+        "general-counsel"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-legal",
+        "run-l-5-vendor-dpa",
+        "run-l-6-compliance",
+        "run-l-7-incident-narratives"
+      ]
+    },
+    "22-video-research": {
+      "trigger_keywords": [
+        "video research",
+        "22-video-research"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-2-video-research"
+      ]
+    },
+    "14-video-script": {
+      "trigger_keywords": [
+        "video script",
+        "14-video-script"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-3-longform-scripts"
+      ]
+    },
+    "18-youtube-script-writer": {
+      "trigger_keywords": [
+        "youtube script writer",
+        "18-youtube-script-writer"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-3-longform-scripts"
+      ]
+    },
+    "15-thumbnail-prompts": {
+      "trigger_keywords": [
+        "thumbnail prompts",
+        "15-thumbnail-prompts"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-4-thumbnails-titles"
+      ]
+    },
+    "19-short-form-scripts": {
+      "trigger_keywords": [
+        "short form scripts",
+        "19-short-form-scripts"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-5-shortform-pack"
+      ]
+    },
+    "20-linkedin-writer": {
+      "trigger_keywords": [
+        "linkedin writer",
+        "20-linkedin-writer"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-6-social-copy"
+      ]
+    },
+    "21-twitter-threads": {
+      "trigger_keywords": [
+        "twitter threads",
+        "21-twitter-threads"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-6-social-copy"
+      ]
+    },
+    "23-story-posts": {
+      "trigger_keywords": [
+        "story posts",
+        "23-story-posts"
+      ],
+      "department": "content",
+      "departments": [
+        "content"
+      ],
+      "owning_agents": [
+        "content-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-c-6-social-copy"
+      ]
+    },
+    "16-seo-content": {
+      "trigger_keywords": [
+        "seo content",
+        "16-seo-content"
+      ],
+      "department": "growth",
+      "departments": [
+        "growth"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-g-8-seo-organic-loop"
+      ]
+    },
+    "system-health": {
+      "trigger_keywords": [
+        "system health",
+        "system-health"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-1-ops-baseline",
+        "run-o-4-observability"
+      ]
+    },
+    "doctor-fix": {
+      "trigger_keywords": [
+        "doctor fix",
+        "doctor-fix"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-1-ops-baseline",
+        "run-o-5-incident-response"
+      ]
+    },
+    "backlog-groom": {
+      "trigger_keywords": [
+        "backlog groom",
+        "backlog-groom"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-2-sprint-rhythm"
+      ]
+    },
+    "daily-standup": {
+      "trigger_keywords": [
+        "daily standup",
+        "daily-standup"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-2-sprint-rhythm"
+      ]
+    },
+    "qa-plan": {
+      "trigger_keywords": [
+        "qa plan",
+        "qa-plan"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-3-release-gates"
+      ]
+    },
+    "release-review": {
+      "trigger_keywords": [
+        "release review",
+        "release-review"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-3-release-gates"
+      ]
+    },
+    "maintenance-plan": {
+      "trigger_keywords": [
+        "maintenance plan",
+        "maintenance-plan"
+      ],
+      "department": "ops",
+      "departments": [
+        "ops"
+      ],
+      "owning_agents": [
+        "ops-director"
+      ],
+      "quality_tier": "student-safe",
+      "run_steps": [
+        "run-o-5-incident-response",
+        "run-o-7-sop-vendors",
+        "run-o-8-contractor-onboarding"
+      ]
+    }
+  }
+}

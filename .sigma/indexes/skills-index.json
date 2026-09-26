@@ -1,0 +1,3331 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-23T00:54:09.986Z",
+  "taxonomy": [
+    "steps",
+    "orchestration",
+    "deploy",
+    "ops",
+    "audit",
+    "platform",
+    "sales",
+    "marketing",
+    "deprecated",
+    "dev"
+  ],
+  "count": 390,
+  "items": [
+    {
+      "id": "skills/01-market-research",
+      "name": "01-market-research",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/01-market-research/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/02-customer-avatar",
+      "name": "02-customer-avatar",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/02-customer-avatar/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/03-brand-voice",
+      "name": "03-brand-voice",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/03-brand-voice/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/04-offer-architect",
+      "name": "04-offer-architect",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/04-offer-architect/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/05-sales-strategy",
+      "name": "05-sales-strategy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/05-sales-strategy/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/05-sales-strategy/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/06-email-sequences",
+      "name": "06-email-sequences",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/06-email-sequences/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/07-landing-page-copy",
+      "name": "07-landing-page-copy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/07-landing-page-copy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/08-ads-strategy",
+      "name": "08-ads-strategy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/08-ads-strategy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/09-retargeting-strategy",
+      "name": "09-retargeting-strategy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/09-retargeting-strategy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/10-launch-playbook",
+      "name": "10-launch-playbook",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/10-launch-playbook/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/11-partnership-outreach",
+      "name": "11-partnership-outreach",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/11-partnership-outreach/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/11-partnership-outreach/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/12-content-ideation",
+      "name": "12-content-ideation",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/12-content-ideation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/13-content-matrix",
+      "name": "13-content-matrix",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/13-content-matrix/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/14-video-script",
+      "name": "14-video-script",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/14-video-script/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/15-thumbnail-prompts",
+      "name": "15-thumbnail-prompts",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/15-thumbnail-prompts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/16-seo-content",
+      "name": "16-seo-content",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/16-seo-content/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/17-community-update",
+      "name": "17-community-update",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/17-community-update/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/18-youtube-script-writer",
+      "name": "18-youtube-script-writer",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/18-youtube-script-writer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/19-short-form-scripts",
+      "name": "19-short-form-scripts",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/19-short-form-scripts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/20-linkedin-writer",
+      "name": "20-linkedin-writer",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/20-linkedin-writer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/21-twitter-threads",
+      "name": "21-twitter-threads",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/21-twitter-threads/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/22-video-research",
+      "name": "22-video-research",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/22-video-research/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/23-story-posts",
+      "name": "23-story-posts",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/23-story-posts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ab-test-setup",
+      "name": "ab-test-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ab-test-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ab-test-spec",
+      "name": "ab-test-spec",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ab-test-spec/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/accessibility-audit",
+      "name": "accessibility-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/accessibility-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ad-caption-video",
+      "name": "ad-caption-video",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ad-caption-video/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ad-caption-video/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ad-creative-generation",
+      "name": "ad-creative-generation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ad-creative-generation/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ad-creative-generation/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ad-image-prompting",
+      "name": "ad-image-prompting",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ad-image-prompting/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ad-image-prompting/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ads",
+      "name": "ads",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ads/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/agent-browser-validation",
+      "name": "agent-browser-validation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/agent-browser-validation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/agent-development",
+      "name": "agent-development",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/agent-development/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/agent-goal-skill",
+      "name": "agent-goal-skill",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/agent-goal-skill/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/agent-goal-skill/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/agent-spawning-patterns",
+      "name": "agent-spawning-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/agent-spawning-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/agentic-coding",
+      "name": "agentic-coding",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/agentic-coding/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/agentic-ui",
+      "name": "agentic-ui",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/agentic-ui/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/agentic-ui/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ai-image-prompt",
+      "name": "ai-image-prompt",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ai-image-prompt/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ai-video-prompt",
+      "name": "ai-video-prompt",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ai-video-prompt/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/analytics-tracking",
+      "name": "analytics-tracking",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/analytics-tracking/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/analyze",
+      "name": "analyze",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/analyze/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/api-design-principles",
+      "name": "api-design-principles",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/api-design-principles/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/api-design-principles/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/api-docs-gen",
+      "name": "api-docs-gen",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/api-docs-gen/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/apple-native",
+      "name": "apple-native",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/apple-native/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/apple-native/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/apple-platform-design",
+      "name": "apple-platform-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/apple-platform-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/apple-platform-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/applying-brand-guidelines",
+      "name": "applying-brand-guidelines",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/applying-brand-guidelines/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/arcads-api",
+      "name": "arcads-api",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/arcads-api/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/arcads-api/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/architecture-patterns",
+      "name": "architecture-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/architecture-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/architecture-template",
+      "name": "architecture-template",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/architecture-template/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/architecture-template/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/audit-accessibility-audit",
+      "name": "audit-accessibility-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/audit-accessibility-audit/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/audit-accessibility-audit/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/audit-step-verify",
+      "name": "audit-step-verify",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/audit-step-verify/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/audit-step-verify/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/audit-verify-prd",
+      "name": "audit-verify-prd",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/audit-verify-prd/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/audit-verify-prd/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/auth-patterns",
+      "name": "auth-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/auth-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/backlog-groom",
+      "name": "backlog-groom",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/backlog-groom/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/bdd-scenarios",
+      "name": "bdd-scenarios",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/bdd-scenarios/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/better-auth-best-practices",
+      "name": "better-auth-best-practices",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/better-auth-best-practices/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/billing-patterns",
+      "name": "billing-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/billing-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/billing-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/brainstorming",
+      "name": "brainstorming",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/brainstorming/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/brand",
+      "name": "brand",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/brand/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/brand-voice",
+      "name": "brand-voice",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/brand-voice/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/browser-verification",
+      "name": "browser-verification",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/browser-verification/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/changelog",
+      "name": "changelog",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/changelog/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ci-cd-patterns",
+      "name": "ci-cd-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ci-cd-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ci-cd-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/cleanup-repo",
+      "name": "cleanup-repo",
+      "category": "dev",
+      "status": "deprecated",
+      "canonicalSourcePath": ".agents/skills/cleanup-repo/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/client-handoff",
+      "name": "client-handoff",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/client-handoff/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/code-quality-report",
+      "name": "code-quality-report",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/code-quality-report/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/community-analytics",
+      "name": "community-analytics",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/community-analytics/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/companion-system",
+      "name": "companion-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/companion-system/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/companion-system/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/compound-engineering",
+      "name": "compound-engineering",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/compound-engineering/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/content-atomizer",
+      "name": "content-atomizer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/content-atomizer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/content-production-queue",
+      "name": "content-production-queue",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/content-production-queue/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/content-to-client",
+      "name": "content-to-client",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/content-to-client/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/content-to-client/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/context-engineering-advanced",
+      "name": "context-engineering-advanced",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/context-engineering-advanced/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/continue",
+      "name": "continue",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/continue/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/contract",
+      "name": "contract",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/contract/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/conversion-optimization",
+      "name": "conversion-optimization",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/conversion-optimization/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/conversion-optimization/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/convex",
+      "name": "convex",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/convex/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/convex/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/copywriting",
+      "name": "copywriting",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/copywriting/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/copywriting/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/cost-optimizer",
+      "name": "cost-optimizer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/cost-optimizer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/creating-opencode-plugins",
+      "name": "creating-opencode-plugins",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/creating-opencode-plugins/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/crm-pipeline-setup",
+      "name": "crm-pipeline-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/crm-pipeline-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/curriculum-patterns",
+      "name": "curriculum-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/curriculum-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/curriculum-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/daily-standup",
+      "name": "daily-standup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/daily-standup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/db-migrate",
+      "name": "db-migrate",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/db-migrate/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/decisions-patterns",
+      "name": "decisions-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/decisions-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/decisions-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/deep-research",
+      "name": "deep-research",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/deep-research/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/deep-research/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/demo-video-pipeline",
+      "name": "demo-video-pipeline",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/demo-video-pipeline/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/demo-video-pipeline/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/dependency-security",
+      "name": "dependency-security",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/dependency-security/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/dependency-update",
+      "name": "dependency-update",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/dependency-update/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/design-taste",
+      "name": "design-taste",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/design-taste/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/design-taste/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/design-tokens",
+      "name": "design-tokens",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/design-tokens/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/design-tokens/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/dev-loop",
+      "name": "dev-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/dev-loop/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/differential-review",
+      "name": "differential-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/differential-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/direct-response-copy",
+      "name": "direct-response-copy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/direct-response-copy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/discord-bot-development",
+      "name": "discord-bot-development",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/discord-bot-development/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/discord-community-management",
+      "name": "discord-community-management",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/discord-community-management/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/discovery",
+      "name": "discovery",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/discovery/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/discovery/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/discuss-phase",
+      "name": "discuss-phase",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/discuss-phase/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/dispatching-parallel-agents",
+      "name": "dispatching-parallel-agents",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/dispatching-parallel-agents/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/dm-funnel",
+      "name": "dm-funnel",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/dm-funnel/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/dm-funnel/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/docs-update",
+      "name": "docs-update",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/docs-update/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/doctor-fix",
+      "name": "doctor-fix",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/doctor-fix/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/docx-generation",
+      "name": "docx-generation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/docx-generation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/dream-consolidation",
+      "name": "dream-consolidation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/dream-consolidation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/electron",
+      "name": "electron",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/electron/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/electron/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/email-sequence",
+      "name": "email-sequence",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/email-sequence/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/entity-formation-setup",
+      "name": "entity-formation-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/entity-formation-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/error-handling-patterns",
+      "name": "error-handling-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/error-handling-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/error-handling-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/estimation-engine",
+      "name": "estimation-engine",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/estimation-engine/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/executing-plans",
+      "name": "executing-plans",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/executing-plans/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/expo",
+      "name": "expo",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/expo/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/expo/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/expo-cinematic-motion",
+      "name": "expo-cinematic-motion",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/expo-cinematic-motion/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/expo-cinematic-motion/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/expo-deployment",
+      "name": "expo-deployment",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/expo-deployment/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/finance",
+      "name": "finance",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/finance/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/follow-up-system",
+      "name": "follow-up-system",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/follow-up-system/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/follow-up-system/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/frontend-design",
+      "name": "frontend-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/frontend-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/frontend-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/funnel-instrumentation-setup",
+      "name": "funnel-instrumentation-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/funnel-instrumentation-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/game-art-pipeline",
+      "name": "game-art-pipeline",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-art-pipeline/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-art-pipeline/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-audio-design",
+      "name": "game-audio-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-audio-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-audio-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-development",
+      "name": "game-development",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-development/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-development/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-discovery",
+      "name": "game-discovery",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-discovery/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-discovery/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-quality-planning",
+      "name": "game-quality-planning",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-quality-planning/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-quality-planning/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-systems-design",
+      "name": "game-systems-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-systems-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-systems-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-team-synthesis",
+      "name": "game-team-synthesis",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-team-synthesis/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-team-synthesis/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-technical-production",
+      "name": "game-technical-production",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-technical-production/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-technical-production/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/game-world-design",
+      "name": "game-world-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/game-world-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/game-world-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/gap-analysis",
+      "name": "gap-analysis",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/gap-analysis/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/gotchas-patterns",
+      "name": "gotchas-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/gotchas-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/gotchas-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/greptile-pr-review",
+      "name": "greptile-pr-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/greptile-pr-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/gtm-stack-setup",
+      "name": "gtm-stack-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/gtm-stack-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/harness-creator",
+      "name": "harness-creator",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/harness-creator/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/harness-creator/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/harness-engineering",
+      "name": "harness-engineering",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/harness-engineering/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/high-ticket-closing",
+      "name": "high-ticket-closing",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/high-ticket-closing/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/high-ticket-closing/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/holes",
+      "name": "holes",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/holes/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/hormozi-frameworks",
+      "name": "hormozi-frameworks",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/hormozi-frameworks/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/hormozi-frameworks/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/icp-definition",
+      "name": "icp-definition",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/icp-definition/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/icp-definition/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/image-to-code",
+      "name": "image-to-code",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/image-to-code/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/image-to-code/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/implement-prd",
+      "name": "implement-prd",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/implement-prd/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/job-status",
+      "name": "job-status",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/job-status/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/karpathy-guidelines",
+      "name": "karpathy-guidelines",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/karpathy-guidelines/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/karpathy-guidelines/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/knowledge-synthesis",
+      "name": "knowledge-synthesis",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/knowledge-synthesis/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/launch-strategy",
+      "name": "launch-strategy",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/launch-strategy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/lead-qualification",
+      "name": "lead-qualification",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/lead-qualification/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/lead-qualification/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/legal",
+      "name": "legal",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/legal/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/license-check",
+      "name": "license-check",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/license-check/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/lint-commands",
+      "name": "lint-commands",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/lint-commands/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/load-test",
+      "name": "load-test",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/load-test/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/macos-design",
+      "name": "macos-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/macos-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/macos-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/maid",
+      "name": "maid",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/maid/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/maintenance-plan",
+      "name": "maintenance-plan",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/maintenance-plan/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/manychat-api-operations",
+      "name": "manychat-api-operations",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/manychat-api-operations/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/manychat-funnel-strategy",
+      "name": "manychat-funnel-strategy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/manychat-funnel-strategy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/map-codebase",
+      "name": "map-codebase",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/map-codebase/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/market-state-awareness",
+      "name": "market-state-awareness",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/market-state-awareness/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/marketing-copywriting",
+      "name": "marketing-copywriting",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/marketing-copywriting/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/marketing-copywriting/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/marketing-ideas",
+      "name": "marketing-ideas",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/marketing-ideas/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/marketing-psychology",
+      "name": "marketing-psychology",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/marketing-psychology/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/media-generation",
+      "name": "media-generation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/media-generation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/memory-systems",
+      "name": "memory-systems",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/memory-systems/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/meta-ad-builder",
+      "name": "meta-ad-builder",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/meta-ad-builder/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/meta-ad-builder/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/mission",
+      "name": "mission",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/mission/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/mobile-app-security",
+      "name": "mobile-app-security",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/mobile-app-security/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/mobile-app-security/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/mobile-shipping",
+      "name": "mobile-shipping",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/mobile-shipping/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/mobile-shipping/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/mobile-ui-testing",
+      "name": "mobile-ui-testing",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/mobile-ui-testing/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/mobile-ui-testing/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/monetization",
+      "name": "monetization",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/monetization/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/monetization/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/monorepo-architecture",
+      "name": "monorepo-architecture",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/monorepo-architecture/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/motion",
+      "name": "motion",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/motion/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/motion/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/motion-landing-design",
+      "name": "motion-landing-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/motion-landing-design/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/motion-landing-design/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/nda",
+      "name": "nda",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/nda/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/new-command",
+      "name": "new-command",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/new-command/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/new-feature",
+      "name": "new-feature",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/new-feature/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/new-project",
+      "name": "new-project",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/new-project/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/notebooklm-format",
+      "name": "notebooklm-format",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/notebooklm-format/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/notebooklm-workflow",
+      "name": "notebooklm-workflow",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/notebooklm-workflow/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/objection-handling",
+      "name": "objection-handling",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/objection-handling/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/objection-handling/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/observability",
+      "name": "observability",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/observability/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/observability/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/observability-architecture",
+      "name": "observability-architecture",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/observability-architecture/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/onboard",
+      "name": "onboard",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/onboard/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/opencode-agent-generator",
+      "name": "opencode-agent-generator",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/opencode-agent-generator/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/output-generation",
+      "name": "output-generation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/output-generation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/outreach-sequencing",
+      "name": "outreach-sequencing",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/outreach-sequencing/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/outreach-sequencing/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/owasp-api-security",
+      "name": "owasp-api-security",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/owasp-api-security/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/owasp-llm-security",
+      "name": "owasp-llm-security",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/owasp-llm-security/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/owasp-web-security",
+      "name": "owasp-web-security",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/owasp-web-security/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/paid-ads",
+      "name": "paid-ads",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/paid-ads/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/pdf-manipulation",
+      "name": "pdf-manipulation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/pdf-manipulation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/performance-check",
+      "name": "performance-check",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/performance-check/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/performance-patterns",
+      "name": "performance-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/performance-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/plan",
+      "name": "plan",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/plan/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/platform-design-guidelines",
+      "name": "platform-design-guidelines",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/platform-design-guidelines/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/platform-sync",
+      "name": "platform-sync",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/platform-sync/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ponytail",
+      "name": "ponytail",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ponytail/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ponytail/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/pptx",
+      "name": "pptx",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/pptx/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/pr-review",
+      "name": "pr-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/pr-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prd-orchestrate",
+      "name": "prd-orchestrate",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/prd-orchestrate/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prd-patterns",
+      "name": "prd-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/prd-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/prd-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/pricing-psychology",
+      "name": "pricing-psychology",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/pricing-psychology/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/pricing-psychology/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/pricing-strategy",
+      "name": "pricing-strategy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/pricing-strategy/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/pricing-strategy/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/programmatic-seo",
+      "name": "programmatic-seo",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/programmatic-seo/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prompt-engineering-patterns",
+      "name": "prompt-engineering-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/prompt-engineering-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prompt-enhancer",
+      "name": "prompt-enhancer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/prompt-enhancer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prompt-handoff",
+      "name": "prompt-handoff",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/prompt-handoff/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/proposal",
+      "name": "proposal",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/proposal/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/prototype-proposal",
+      "name": "prototype-proposal",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/prototype-proposal/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/qa-plan",
+      "name": "qa-plan",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/qa-plan/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/qa-report",
+      "name": "qa-report",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/qa-report/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/qa-run",
+      "name": "qa-run",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/qa-run/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/quality-gates",
+      "name": "quality-gates",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/quality-gates/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/quality-gates/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/react",
+      "name": "react",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/react/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/react/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/react-native-patterns",
+      "name": "react-native-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/react-native-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/react-performance",
+      "name": "react-performance",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/react-performance/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/reducing-entropy",
+      "name": "reducing-entropy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/reducing-entropy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/release-review",
+      "name": "release-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/release-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/remembering-conversations",
+      "name": "remembering-conversations",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/remembering-conversations/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/render-deploy",
+      "name": "render-deploy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/render-deploy/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/render-deploy/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/repair-manifest",
+      "name": "repair-manifest",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/repair-manifest/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/research",
+      "name": "research",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/research/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/retention-engine",
+      "name": "retention-engine",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/retention-engine/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/retention-engine/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/retrofit-analyze",
+      "name": "retrofit-analyze",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/retrofit-analyze/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/retrofit-enhance",
+      "name": "retrofit-enhance",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/retrofit-enhance/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/retrofit-generate",
+      "name": "retrofit-generate",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/retrofit-generate/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/retrofit-sync",
+      "name": "retrofit-sync",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/retrofit-sync/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/rn-component-library",
+      "name": "rn-component-library",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/rn-component-library/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/rn-component-library/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/run-c-1-brief-intake",
+      "name": "run-c-1-brief-intake",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-1-brief-intake/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-2-video-research",
+      "name": "run-c-2-video-research",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-2-video-research/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-3-longform-scripts",
+      "name": "run-c-3-longform-scripts",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-3-longform-scripts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-4-thumbnails-titles",
+      "name": "run-c-4-thumbnails-titles",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-4-thumbnails-titles/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-5-shortform-pack",
+      "name": "run-c-5-shortform-pack",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-5-shortform-pack/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-6-social-copy",
+      "name": "run-c-6-social-copy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-6-social-copy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-7-atomization-map",
+      "name": "run-c-7-atomization-map",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-7-atomization-map/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-c-8-publish-handoff",
+      "name": "run-c-8-publish-handoff",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-c-8-publish-handoff/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-1-platform-audit",
+      "name": "run-co-1-platform-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-1-platform-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-2-welcome-flow",
+      "name": "run-co-2-welcome-flow",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-2-welcome-flow/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-3-content-rhythm",
+      "name": "run-co-3-content-rhythm",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-3-content-rhythm/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-4-moderation",
+      "name": "run-co-4-moderation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-4-moderation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-5-feedback-loop",
+      "name": "run-co-5-feedback-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-5-feedback-loop/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-co-6-advocacy",
+      "name": "run-co-6-advocacy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-co-6-advocacy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-community",
+      "name": "run-community",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-community/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-content",
+      "name": "run-content",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-content/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-finance",
+      "name": "run-finance",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-finance/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-1-unit-economics",
+      "name": "run-fn-1-unit-economics",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-1-unit-economics/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-2-pricing-architecture",
+      "name": "run-fn-2-pricing-architecture",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-2-pricing-architecture/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-3-forecast",
+      "name": "run-fn-3-forecast",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-3-forecast/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-4-cost-audit",
+      "name": "run-fn-4-cost-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-4-cost-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-5-runway",
+      "name": "run-fn-5-runway",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-5-runway/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-6-spend-gates",
+      "name": "run-fn-6-spend-gates",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-6-spend-gates/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-fn-7-data-room",
+      "name": "run-fn-7-data-room",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-fn-7-data-room/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-1-funnel-map",
+      "name": "run-g-1-funnel-map",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-1-funnel-map/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-2-baseline-metrics",
+      "name": "run-g-2-baseline-metrics",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-2-baseline-metrics/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-3-hypothesis-backlog",
+      "name": "run-g-3-hypothesis-backlog",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-3-hypothesis-backlog/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-4-ab-test-spec",
+      "name": "run-g-4-ab-test-spec",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-4-ab-test-spec/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-5-cro-sprint",
+      "name": "run-g-5-cro-sprint",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-5-cro-sprint/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-6-retargeting-arch",
+      "name": "run-g-6-retargeting-arch",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-6-retargeting-arch/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-7-activation-cohorts",
+      "name": "run-g-7-activation-cohorts",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-7-activation-cohorts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-g-8-seo-organic-loop",
+      "name": "run-g-8-seo-organic-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-g-8-seo-organic-loop/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-growth",
+      "name": "run-growth",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-growth/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-0-entity-formation",
+      "name": "run-l-0-entity-formation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-0-entity-formation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-1-intake-batna",
+      "name": "run-l-1-intake-batna",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-1-intake-batna/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-2-msa-baseline",
+      "name": "run-l-2-msa-baseline",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-2-msa-baseline/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-3-nda-strategy",
+      "name": "run-l-3-nda-strategy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-3-nda-strategy/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-4-ip-trademark",
+      "name": "run-l-4-ip-trademark",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-4-ip-trademark/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-5-vendor-dpa",
+      "name": "run-l-5-vendor-dpa",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-5-vendor-dpa/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-6-compliance",
+      "name": "run-l-6-compliance",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-6-compliance/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-7-incident-narratives",
+      "name": "run-l-7-incident-narratives",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-7-incident-narratives/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-l-8-demand-playbook",
+      "name": "run-l-8-demand-playbook",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-l-8-demand-playbook/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-legal",
+      "name": "run-legal",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-legal/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-1-gtm-audit",
+      "name": "run-m-1-gtm-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-1-gtm-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-10-retention-loop",
+      "name": "run-m-10-retention-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-10-retention-loop/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-2-avatar-positioning",
+      "name": "run-m-2-avatar-positioning",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-2-avatar-positioning/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-3-stack-tracking",
+      "name": "run-m-3-stack-tracking",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-3-stack-tracking/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-4-messaging-system",
+      "name": "run-m-4-messaging-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-4-messaging-system/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-5-channel-plan",
+      "name": "run-m-5-channel-plan",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-5-channel-plan/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-6-content-engine",
+      "name": "run-m-6-content-engine",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-6-content-engine/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-7-lifecycle-email",
+      "name": "run-m-7-lifecycle-email",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-7-lifecycle-email/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-8-launch-runbook",
+      "name": "run-m-8-launch-runbook",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-8-launch-runbook/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-m-9-optimize-cadence",
+      "name": "run-m-9-optimize-cadence",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-m-9-optimize-cadence/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-marketing",
+      "name": "run-marketing",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-marketing/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-1-ops-baseline",
+      "name": "run-o-1-ops-baseline",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-1-ops-baseline/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-2-sprint-rhythm",
+      "name": "run-o-2-sprint-rhythm",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-2-sprint-rhythm/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-3-release-gates",
+      "name": "run-o-3-release-gates",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-3-release-gates/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-4-observability",
+      "name": "run-o-4-observability",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-4-observability/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-5-incident-response",
+      "name": "run-o-5-incident-response",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-5-incident-response/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-6-wbr",
+      "name": "run-o-6-wbr",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-6-wbr/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-7-sop-vendors",
+      "name": "run-o-7-sop-vendors",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-7-sop-vendors/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-o-8-contractor-onboarding",
+      "name": "run-o-8-contractor-onboarding",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-o-8-contractor-onboarding/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-ops",
+      "name": "run-ops",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-ops/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-1-icp-accounts",
+      "name": "run-s-1-icp-accounts",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-1-icp-accounts/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-2-crm-pipeline",
+      "name": "run-s-2-crm-pipeline",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-2-crm-pipeline/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-3-outbound-playbook",
+      "name": "run-s-3-outbound-playbook",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-3-outbound-playbook/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-4-discovery-sop",
+      "name": "run-s-4-discovery-sop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-4-discovery-sop/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-5-proposal-system",
+      "name": "run-s-5-proposal-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-5-proposal-system/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-6-inbound-dm",
+      "name": "run-s-6-inbound-dm",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-6-inbound-dm/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-7-followup-system",
+      "name": "run-s-7-followup-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-7-followup-system/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-s-8-pipeline-ops",
+      "name": "run-s-8-pipeline-ops",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-s-8-pipeline-ops/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/run-sales",
+      "name": "run-sales",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/run-sales/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/saas-security-patterns",
+      "name": "saas-security-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/saas-security-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sales",
+      "name": "sales",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/sales/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sales-identity",
+      "name": "sales-identity",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/sales-identity/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/sales-identity/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/scaffold",
+      "name": "scaffold",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/scaffold/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/secrets-detection",
+      "name": "secrets-detection",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/secrets-detection/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/security-audit",
+      "name": "security-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/security-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/security-code-review",
+      "name": "security-code-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/security-code-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/self-healing-loop",
+      "name": "self-healing-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/self-healing-loop/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/self-healing-loop/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/senior-architect",
+      "name": "senior-architect",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/senior-architect/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/senior-qa",
+      "name": "senior-qa",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/senior-qa/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sentry",
+      "name": "sentry",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/sentry/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/sentry/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/seo-audit",
+      "name": "seo-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/seo-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/session-continuity",
+      "name": "session-continuity",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/session-continuity/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/shadcn",
+      "name": "shadcn",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/shadcn/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/shadcn/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ship-check",
+      "name": "ship-check",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ship-check/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ship-prod",
+      "name": "ship-prod",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ship-prod/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ship-stage",
+      "name": "ship-stage",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ship-stage/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sigma-continue",
+      "name": "sigma-continue",
+      "category": "dev",
+      "status": "deprecated",
+      "canonicalSourcePath": ".agents/skills/sigma-continue/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sigma-protocol-guide",
+      "name": "sigma-protocol-guide",
+      "category": "dev",
+      "status": "deprecated",
+      "canonicalSourcePath": "src/skills/sigma-protocol-guide/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/sigma-protocol-guide/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/sigma-simplify",
+      "name": "sigma-simplify",
+      "category": "dev",
+      "status": "deprecated",
+      "canonicalSourcePath": ".agents/skills/sigma-simplify/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sigma-stream",
+      "name": "sigma-stream",
+      "category": "dev",
+      "status": "deprecated",
+      "canonicalSourcePath": ".agents/skills/sigma-stream/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/simplify",
+      "name": "simplify",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/simplify/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/skill-creator",
+      "name": "skill-creator",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/skill-creator/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/skill-optimizer",
+      "name": "skill-optimizer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/skill-optimizer/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/skill-optimizer/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/skill-registry",
+      "name": "skill-registry",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/skill-registry/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/skill-writer",
+      "name": "skill-writer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/skill-writer/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/skill-writer/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/social-content",
+      "name": "social-content",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/social-content/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/specialized-validation",
+      "name": "specialized-validation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/specialized-validation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sprint-patterns",
+      "name": "sprint-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/sprint-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/sprint-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/sprint-plan",
+      "name": "sprint-plan",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/sprint-plan/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/status",
+      "name": "status",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/status/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-0-environment-setup",
+      "name": "step-0-environment-setup",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-0-environment-setup/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-1-ideation",
+      "name": "step-1-ideation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-1-ideation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-1.5-offer-architecture",
+      "name": "step-1.5-offer-architecture",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-1.5-offer-architecture/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-10-feature-breakdown",
+      "name": "step-10-feature-breakdown",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-10-feature-breakdown/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-11-prd-generation",
+      "name": "step-11-prd-generation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-11-prd-generation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-11.5-task-handoff",
+      "name": "step-11.5-task-handoff",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-11.5-task-handoff/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-12-context-engine",
+      "name": "step-12-context-engine",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-12-context-engine/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-13-skillpack-generator",
+      "name": "step-13-skillpack-generator",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-13-skillpack-generator/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-14-agent-runtime-bootstrap",
+      "name": "step-14-agent-runtime-bootstrap",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-14-agent-runtime-bootstrap/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-15-observability-contract",
+      "name": "step-15-observability-contract",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-15-observability-contract/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-2-architecture",
+      "name": "step-2-architecture",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-2-architecture/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-3-ux-design",
+      "name": "step-3-ux-design",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-3-ux-design/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-4-flow-tree",
+      "name": "step-4-flow-tree",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-4-flow-tree/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-5-wireframe-prototypes",
+      "name": "step-5-wireframe-prototypes",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-5-wireframe-prototypes/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-6-design-system",
+      "name": "step-6-design-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-6-design-system/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-7-interface-states",
+      "name": "step-7-interface-states",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-7-interface-states/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-8-technical-spec",
+      "name": "step-8-technical-spec",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-8-technical-spec/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/step-9-landing-page",
+      "name": "step-9-landing-page",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/step-9-landing-page/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/stream",
+      "name": "stream",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/stream/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/subagent-driven-development",
+      "name": "subagent-driven-development",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/subagent-driven-development/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/supabase-patterns",
+      "name": "supabase-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/supabase-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/supabase-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/superdesign-integration",
+      "name": "superdesign-integration",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/superdesign-integration/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/swift-concurrency",
+      "name": "swift-concurrency",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/swift-concurrency/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/swiftui-patterns",
+      "name": "swiftui-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/swiftui-patterns/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/sync-workspace-commands",
+      "name": "sync-workspace-commands",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/sync-workspace-commands/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/system-health",
+      "name": "system-health",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/system-health/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/systematic-debugging",
+      "name": "systematic-debugging",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/systematic-debugging/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/tailwind-design-system",
+      "name": "tailwind-design-system",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/tailwind-design-system/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/tailwind-design-system/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/tauri-patterns",
+      "name": "tauri-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/tauri-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/tauri-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/tdd",
+      "name": "tdd",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/tdd/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/tdd-skill-creation",
+      "name": "tdd-skill-creation",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/tdd-skill-creation/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/tech-debt-audit",
+      "name": "tech-debt-audit",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/tech-debt-audit/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/telegram-bot-development",
+      "name": "telegram-bot-development",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/telegram-bot-development/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/telegram-community-management",
+      "name": "telegram-community-management",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/telegram-community-management/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/test-gen",
+      "name": "test-gen",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/test-gen/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/test-review",
+      "name": "test-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/test-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/testing",
+      "name": "testing",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/testing/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/testing/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/testing-apple",
+      "name": "testing-apple",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/testing-apple/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/testing-apple/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/theme-factory",
+      "name": "theme-factory",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/theme-factory/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/theme-factory/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/threejs",
+      "name": "threejs",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/threejs/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/threejs/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/trading",
+      "name": "trading",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/trading/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ui-healer",
+      "name": "ui-healer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ui-healer/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ux-designer",
+      "name": "ux-designer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ux-designer/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ux-designer/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/ux-psychology",
+      "name": "ux-psychology",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/ux-psychology/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/ux-psychology-pro",
+      "name": "ux-psychology-pro",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/ux-psychology-pro/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/ux-psychology-pro/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/validate-methodology",
+      "name": "validate-methodology",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/validate-methodology/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/vercel-deploy",
+      "name": "vercel-deploy",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/vercel-deploy/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/vercel-deploy/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/verification",
+      "name": "verification",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/verification/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/verification-before-completion",
+      "name": "verification-before-completion",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/verification-before-completion/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/verify-prd",
+      "name": "verify-prd",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/verify-prd/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/video-hooks",
+      "name": "video-hooks",
+      "category": "marketing",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/video-hooks/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/web-artifacts-builder/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/web-design-guidelines",
+      "name": "web-design-guidelines",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/web-design-guidelines/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/web-design-guidelines/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/webapp-testing",
+      "name": "webapp-testing",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/webapp-testing/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/webhook-patterns",
+      "name": "webhook-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/webhook-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/webhook-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/weekly-review",
+      "name": "weekly-review",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/weekly-review/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/wireframe",
+      "name": "wireframe",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/wireframe/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/worktree-patterns",
+      "name": "worktree-patterns",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/worktree-patterns/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/worktree-patterns/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/writing-clearly",
+      "name": "writing-clearly",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/skills/writing-clearly/SKILL.md",
+      "generatedPaths": [
+        ".agents/skills/writing-clearly/SKILL.md"
+      ]
+    },
+    {
+      "id": "skills/x-twitter-research",
+      "name": "x-twitter-research",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/x-twitter-research/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/x402-integration",
+      "name": "x402-integration",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/x402-integration/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/xcode-agent-workflow",
+      "name": "xcode-agent-workflow",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/xcode-agent-workflow/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/xcode-intelligence",
+      "name": "xcode-intelligence",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/xcode-intelligence/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/xlsx",
+      "name": "xlsx",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/xlsx/SKILL.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "skills/youtube-transcription",
+      "name": "youtube-transcription",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": ".agents/skills/youtube-transcription/SKILL.md",
+      "generatedPaths": []
+    }
+  ]
+}

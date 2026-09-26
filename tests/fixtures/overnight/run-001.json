@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-05-23T01:00:00Z",
+  "ended_at": "2026-05-23T05:42:00Z",
+  "cli": "claude",
+  "PRDs_completed": [
+    {"id": "F01.001", "title": "PRD emitter scaffold", "commit": "abc1234", "duration_s": 420},
+    {"id": "F01.002", "title": "Codex bundle format", "commit": "def5678", "duration_s": 310}
+  ],
+  "PRDs_failed": [
+    {"id": "F02.001", "title": "Droid mission emitter", "last_commit": "ghi9012", "error": "Missing skill file: .claude/skills/droid-dispatch/SKILL.md\nFileNotFoundError: [Errno 2] No such file or directory"}
+  ],
+  "deferred_question_count": 2,
+  "exit_code": 1
+}

@@ -1,0 +1,768 @@
+---
+version: "5.0.0"
+last_updated: "2026-04-19"
+description: "Step 5: Wireframe Prototypes → per-flow prototype PRDs through a Canvas or Direct artifact path"
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
+  - Grep
+  - AskUserQuestion
+parameters:
+  - --platform
+  - --flow
+  - --track
+  - --visual-validate
+  - --wireframe-tool
+---
+
+<!-- include: _partials/hitl-gate-policy.md -->
+
+<!-- include: _partials/game-domain.md -->
+
+<!-- SKILLS-INVOKE:start -->
+## Required skills — invoke the live skills (do NOT rely on embedded summaries)
+
+<!-- include: _partials/skills-invoke-intro.md -->
+
+- `game-development` — conditional when `projectDomain: "game"`; select this step's catalog entry and applicable workflow
+
+- `frontend-design`
+- `wireframe`
+- `image-to-code`
+- `design-tokens`
+- `web-design-guidelines`
+- `design-taste`
+- `shadcn`
+- `rn-component-library`
+- `apple-native`
+- `macos-design`
+- `motion-landing-design`
+- `ux-psychology-pro`
+- `react-native-patterns` — curated preflight (mobile Expo)
+
+<!-- include: _partials/skills-invoke-curated.md -->
+
+<!-- include: _partials/skills-invoke-holes.md -->
+
+If a skill is unavailable on this surface, state that and continue; never silently skip it.
+<!-- SKILLS-INVOKE:end -->
+
+
+# /step-5-wireframe-prototypes — Per-Flow Prototype PRD Generation
+
+**On start, announce:** "Running Step 5: Wireframe Prototypes. I'll select a Canvas or Direct artifact path, then generate buildable prototype PRDs for each flow."
+
+<goal>
+You are the Prototype Specification Lead. Execute ALL phases (A through E) in order.
+
+| Phase | Purpose | Output |
+|-------|---------|--------|
+| A | Import Step 3/4 + Select Track | Coverage target, UI profile, track selection (A or B) |
+| B | Flow Planning & Coverage | Tracker initialized, flow order confirmed |
+| C | Artifact Generation | **Canvas:** approved visual artifact → export + evidence → scaffolding PRD. **Direct:** stack-native prototype → render evidence → scaffolding PRD. |
+| D | Prototype Handoff & Summary | PRD-SUMMARY.md + Step 11 implications + track metadata |
+| E | Zero Omission Verification & Hardening | Certificate + final approval |
+
+Final Outputs (both tracks):
+- `docs/prds/flows/[NN]-[flow-slug]/FLOW-[ID].md` (one scaffolding PRD per flow)
+- `docs/prds/flows/WIREFRAME-TRACKER.md`
+- `docs/prds/flows/PRD-SUMMARY.md`
+- `docs/prds/flows/ZERO-OMISSION-CERTIFICATE.md`
+
+Artifact-specific outputs:
+- **Canvas:** `docs/prds/flows/[NN]-[flow-slug]/visual-artifact/` containing the committed source artifact (such as `.pen`) and its relevant export(s), plus `VISUAL-ARTIFACT.md` with tool, version, export receipt and approval evidence.
+- **Direct:** `docs/prds/flows/[NN]-[flow-slug]/screens/[screen-id].{html,tsx,swift}` (runnable prototype sources for the selected stack; extensions shown are examples) and actual rendered screenshots when a compatible renderer is available.
+
+Quality gate: 95+/100 on verification schema.
+
+**Core rule:** Every Step 4 screen must be covered regardless of track. If gap > 0, Step 5 fails.
+
+**Prototype scope:** Build to learn, not to ship. The scaffolding PRD spec produced here is what Step 11 agents will use to scaffold the real frontend in Step 11. Step 11 hardens it to production.
+</goal>
+
+---
+
+## Step Boundary
+
+- **Step 5 owns:** artifact-path selection, per-flow prototype PRDs, wireframe artifacts, UI profile compliance, interaction behavior, prototype data register, backend preview, prototype acceptance criteria, omission reconciliation against Step 4.
+- **Step 5 does NOT own:** environment setup (Step 0), design tokens (Step 6), full state catalog (Step 7), technical blueprint (Step 8), production data/auth logic (Step 11).
+- **Do NOT** write production backend specs. Do NOT create full schemas or RLS policies. Preview backend intent only.
+
+---
+
+## Track Selection — When to Use Each
+
+### Canvas — visual artifact path
+
+**Use when:**
+- The selected canvas supports the target surface and an editable design artifact will help review
+- A stakeholder (founder, PM, client) will look at the visuals before scaffolding starts
+- Visual direction benefits from a durable source artifact and visual review
+- The operator selects Canvas or provides a compatible visual artifact
+
+**What it is:**
+Canvas records a visual-first prototype in a committed source artifact. Prefer Pen when its desktop/canvas workflow is available: preserve the `.pen` source and the relevant export (PNG, PDF, or HTML). A chosen tool may be Pen, Stitch, or another verified canvas. Taste Skill guides the visual direction in either path; TasteCode is an optional beta desktop host, not a required tool, artifact format, or API.
+
+**Workflow:** derive the visual brief from Step 3 and behavior from Step 4 → create or update the selected canvas artifact → export a reviewable representation → save the artifact, export, tool/version/provider details, and actual approval evidence under `visual-artifact/` → generate the scaffolding PRD that points to the approved artifact. Never invent browser review, an export, authentication, or approval when the selected tool is unavailable.
+
+### Direct — stack-native prototype path
+
+**Use when:**
+- The team prefers reviewing a running stack-native prototype, including stakeholder-reviewed public or product UI
+- Visual direction is grounded in Step 3's DESIGN.md and can be explored directly in the implementation stack
+- User wants to move straight from Step 4 to scaffolding
+- User has passed `--track=B`
+
+**What it is:**
+Step 5 generates the prototype artifact directly — **runnable screens/components for the selected web, desktop or mobile stack** (see the native prototype path below). Scaffolding PRDs embed the artifact references. Step 11 consumes the PRDs in Step 11 to scaffold the real frontend.
+
+### Track Comparison
+
+| Dimension | Canvas | Direct |
+|-----------|------------------------|------------------|
+| Source of truth | Committed design artifact + export | Stack-native prototype artifact |
+| Stakeholder review | Export or tool review with recorded evidence | Rendered artifact or reviewed diff with recorded evidence |
+| Output fidelity to stack | Varies by selected canvas/export | High when the selected artifact matches the project stack |
+| Review loop | Canvas revision, export and recorded review | Running prototype revision and recorded review; the same approval gates apply |
+| Best for | Work benefiting from an editable canvas source | Work benefiting from direct stack-native iteration |
+
+### Switching Tracks Mid-Step
+
+If the chosen path cannot yield an artifact and evidence, re-run Phase A and select the other path. Do not pretend a tool-specific export exists.
+
+---
+
+## Prototype Principles (Both Tracks)
+
+Without a compatible renderer, artifacts remain PREPARED and visual acceptance remains open. Continue independent preparation, but advance that visual gate only with the required evidence or an explicit recorded operator revision of the evidence requirement. An unavailable renderer is never a successful visual check.
+
+### Prototype as Learning Device
+- Validates flow, clarity, interaction quality — not production readiness
+- Uses `mock`, `seeded-demo`, or limited `real` data paths (documented in Prototype Data Register)
+- Step 11 replaces prototype-only behavior with production contracts
+
+### First runnable vertical slice (required before batch screens)
+
+Use the Step 4 prototype target to build one runnable, end-to-end slice in the selected platform before producing the remaining screens. It must cover the core journey's entry, next action, recovery path, and representative high-risk component (for example, composer, search, or model picker). Use installed, stack-appropriate primitives; if the chosen library is unavailable, identify the native fallback and verify it separately. Exercise empty, loading, error, long-content, keyboard, resizing, cancel, and draft behavior where applicable. Compare an actual render at the Reference Contract viewport to the Step 3 reference evidence; if the mismatch is structural, revise hierarchy, layout, or interaction before adjusting palette. A Canvas artifact may inform the slice, but does not replace runnable behavior evidence.
+
+### Behavior Documentation Over Pixels
+Each flow PRD answers:
+- What the user sees
+- What the user can do
+- What feedback appears
+- What happens when data is missing, loading, or invalid
+- What assumptions the prototype is making
+
+### Realistic Content Discipline
+- Use realistic labels, messages, CTA copy, representative data
+- No "Lorem ipsum" or "Placeholder text here"
+- Prototype must be evaluatable honestly, not just structurally
+
+---
+
+## Phase A — Import Step 3/4 + Select Track
+
+### Upstream Requirements
+
+| Artifact | Source Step | Required |
+|----------|-----------|----------|
+| `docs/flows/FLOW-TREE.md` | Step 4 | **Yes** — flow list drives all coverage |
+| `docs/flows/SCREEN-INVENTORY.md` | Step 4 | **Yes** — screen count is the zero-gap baseline |
+| `docs/flows/TRANSITION-MAP.md` | Step 4 | **Yes** — navigation behavior |
+| `docs/flows/TRACEABILITY-MATRIX.md` | Step 4 | **Yes** — outcome tracing |
+| `docs/ux/UX-DESIGN.md` | Step 3 | **Yes** — Design DNA source |
+| `DESIGN.md` | Step 3 | **Yes** — UI profile guardrails |
+| `docs/design/ui-profile.json` | Step 3 | **Yes** — machine-readable UI profile |
+| `docs/specs/OFFER_ARCHITECTURE.md` | Step 1.5 | Conditional — only if monetization affects flows |
+
+**Fallback:** If any required artifact is missing, halt and notify the user: "Step 5 requires [artifact] from Step [N]. Run Step [N] first or provide the artifact." Do NOT invent flows or screens — all coverage derives from Step 4.
+
+### Preflight (auto)
+
+1. Run `date +"%Y-%m-%d"`.
+2. Read `.sigma/runtime-baseline.json`, `docs/ux/UX-DESIGN.md`, `DESIGN.md`, `docs/design/ui-profile.json`.
+<!-- include: _partials/dna-standards-preflight.md -->
+3. Read `docs/flows/FLOW-TREE.md`, `docs/flows/SCREEN-INVENTORY.md`, `docs/flows/TRANSITION-MAP.md`, `docs/flows/TRACEABILITY-MATRIX.md`.
+4. Read `docs/specs/OFFER_ARCHITECTURE.md` if monetization affects prototype flows.
+5. Read `docs/stack-profile.json` to detect `--new-project` mode and target tech stack (Next.js, Expo, SwiftUI, etc.).
+6. Confirm the selected component primitive/library is compatible and available in the target host; record an install check when one is needed. If unavailable, identify the native fallback before generation.
+7. If any required upstream artifact is missing → halt per fallback rule above.
+8. If `research_mode = blocked` → stop. If `reduced` → label assumptions.
+
+### Sequential Decisions
+
+**Decision 1: Artifact path**
+
+Use AskUserQuestion: "Which Step 5 artifact path should we use?"
+
+Options:
+- **Canvas — visual artifact:** create a committed visual artifact and reviewable export. Pen is the preferred canvas when available; a compatible operator-selected canvas is acceptable. Best when visual review is needed.
+- **Direct — stack-native prototype:** generate runnable screens/components for the selected stack and capture actual render evidence when a renderer is available. Best when the implementation stack is the useful prototype medium.
+- **Explain the difference in detail** — show the Track Comparison table and Track Selection guidance, then re-ask.
+
+**Auto-default behavior:**
+- If `--visual-validate` is present → recommend Canvas, but still record the selected tool and artifact path
+- If the product has any user-facing UI with a visual reviewer → recommend Canvas, but still ask
+- If the product is internal/dev-only/backend with no visual stakeholder → recommend Direct
+
+**Decision 2: Wireframe approach (Direct only — skip for Canvas)**
+
+Use AskUserQuestion: "Which wireframe generation approach should we use?"
+Options: [Direct stack-native screens — runnable prototype components (Recommended), shadcn blocks — start from pre-built component compositions (if shadcn/ui in stack), Text-only — PRD descriptions without visual wireframes]
+
+**Decision 3: Flow priority (both paths)**
+
+Use AskUserQuestion: "Which flows should we wireframe first?"
+Options: [P0 flows first (recommended), All flows at once, Specific flow — I'll name it, Let me see the flow list first]
+
+### Import Summary
+
+Document: total screens from Step 4, flow categories, UI profile imported, Design DNA archetype, selected path, selected tool (Canvas) or stack artifact (Direct), and any unavailable render/export capability.
+
+<HARD-GATE>
+Do NOT proceed to Phase B until user approves imports + track selection.
+Use AskUserQuestion: "Context imported, artifact path selected. Approve?"
+Options: [Approve — plan flow coverage, Change artifact path, Revise flow priority]
+</HARD-GATE>
+
+---
+
+## Phase B — Flow Planning & Coverage
+
+### Initialize Tracker
+
+Create `docs/prds/flows/WIREFRAME-TRACKER.md`. Include artifact provenance.
+
+| Flow | Slug | Screens | Path | Tool / runtime | Artifact path | Export / render evidence | Approval evidence | Status | PRD path |
+|------|------|---------|------|----------------|---------------|--------------------------|-------------------|--------|----------|
+| [flow] | [flow-slug] | [count] | Canvas or Direct | [actual tool/runtime] | [path] | [path or unavailable] | [receipt/path] | pending | docs/prds/flows/[NN]-[flow-slug]/FLOW-[ID].md |
+
+### Coverage Rules
+
+- Derive flow list directly from Step 4 — do NOT invent new flows or screens
+- Map each Step 4 screen to exactly one flow PRD owner
+- If Step 4 is missing something, stop and send user back to Step 4
+- Both paths use the same flow list — the path only affects how prototype evidence is produced
+
+### Cognitive Principles (advisory)
+When wireframing, apply `ux-psychology-pro` (invoke from src/skills/ or .agents/skills/):
+- **Hick's Law** — primary screens cap at one dominant action per viewport
+- **Miller's Law** — list/grid clusters cap at 7 items; group beyond that
+- **Fitts's Law** — primary CTAs are large and close to the user's natural hand position (mobile thumb zone, desktop bottom-right or center)
+- **Progressive Disclosure** — secondary actions hide behind expand/menu/overflow until requested
+
+For desktop macOS surfaces, also invoke `macos-design` for window-chrome layout (top bar + sidebar + content) before drawing wireframes — desktop is a different design surface from mobile/web.
+
+<HARD-GATE>
+Do NOT proceed to Phase C until user approves flow plan.
+Use AskUserQuestion: "Flow coverage planned. Approve order and begin generation?"
+Options: [Approve — generate flow PRDs, Reorder flows, Go back to Step 4 — missing screens]
+</HARD-GATE>
+
+---
+
+## Phase C — Artifact Generation
+
+Execute **either** Phase C-A (Canvas) **or** Phase C-B (Direct) based on Decision 1. Do not execute both.
+
+---
+
+### Phase C-A — Canvas visual artifact
+
+For each flow, create or update the selected canvas artifact from the Step 3 brief and Step 4 flow/state requirements. Pen is appropriate when available: save its `.pen` source and an export under `docs/prds/flows/[NN]-[flow-slug]/visual-artifact/`. Do not assume a Pen CLI, a TasteCode API, browser access, account tier, or an export format. If the chosen tool is unavailable, record that gap and switch paths only after the existing approval rule is satisfied.
+
+Create `VISUAL-ARTIFACT.md` in that directory with the tool/provider/version actually used, source path, export path(s), interaction notes, and a link or record of the review/approval that actually occurred. Taste Skill informs the design brief and review; TasteCode may host a review but is not proof by itself.
+
+For each flow, verify the artifact and any claimed export exist, then generate the scaffolding PRD:
+
+**Path:** `docs/prds/flows/[NN]-[flow-slug]/FLOW-[ID].md`
+
+**PRD sections (Canvas version):**
+
+**1. Flow Metadata**
+- Flow name, ID, category, actor, platform
+- Screen count, priority, complexity
+- **Artifact path:** Canvas
+- **Visual artifact:** `docs/prds/flows/[NN]-[flow-slug]/visual-artifact/`
+
+**2. UI Profile Compliance + Artifact Reconciliation**
+- Imported profile ID and archetype
+- **Artifact alignment check:** list any drift between Step 3's UI Profile and the actual export or source artifact. Flag drift for Step 6 to resolve.
+- Anti-slop guardrails applied
+- Where DNA emphasis is strongest in this flow
+
+**3. Screen Sections (embedded — one per screen)**
+
+For each screen:
+- Screen ID, purpose, route
+- **Visual source:** `docs/prds/flows/[NN]-[flow-slug]/visual-artifact/[source-or-export]`
+- Key components (from the approved artifact)
+- Interaction notes (from the approved artifact plus Sigma-specific additions)
+- Important states (prototype-level)
+- Realistic content (from the artifact or recorded brief)
+
+**4. Interaction Notes**
+- Cross-reference artifact interaction notes
+- Sigma-specific additions: navigation within flow, platform differences, error recovery
+
+**5. Prototype Data Register**
+
+| Data Element | Display Mode | Demo Behavior | What Step 11 Must Replace |
+|-------------|-------------|---------------|--------------------------|
+| [element] | mock / seeded-demo / real | [description] | [production requirement] |
+
+**6. Backend Preview** (prototype-scoped, NOT production spec)
+- Entities touched
+- Read/write intent
+- Auth assumptions
+- Integrations touched
+- Security-sensitive actions flagged
+
+**7. Prototype Acceptance Criteria**
+- Specific, testable criteria for this flow
+- Must include: "scaffolded UI matches the approved visual artifact within UI Profile tolerances"
+
+**8. Scaffolding Handoff (for Step 11)**
+- Tech stack target (from `stack-profile.json`)
+- Components to scaffold (from the artifact)
+- Routes to create
+- What Step 11 must harden (mocks → real, auth, data, etc.)
+
+#### Per-flow checkpoint (Canvas)
+
+After each Canvas flow PRD, present for review:
+
+<HARD-GATE>
+Use AskUserQuestion: "Flow [name] PRD generated from its visual artifact. Review?"
+Options: [Approve — continue to next flow, Revise visual artifact, Revise PRD — adjust behavior/interactions]
+</HARD-GATE>
+
+---
+
+### Phase C-B — Direct scaffolding
+
+Direct preserves the existing single-pass wireframe + PRD generation behavior.
+
+#### Wireframe Generation Strategy
+
+**Branch on the target stack first.** Read `docs/stack-profile.json`. The prototype artifact must match the platform the product actually ships on — an HTML wireframe is the wrong artifact for a native app:
+
+| `stack-profile` target | Prototype artifact | Path |
+|------------------------|--------------------|------|
+| Web (Next.js, Vite, etc.) | Runnable components in the selected frontend stack; static HTML is optional for composition review | `screens/[screen-id].tsx` or the stack equivalent; optional `.html` snapshot |
+| Mobile (Expo / React Native) | RN component scaffolds (`.tsx`) — see native path | `screens/[screen-id].tsx` |
+| Native iOS (SwiftUI) | SwiftUI `View` scaffolds (`.swift`) — see native path | `screens/[screen-id].swift` |
+| Desktop (Electron/Tauri) | Runnable selected-stack components in the desktop host, with browser-only checks labeled separately | `screens/[screen-id].tsx` or the selected stack equivalent |
+
+Web/desktop → use the **Direct stack-native** path below. Mobile/native → use the **Native prototype path** below. Both honor the same DESIGN.md direction and state/interaction contract.
+
+##### Native prototype path (Expo / React Native / SwiftUI)
+
+<!-- include: _partials/dna-standards-preflight.md -->
+
+<!-- include: _partials/curated-libraries-preflight.md -->
+
+When `stack-profile.json` targets mobile or native, generate **real native component scaffolds**, not HTML:
+
+- **Expo / React Native:** one `screens/[screen-id].tsx` per screen — functional components using **React Native Reusables + NativeWind** per `stack-profile.componentLibrary` (see `docs/references/CURATED-COMPONENT-LIBRARIES.md`). **Do not default to Tamagui** on the Expo stack. Real navigation props and platform-native primitives (`SafeAreaView`, `Pressable`, `FlashList`). Apply Apple HIG / Material 3 conventions per platform. Include all states (default/loading/empty/error/success) as rendered variants or a state toggle.
+- **SwiftUI:** one `screens/[screen-id].swift` per screen — a `View` struct with realistic `@State`/preview data, SF Symbols, native controls, and a `#Preview`. Follow Apple HIG.
+- Mobile thumb-zone CTA placement and touch-target sizing follow the applicable HIG/Material and product context; 44pt is preferred for touch controls, while compact desktop controls follow the Step 3 accessibility contract.
+- Do NOT emit HTML for native targets — a native prototype must be openable in the platform's tooling (Expo Go / Xcode preview), which is the honest fidelity check.
+
+The native artifact replaces the HTML file in every downstream reference (tracker, PRD screen sections, zero-omission certificate) — same coverage rules, different file extension.
+
+##### Primary (web/desktop): Direct stack-native screen generation
+
+For web and desktop targets, generate runnable screens/components in the selected stack using the verified installed primitives. Record how to run the representative slice and which host was exercised. Optional static HTML snapshots can communicate composition, but cannot establish that React components, native dialogs or desktop behavior work.
+
+**Reference capture:** Use the Step 3 Reference Contract. If additional reference sites or screenshots need inspection:
+1. If the user has reference sites or screenshots → invoke `image-to-code` (or equivalent reference-capture workflow) to extract design DNA first
+2. Carry observed constraints into the prototype without assuming copied code or runtime capabilities
+
+**Generation rules:**
+- Give each screen a stable source path under `docs/prds/flows/[NN]-[flow-slug]/screens/` or an explicitly linked existing prototype runner
+- Use the chosen stack and its verified dependencies. Optional static HTML snapshots may be self-contained, but must be labeled composition-only
+- Test the supported viewports and input modes from the Reference Contract; do not equate a browser preview with desktop-host acceptance
+- Realistic content (no "Lorem ipsum" — use contextual placeholder text)
+- All applicable states represented (default, loading, empty, error, success), with inapplicable states explained
+- Required appearance modes follow the product/platform brief and are tested independently
+- Interactive elements have working controls, visible focus and appropriate input feedback; animation is not required for every action
+- Every screen matches the UI Profile from Step 3
+
+**Generation process per screen:**
+1. Build and exercise the required first runnable vertical slice before generating the batch; record its actual render comparison and state/interaction evidence in its flow PRD.
+2. Read the screen specification from the flow PRD AND its `amplitude` from Step 4
+3. Invoke the amplitude-appropriate skills (see "Per-Screen Skill Invocation" above)
+4. If reference-capture output exists, apply extracted design DNA
+5. Generate the selected-stack artifact, conforming to the five invariants and the task hierarchy → surfaces → type → states → motion-last order
+6. Include state variations as toggleable sections or separate files
+7. **Screenshot-verify when a compatible renderer is available:** capture the target viewport(s) and save evidence to the flow folder. If no renderer is available, record the missing evidence as a gap; do not report a visual pass.
+8. **Reduced-motion stranding check (required for any screen with motion):** render with `prefers-reduced-motion: reduce` and confirm NOTHING is left stranded — no content stuck off-screen, invisible, mid-transition, or unreachable when animation is suppressed. A reveal that only appears via animation is a stranding defect. Reduced-motion is a first-class state, not a fallback.
+
+**Quality bar:**
+- The rendered prototype must match the approved direction, with any provisional fidelity limits explicit
+- Use the design system colors/typography from Step 3's UI Profile
+- Include micro-interactions (hover, focus, active states)
+- No generic AI aesthetics — every screen must feel intentional
+
+**Direct handoff:** Downstream steps receive the working component/source references and run instructions. Static exports supplement this evidence; they do not replace it. Prototype-only data and behavior remain labeled for Step 11 hardening.
+
+##### shadcn Blocks as Wireframe Seeds (when shadcn/ui is in the stack)
+
+Check `stack-profile.json` for `"componentLibrary": "shadcn/ui"` and `runtime-baseline.json` for `shadcn_mcp: true`. If available:
+
+1. Before generating each screen from scratch, check if a shadcn block matches the screen family:
+   - Login/signup screens → `login-01` through `login-05`, `signup-01` through `signup-05`
+   - Dashboard screens → `dashboard-01`
+   - Sidebar navigation → `sidebar-01` through `sidebar-16`
+2. Use shadcn MCP `get_block` to pull the block source code
+3. Apply the selected shadcn theme preset from Step 3's `ui-profile.json`
+4. Customize the block to match the screen's specific purpose and DNA emphasis
+5. Use as the starting point — don't ship the default block as-is
+
+##### Text-Only Mode (when visual wireframes are not needed)
+
+If the user opts for text-only wireframes, skip HTML generation and document screen specifications as structured text descriptions in the flow PRD.
+
+##### Per-Screen Skill Invocation (do this before generating each screen)
+
+Read the screen's `amplitude` from Step 4's SCREEN-INVENTORY and invoke the live skills (per the SKILLS-INVOKE block above — invoke them, do not rely on the summaries here):
+
+- **`marketing`-amplitude screen:** invoke `frontend-design` + `design-taste`; add `motion-landing-design` only when the selected direction calls for a motion-led marketing treatment.
+- **`app`-amplitude screen (instrument):** invoke `frontend-design` + `design-taste` only. Restrained motion — motion communicates state, it does not entertain. **App surfaces confirm, never perform.**
+
+Conform every screen to the named Design DNA from `DESIGN.md` (the 5 invariants) and follow the migration order when building it: **material/surface → typography → states → motion-last.** Motion is the last layer, never the structure.
+
+##### Carry the selected direction forward
+
+Reuse Step 3's inspected references and chosen direction. Do not require another creative-direction exercise or approval just because the next screen is marketing. When new evidence requires a material direction change, document it under the existing step checkpoint and honor recorded delegation. If direction remains genuinely open, use the Step 3 reference-led comparison; novelty quotas and award-site examples are not universal requirements.
+
+##### Wireframe Quality Rules
+
+Apply the **frontend aesthetics DNA** to every wireframe:
+
+**Typography:** Follow the approved type hierarchy and readability constraints. A single system font, familiar family or distinctive pairing can each be appropriate; none is universally required.
+
+**Spatial composition:** Follow the Reference Contract and user task. Conventional alignment, dense rows or bounded reading widths are valid; use asymmetry or overlap only when the selected surface benefits.
+
+**Color:** Preserve the approved surface and emphasis hierarchy; do not add chroma or decorative effects merely to seem distinctive.
+
+**Motion:** Document its purpose and implement only the motion needed to assess the representative interaction. Frequent keyboard actions stay immediate. Unimplemented animation intent remains a specification, not tested behavior.
+
+<!-- include: _partials/anti-slop.md -->
+
+#### For each flow, generate the scaffolding PRD:
+
+**Path:** `docs/prds/flows/[NN]-[flow-slug]/FLOW-[ID].md`
+
+**PRD sections (Direct version):**
+
+**1. Flow Metadata**
+- Flow name, ID, category, actor, platform
+- Screen count, priority, complexity
+- **Artifact path:** Direct
+
+**2. UI Profile Compliance**
+- Imported profile ID and archetype
+- Density / motion / contrast / emphasis posture
+- Anti-slop guardrails applied
+- Where DNA emphasis is strongest in this flow
+
+**3. Screen Sections (embedded — one per screen)**
+
+For each screen:
+- Screen ID, purpose, route
+- **Wireframe:** runnable source under `docs/prds/flows/[NN]-[flow-slug]/screens/` with the selected stack’s extension and render/run instructions (or canvas source/export; text-only descriptions remain unrendered)
+- Key components and their behavior
+- Interaction notes (what user can do, what feedback appears)
+- Important states (empty, loading, error, success — prototype-level)
+- DNA emphasis notes
+- Realistic content (actual labels, messages, data — not placeholders)
+
+**4. Interaction Notes**
+- Navigation behavior within the flow
+- Transition animations intent (document, don't implement)
+- Input/confirmation patterns
+- Error recovery expectations
+
+**5. Prototype Data Register**
+
+| Data Element | Display Mode | Demo Behavior | What Step 11 Must Replace |
+|-------------|-------------|---------------|--------------------------|
+| [element] | mock / seeded-demo / real | [description] | [production requirement] |
+
+**6. Backend Preview** (prototype-scoped — NOT production spec)
+- Entities touched
+- Read/write intent
+- Auth assumptions
+- Integrations touched
+- Security-sensitive actions flagged
+
+**7. Prototype Acceptance Criteria**
+- Specific, testable criteria for this flow
+- What "done" looks like for the prototype (not production)
+
+**8. Scaffolding Handoff (for Step 11)**
+- Tech stack target (from `stack-profile.json`)
+- Components to scaffold
+- Routes to create
+- What Step 11 must harden
+
+#### Per-flow checkpoint (Direct)
+
+After each flow PRD (or batch of 2-3 small flows), present for review:
+
+<HARD-GATE>
+Use AskUserQuestion: "Flow [name] PRD + wireframes complete. Review?"
+Options: [Approve — continue to next flow, Revise wireframes — adjust design, Revise PRD — adjust behavior/interactions]
+</HARD-GATE>
+
+---
+
+### Linear Progress Update (both tracks — Linear replaced the SigmaHQ kanban 2026-07-11)
+
+When Linear is configured (LINEAR_API_KEY in Keychain + `linear.project` in runtime-baseline.json — see Step 0 → Linear Operations Reference):
+- Discover flow issues: GraphQL query for issues in `linear.project` with label `flow-card`
+- Match the current flow by title pattern `Flow: {flow-category-name}`
+- After each flow PRD is approved, move the matching issue to In Progress via `issueUpdate`
+- When all screens in a flow category are covered, move the issue to Done
+
+If Linear is not configured, skip these updates — file-based flow PRD artifacts in `docs/prds/flows/` remain the sole status tracking mechanism. Never write to the retired SigmaHQ kanban.
+
+---
+
+## Phase D — Prototype Handoff & Summary
+
+### Write `docs/prds/flows/PRD-SUMMARY.md`
+
+Must include:
+- **Artifact path used:** Canvas or Direct (if mixed, list per-flow)
+- Flow list with status
+- Coverage summary (screens covered / total)
+- Prototype data assumptions summary
+- Backend preview summary
+- **Step 11 hardening requirements:** which prototype shortcuts must be removed, which seeded-demo behavior stays staging-only, which entities/actions Step 11 must formalize
+- **Step 6 design implications:**
+  - **If Canvas was used:** Step 6 should seed design tokens from the approved `visual-artifact/` source/export and document which values were observed rather than inventing them.
+  - **If Direct was used:** Step 6 should extract repeated patterns from the generated native/HTML wireframes.
+
+### Linear Milestone Summary (when configured)
+
+When Linear is configured:
+- Query all `flow-card` issues in `linear.project`; verify all are Done — list any still in In Progress or Todo
+- Create a milestone issue via `issueCreate`:
+  - title: `Step 5: Prototype PRDs Complete (Track {A|B})`
+  - description: flows covered, screens covered, gap count, track used
+  - labels: `milestone`, `step-5`, `wave:W0` (wave labels are MANDATORY)
+  - state: Done
+
+### Downstream Handoff
+
+Step 5 produces artifacts consumed by later steps:
+
+| Artifact | Consumed By |
+|----------|-------------|
+| `docs/prds/flows/*/FLOW-*.md` | Step 11 (production PRD hardening), Step 8 (technical spec alignment) |
+| `docs/prds/flows/*/visual-artifact/` (Canvas) | Step 6 (token seeding), Step 11 (visual reference) |
+| `docs/prds/flows/*/screens/*` (Direct — `.html`, or native `.tsx`/`.swift`) | Step 6 (token extraction), Step 11 (visual reference) |
+| `docs/prds/flows/PRD-SUMMARY.md` | Step 10 (feature breakdown input), Step 11 (hardening requirements) |
+| `docs/prds/flows/WIREFRAME-TRACKER.md` | Step 6 (design token extraction targets) |
+| `docs/prds/flows/ZERO-OMISSION-CERTIFICATE.md` | Step 10, Step 11 (coverage verification) |
+
+<HARD-GATE>
+Do NOT proceed to Phase E until user approves summary.
+Use AskUserQuestion: "Prototype summary complete. Approve?"
+Options: [Approve — verify zero omissions, Revise summary, Generate more flows]
+</HARD-GATE>
+
+---
+
+## Phase E — Zero Omission Verification & Hardening
+
+### Mandatory: Run $holes
+
+Before final checkpoint, invoke `$holes` to find:
+- Screens from Step 4 without prototype coverage
+- Weak interaction notes or missing states
+- Prototype data register gaps
+- Backend preview overreach (production spec in Step 5)
+- Anti-slop design violations in wireframes
+- Screens not tagged or mis-tagged by amplitude (a billboard-styled app screen, or a settings-flat marketing screen)
+- Screens that contradict the selected Reference Contract or silently restart design direction
+- Reduced-motion stranding (content only reachable via animation)
+- Selected-platform render evidence missing for a screen (web examples: 375px + 1440px); record the gap, not a visual pass
+- **Canvas specific:** source artifact, claimed export, approval evidence, or UI-profile alignment missing
+- **Direct specific:** screen artifacts missing, or visual evidence unavailable and not recorded as a gap
+- First runnable vertical slice missing, its state/interaction coverage incomplete, or a structural reference mismatch papered over with palette changes
+
+Fix findings before presenting.
+
+### Write `docs/prds/flows/ZERO-OMISSION-CERTIFICATE.md`
+
+Step 4 total screens - Step 5 covered screens = gap
+- If gap > 0 → Step 5 fails
+- If any Step 4 screen lacks a prototype owner → Step 5 fails
+- **Canvas:** every flow must have a source artifact record in `visual-artifact/` AND a scaffolding PRD
+- **Direct:** every flow must have screen artifacts in `screens/` (selected-stack source, or explicitly linked runner; static HTML only where appropriate) AND a scaffolding PRD
+
+### Writing Standards (embedded)
+
+- No stock AI phrases in PRDs: "Intuitive", "Seamless", "User-friendly", "Clean and modern"
+- Screen purposes are concrete actions, not vague feelings
+- Interaction notes specify WHAT happens, not that it "should feel good"
+- Realistic content in every wireframe — no "Lorem ipsum"
+- Write like a product designer handing specs to an engineer
+
+### Success Criteria
+
+- [ ] Artifact path selected and documented in every PRD + summary
+- [ ] Per-flow prototype PRDs exist for all flows
+- [ ] Step 4 screens reconcile to zero gap
+- [ ] Canvas: visual artifact record present for every flow; any export and approval claimed is present; alignment drift resolved
+- [ ] Direct: runnable selected-stack artifacts or linked runner present for every flow; optional static HTML is labeled composition-only
+- [ ] First runnable vertical slice covers the Step 4 core journey and high-risk component; its render comparison, state behavior, keyboard/resizing, cancel, and draft evidence are recorded where applicable
+- [ ] Each screen follows its Step 4 surface scope; `frontend-design` + `design-taste` apply, with `motion-landing-design` only for a selected motion-led marketing treatment
+- [ ] Selected direction and reference evidence are preserved; material changes are recorded under existing checkpoints and delegation
+- [ ] Every available render screenshot is saved at relevant target viewports; unavailable rendering is recorded as a gap; any motion screen with an available renderer passed the reduced-motion stranding check
+- [ ] Prototype data register present where needed
+- [ ] Backend preview stays prototype-scoped
+- [ ] Realistic content used throughout
+- [ ] Step 11 hardening expectations explicit
+- [ ] Step 6 token-seeding path documented (artifact or Direct screens)
+- [ ] $holes pass completed
+- [ ] User approved
+
+<HARD-GATE>
+FINAL GATE — Do NOT proceed to Step 6 without explicit approval.
+Use AskUserQuestion: "Step 5 complete. Ready for Step 6 — Design System?"
+Options: [Proceed to Step 6, Revise wireframes, Generate additional flows]
+</HARD-GATE>
+
+---
+
+## Final Step: Emit Dispatch Bundles (optional)
+
+After authoring each flow PRD and validating it against `schemas/sigma-prd-canonical.schema.json`, optionally emit goal bundles for prototype dispatch via `sigma prd-json --mode prototype` and the operator CLI's native `/goal` (or equivalent).
+
+**Step 5 scope note:** Flow PRDs are prototype-scoped — smaller, intended for one-shot UI generation. Step 11 emits full implementation bundles.
+
+### Emission (optional — prototype goal bundles)
+
+Run the generic goal emitter on the flow PRD JSON you just authored:
+
+```bash
+# Generic goal bundle emitter (legacy script name — output is CLI-agnostic XML goal block)
+python3 scripts/emitters/emit_claude_bundle.py docs/prds/flows/<flow-slug>/<flow-id>.json
+```
+
+Bundles land under `.sigma/dispatch/` for operator CLIs that consume goal artifacts.
+
+**Deprecated (do not run):** `emit_codex_bundle.py`, `emit_droid_mission.py`, and per-vendor `.factory/services.yaml` trees — removed from the single-surface OSS model.
+
+### Output location
+
+`.sigma/dispatch/<operator-cli>/<prd-id>.goal.md` (exact subpath depends on local runtime)
+
+### Prototype-scoped `proof_commands`
+
+For Step 5 flow PRDs, cap `proof_commands` in the canonical schema to frontend-relevant verification:
+
+```json
+"proof_commands": [
+  "npx vitest run src/flows/<flow-slug>",
+  "npx eslint src/flows/<flow-slug>",
+  "npx tsc --noEmit"
+]
+```
+
+Do not include full backend test suites (those belong in Step 11 PRDs). The emitters enforce the 4000-char limit — frontend-scoped commands keep bundles compact and correctly targeted.
+
+### Verification
+
+Each emitter validates the input PRD against the canonical schema and exits non-zero on failure. Goal emitters enforce the 4000-char goal limit with intelligent truncation.
+
+If a bundle is missing or invalid, dispatch will refuse to fire — fix the source PRD, re-emit, retry.
+
+### Idempotency
+
+All goal emitters are byte-deterministic. Re-running on the same PRD produces identical output. Safe to re-run after PRD edits — just re-emit before dispatching.
+
+---
+
+<!-- include: _partials/step-verify-handoff.md -->
+
+<verification>
+## Step 5 Verification Schema
+
+### Required Outputs (40 points)
+
+| Item | Path | Points |
+|------|------|--------|
+| Flow PRD Directory | docs/prds/flows/ | 8 |
+| At least one Flow PRD | docs/prds/flows/*/FLOW-*.md | 10 |
+| Wireframe Tracker (with Track column) | docs/prds/flows/WIREFRAME-TRACKER.md | 8 |
+| PRD Summary (with Track metadata) | docs/prds/flows/PRD-SUMMARY.md | 8 |
+| Zero Omission Certificate | docs/prds/flows/ZERO-OMISSION-CERTIFICATE.md | 6 |
+
+### Track-Specific Artifacts (10 points)
+
+| Track | Item | Path | Points |
+|-------|------|------|--------|
+| Canvas | Visual artifact record | docs/prds/flows/*/visual-artifact/VISUAL-ARTIFACT.md | 5 |
+| Canvas | Source artifact and relevant export | docs/prds/flows/*/visual-artifact/ | 5 |
+| B | Wireframe screens (selected-stack sources) | docs/prds/flows/*/screens/* | 5 |
+| B | Wireframe quality (anti-slop check) | — | 5 |
+
+(Score either row A or row B based on selected track — total 10 points per track.)
+
+### Required Sections in Flow PRDs (25 points)
+
+| Section | Points |
+|---------|--------|
+| Flow Metadata with Track field | 3 |
+| UI Profile Compliance + DNA emphasis | 4 |
+| Screen Sections with visual source | 4 |
+| Interaction Notes (behavior, not just layout) | 4 |
+| Prototype Data Register | 4 |
+| Backend Preview (prototype-scoped) | 3 |
+| Prototype Acceptance Criteria | 3 |
+
+### Quality Indicators (15 points)
+
+| Check | Points |
+|-------|--------|
+| Step 4 coverage reconciles to zero gap | 4 |
+| Wireframes/artifacts follow the selected Design DNA direction at the correct amplitude | 4 |
+| Reference Contract checked against rendered evidence; interaction quality checked separately; reduced-motion access verified | 3 |
+| Realistic content used (no placeholder text) | 2 |
+| Backend preview stays prototype-scoped (no production spec) | 2 |
+
+### Boundary Integrity (10 points)
+
+| Check | Points |
+|-------|--------|
+| No production backend spec in Step 5 | 3 |
+| No design token system created (Step 6 owns that) | 3 |
+| $holes pass completed | 3 |
+| Linear flow-card issues updated (when configured) | 1 |
+
+**Passing score:** 95/100
+
+## Reference evidence and output checks
+
+The hook checks declared artifacts; visual and interaction acceptance still require the recorded reviews above. HTML placeholder scanning applies only to HTML outputs and does not establish acceptance for other stacks.
+<VERIFY-ASSERT>
+craft_antislop docs/prds/flows/*/screens/*.html
+file_exists docs/design/DNA-REFERENCES.md
+section_has DESIGN.md Reference Contract
+</VERIFY-ASSERT>
+
+## DNA Conformance — scored by step-verify-gate (deterministic); never self-attested. Requires .sigma/standards.json from Step 3. Missing file → advisory skip (not a fail). See schemas/standards.schema.json.
+<VERIFY-ASSERT>
+dna_conformance docs/prds/flows/*/screens/*.html
+</VERIFY-ASSERT>
+</verification>
+
+$END$

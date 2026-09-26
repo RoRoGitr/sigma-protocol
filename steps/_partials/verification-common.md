@@ -1,0 +1,1 @@
+Score against the schema below. A step passes only on a real check — required files exist at the listed paths and minimum sizes, required sections are present, and the human approval gate was met. Do not self-certify a passing score without running the check.

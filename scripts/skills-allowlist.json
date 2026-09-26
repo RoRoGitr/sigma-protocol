@@ -1,0 +1,6 @@
+{
+  "_comment": "Skills that agents may reference but that legitimately live in the global ~/.claude/skills pool (or an installed plugin) rather than Sigma src/skills/. validate-skills.mjs treats these as resolved. Promote a skill into src/skills/ and remove it here once it's canonicalized.",
+  "external_skills": [
+    "electron"
+  ]
+}

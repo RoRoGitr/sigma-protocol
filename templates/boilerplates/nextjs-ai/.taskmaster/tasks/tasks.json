@@ -1,0 +1,106 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Complete Convex Backend Functions",
+        "description": "Implement all required Convex functions for authentication, messages CRUD, real-time subscriptions, file storage, and rate limiting.",
+        "details": "In convex/ directory: 1) Create auth.ts with Convex Auth setup using defineAuth(). 2) Implement messages.ts with defineSchema({ messages: v.object({content: v.string(), role: v.union(v.literal('user'), v.literal('ai')), timestamp: v.number(), chatId: v.id('chats')})), mutations for createMessage/sendMessage, listMessages query with pagination, deleteMessage. 3) Add subscriptions: useQuery('getMessages:live', {chatId}) for real-time. 4) File storage: useConvexFileUpload in uploadAttachment mutation. 5) Rate limiting: use rateLimiter() on aiCall mutation. Ensure TypeScript strict mode and deploy with npx convex deploy.",
+        "testStrategy": "1) Deploy functions and verify no errors in Convex dashboard. 2) Test mutations/queries via Convex playground. 3) Verify real-time subscriptions update instantly. 4) Test auth flow and rate limiting triggers. 5) Check TypeScript compilation passes.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Build Core Chat UI with Streaming",
+        "description": "Create the main chat interface with message bubbles, streaming support, input, and loading states using Vercel AI SDK.",
+        "details": "Create /chat/page.tsx: 1) Use shadcn/ui Chat components. 2) Implement message list with useQuery('listMessages', {chatId}). 3) Streaming: useStreamText from @ai-sdk/openai with useMutation('sendMessage') for persistence. 4) Message bubbles: user right-aligned blue, AI left-aligned gray with streaming cursor (useState for streaming text). 5) Input: shadcn Input + Button, handle Enter key. 6) Loading: Skeleton during stream. 7) Tailwind responsive design.",
+        "testStrategy": "1) Verify streaming displays character-by-character. 2) Test Enter sends message. 3) Confirm messages persist/reload on refresh. 4) Check user/AI styling. 5) Test loading states appear/disappear correctly.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Implement Multi-Chat Support",
+        "description": "Add chat list sidebar, new chat creation, switching, editing titles, deletion, and search.",
+        "details": "1) Extend schema: add chats table with {title: v.string(), userId: v.id('users'), model: v.string()}. 2) Sidebar: shadcn Sheet with list of useQuery('listChats'), NewChatButton creates via mutation. 3) Chat switching: useChatId state, load messages for active chat. 4) Edit title: inline EditableTitle component. 5) Delete: mutation with confirmation Dialog. 6) Search: Input with useQuery('searchChats', {query}). Update /chat/[id]/page.tsx for routing.",
+        "testStrategy": "1) Create multiple chats and verify list updates. 2) Switch chats and confirm history loads. 3) Edit/delete chats and verify DB changes. 4) Test search filters correctly.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Add AI Model Selection",
+        "description": "Implement model selector dropdown, info display, per-chat model persistence, and system prompt customization.",
+        "details": "1) Extend chat schema with model: v.string(), systemPrompt: v.string(). 2) shadcn Select dropdown in chat header with options: gpt-4o, gpt-4o-mini, etc. 3) ModelCard: display capabilities/cost from static data. 4) Update sendMessage mutation to use selected model. 5) Persist in chat document. 6) SystemPrompt: Textarea in settings, save to chat.systemPrompt and pass to useStreamText.",
+        "testStrategy": "1) Select different models and verify AI responses match. 2) Check model persists per chat. 3) Test system prompts affect responses. 4) Verify cost display accuracy.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Implement Real-time Collaboration",
+        "description": "Add presence indicators, typing indicators, and shared chat support using Convex real-time.",
+        "details": "1) Presence: useSubscription('getPresence') with userId->status map, show avatars/online dots. 2) Typing: optimistic mutation setTyping({chatId, userId, isTyping}), subscription shows typing indicator. 3) Shared chats: allow chatId sharing via URL. 4) Optional: live cursor via presence updates. Use ConvexReactClient for reactivity. Ensure <1s updates.",
+        "testStrategy": "1) Test presence updates <1s with multiple browser tabs. 2) Verify typing indicators show/hide correctly. 3) Confirm multiple users see same chat updates conflict-free.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Complete Marketing and Auth Pages",
+        "description": "Build landing page, pricing, login/signup with Convex Auth, and settings page.",
+        "details": "1) Landing: / page with hero showcasing AI chat demo, features grid (Tailwind/shadcn). 2) Pricing: /pricing with tiers table. 3) Auth: /auth pages using Convex Auth components (SignInButton, SignUpButton). 4) Settings: /settings for API keys storage (mutation to user.apiKey). 5) Responsive design, integrate ConvexClientProvider in layout.tsx.",
+        "testStrategy": "1) Test auth flows complete successfully. 2) Verify settings persist API keys. 3) Check responsive design on mobile/desktop. 4) Confirm landing demo works.",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Add Usage Tracking and Billing",
+        "description": "Implement token usage tracking, dashboard, Stripe integration, and limits.",
+        "details": "1) Extend user schema: tokensUsed, credits. 2) Track tokens in aiCall mutation using tiktoken. 3) Dashboard: /dashboard with usage charts (recharts), alerts. 4) Stripe: /billing with Checkout for credits purchase, webhook updates credits. 5) Enforce limits: check user.credits before aiCall.",
+        "testStrategy": "1) Verify token counting accuracy. 2) Test Stripe purchase adds credits. 3) Confirm limits block calls when exceeded. 4) Check alerts trigger at thresholds.",
+        "priority": "low",
+        "dependencies": [
+          1,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-13T01:16:18.132Z",
+      "updated": "2026-01-13T01:16:18.132Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

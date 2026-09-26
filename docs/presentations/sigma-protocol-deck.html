@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sigma Protocol — From Idea to Operating Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04070d;
+    --panel: rgba(14, 24, 40, 0.72);
+    --line: rgba(120, 170, 255, 0.16);
+    --ink: #e8eef8;
+    --mute: #8a9ab3;
+    --blue: #2f7bff;
+    --blue-hi: #7fb0ff;
+    --teal: #1fc7a8;
+    --amber: #ffb547;
+    --display: "Michroma", "Eurostile", "Arial Black", sans-serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); color: var(--ink); font-family: var(--body); overflow: hidden; }
+
+  /* 16:9 stage scaled to fit any screen */
+  #stage { position: absolute; width: 1600px; height: 900px; left: 50%; top: 50%; transform-origin: center; }
+  .slide {
+    position: absolute; inset: 0; padding: 88px 110px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; pointer-events: none; transform: translateY(14px);
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+    background:
+      radial-gradient(ellipse 60% 70% at 0% 50%, rgba(47,123,255,.16), transparent 70%),
+      radial-gradient(ellipse 55% 70% at 100% 50%, rgba(31,199,168,.13), transparent 70%),
+      var(--bg);
+    overflow: hidden;
+  }
+  .slide::before { /* blueprint grid */
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px; opacity: .22;
+    mask-image: radial-gradient(ellipse at center, transparent 30%, #000 95%);
+  }
+  .slide.active { opacity: 1; pointer-events: auto; transform: none; }
+  .slide > * { position: relative; }
+
+  .kicker { font-family: var(--mono); font-size: 18px; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-bottom: 22px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1.08; letter-spacing: .02em; }
+  h2 { font-family: var(--display); font-weight: 400; font-size: 46px; line-height: 1.15; letter-spacing: .02em; margin-bottom: 36px; }
+  h3 { font-family: var(--display); font-weight: 400; font-size: 21px; letter-spacing: .03em; margin-bottom: 10px; }
+  p, li { font-size: 25px; line-height: 1.5; color: var(--ink); font-weight: 300; }
+  .lede { font-size: 30px; color: var(--mute); max-width: 1150px; }
+  .mute { color: var(--mute); }
+  .grad { background: linear-gradient(90deg, var(--blue-hi), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  code, .mono { font-family: var(--mono); font-size: .86em; color: var(--blue-hi); }
+  b { font-weight: 600; }
+
+  .grid { display: grid; gap: 22px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g5 { grid-template-columns: repeat(5, 1fr); }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px 26px; backdrop-filter: blur(6px);
+  }
+  .card p, .card li { font-size: 19px; line-height: 1.45; }
+  .card .out { margin-top: 12px; font-family: var(--mono); font-size: 14px; color: var(--teal); }
+  .card .gates { font-family: var(--mono); font-size: 13px; color: var(--amber); margin-top: 6px; }
+  .num {
+    font-family: var(--display); font-size: 40px; line-height: 1; margin-bottom: 14px;
+    background: linear-gradient(135deg, var(--blue-hi), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tag { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--amber); color: var(--amber); margin-left: 8px; vertical-align: middle; }
+
+  /* big stats */
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 56px; }
+  .stat .v { font-family: var(--display); font-size: 64px; }
+  .stat .l { font-size: 18px; color: var(--mute); margin-top: 6px; }
+
+  /* step rail */
+  .rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .phase { border-top: 3px solid var(--blue); padding-top: 18px; }
+  .phase:nth-child(2) { border-color: #3f9cf0; }
+  .phase:nth-child(3) { border-color: #2cb3cc; }
+  .phase:nth-child(4) { border-color: var(--teal); }
+  .phase h3 { color: var(--ink); }
+  .phase ul { list-style: none; margin-top: 12px; }
+  .phase li { font-size: 19px; padding: 7px 0; border-bottom: 1px dashed var(--line); display: flex; gap: 14px; }
+  .phase li span:first-child { font-family: var(--mono); color: var(--blue-hi); width: 44px; flex: none; }
+
+  /* flow */
+  .flow { display: flex; align-items: stretch; gap: 0; }
+  .flow .card { flex: 1; }
+  .arrow { flex: none; width: 54px; display: grid; place-items: center; color: var(--teal); font-size: 30px; }
+
+  /* table */
+  table { width: 100%; border-collapse: collapse; font-size: 20px; }
+  th { text-align: left; font-family: var(--mono); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); font-weight: 400; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--line); font-weight: 300; }
+  td:first-child { font-family: var(--mono); color: var(--blue-hi); font-size: 18px; }
+
+  /* do/don't */
+  .dd li { list-style: none; padding: 10px 0 10px 38px; position: relative; font-size: 21px; }
+  .dd.do li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 600; }
+  .dd.dont li::before { content: "✕"; position: absolute; left: 0; color: #ff6b6b; font-weight: 600; }
+
+  pre {
+    font-family: var(--mono); font-size: 17px; line-height: 1.6; color: #cfe0ff;
+    background: rgba(3, 8, 16, .85); border: 1px solid var(--line); border-radius: 12px; padding: 24px 28px; white-space: pre-wrap;
+  }
+  pre .c { color: #5f7394; }
+
+  /* brain loop */
+  .loop { position: relative; width: 640px; height: 640px; margin: 0 auto; }
+  .loop .ring { position: absolute; inset: 70px; border-radius: 50%; border: 2px dashed rgba(31,199,168,.4); animation: spin 60s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loop .core { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); text-align: center; }
+  .loop .core .v { font-family: var(--display); font-size: 30px; }
+  .node { position: absolute; width: 200px; transform: translate(-50%,-50%); text-align: center; }
+  .node .d { width: 18px; height: 18px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 22px var(--teal); margin: 0 auto 10px; }
+  .node h3 { font-size: 17px; margin-bottom: 4px; }
+  .node p { font-size: 15px; color: var(--mute); line-height: 1.35; }
+
+  .sigma { font-family: var(--display); font-size: 220px; line-height: 1; color: #fff; text-shadow: 0 0 40px var(--blue), 0 0 90px rgba(47,123,255,.6); }
+  .quote { font-family: var(--display); font-size: 34px; line-height: 1.4; max-width: 1200px; }
+
+  /* chrome */
+  #bar { position: fixed; left: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal)); transition: width .4s ease; z-index: 5; }
+  #count { position: fixed; right: 26px; bottom: 16px; font-family: var(--mono); font-size: 13px; color: var(--mute); z-index: 5; }
+  #hint { position: fixed; left: 26px; bottom: 16px; font-family: var(--mono); font-size: 12px; color: #4b5a72; z-index: 5; }
+
+  @media print {
+    html, body { overflow: visible; height: auto; }
+    #stage { position: static; transform: none !important; }
+    .slide { position: relative; opacity: 1; transform: none; page-break-after: always; width: 1600px; height: 900px; }
+    #bar, #count, #hint { display: none; }
+    @page { size: 1600px 900px; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 · Title -->
+<section class="slide">
+  <div style="display:flex;align-items:center;gap:60px">
+    <div class="sigma">Σ</div>
+    <div>
+      <div class="kicker">Sigma Protocol · v2.0</div>
+      <h1>From idea to<br><span class="grad">operating company</span></h1>
+      <p class="lede" style="margin-top:28px">The steps, the proper way to run them, and the Brain that makes it smarter every session.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · What it is -->
+<section class="slide">
+  <div class="kicker">What is it</div>
+  <h2>Two things in one box</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>A recipe book</h3>
+      <p>18 numbered steps take you from "I have an idea" to "planned, specced and ready to build." You never guess what comes next.</p>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>A company of AI experts</h3>
+      <p>Type <code>/marketing</code> and a CMO shows up. <code>/engineering</code> gets you a CTO. 13 departments that already know your project.</p>
+    </div>
+  </div>
+  <p class="lede" style="margin-top:40px">Most AI tools check <i>"did the code run?"</i> Sigma also checks <span class="grad"><b>"is it actually good?"</b></span></p>
+</section>
+
+<!-- 3 · By the numbers -->
+<section class="slide">
+  <div class="kicker">By the numbers</div>
+  <h2>The whole system at a glance</h2>
+  <div class="stats">
+    <div class="stat"><div class="v grad">18</div><div class="l">build steps<br>(0–15 + 1.5, 11.5)</div></div>
+    <div class="stat"><div class="v grad">91</div><div class="l">human decision gates</div></div>
+    <div class="stat"><div class="v grad">13</div><div class="l">AI departments</div></div>
+    <div class="stat"><div class="v grad">64</div><div class="l">business steps across<br>8 Run Tracks</div></div>
+    <div class="stat"><div class="v grad">390</div><div class="l">bundled skills</div></div>
+  </div>
+  <p class="lede" style="margin-top:60px">Works in Claude Code, Codex and Cursor. Same files drive all three.</p>
+</section>
+
+<!-- 4 · Three lanes -->
+<section class="slide">
+  <div class="kicker">The big picture</div>
+  <h2>Plan → Build → Run</h2>
+  <div class="flow">
+    <div class="card">
+      <div class="num">Plan</div>
+      <h3>Steps 0–15</h3>
+      <p>Fill the planning filing cabinet. Every step writes a real file. Later steps read earlier ones, so work stacks like Lego.</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="card">
+      <div class="num">Build</div>
+      <h3>@dev-loop</h3>
+      <p>Write the app from the approved PRDs, in dependency order. Quality gates prove each chunk is really done.</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="card">
+      <div class="num">Run</div>
+      <h3>/gtm</h3>
+      <p>Go-to-market conductor walks 8 Run Tracks: legal, finance, marketing, sales, growth, content, community, ops.</p>
+    </div>
+  </div>
+  <p class="mute" style="margin-top:34px;font-size:21px">Build and Run can run side by side. Quality gates run during Build, after each PRD.</p>
+</section>
+
+<!-- 5 · Step map -->
+<section class="slide">
+  <div class="kicker">The Build Track</div>
+  <h2>18 steps in four phases</h2>
+  <div class="rail">
+    <div class="phase">
+      <h3>Foundation</h3>
+      <ul>
+        <li><span>0</span><span>Environment setup</span></li>
+        <li><span>1</span><span>Ideation</span></li>
+        <li><span>1.5</span><span>Offer architecture</span></li>
+        <li><span>2</span><span>Architecture</span></li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Experience</h3>
+      <ul>
+        <li><span>3</span><span>UX design</span></li>
+        <li><span>4</span><span>Flow tree</span></li>
+        <li><span>5</span><span>Wireframes</span></li>
+        <li><span>6</span><span>Design system</span></li>
+        <li><span>7</span><span>Interface states</span></li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Blueprint</h3>
+      <ul>
+        <li><span>8</span><span>Technical spec</span></li>
+        <li><span>9</span><span>Landing page</span></li>
+        <li><span>10</span><span>Feature breakdown</span></li>
+        <li><span>11</span><span>PRD generation</span></li>
+        <li><span>11.5</span><span>Task handoff</span></li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Agent layer</h3>
+      <ul>
+        <li><span>12</span><span>Context engine</span></li>
+        <li><span>13</span><span>Skillpack generator</span></li>
+        <li><span>14</span><span>Agent runtime</span></li>
+        <li><span>15</span><span>Observability</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Foundation -->
+<section class="slide">
+  <div class="kicker">Phase 1 · Foundation</div>
+  <h2>Get the idea right before anything else</h2>
+  <div class="grid g4">
+    <div class="card">
+      <div class="num">0</div><h3>Environment</h3>
+      <p>Sets up the workspace, research tools, platform and scaffold.</p>
+      <div class="out">ENVIRONMENT-SETUP.md</div><div class="gates">8 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">1</div><h3>Ideation</h3>
+      <p>Captures the vision, researches the market, checks feasibility.</p>
+      <div class="out">MASTER_PRD.md</div><div class="gates">4 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">1.5</div><h3>Offer <span class="tag">if paid</span></h3>
+      <p>Positioning, pricing, packaging. Only runs if you charge money.</p>
+      <div class="out">OFFER_ARCHITECTURE.md</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">2</div><h3>Architecture</h3>
+      <p>How the software is built: stack, boundaries, deployment.</p>
+      <div class="out">ARCHITECTURE.md</div><div class="gates">5 gates</div>
+    </div>
+  </div>
+  <p class="mute" style="margin-top:30px;font-size:20px">Methods behind it: Jobs-to-be-Done, continuous discovery, April Dunford positioning, Hormozi offers, C4 architecture.</p>
+</section>
+
+<!-- 7 · Experience -->
+<section class="slide">
+  <div class="kicker">Phase 2 · Experience</div>
+  <h2>Design how it feels, screen by screen</h2>
+  <div class="grid g5">
+    <div class="card">
+      <div class="num">3</div><h3>UX design</h3>
+      <p>Goals, journeys, design DNA, accessibility.</p>
+      <div class="out">UX-DESIGN.md</div><div class="gates">7 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">4</div><h3>Flow tree</h3>
+      <p>Maps every screen and how you move between them.</p>
+      <div class="out">SCREEN-INVENTORY.md</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">5</div><h3>Wireframes</h3>
+      <p>A buildable prototype PRD for every flow.</p>
+      <div class="out">FLOW-[ID].md</div><div class="gates">6 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">6</div><h3>Design system</h3>
+      <p>Colors, fonts, tokens, motion, themes.</p>
+      <div class="out">design-tokens.json</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">7</div><h3>States</h3>
+      <p>Loading, error, empty, recovery and focus.</p>
+      <div class="out">STATE-SPEC.md</div><div class="gates">5 gates</div>
+    </div>
+  </div>
+  <p class="mute" style="margin-top:30px;font-size:20px">After Step 5, run <code>/prd-json</code> to turn the wireframes into a machine-readable backlog.</p>
+</section>
+
+<!-- 8 · Blueprint -->
+<section class="slide">
+  <div class="kicker">Phase 3 · Blueprint</div>
+  <h2>Turn design into buildable work</h2>
+  <div class="grid g5">
+    <div class="card">
+      <div class="num">8</div><h3>Tech spec</h3>
+      <p>Frontend, backend, API, data, security, testing.</p>
+      <div class="out">TECHNICAL-SPEC.md</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">9</div><h3>Landing <span class="tag">optional</span></h3>
+      <p>Offer-aware page strategy and conversion copy.</p>
+      <div class="out">LANDING-PAGE.md</div><div class="gates">6 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">10</div><h3>Features</h3>
+      <p>Shapes features, sizes them, orders dependencies.</p>
+      <div class="out">FEATURE-BREAKDOWN.md</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">11</div><h3>PRDs</h3>
+      <p>Build-ready specs with test scenarios and data contracts.</p>
+      <div class="out">F01.001-slug.md</div><div class="gates">3 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">11.5</div><h3>Task handoff</h3>
+      <p>Priority, claims, files to touch. Any agent can pick it up.</p>
+      <div class="out">TASKS.md</div><div class="gates">3 gates</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Agent layer -->
+<section class="slide">
+  <div class="kicker">Phase 4 · Agent layer</div>
+  <h2>Teach the AI your project</h2>
+  <div class="grid g4">
+    <div class="card">
+      <div class="num">12</div><h3>Context engine</h3>
+      <p>Writes the <b>project brain</b>, the file every agent reads first.</p>
+      <div class="out">AGENTS.md · CLAUDE.md</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">13</div><h3>Skillpack</h3>
+      <p>Custom skills and agents built for <i>this</i> project.</p>
+      <div class="out">src/skills/ · src/agents/</div><div class="gates">6 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">14</div><h3>Agent runtime</h3>
+      <p>Wires the live runtime, helper tools and memory scaffolds.</p>
+      <div class="out">.sigma/runtime · .sigma/memory</div><div class="gates">5 gates</div>
+    </div>
+    <div class="card">
+      <div class="num">15</div><h3>Observability</h3>
+      <p>Decides how you'll measure success, per feature, before you ship.</p>
+      <div class="out">INSTRUMENTATION-CONTRACT.md</div><div class="gates">3 gates</div>
+    </div>
+  </div>
+  <p class="lede" style="margin-top:36px">Steps 12–14 are where the <span class="grad">Brain</span> gets born. More on that soon.</p>
+</section>
+
+<!-- 10 · Gates -->
+<section class="slide">
+  <div class="kicker">Rule #1</div>
+  <h2>The AI stops and asks <span class="grad">you</span></h2>
+  <div class="grid g2" style="align-items:start">
+    <div>
+      <p>Every step is split into phases. Every phase ends with a <b>gate</b>: a question only you can answer.</p>
+      <p style="margin-top:22px" class="mute">If you walk away, it pauses. It never decides for you. Loops can grind on work, but they can't answer gates.</p>
+    </div>
+    <div class="card">
+      <p class="mono" style="color:var(--teal);font-size:15px;margin-bottom:14px">STEP 1.5 · PHASE C</p>
+      <p style="font-size:24px">"Pricing and offer architecture complete. Approve?"</p>
+      <ul class="dd do" style="margin-top:18px">
+        <li>Approve — map product impact</li>
+        <li>Revise pricing</li>
+        <li>Adjust packaging / tiers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Scoring -->
+<section class="slide">
+  <div class="kicker">Rule #2</div>
+  <h2>Every step gets a grade</h2>
+  <div class="grid g2" style="gap:50px">
+    <table>
+      <tr><th>Category</th><th>Points</th></tr>
+      <tr><td>Files exist</td><td>20</td></tr>
+      <tr><td>Sections complete</td><td>30</td></tr>
+      <tr><td>Content quality</td><td>30</td></tr>
+      <tr><td>Gates completed</td><td>10</td></tr>
+      <tr><td>Success criteria</td><td>10</td></tr>
+    </table>
+    <table>
+      <tr><th>Score</th><th>What to do</th></tr>
+      <tr><td>100</td><td>Ready for next step</td></tr>
+      <tr><td>90–99</td><td>Passing, polish optional</td></tr>
+      <tr><td>80–89</td><td>Fix before moving on</td></tr>
+      <tr><td>70–79</td><td>Needs work</td></tr>
+      <tr><td>&lt; 70</td><td>Re-run the step</td></tr>
+    </table>
+  </div>
+  <p style="margin-top:34px"><code>@step-verify --step=N</code> grades it. Add <code>--fix</code> to auto-fix and re-grade, up to 5 rounds.</p>
+</section>
+
+<!-- 12 · Loops -->
+<section class="slide">
+  <div class="kicker">Set it, watch it finish</div>
+  <h2>Loops stop on proof, not on vibes</h2>
+  <table>
+    <tr><th>Loop</th><th>What it repeats</th><th>Stops when</th></tr>
+    <tr><td>/step-loop --step=N</td><td>Verify → fix findings → verify</td><td>The step score really passes</td></tr>
+    <tr><td>/gap-loop</td><td>Check built code against the plans → fix gaps</td><td>Two clean rounds in a row</td></tr>
+    <tr><td>@dev-loop</td><td>Build every approved PRD in dependency order</td><td>The backlog is empty</td></tr>
+    <tr><td>/run-loop</td><td>Next business step → today's tasks → done → next</td><td>You say "done for today"</td></tr>
+  </table>
+  <p class="mute" style="margin-top:30px;font-size:21px">Every loop has a round limit and ends with a proof table.</p>
+</section>
+
+<!-- 13 · Run tracks -->
+<section class="slide">
+  <div class="kicker">After Step 15 · /gtm</div>
+  <h2>8 Run Tracks to run the business</h2>
+  <div class="grid g4">
+    <div class="card"><h3>/run-legal</h3><p>Entity, contracts, IP, compliance</p><div class="out">L0 – L8</div></div>
+    <div class="card"><h3>/run-finance</h3><p>Unit economics, pricing, runway</p><div class="out">Fn1 – Fn7</div></div>
+    <div class="card"><h3>/run-marketing</h3><p>Positioning, avatar, channels, launch</p><div class="out">M1 – M10</div></div>
+    <div class="card"><h3>/run-sales</h3><p>Accounts, pipeline, outreach, close</p><div class="out">S1 – S8</div></div>
+    <div class="card"><h3>/run-growth</h3><p>Funnels, A/B tests, retention</p><div class="out">G1 – G8</div></div>
+    <div class="card"><h3>/run-content</h3><p>Scripts, video, shorts, social</p><div class="out">C1 – C8</div></div>
+    <div class="card"><h3>/run-community</h3><p>Discord/Telegram, onboarding</p><div class="out">Co1 – Co6</div></div>
+    <div class="card"><h3>/run-ops</h3><p>Rhythm, releases, incidents</p><div class="out">O1 – O8</div></div>
+  </div>
+  <p class="mute" style="margin-top:28px;font-size:20px">Walk them one at a time with <code>/continue --source=run-track</code>. Legal L0 (LLC / S-Corp) goes first.</p>
+</section>
+
+<!-- 14 · Departments -->
+<section class="slide">
+  <div class="kicker">Your AI company</div>
+  <h2>13 departments, 60+ specialists</h2>
+  <div class="grid g2" style="gap:50px;align-items:center">
+    <div>
+      <p><code>/engineering</code> · <code>/marketing</code> · <code>/sales</code> · <code>/product</code> · <code>/finance</code> · <code>/design</code> · <code>/content</code> · <code>/community</code> · <code>/ops</code> · <code>/legal</code> · <code>/security</code> · <code>/qa</code> · <code>/trading</code></p>
+      <p class="mute" style="margin-top:24px">Shortcuts with their own personas: <code>/ads</code> · <code>/growth</code> · <code>/support</code> · <code>/gtm</code></p>
+      <p style="margin-top:24px">Each exec delegates to specialists: backend engineers, copywriters, negotiators, quant strategists.</p>
+    </div>
+<pre><span class="c"># ask like you'd ask a real exec</span>
+/marketing  What's our positioning
+            against [competitor]?
+
+/finance    We charge $97/mo. Should we
+            go annual? What's the math?
+
+/legal      Draft an NDA for a contractor.</pre>
+  </div>
+</section>
+
+<!-- 15 · Proper use -->
+<section class="slide">
+  <div class="kicker">The proper way to use it</div>
+  <h2>Do this, not that</h2>
+  <div class="grid g2" style="gap:60px">
+    <ul class="dd do">
+      <li>Go in order. Later steps read earlier files.</li>
+      <li>Give real answers at every gate.</li>
+      <li>Grade every step before moving on.</li>
+      <li>Run <code>/prd-json</code> after Steps 5 and 11.</li>
+      <li>Use <code>/status</code> and <code>/continue</code> to resume.</li>
+      <li>Let loops finish on proof.</li>
+    </ul>
+    <ul class="dd dont">
+      <li>Skip to code before Step 11 is approved.</li>
+      <li>Let the AI answer its own gates.</li>
+      <li>Move on below a passing score.</li>
+      <li>Treat "the AI says it's done" as done.</li>
+      <li>Paste secrets into prompts or docs.</li>
+      <li>Keep two copies of the same memory.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 16 · First session -->
+<section class="slide">
+  <div class="kicker">Your first session</div>
+  <h2>Install, then paste one prompt</h2>
+  <div class="grid g2" style="gap:40px;align-items:start">
+<pre><span class="c"># needs git, node 20+, python3, jq</span>
+git clone https://github.com/Dallionking/sigma-protocol-public sigma-protocol-v2
+cd sigma-protocol-v2
+bash scripts/install.sh
+
+<span class="c"># then open Claude Code / Codex / Cursor here</span>
+<span class="c"># want a taste first? docs/SIGMA-LITE.md (10 min)</span></pre>
+<pre>I'm new to Sigma Protocol. Be my guide
+and my teacher.
+
+1. Read GETTING-STARTED.md, AGENTS.md and
+   docs/WORKFLOW-OVERVIEW.md.
+2. Explain it to me in plain words.
+3. Ask what I want to build. Start Step 0.
+4. Walk me through EVERY step in order.
+   STOP at every gate. Never answer for me.
+5. Show me the score before moving on.</pre>
+  </div>
+</section>
+
+<!-- 17 · Section: Brain -->
+<section class="slide" style="align-items:center;text-align:center">
+  <div class="kicker">Part two</div>
+  <h1>The <span class="grad">Brain</span></h1>
+  <p class="lede" style="margin:28px auto 0">How the system remembers, and gets smarter every time you use it.</p>
+</section>
+
+<!-- 18 · Two brains -->
+<section class="slide">
+  <div class="kicker">Two brains, one habit</div>
+  <h2>Project brain + company brain</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="num">Project</div>
+      <h3>Lives in the repo</h3>
+      <p>Built by Steps 12–14. <code>AGENTS.md</code> is the brain every agent reads first. Skills in <code>src/skills/</code>. Memory in <code>.sigma/memory/</code>.</p>
+      <p class="mute" style="margin-top:12px">Knows: this product, its rules, its gotchas.</p>
+    </div>
+    <div class="card">
+      <div class="num">Company</div>
+      <h3>Lives in one vault</h3>
+      <p>A markdown vault every agent and CLI shares. Sessions, decisions, research, people and patterns across <i>all</i> projects.</p>
+      <p class="mute" style="margin-top:12px">Knows: what worked, what failed, and why.</p>
+    </div>
+  </div>
+  <p class="lede" style="margin-top:34px">One brain per project, one brain for the company. <b>Never a second copy.</b></p>
+</section>
+
+<!-- 19 · Memory layers -->
+<section class="slide">
+  <div class="kicker">How it's layered</div>
+  <h2>Three layers of memory</h2>
+  <div class="flow">
+    <div class="card">
+      <div class="num">1</div>
+      <h3>Hot cache</h3>
+      <p>A short "what's going on right now" note. Loads at the start of every session.</p>
+      <div class="out">hot.md</div>
+    </div>
+    <div class="arrow">↔</div>
+    <div class="card">
+      <div class="num">2</div>
+      <h3>Vault</h3>
+      <p>Durable knowledge. Searchable mid-task: decisions, gotchas, Q&amp;A, patterns.</p>
+      <div class="out">decisions/ · connections/ · qa/</div>
+    </div>
+    <div class="arrow">↔</div>
+    <div class="card">
+      <div class="num">3</div>
+      <h3>Project bridge</h3>
+      <p>Small pointers inside each repo that lead project agents back to the vault.</p>
+      <div class="out">.sigma/memory/</div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 · Brain loop -->
+<section class="slide">
+  <div class="kicker">Brain development</div>
+  <div style="display:grid;grid-template-columns:520px 1fr;gap:40px;align-items:center">
+    <div>
+      <h2>It grows in a loop</h2>
+      <p class="mute">Every session feeds it. Nobody writes session notes by hand. Hooks capture them automatically.</p>
+      <p style="margin-top:22px">Changes it proposes to skills and agents stay marked <code>verified:false</code> until a human says yes.</p>
+    </div>
+    <div class="loop">
+      <div class="ring"></div>
+      <div class="core"><div class="v grad">Brain</div><p class="mute" style="font-size:15px">gets smarter<br>every lap</p></div>
+      <div class="node" style="left:50%;top:6%"><div class="d"></div><h3>Capture</h3><p>Session end → daily journal</p></div>
+      <div class="node" style="left:93%;top:36%"><div class="d"></div><h3>Compile</h3><p>Concepts, links, Q&amp;A</p></div>
+      <div class="node" style="left:78%;top:88%"><div class="d"></div><h3>Query</h3><p>Agents ask mid-task</p></div>
+      <div class="node" style="left:22%;top:88%"><div class="d"></div><h3>Lint + score</h3><p>Broken links, stale notes</p></div>
+      <div class="node" style="left:7%;top:36%"><div class="d"></div><h3>Evolve</h3><p>Skill gaps → proposals</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 · Brain rules -->
+<section class="slide">
+  <div class="kicker">Growing it the right way</div>
+  <h2>Brain rules</h2>
+  <div class="grid g3">
+    <div class="card"><h3>Tag everything</h3><p>Every note gets frontmatter: type, date, status, tags.</p></div>
+    <div class="card"><h3>Link everything</h3><p><code>[[wikilinks]]</code> build the graph. Orphans are dead weight.</p></div>
+    <div class="card"><h3>Inbox first</h3><p>Not sure where it goes? Drop it in <code>inbox/</code> for review.</p></div>
+    <div class="card"><h3>Edit, don't duplicate</h3><p>Update the note that exists. Two copies drift apart.</p></div>
+    <div class="card"><h3>Summaries, not dumps</h3><p>Keep decisions forever. Raw transcripts and logs get tossed.</p></div>
+    <div class="card"><h3>No secrets, ever</h3><p>Keys, tokens, <code>.env</code> files never enter the vault.</p></div>
+  </div>
+</section>
+
+<!-- 22 · Brain commands -->
+<section class="slide">
+  <div class="kicker">Using the Brain</div>
+  <h2>Brain commands</h2>
+  <table>
+    <tr><th>Command</th><th>What it does</th><th>When</th></tr>
+    <tr><td>/brain-flush</td><td>Save what we learned right now</td><td>Mid-session checkpoint</td></tr>
+    <tr><td>/brain-compile</td><td>Turn session logs into linked articles</td><td>End of day</td></tr>
+    <tr><td>/brain-query</td><td>Ask "what do I know about X?"</td><td>Before you plan anything</td></tr>
+    <tr><td>/brain-lint</td><td>Find broken links, orphans, contradictions</td><td>Weekly</td></tr>
+    <tr><td>/brain-score</td><td>Vault quality score and trend</td><td>Weekly</td></tr>
+    <tr><td>/brain-evolve</td><td>Spot outdated skills and agents</td><td>After big lessons</td></tr>
+  </table>
+</section>
+
+<!-- 23 · Close -->
+<section class="slide" style="align-items:center;text-align:center">
+  <div class="sigma" style="font-size:150px">Σ</div>
+  <p class="quote" style="margin-top:30px">Plan it. Build it. Run it.<br><span class="grad">Remember everything.</span></p>
+  <p class="mute" style="margin-top:36px;font-size:20px"><span class="mono">github.com/Dallionking/sigma-protocol-public</span></p>
+</section>
+
+</div>
+
+<div id="bar"></div>
+<div id="count"></div>
+<div id="hint">← → · space · F fullscreen</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const stage = document.getElementById('stage');
+  let i = Math.min(Math.max(parseInt(location.hash.slice(1)) - 1 || 0, 0), slides.length - 1);
+
+  function fit() {
+    const s = Math.min(innerWidth / 1600, innerHeight / 900);
+    stage.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(n, slides.length - 1));
+    slides.forEach((el, k) => el.classList.toggle('active', k === i));
+    document.getElementById('bar').style.width = ((i + 1) / slides.length * 100) + '%';
+    document.getElementById('count').textContent = `${i + 1} / ${slides.length}`;
+    history.replaceState(null, '', '#' + (i + 1));
+  }
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+    if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+  addEventListener('click', e => show(e.clientX > innerWidth / 3 ? i + 1 : i - 1));
+  addEventListener('resize', fit);
+  fit(); show(i);
+</script>
+</body>
+</html>

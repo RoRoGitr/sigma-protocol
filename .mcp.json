@@ -1,0 +1,64 @@
+{
+	"mcpServers": {
+		"firecrawl": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "firecrawl-mcp"],
+			"env": {
+				"FIRECRAWL_API_KEY": "YOUR_FIRECRAWL_API_KEY_HERE"
+			}
+		},
+		"greptile": {
+			"type": "http",
+			"url": "https://api.greptile.com/mcp",
+			"headers": {
+				"Authorization": "Bearer ${GREPTILE_API_KEY}"
+			}
+		},
+		"xcode": {
+			"type": "stdio",
+			"command": "xcrun",
+			"args": ["mcpbridge"]
+		},
+		"XcodeBuildMCP": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "xcodebuildmcp@beta", "mcp"]
+		},
+		"discord": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "@barryyip0625/mcp-discord"],
+			"env": {
+				"DISCORD_BOT_TOKEN": "${DISCORD_BOT_TOKEN}"
+			}
+		},
+		"telegram": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "telegram-mcp"],
+			"env": {
+				"TELEGRAM_BOT_TOKEN": "${TELEGRAM_BOT_TOKEN}"
+			}
+		},
+		"youtube-transcriber": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["-y", "yt-dlp-mcp"],
+			"env": {}
+		},
+		"shadcn": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["shadcn@latest", "mcp"]
+		},
+		"stitch": {
+			"type": "stdio",
+			"command": "npx",
+			"args": ["@_davideast/stitch-mcp", "start"],
+			"env": {
+				"GOOGLE_API_KEY": "${GOOGLE_API_KEY}"
+			}
+		}
+	}
+}

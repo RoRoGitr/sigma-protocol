@@ -1,0 +1,56 @@
+{
+  "$schema": "https://sigma-protocol.dev/schemas/landing-page-template-catalog.schema.json",
+  "version": "1.0.0",
+  "updated": "2026-03-12",
+  "templates": [
+    {
+      "name": "agent-template-",
+      "target_page_type": "ai-product",
+      "stack": "nextjs-react",
+      "strengths": ["ai-product framing", "workflow storytelling", "feature positioning"],
+      "orientation": "web"
+    },
+    {
+      "name": "blog-template-bc0cb81",
+      "target_page_type": "content-marketing",
+      "stack": "nextjs-react",
+      "strengths": ["seo content", "editorial publishing", "thought leadership"],
+      "orientation": "web"
+    },
+    {
+      "name": "changelog-template",
+      "target_page_type": "changelog",
+      "stack": "nextjs-react",
+      "strengths": ["release notes", "product updates", "documentation adjacency"],
+      "orientation": "web"
+    },
+    {
+      "name": "devtool-template",
+      "target_page_type": "developer-tool",
+      "stack": "nextjs-react",
+      "strengths": ["technical credibility", "docs-adjacent sections", "feature explanation"],
+      "orientation": "web"
+    },
+    {
+      "name": "mobile-template-",
+      "target_page_type": "mobile-app",
+      "stack": "nextjs-react",
+      "strengths": ["device mockups", "download CTAs", "app-store style marketing"],
+      "orientation": "mobile"
+    },
+    {
+      "name": "portfolio",
+      "target_page_type": "portfolio",
+      "stack": "nextjs-react",
+      "strengths": ["personal brand", "credibility proof", "case-study presentation"],
+      "orientation": "web"
+    },
+    {
+      "name": "startup-template",
+      "target_page_type": "saas-product",
+      "stack": "nextjs-react",
+      "strengths": ["hero clarity", "pricing sections", "trust-building marketing flow"],
+      "orientation": "web"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[Unit]
+Description=AI Brain daily autoresearch
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash -lc '%h/.claude/brain/scripts/autoresearch-gated.sh --force'
+Nice=10

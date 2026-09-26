@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-03-17T19:25:48.370815Z",
+  "project_root": ".",
+  "repo_name": "sigma-protocol",
+  "package_manager": "npm",
+  "repo_shape": "monorepo",
+  "runtime": {
+    "detected_platform": "claude",
+    "surfaces": [
+      "AGENTS.md",
+      ".codex/config.toml",
+      "CLAUDE.md.example",
+      ".claude/settings.json"
+    ]
+  },
+  "stack": {
+    "languages": [
+      "go",
+      "typescript"
+    ],
+    "primary_workload": "protocol-authoring"
+  },
+  "entrypoints": {
+    "packages": [
+      "packages/_upstream",
+      "packages/sigma-protocol-core",
+      "packages/sigma-protocol-plugin",
+      "packages/sss-harness"
+    ],
+    "cli_entrypoints": [
+      "cli/sigma-cli.js",
+      "go/cmd/sigma/main.go"
+    ],
+    "workflow_surfaces": [
+      "steps",
+      "ops",
+      "audit",
+      "dev",
+      "deploy",
+      "marketing"
+    ]
+  },
+  "surfaces": {
+    "data": [
+      "drizzle"
+    ],
+    "docs": [
+      "AGENTS.md",
+      "CLAUDE.md.example"
+    ]
+  },
+  "conventions": {
+    "top_level_directories": [
+      "audit",
+      "cli",
+      "deploy",
+      "dev",
+      "docs",
+      "drizzle",
+      "experiments",
+      "generators",
+      "go",
+      "landing-page",
+      "marketing",
+      "marketing-book-research",
+      "node_modules",
+      "ops",
+      "packages",
+      "platforms",
+      "schemas",
+      "scripts",
+      "src",
+      "steps",
+      "templates",
+      "tests",
+      "tools",
+      "v2"
+    ],
+    "notable_signals": [
+      "workspace-based",
+      "codex-configured",
+      "claude-configured"
+    ]
+  },
+  "hotspots": [],
+  "sigma_readiness": {
+    "mode": "protocol-dev",
+    "present_artifacts": [
+      "steps",
+      "templates/steps",
+      "packages/sigma-protocol-core",
+      "AGENTS.md",
+      "CLAUDE.md.example",
+      ".codex/config.toml",
+      ".claude/settings.json"
+    ],
+    "recommended_command": "sigma step-0-environment-setup"
+  }
+}

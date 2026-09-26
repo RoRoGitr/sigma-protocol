@@ -1,0 +1,166 @@
+# Dependencies
+node_modules/
+.pnp.*
+__pycache__/
+*.py[cod]
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Skill runtime outputs (ad deploy results, generation logs — never commit)
+outputs/
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# GitNexus index (large, regeneratable)
+.gitnexus/
+
+# Augment index
+.augment/
+
+# Codex review temp
+.codex-review-tmp/
+
+# Pipeline state (local)
+.pipeline-state.json
+
+# Sigma runtime/generated data (not source)
+.sigma/telemetry/
+.sigma/failure-baseline/
+.sigma/calibration/
+.sigma/indexes/ears-coverage.json
+.sigma/providers.json
+.sigma/providers.config.json
+.sigma/security/
+.sigma/flip/
+
+# Benchmark data (internal dev tool)
+.benchmark/
+
+# Session artifacts
+docs/sessions/logs/
+docs/sessions/patterns/
+
+# DNA proposals (local review)
+.claude/dna-proposals/
+
+# Agent memory (local)
+.claude/agent-memory-local/
+
+# Sprint state (local pipeline)
+.sprint-state.json
+
+# Internal analysis docs (gap analyses, devil's advocate, action items)
+docs/analysis/
+
+# Session artifacts (full coverage)
+docs/sessions/
+
+# Content tooling skill pack - secrets
+.env
+.env.*
+!.env.example
+*.key
+*.secret
+.claude/skills/marketing/*/local-config.json
+
+# Operator-personal content — never ships in a clean install
+docs/marketing/
+docs/products/
+.claude/agent-memory/
+.claude/lib/skill-import-report.json
+docs/reviews/
+.sigma/judge/
+.sigma/manifests/
+
+# Internal build-process artifacts — NEVER ship (operator's gap-analyses, dispatch bundles,
+# strategy/roadmap, research data, internal review outputs). Runtime/process, not product.
+.sigma/confidence/
+.sigma/dispatch/
+# strategy/: keep the referenced product ADRs (cli-native-prd-upgrade, sigmahq-standalone-publish);
+# ignore only the internal roadmap / optimization / launch-planning docs
+docs/strategy/2026-05-24-upgrade-ux-package.md
+docs/strategy/2026-06-14-frontier-upgrade-spec.md
+docs/strategy/2026-06-14-fusion-cross-model-optimization.md
+docs/strategy/2026-06-14-launch-enhancement-plan.md
+docs/research/20*
+docs/research/*.html
+docs/research/benchmarks/20*
+docs/launch/youtube-video-*-plan.md
+docs/prds/**/DA-REVIEW.md
+docs/prds/**/GA-REVIEW.md
+docs/prds/**/WAVE-*-PRD-FIXES.md
+
+# Stray editor/agent backups — never ship
+*.bak
+*.bak-*
+
+# Local-only research/work surfaces (not shipped to students)
+.venv-test/
+docs/products/
+docs/analysis/
+
+# Run Track — operator / per-project outputs (clean install ships framework + README shells only)
+docs/run-track/GAP-ANALYSIS*.md
+docs/run-track/gap-analysis*.json
+docs/run-track/BUSINESS-MODEL.json
+docs/run-track/marketing/M*.md
+docs/run-track/sales/S*.md
+docs/run-track/content/C*.md
+docs/run-track/growth/G*.md
+docs/run-track/community/Co*.md
+docs/run-track/ops/O*.md
+docs/run-track/finance/Fn*.md
+docs/run-track/legal/L*.md
+docs/specs/MASTER_PRD.md
+.sigma/backlogs/*/prd.json
+!.sigma/backlogs/*/prd.json.example
+
+# --- V2 single-surface contract -----------------------------------------
+# Canonical surfaces are steps/, commands/, src/, .agents/, schemas/, docs/.
+# Per-vendor mirror trees are operator-local, generated on install, and NEVER tracked.
+.codex/
+.cursor/
+.factory/
+.claude/commands/
+.claude/skills/
+# Runtime state and local logs — never tracked
+.pipeline-history.jsonl
+.sigma/installed-version
+.pytest_cache/
+.venv*/
+.claude/handoff-*.md
+# -------------------------------------------------------------------------
+
+# Claude Code local overrides (machine-specific, never tracked)
+CLAUDE.local.md
+
+# Operator-internal plans, audit logs and agent briefs — local only, never public
+docs/plans/
+docs/audits/.generate_method_inventory.py
+docs/audits/*/checks/
+docs/audits/sigma-atlas-research-*/
+docs/audits/methodology-refresh-2026-09-19/GROK-ORCA-LAUNCH.json
+docs/audits/methodology-refresh-2026-09-19/GROK-X-ACK.md
+docs/audits/methodology-refresh-2026-09-19/GROK-X-STATUS.md
+docs/audits/protocol-refresh-2026-09-19/BATCH-3-REVIEW.md
+docs/audits/protocol-refresh-2026-09-19/claude-nested-read-fallback.json
+docs/research/game-development/briefs/
+docs/research/game-development/WORK-LEDGER.md

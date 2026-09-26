@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/your-org/sigma-protocol/schemas/dispatch_prompts.schema.json",
+  "title": "SigmaHQ Dispatch Prompts",
+  "description": "Per-task ready-to-paste prompts for the 3 CLI-native primitives (Claude /goal, Codex /goal, Droid /missions). Embedded in briefing.json task entries.",
+  "type": "object",
+  "required": ["claude", "codex", "droid"],
+  "additionalProperties": false,
+  "properties": {
+    "claude": {
+      "type": "string",
+      "description": "Claude /goal-ready prompt (XML-tagged if PRD-shaped, derived template if plain kanban)"
+    },
+    "codex": {
+      "type": "string",
+      "description": "Codex /goal-ready prompt (role-framed numbered if PRD-shaped, derived template if plain kanban)"
+    },
+    "droid": {
+      "type": "string",
+      "description": "Droid /missions-ready prompt (mission.md content if PRD-shaped, mission-lite if plain kanban)"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/graph-provider-config.schema.json",
+  "title": "Sigma Graph Provider Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "providers", "routing"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "providers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["structural", "semantic", "fallback"],
+      "properties": {
+        "structural": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "mode", "sourcePath", "capabilities"],
+          "properties": {
+            "id": { "type": "string" },
+            "mode": { "type": "string", "enum": ["local"] },
+            "sourcePath": { "type": "string", "minLength": 1 },
+            "capabilities": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "index" },
+                { "const": "status" },
+                { "const": "searchSemantic" },
+                { "const": "getSymbolContext" },
+                { "const": "getImpact" },
+                { "const": "getProcessTrace" },
+                { "const": "detectChanges" },
+                { "const": "graphQuery" },
+                { "const": "renameAssist" }
+              ],
+              "items": false,
+              "minItems": 9,
+              "maxItems": 9
+            }
+          }
+        },
+        "semantic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "enabled"],
+          "properties": {
+            "id": { "type": "string" },
+            "enabled": { "type": "boolean" }
+          }
+        },
+        "fallback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id"],
+          "properties": {
+            "id": { "type": "string" }
+          }
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["structuralQueries", "semanticQueries", "exactQueries"],
+      "properties": {
+        "structuralQueries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "semanticQueries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "exactQueries": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

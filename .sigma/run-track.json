@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "trigger": {
+    "marketing_after_step": "step-11",
+    "sales_after_step": "run-m-2",
+    "content_after_step": "run-m-6",
+    "growth_after_step": "run-m-3",
+    "community_after_step": "run-m-2",
+    "ops_after_step": "step-11",
+    "finance_after_step": "step-1.5",
+    "legal_after_step": "step-1",
+    "allow_parallel_with_build": true
+  },
+  "business_model": {
+    "primary": "saas",
+    "secondary": null,
+    "config_path": "docs/run-track/BUSINESS-MODEL.json"
+  },
+  "active_step": {
+    "marketing": null,
+    "sales": null,
+    "content": null,
+    "growth": null,
+    "community": null,
+    "ops": null,
+    "finance": null,
+    "legal": null
+  },
+  "completed_steps": {
+    "marketing": [],
+    "sales": [],
+    "content": [],
+    "growth": [],
+    "community": [],
+    "ops": [],
+    "finance": [],
+    "legal": []
+  },
+  "continuation": {
+    "unlock_after_build_step": "step-15",
+    "prompt_command": "/continue --source=run-track",
+    "declined_depts": [],
+    "build_gate_override": false
+  }
+}

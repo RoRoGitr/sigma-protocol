@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/boilerplate-provenance.schema.json",
+  "title": "Boilerplate Provenance",
+  "type": "object",
+  "required": ["template"],
+  "properties": {
+    "template": { "type": "string" },
+    "template_version": { "type": "string" },
+    "origin_repo": { "type": "string" },
+    "project_name": { "type": "string" },
+    "features": { "type": "object" },
+    "customizations": { "type": "object" }
+  }
+}

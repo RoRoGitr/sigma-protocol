@@ -1,0 +1,111 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Complete Database & Drizzle Setup",
+        "description": "Configure database connections for Postgres, SQLite, MySQL with Drizzle ORM, setup migrations, seed scripts, and utilities.",
+        "details": "1. Create db/index.ts with drizzle instance supporting multiple providers using env DATABASE_URL and provider detection. 2. Configure connection pooling with drizzle.config.ts for Postgres/MySQL/SQLite. 3. Implement migration system: `drizzle-kit generate` and `drizzle-kit push`. 4. Create seed.ts with test users/subscriptions using existing schema. 5. Add db utils: getDb(), transaction wrapper. Use latest Drizzle ORM v0.32+ with relationalQueries enabled[1][3].",
+        "testStrategy": "Run migrations on Postgres/MySQL/SQLite docker containers, verify seed data with queries, test typed queries return correct types, confirm connection pooling with load tests.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Better Auth Integration",
+        "description": "Configure Better Auth with Drizzle adapter, email/password, OAuth (Google/GitHub), API routes, and client hooks.",
+        "details": "1. lib/auth.ts: Create betterAuth() instance with drizzleAdapter(db, {provider: process.env.DB_PROVIDER, schema}). Enable emailAndPassword: {enabled: true}. Add socialProviders: {google: {...}, github: {...}} using env keys. 2. app/api/auth/[...all]/route.ts: Export {GET, POST} = toNextJsHandler(auth.handler). 3. Create auth-client.ts with createAuthClient({baseURL}). 4. Add server utils: getSession() using auth.api.getSession. 5. Implement useAuth, useSession hooks[1][2][3].",
+        "testStrategy": "Test register/login with email/password, OAuth flows with test accounts, verify session persists after refresh, check API endpoints return 200.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Add Auth Middleware and Protected Routes",
+        "description": "Implement Next.js proxy/middleware for session validation and route protection.",
+        "details": "1. app/proxy.ts (Next.js 15+): Use auth.api.getSessionCookie() or full session validation with Node runtime. Redirect unauth users to /login. 2. Create middleware pattern for dashboard routes (/app/*). 3. Add HOC/withAuth for server components. 4. Implement signIn, signUp, signOut server actions. Use getSessionCookie for fast checks, full getSession() for protected actions[1].",
+        "testStrategy": "Test protected routes redirect unauth users, auth users access dashboard, session invalidation on logout, mobile session persistence.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Build Marketing Pages with shadcn/ui",
+        "description": "Create responsive landing, pricing, blog (MDX), about pages with Tailwind + shadcn/ui and dark mode.",
+        "details": "1. Use shadcn/ui components: Hero, Features, PricingTable, MDXRemote for blog. 2. Implement Tailwind dark mode with next-themes. 3. Add SEO: next/head with dynamic metadata. 4. Responsive design with Tailwind breakpoints. 5. Global footer with links. 6. Optimize with Next.js Image, lazy loading[7].",
+        "testStrategy": "Verify responsive design on mobile/tablet/desktop, dark mode toggle, SEO meta renders correctly, Lighthouse score >90, page load <2s.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Implement Dashboard Layout and Components",
+        "description": "Build authenticated dashboard with sidebar nav, header, breadcrumbs, quick actions using shadcn/ui.",
+        "details": "1. app/(dashboard)/layout.tsx: Auth wrapper + Sidebar with collapsible mobile nav (useAuth). 2. Header with UserMenu (avatar, profile, logout). 3. Breadcrumb component with dynamic path. 4. QuickActions grid with shadcn Cards. 5. Dashboard home: Welcome message + metrics cards pulling from db. Use Resizable panel for sidebar[3].",
+        "testStrategy": "Test navigation between dashboard pages, mobile sidebar collapse/expand, user menu dropdown, auth protection, data loads for auth user.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Build Settings Pages",
+        "description": "Implement profile, account, notifications, appearance settings with database persistence.",
+        "details": "1. app/(dashboard)/settings/profile/page.tsx: Form with name/email/avatar upload (shadcn Form + zod). 2. Account: Password change with validation, delete account modal. 3. Notifications: Toggle preferences saved to user record. 4. Appearance: Theme selector with next-themes. 5. Server actions with revalidatePath. Use existing users schema[1][3].",
+        "testStrategy": "Verify settings save to database, password change requires old password, delete confirms with modal, theme applies instantly, validation errors display.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Add Stripe Billing Integration",
+        "description": "Implement billing overview, plan management, payment methods, invoices with Stripe webhooks.",
+        "details": "1. Install stripe @stripe/stripe-js, stripe-node. 2. app/(dashboard)/billing/page.tsx: Show current plan, upgrade form with Stripe Elements. 3. Manage payment methods, invoice history. 4. api/stripe/webhooks/route.ts: Handle subscription sync to subscriptions table. 5. Enforce plan limits in middleware. Use subscriptions schema[7].",
+        "testStrategy": "Test Stripe sandbox checkout, webhook syncs subscription status, plan limits block actions, invoices display correctly, upgrade/downgrade flows.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Admin Panel",
+        "description": "Build admin dashboard, user management, basic analytics with role checks.",
+        "details": "1. app/(dashboard)/admin/layout.tsx: Role check (admin field in users). 2. Admin overview with user count, revenue metrics. 3. Users list with search/filter (TanStack Table), edit modal. 4. Use server actions for user management. Extend users schema with role[1].",
+        "testStrategy": "Test admin role protection, user search/filter, edit user updates database, non-admin access denied, metrics match database counts.",
+        "priority": "low",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-13T01:16:00.067Z",
+      "updated": "2026-01-13T01:16:00.067Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

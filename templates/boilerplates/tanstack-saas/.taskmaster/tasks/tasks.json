@@ -1,0 +1,104 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Configure TanStack Start Foundation Infrastructure",
+        "description": "Set up server functions, API routes, auth middleware, error boundaries, and Suspense loading states per Story 1 requirements.",
+        "details": "Implement server functions using createServerFn from @tanstack/react-start. Configure API routes in app/routes/api/. Add auth middleware in middleware/auth.ts checking session. Wrap app with error boundaries using TanStack Router errorZone. Enable Suspense boundaries with fallback loaders. Ensure TypeScript strict mode and Vite config with tanstackStart() plugin[1][5].",
+        "testStrategy": "Test server functions return typed responses, API routes handle CORS/auth, error boundaries catch/display errors gracefully, loading states show during data fetches. Verify type-safe API calls with no TS errors.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Integrate Supabase Authentication",
+        "description": "Configure Supabase client, auth context, login/signup actions, session management, and protected route middleware per Story 2.",
+        "details": "Install @supabase/supabase-js. Create supabase client in lib/supabase.ts with env vars. Implement AuthProvider wrapping app with session state using useEffect for supabase.auth.onAuthStateChange. Create server actions for signUp/signIn using supabase.auth.signUp/signInWithPassword. Add protected middleware redirecting unauth users to /login. Enable OAuth providers in Supabase dashboard[2].",
+        "testStrategy": "Test user registration/login persists sessions across tabs, protected routes redirect unauth users, OAuth flows complete successfully, session invalidation on logout.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Build Marketing Routes and UI Components",
+        "description": "Create landing page, pricing page, blog with TanStack Query, contact form, footer, and navigation per Story 3 using Tailwind/shadcn/ui.",
+        "details": "Use shadcn/ui components (Hero, PricingTable, Card). Implement landing page at / with hero section. Pricing page at /pricing with feature comparison table. Blog at /blog using TanStack Query infinite queries. Contact form at /contact with server action. Add global Navigation and Footer components. Include SEO meta tags via TanStack Router meta function.",
+        "testStrategy": "Verify pages render without hydration errors, forms submit data via server actions, blog data fetches with Query, navigation smooth with active states, mobile responsive.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Develop Dashboard Layout Components",
+        "description": "Build dashboard layout with sidebar, header, user menu, breadcrumbs, and mobile responsive design per Story 4.",
+        "details": "Create DashboardLayout.tsx wrapping protected routes. Implement SidebarNav with TanStack Router links and collapsible menu using shadcn/ui. Header with DropdownMenu for user profile/logout. Breadcrumb component using useMatch from TanStack Router. Use Tailwind responsive classes for mobile sidebar toggle with Sheet component.",
+        "testStrategy": "Test layout consistency across breakpoints, sidebar navigation updates active states, mobile menu toggles correctly, user menu handles logout, breadcrumbs reflect route hierarchy.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Configure TanStack Query Client and Patterns",
+        "description": "Set up QueryClient with providers, custom hooks, optimistic updates, infinite scroll, and cache invalidation per Story 7.",
+        "details": "Wrap app with QueryClientProvider in root.tsx. Configure devtools and React 19 persistence. Create hooks/useUserQueries.ts, useAuthQueries.ts with typed queries. Implement optimistic updates in mutations with queryClient.setQueryData. Add infinite scroll with useInfiniteQuery for blog. Document patterns in README with cache invalidation on mutations using queryClient.invalidateQueries.",
+        "testStrategy": "Verify typed queries/mutations, cache hit rate >80%, optimistic updates rollback on error, infinite scroll loads more data, mutations invalidate related queries properly.",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement Dashboard Pages with Data Fetching",
+        "description": "Complete dashboard home stats, settings pages, and admin panel with TanStack Query and role-based access per Story 5.",
+        "details": "Create routes: /dashboard (stats cards with Query), /settings/profile, /settings/account, /settings/appearance (forms with TanStack Form), /admin (role check). Fetch user data/stats from Supabase with custom hooks. Implement role-based access in loader/beforeLoad using supabase user roles. Use optimistic mutations for form updates.",
+        "testStrategy": "Test data fetches with Query, forms validate/submit optimistically, non-admin users blocked from /admin, settings persist to Supabase, stats update in real-time.",
+        "priority": "high",
+        "dependencies": [
+          2,
+          4,
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Integrate Stripe Billing and Subscriptions",
+        "description": "Add billing overview, Stripe Checkout, webhook handler, subscription status, and invoice history per Story 6.",
+        "details": "Install stripe @stripe/stripe-js. Create /billing route with subscription status from Supabase stripe_customer_id. Implement Checkout server action creating Stripe session. Add /api/webhooks/stripe route handling checkout/invoice events updating Supabase subscriptions table. Display invoices via Stripe API. Use shadcn/ui Badge for status.",
+        "testStrategy": "Test Checkout redirects to Stripe, webhooks update subscription status in DB, billing page reflects current plan, invoices load correctly, upgrade/downgrade flows complete.",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          5,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-13T01:16:49.687Z",
+      "updated": "2026-01-13T01:16:49.687Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

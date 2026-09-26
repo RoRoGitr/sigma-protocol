@@ -1,0 +1,60 @@
+{
+  "name": "fintech-trading-platform",
+  "version": "1.0.0",
+  "category": "products/mobile/fintech",
+  "description": "Production-ready AI-powered trading platform with 114+ screens, 21 flow PRDs, broker OAuth integration, subscription management, and a Next.js landing page.",
+  "extends": "expo-mobile",
+  "stack": {
+    "mobile": {
+      "framework": "expo-sdk-52",
+      "router": "expo-router-v3",
+      "state": ["zustand", "react-query"],
+      "styling": ["nativewind", "tailwindcss"],
+      "backend": "supabase",
+      "subscriptions": "revenuecat",
+      "broker": "tradelocker-oauth"
+    },
+    "landing": {
+      "framework": "next-15",
+      "styling": ["tailwindcss", "shadcn-ui"],
+      "features": ["waitlist", "pricing", "faq", "testimonials"]
+    }
+  },
+  "screens": {
+    "total": 114,
+    "flows": 21,
+    "groups": [
+      "auth",
+      "onboarding",
+      "gate",
+      "broker",
+      "portfolio",
+      "risk",
+      "home",
+      "income",
+      "ai",
+      "account",
+      "withdraw",
+      "system"
+    ]
+  },
+  "features": [
+    "broker-oauth-flow",
+    "subscription-tiers",
+    "ai-trading-signals",
+    "real-time-portfolio",
+    "risk-management",
+    "push-notifications",
+    "biometric-auth",
+    "waitlist-gating",
+    "referral-system",
+    "dark-theme"
+  ],
+  "configFiles": [
+    "mobile/lib/config/brand.ts",
+    "mobile/lib/config/trading.ts",
+    "mobile/lib/config/integrations.ts",
+    "mobile/lib/constants/subscription.ts",
+    "landing/src/lib/config.tsx"
+  ]
+}

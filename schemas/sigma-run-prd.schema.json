@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sss.dev/schemas/sigma-run-prd.schema.json",
+  "title": "Sigma Run Track PRD",
+  "description": "Department PRD schema for Run Track (M/S/C/G/Co/Fn/O/L prefixes). Parallel to sigma-prd-canonical.schema.json for feature PRDs (Fxx.xxx).",
+  "type": "object",
+  "required": ["prd_id", "title", "slug", "department", "run_step", "goal"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": { "type": "string" },
+    "prd_id": {
+      "type": "string",
+      "pattern": "^(M|S|C|G|Co|Fn|O|L)\\d{2}\\.\\d{3}$",
+      "description": "M01.001, S03.002, C01.001, G04.001, Co01.001, Fn02.001, O03.001, L01.001"
+    },
+    "title": { "type": "string", "minLength": 3, "maxLength": 200 },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready", "in_progress", "completed", "archived", "blocked", "skipped"]
+    },
+    "department": {
+      "type": "string",
+      "enum": ["marketing", "sales", "content", "growth", "community", "ops", "finance", "legal"]
+    },
+    "run_step": {
+      "type": "string",
+      "pattern": "^(M|S|C|G|Co|Fn|O|L)\\d{1,2}$",
+      "description": "Run Track step id, e.g. M3, S2, C1, G4, Co2, Fn5, O3, L6"
+    },
+    "business_model_modules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["saas", "b2b_outbound", "service", "creator", "universal"]
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "build_track_inputs": {
+      "type": "array",
+      "description": "Repo-relative paths from Steps 0-15 this PRD reads",
+      "items": { "type": "string" }
+    },
+    "tool_connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tool", "purpose"],
+        "properties": {
+          "tool": { "type": "string" },
+          "purpose": { "type": "string" },
+          "mcp_or_cli": { "type": "string" },
+          "configured": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "daily_tasks": {
+      "type": "array",
+      "maxItems": 3,
+      "description": "Founder tasks for today — max 3",
+      "items": {
+        "type": "object",
+        "required": ["task", "owner"],
+        "properties": {
+          "task": { "type": "string" },
+          "owner": { "type": "string", "enum": ["founder", "agent"] },
+          "due": { "type": "string" }
+        }
+      }
+    },
+    "founder_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "agent_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifact_path": {
+      "type": "string",
+      "description": "Primary human-readable output path"
+    },
+    "goal": {
+      "type": "object",
+      "required": ["objective", "stopping_condition"],
+      "properties": {
+        "objective": { "type": "string", "maxLength": 400 },
+        "stopping_condition": { "type": "string", "maxLength": 400 },
+        "files_to_read_first": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "plain_language_summary": {
+      "type": "object",
+      "description": "Sixth-grade readable block for founders",
+      "properties": {
+        "what_we_are_doing": { "type": "string" },
+        "why_it_matters": { "type": "string" }
+      }
+    }
+  }
+}

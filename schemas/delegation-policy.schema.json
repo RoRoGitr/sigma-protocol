@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/delegation-policy.schema.json",
+  "title": "Sigma Delegation Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "topLevelPolicy", "topLevelImplementationAllowed", "executionChain", "roles", "requiredGates"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "topLevelPolicy": {
+      "type": "string",
+      "enum": ["coordinator_only", "coordinator_first"]
+    },
+    "topLevelImplementationAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "executionChain": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "implementation_worker" },
+        { "const": "devils_advocate" },
+        { "const": "gap_analysis" },
+        { "const": "testing" }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coordinator", "workers", "reviewers", "testers"],
+      "properties": {
+        "coordinator": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "workers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "reviewers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "testers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
+    "requiredGates": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "devils_advocate" },
+        { "const": "gap_analysis" },
+        { "const": "testing" }
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    }
+  }
+}

@@ -1,0 +1,1013 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-23T00:54:09.985Z",
+  "taxonomy": [
+    "steps",
+    "orchestration",
+    "deploy",
+    "ops",
+    "audit",
+    "platform",
+    "sales",
+    "marketing",
+    "deprecated",
+    "dev"
+  ],
+  "count": 101,
+  "items": [
+    {
+      "id": "commands/continue",
+      "name": "continue",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/continue.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/gap-analysis",
+      "name": "gap-analysis",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/gap-analysis.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/gap-loop",
+      "name": "gap-loop",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/gap-loop.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/platform-sync",
+      "name": "platform-sync",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/platform-sync.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/prd-json",
+      "name": "prd-json",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/prd-json.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/prd-orchestrate",
+      "name": "prd-orchestrate",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/prd-orchestrate.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/status",
+      "name": "status",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/status.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "commands/step-verify",
+      "name": "step-verify",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "commands/step-verify.md",
+      "generatedPaths": []
+    },
+    {
+      "id": "steps/dev-loop",
+      "name": "dev-loop",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/dev-loop",
+      "generatedPaths": [
+        "commands/dev-loop.md"
+      ]
+    },
+    {
+      "id": "steps/game-development",
+      "name": "game-development",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/game-development",
+      "generatedPaths": [
+        "commands/game-development.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-1-brief-intake",
+      "name": "run-c-1-brief-intake",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-1-brief-intake",
+      "generatedPaths": [
+        "commands/run-c-1-brief-intake.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-2-video-research",
+      "name": "run-c-2-video-research",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-2-video-research",
+      "generatedPaths": [
+        "commands/run-c-2-video-research.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-3-longform-scripts",
+      "name": "run-c-3-longform-scripts",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-3-longform-scripts",
+      "generatedPaths": [
+        "commands/run-c-3-longform-scripts.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-4-thumbnails-titles",
+      "name": "run-c-4-thumbnails-titles",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-4-thumbnails-titles",
+      "generatedPaths": [
+        "commands/run-c-4-thumbnails-titles.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-5-shortform-pack",
+      "name": "run-c-5-shortform-pack",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-5-shortform-pack",
+      "generatedPaths": [
+        "commands/run-c-5-shortform-pack.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-6-social-copy",
+      "name": "run-c-6-social-copy",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-6-social-copy",
+      "generatedPaths": [
+        "commands/run-c-6-social-copy.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-7-atomization-map",
+      "name": "run-c-7-atomization-map",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-7-atomization-map",
+      "generatedPaths": [
+        "commands/run-c-7-atomization-map.md"
+      ]
+    },
+    {
+      "id": "steps/run-c-8-publish-handoff",
+      "name": "run-c-8-publish-handoff",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-c-8-publish-handoff",
+      "generatedPaths": [
+        "commands/run-c-8-publish-handoff.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-1-platform-audit",
+      "name": "run-co-1-platform-audit",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-1-platform-audit",
+      "generatedPaths": [
+        "commands/run-co-1-platform-audit.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-2-welcome-flow",
+      "name": "run-co-2-welcome-flow",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-2-welcome-flow",
+      "generatedPaths": [
+        "commands/run-co-2-welcome-flow.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-3-content-rhythm",
+      "name": "run-co-3-content-rhythm",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-3-content-rhythm",
+      "generatedPaths": [
+        "commands/run-co-3-content-rhythm.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-4-moderation",
+      "name": "run-co-4-moderation",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-4-moderation",
+      "generatedPaths": [
+        "commands/run-co-4-moderation.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-5-feedback-loop",
+      "name": "run-co-5-feedback-loop",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-5-feedback-loop",
+      "generatedPaths": [
+        "commands/run-co-5-feedback-loop.md"
+      ]
+    },
+    {
+      "id": "steps/run-co-6-advocacy",
+      "name": "run-co-6-advocacy",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-co-6-advocacy",
+      "generatedPaths": [
+        "commands/run-co-6-advocacy.md"
+      ]
+    },
+    {
+      "id": "steps/run-community",
+      "name": "run-community",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-community",
+      "generatedPaths": [
+        "commands/run-community.md"
+      ]
+    },
+    {
+      "id": "steps/run-content",
+      "name": "run-content",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-content",
+      "generatedPaths": [
+        "commands/run-content.md"
+      ]
+    },
+    {
+      "id": "steps/run-finance",
+      "name": "run-finance",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-finance",
+      "generatedPaths": [
+        "commands/run-finance.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-1-unit-economics",
+      "name": "run-fn-1-unit-economics",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-1-unit-economics",
+      "generatedPaths": [
+        "commands/run-fn-1-unit-economics.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-2-pricing-architecture",
+      "name": "run-fn-2-pricing-architecture",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-2-pricing-architecture",
+      "generatedPaths": [
+        "commands/run-fn-2-pricing-architecture.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-3-forecast",
+      "name": "run-fn-3-forecast",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-3-forecast",
+      "generatedPaths": [
+        "commands/run-fn-3-forecast.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-4-cost-audit",
+      "name": "run-fn-4-cost-audit",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-4-cost-audit",
+      "generatedPaths": [
+        "commands/run-fn-4-cost-audit.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-5-runway",
+      "name": "run-fn-5-runway",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-5-runway",
+      "generatedPaths": [
+        "commands/run-fn-5-runway.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-6-spend-gates",
+      "name": "run-fn-6-spend-gates",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-6-spend-gates",
+      "generatedPaths": [
+        "commands/run-fn-6-spend-gates.md"
+      ]
+    },
+    {
+      "id": "steps/run-fn-7-data-room",
+      "name": "run-fn-7-data-room",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-fn-7-data-room",
+      "generatedPaths": [
+        "commands/run-fn-7-data-room.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-1-funnel-map",
+      "name": "run-g-1-funnel-map",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-1-funnel-map",
+      "generatedPaths": [
+        "commands/run-g-1-funnel-map.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-2-baseline-metrics",
+      "name": "run-g-2-baseline-metrics",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-2-baseline-metrics",
+      "generatedPaths": [
+        "commands/run-g-2-baseline-metrics.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-3-hypothesis-backlog",
+      "name": "run-g-3-hypothesis-backlog",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-3-hypothesis-backlog",
+      "generatedPaths": [
+        "commands/run-g-3-hypothesis-backlog.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-4-ab-test-spec",
+      "name": "run-g-4-ab-test-spec",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-4-ab-test-spec",
+      "generatedPaths": [
+        "commands/run-g-4-ab-test-spec.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-5-cro-sprint",
+      "name": "run-g-5-cro-sprint",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-5-cro-sprint",
+      "generatedPaths": [
+        "commands/run-g-5-cro-sprint.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-6-retargeting-arch",
+      "name": "run-g-6-retargeting-arch",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-6-retargeting-arch",
+      "generatedPaths": [
+        "commands/run-g-6-retargeting-arch.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-7-activation-cohorts",
+      "name": "run-g-7-activation-cohorts",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-7-activation-cohorts",
+      "generatedPaths": [
+        "commands/run-g-7-activation-cohorts.md"
+      ]
+    },
+    {
+      "id": "steps/run-g-8-seo-organic-loop",
+      "name": "run-g-8-seo-organic-loop",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-g-8-seo-organic-loop",
+      "generatedPaths": [
+        "commands/run-g-8-seo-organic-loop.md"
+      ]
+    },
+    {
+      "id": "steps/run-growth",
+      "name": "run-growth",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-growth",
+      "generatedPaths": [
+        "commands/run-growth.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-0-entity-formation",
+      "name": "run-l-0-entity-formation",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-0-entity-formation",
+      "generatedPaths": [
+        "commands/run-l-0-entity-formation.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-1-intake-batna",
+      "name": "run-l-1-intake-batna",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-1-intake-batna",
+      "generatedPaths": [
+        "commands/run-l-1-intake-batna.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-2-msa-baseline",
+      "name": "run-l-2-msa-baseline",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-2-msa-baseline",
+      "generatedPaths": [
+        "commands/run-l-2-msa-baseline.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-3-nda-strategy",
+      "name": "run-l-3-nda-strategy",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-3-nda-strategy",
+      "generatedPaths": [
+        "commands/run-l-3-nda-strategy.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-4-ip-trademark",
+      "name": "run-l-4-ip-trademark",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-4-ip-trademark",
+      "generatedPaths": [
+        "commands/run-l-4-ip-trademark.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-5-vendor-dpa",
+      "name": "run-l-5-vendor-dpa",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-5-vendor-dpa",
+      "generatedPaths": [
+        "commands/run-l-5-vendor-dpa.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-6-compliance",
+      "name": "run-l-6-compliance",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-6-compliance",
+      "generatedPaths": [
+        "commands/run-l-6-compliance.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-7-incident-narratives",
+      "name": "run-l-7-incident-narratives",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-7-incident-narratives",
+      "generatedPaths": [
+        "commands/run-l-7-incident-narratives.md"
+      ]
+    },
+    {
+      "id": "steps/run-l-8-demand-playbook",
+      "name": "run-l-8-demand-playbook",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-l-8-demand-playbook",
+      "generatedPaths": [
+        "commands/run-l-8-demand-playbook.md"
+      ]
+    },
+    {
+      "id": "steps/run-legal",
+      "name": "run-legal",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-legal",
+      "generatedPaths": [
+        "commands/run-legal.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-1-gtm-audit",
+      "name": "run-m-1-gtm-audit",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-1-gtm-audit",
+      "generatedPaths": [
+        "commands/run-m-1-gtm-audit.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-10-retention-loop",
+      "name": "run-m-10-retention-loop",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-10-retention-loop",
+      "generatedPaths": [
+        "commands/run-m-10-retention-loop.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-2-avatar-positioning",
+      "name": "run-m-2-avatar-positioning",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-2-avatar-positioning",
+      "generatedPaths": [
+        "commands/run-m-2-avatar-positioning.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-3-stack-tracking",
+      "name": "run-m-3-stack-tracking",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-3-stack-tracking",
+      "generatedPaths": [
+        "commands/run-m-3-stack-tracking.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-4-messaging-system",
+      "name": "run-m-4-messaging-system",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-4-messaging-system",
+      "generatedPaths": [
+        "commands/run-m-4-messaging-system.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-5-channel-plan",
+      "name": "run-m-5-channel-plan",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-5-channel-plan",
+      "generatedPaths": [
+        "commands/run-m-5-channel-plan.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-6-content-engine",
+      "name": "run-m-6-content-engine",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-6-content-engine",
+      "generatedPaths": [
+        "commands/run-m-6-content-engine.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-7-lifecycle-email",
+      "name": "run-m-7-lifecycle-email",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-7-lifecycle-email",
+      "generatedPaths": [
+        "commands/run-m-7-lifecycle-email.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-8-launch-runbook",
+      "name": "run-m-8-launch-runbook",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-8-launch-runbook",
+      "generatedPaths": [
+        "commands/run-m-8-launch-runbook.md"
+      ]
+    },
+    {
+      "id": "steps/run-m-9-optimize-cadence",
+      "name": "run-m-9-optimize-cadence",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-m-9-optimize-cadence",
+      "generatedPaths": [
+        "commands/run-m-9-optimize-cadence.md"
+      ]
+    },
+    {
+      "id": "steps/run-marketing",
+      "name": "run-marketing",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-marketing",
+      "generatedPaths": [
+        "commands/run-marketing.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-1-ops-baseline",
+      "name": "run-o-1-ops-baseline",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-1-ops-baseline",
+      "generatedPaths": [
+        "commands/run-o-1-ops-baseline.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-2-sprint-rhythm",
+      "name": "run-o-2-sprint-rhythm",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-2-sprint-rhythm",
+      "generatedPaths": [
+        "commands/run-o-2-sprint-rhythm.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-3-release-gates",
+      "name": "run-o-3-release-gates",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-3-release-gates",
+      "generatedPaths": [
+        "commands/run-o-3-release-gates.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-4-observability",
+      "name": "run-o-4-observability",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-4-observability",
+      "generatedPaths": [
+        "commands/run-o-4-observability.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-5-incident-response",
+      "name": "run-o-5-incident-response",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-5-incident-response",
+      "generatedPaths": [
+        "commands/run-o-5-incident-response.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-6-wbr",
+      "name": "run-o-6-wbr",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-6-wbr",
+      "generatedPaths": [
+        "commands/run-o-6-wbr.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-7-sop-vendors",
+      "name": "run-o-7-sop-vendors",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-7-sop-vendors",
+      "generatedPaths": [
+        "commands/run-o-7-sop-vendors.md"
+      ]
+    },
+    {
+      "id": "steps/run-o-8-contractor-onboarding",
+      "name": "run-o-8-contractor-onboarding",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-o-8-contractor-onboarding",
+      "generatedPaths": [
+        "commands/run-o-8-contractor-onboarding.md"
+      ]
+    },
+    {
+      "id": "steps/run-ops",
+      "name": "run-ops",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-ops",
+      "generatedPaths": [
+        "commands/run-ops.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-1-icp-accounts",
+      "name": "run-s-1-icp-accounts",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-1-icp-accounts",
+      "generatedPaths": [
+        "commands/run-s-1-icp-accounts.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-2-crm-pipeline",
+      "name": "run-s-2-crm-pipeline",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-2-crm-pipeline",
+      "generatedPaths": [
+        "commands/run-s-2-crm-pipeline.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-3-outbound-playbook",
+      "name": "run-s-3-outbound-playbook",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-3-outbound-playbook",
+      "generatedPaths": [
+        "commands/run-s-3-outbound-playbook.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-4-discovery-sop",
+      "name": "run-s-4-discovery-sop",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-4-discovery-sop",
+      "generatedPaths": [
+        "commands/run-s-4-discovery-sop.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-5-proposal-system",
+      "name": "run-s-5-proposal-system",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-5-proposal-system",
+      "generatedPaths": [
+        "commands/run-s-5-proposal-system.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-6-inbound-dm",
+      "name": "run-s-6-inbound-dm",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-6-inbound-dm",
+      "generatedPaths": [
+        "commands/run-s-6-inbound-dm.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-7-followup-system",
+      "name": "run-s-7-followup-system",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-7-followup-system",
+      "generatedPaths": [
+        "commands/run-s-7-followup-system.md"
+      ]
+    },
+    {
+      "id": "steps/run-s-8-pipeline-ops",
+      "name": "run-s-8-pipeline-ops",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-s-8-pipeline-ops",
+      "generatedPaths": [
+        "commands/run-s-8-pipeline-ops.md"
+      ]
+    },
+    {
+      "id": "steps/run-sales",
+      "name": "run-sales",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/run-sales",
+      "generatedPaths": [
+        "commands/run-sales.md"
+      ]
+    },
+    {
+      "id": "steps/step-0-environment-setup",
+      "name": "step-0-environment-setup",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-0-environment-setup",
+      "generatedPaths": [
+        "commands/step-0-environment-setup.md"
+      ]
+    },
+    {
+      "id": "steps/step-1-ideation",
+      "name": "step-1-ideation",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-1-ideation",
+      "generatedPaths": [
+        "commands/step-1-ideation.md"
+      ]
+    },
+    {
+      "id": "steps/step-1.5-offer-architecture",
+      "name": "step-1.5-offer-architecture",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-1.5-offer-architecture",
+      "generatedPaths": [
+        "commands/step-1.5-offer-architecture.md"
+      ]
+    },
+    {
+      "id": "steps/step-10-feature-breakdown",
+      "name": "step-10-feature-breakdown",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-10-feature-breakdown",
+      "generatedPaths": [
+        "commands/step-10-feature-breakdown.md"
+      ]
+    },
+    {
+      "id": "steps/step-11-prd-generation",
+      "name": "step-11-prd-generation",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-11-prd-generation",
+      "generatedPaths": [
+        "commands/step-11-prd-generation.md"
+      ]
+    },
+    {
+      "id": "steps/step-11.5-task-handoff",
+      "name": "step-11.5-task-handoff",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-11.5-task-handoff",
+      "generatedPaths": [
+        "commands/step-11.5-task-handoff.md"
+      ]
+    },
+    {
+      "id": "steps/step-12-context-engine",
+      "name": "step-12-context-engine",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-12-context-engine",
+      "generatedPaths": [
+        "commands/step-12-context-engine.md"
+      ]
+    },
+    {
+      "id": "steps/step-13-skillpack-generator",
+      "name": "step-13-skillpack-generator",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-13-skillpack-generator",
+      "generatedPaths": [
+        "commands/step-13-skillpack-generator.md"
+      ]
+    },
+    {
+      "id": "steps/step-14-agent-runtime-bootstrap",
+      "name": "step-14-agent-runtime-bootstrap",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-14-agent-runtime-bootstrap",
+      "generatedPaths": [
+        "commands/step-14-agent-runtime-bootstrap.md"
+      ]
+    },
+    {
+      "id": "steps/step-15-observability-contract",
+      "name": "step-15-observability-contract",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-15-observability-contract",
+      "generatedPaths": [
+        "commands/step-15-observability-contract.md"
+      ]
+    },
+    {
+      "id": "steps/step-2-architecture",
+      "name": "step-2-architecture",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-2-architecture",
+      "generatedPaths": [
+        "commands/step-2-architecture.md"
+      ]
+    },
+    {
+      "id": "steps/step-3-ux-design",
+      "name": "step-3-ux-design",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-3-ux-design",
+      "generatedPaths": [
+        "commands/step-3-ux-design.md"
+      ]
+    },
+    {
+      "id": "steps/step-4-flow-tree",
+      "name": "step-4-flow-tree",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-4-flow-tree",
+      "generatedPaths": [
+        "commands/step-4-flow-tree.md"
+      ]
+    },
+    {
+      "id": "steps/step-5-wireframe-prototypes",
+      "name": "step-5-wireframe-prototypes",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-5-wireframe-prototypes",
+      "generatedPaths": [
+        "commands/step-5-wireframe-prototypes.md"
+      ]
+    },
+    {
+      "id": "steps/step-6-design-system",
+      "name": "step-6-design-system",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-6-design-system",
+      "generatedPaths": [
+        "commands/step-6-design-system.md"
+      ]
+    },
+    {
+      "id": "steps/step-7-interface-states",
+      "name": "step-7-interface-states",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-7-interface-states",
+      "generatedPaths": [
+        "commands/step-7-interface-states.md"
+      ]
+    },
+    {
+      "id": "steps/step-8-technical-spec",
+      "name": "step-8-technical-spec",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-8-technical-spec",
+      "generatedPaths": [
+        "commands/step-8-technical-spec.md"
+      ]
+    },
+    {
+      "id": "steps/step-9-landing-page",
+      "name": "step-9-landing-page",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/step-9-landing-page",
+      "generatedPaths": [
+        "commands/step-9-landing-page.md"
+      ]
+    },
+    {
+      "id": "steps/validate-methodology",
+      "name": "validate-methodology",
+      "category": "steps",
+      "status": "active",
+      "canonicalSourcePath": "steps/validate-methodology",
+      "generatedPaths": [
+        "commands/validate-methodology.md"
+      ]
+    }
+  ]
+}

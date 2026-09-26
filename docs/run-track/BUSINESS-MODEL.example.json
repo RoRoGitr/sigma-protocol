@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "primary": "saas",
+  "secondary": null,
+  "modules_applied": ["saas"],
+  "skipped_steps": [],
+  "notes": "Copy to docs/run-track/BUSINESS-MODEL.json at /run-marketing start."
+}

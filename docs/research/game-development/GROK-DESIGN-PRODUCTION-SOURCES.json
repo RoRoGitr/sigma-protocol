@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "document": "GROK-DESIGN-PRODUCTION-SOURCES.json",
+    "companion": "GROK-DESIGN-PRODUCTION.md",
+    "accessDate": "2026-09-22",
+    "sourceCount": 18,
+    "evidenceClasses": [
+      "demonstrated_evidence",
+      "source_claim",
+      "untested_tool",
+      "proposed_adaptation"
+    ],
+    "notes": "X posts used only as discovery leads and are not numbered sources. Videos listed in the companion markdown were not frame-reviewed by this seat."
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "title": "MDA: A Formal Approach to Game Design and Game Research",
+      "url": "https://users.cs.northwestern.edu/~hunicke/MDA.pdf",
+      "alternateUrls": [
+        "https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/"
+      ],
+      "author": "Robin Hunicke, Marc LeBlanc, Robert Zubek",
+      "discipline": "ideation/player-experience; core-loops/mechanics",
+      "observedEvidence": "Full 5-page PDF inspected this session. Workshop origin GDC Game Design and Tuning 2001-2004. Defines mechanics/dynamics/aesthetics, eight aesthetic types, designer-vs-player reverse chain, Monopoly and babysitter tuning examples. AAAI Challenges in Game AI workshop, 2004.",
+      "status": "demonstrated_evidence",
+      "applicability": "Shared vocabulary for locking intended feelings before features; tuning loop across three layers; any genre.",
+      "limitations": "Not a formula for fun. Aesthetic list is a compass. 2004 paper; later critiques of MDA exist and were not fully surveyed. Does not specify production scheduling.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2004-06-20"
+    },
+    {
+      "id": "S02",
+      "title": "Game Design Workshop, 5th Edition — playcentric excerpt",
+      "url": "https://www.gamedeveloper.com/design/book-excerpt-game-design-workshop",
+      "alternateUrls": [
+        "https://www.routledge.com/Game-Design-Workshop-A-Playcentric-Approach-to-Creating-Innovative-Games/Fullerton/p/book/9781032607009"
+      ],
+      "author": "Tracy Fullerton",
+      "discipline": "ideation/player-experience; playtesting; solo-production",
+      "observedEvidence": "Author-posted excerpt dated 2024-04-18 for the 5th edition (CRC/Taylor & Francis, listed publication 2024-04-19). Defines player experience goals as felt situations, immediate physical prototyping, iteration against those goals, and the cost of late core-mechanic testing.",
+      "status": "demonstrated_evidence",
+      "applicability": "Step 1 overlay and every later playtest gate. Works for digital and analog. Strong for solo and teaching.",
+      "limitations": "Full 5th edition not read cover-to-cover. Physical prototypes under-serve real-time feel (see S06). Friend playtests bias results (see Fulton comments adjacent to S08).",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2024-04-19"
+    },
+    {
+      "id": "S03",
+      "title": "The Art of Game Design: A Book of Lenses (studio hub)",
+      "url": "https://schellgames.com/art-of-game-design/",
+      "alternateUrls": [
+        "https://shop.elsevier.com/books/the-art-of-game-design/schell/978-0-12-369496-6",
+        "https://deck.artofgamedesign.com/"
+      ],
+      "author": "Jesse Schell",
+      "discipline": "ideation/player-experience; production-planning",
+      "observedEvidence": "Official Schell Games page fetched 2026-09-22. Describes 100+ lenses as question-sets, Deck of Lenses, companion app. First edition August 2008 (Elsevier); third edition CRC 2019 with VR/AR and modern examples per publisher listings.",
+      "status": "source_claim",
+      "applicability": "Diagnostic questions when a prototype feels wrong; shared team language; platform-agnostic including board games and attractions.",
+      "limitations": "Book text not read cover-to-cover. Deck/app are untested tools. Using all 100 lenses as a checklist is a misuse the method itself warns against.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2019-07-31"
+    },
+    {
+      "id": "S04",
+      "title": "GDC 2012: Sid Meier on interesting decisions",
+      "url": "https://www.gamedeveloper.com/design/gdc-2012-sid-meier-on-how-to-see-games-as-sets-of-interesting-decisions",
+      "alternateUrls": [
+        "https://www.youtube.com/watch?v=WggIdtrqgKg",
+        "https://www.gamedeveloper.com/design/video-sid-meier-explores-interesting-decisions-in-gameplay"
+      ],
+      "author": "Sid Meier (Firaxis); write-up Leigh Alexander",
+      "discipline": "core-loops/mechanics; system-design",
+      "observedEvidence": "Contemporary Gamasutra/Game Developer write-up 2012-03-07 inspected. Covers always-A and random-choice failure tests, tradeoffs, situational choices, play-style expression, information, feedback, player types, cutting ~1/3 of tried systems. Official GDC YouTube upload 2018-09-27 listed for parent frame review; not watched end-to-end here.",
+      "status": "demonstrated_evidence",
+      "applicability": "Any game whose play is choices under uncertainty. Useful during ideation and ruthless cutting in Step 10.",
+      "limitations": "Meier states rhythm and some puzzle games are a weaker fit. Civilization-heavy examples. Video not frame-reviewed by this seat.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2012-03-07"
+    },
+    {
+      "id": "S05",
+      "title": "A Theory of Fun for Game Design — author page and 2003 slides",
+      "url": "https://www.raphkoster.com/gaming/theoryoffun.shtml",
+      "alternateUrls": [
+        "https://www.raphkoster.com/gaming/atof/theoryoffun.pdf",
+        "http://www.theoryoffun.com"
+      ],
+      "author": "Raph Koster",
+      "discipline": "core-loops/mechanics; progression",
+      "observedEvidence": "Author page fetched. 2003 Austin Game Conference keynote slides hosted by the author; book 2004 (Paraglyph), 2nd edition 2013 (O'Reilly). Thesis: fun is the brain rewarding pattern learning; games bore once the pattern is mastered; long-lived games refresh possibility space.",
+      "status": "demonstrated_evidence",
+      "applicability": "Skill games, combat-as-puzzle, mastery curves, why live permutation appears.",
+      "limitations": "Author himself notes the talk is not full ludology. Weak on fellowship/atmosphere/submission-as-pastime aesthetics from S01. Full book not read cover-to-cover.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2003"
+    },
+    {
+      "id": "S06",
+      "title": "Game Feel: A Game Designer's Guide to Virtual Sensation",
+      "url": "https://www.taylorfrancis.com/books/mono/10.1201/9781482267334/game-feel-steve-swink",
+      "alternateUrls": [
+        "https://shop.elsevier.com/books/game-feel/swink/978-0-12-374328-2",
+        "https://catdir.loc.gov/catdir/toc/ecip0825/2008035742.html"
+      ],
+      "author": "Steve Swink",
+      "discipline": "core-loops/mechanics/game-feel",
+      "observedEvidence": "Publisher pages and Library of Congress TOC inspected. First published 2008-10-13, Morgan Kaufmann/CRC. TOC names defining feel, perception, interactivity model, metrics for input/response/context/metaphor. Associated playset website historically claimed; not exercised.",
+      "status": "source_claim",
+      "applicability": "Real-time control of a virtual object; input latency, spatial simulation, polish. Feel-track prototypes.",
+      "limitations": "Book not read cover-to-cover. Does not apply cleanly to turn-based or non-spatial games. Playset tool untested. 2008 vintage for input hardware examples.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2008-10-13"
+    },
+    {
+      "id": "S07",
+      "title": "The Door Problem",
+      "url": "https://web.archive.org/web/20231023231458/https://lizengland.com/blog/2014/04/the-door-problem/",
+      "alternateUrls": [
+        "https://kotaku.com/designing-a-video-game-as-illustrated-by-doors-1774319142",
+        "https://lizengland.com/blog/2014/04/the-door-problem/"
+      ],
+      "author": "Liz England",
+      "discipline": "levels/puzzles; production-planning; documentation",
+      "observedEvidence": "2014-04-21 essay. Live site fetch returned a stub; Wayback 2023-10-23 and Kotaku reprint 2016-05-03 (author permission stated) corroborate the question list and role-mapped 'other door problems'. 2025 Game Developer podcast exists for later leadership framing; not frame-reviewed.",
+      "status": "demonstrated_evidence",
+      "applicability": "Spec template for every interactable; teaching what a designer does; hidden-scope discovery.",
+      "limitations": "Live URL unstable in this session. Essay is analogy, not a complete GDD standard. Large-studio role map does not transfer 1:1 to solo.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2014-04-21"
+    },
+    {
+      "id": "S08",
+      "title": "Conversations From GDC Europe: Harvey Smith on systemic level design",
+      "url": "https://www.gamedeveloper.com/marketing/conversations-from-gdc-europe-bill-fulton-zeno-colaco-harvey-smith",
+      "alternateUrls": [
+        "https://www.ign.com/articles/2002/06/13/june-13-harvey-smith-on-systemic-level-design-for-emergent-gameplay-at-gamasutra"
+      ],
+      "author": "Harvey Smith (Ion Storm); interview John McLean-Foreman",
+      "discipline": "narrative/worldbuilding/system-design; levels",
+      "observedEvidence": "Interview dated 2002-09-11 inspected. Defines systemic vs special-case levels, class-to-class interactions, second-order consequences, exploding-enemy-plus-container example, reward-for-goal-not-method. Same article includes Bill Fulton on usability methods.",
+      "status": "demonstrated_evidence",
+      "applicability": "Immersive sims and any game that wants improvisation. Architecture ADR: systems vs set pieces.",
+      "limitations": "Deus Ex-era examples. Original GDC slides/audio not recovered first-party this session. Systemic design has production and QA cost not quantified here.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2002-09-11"
+    },
+    {
+      "id": "S09",
+      "title": "Would the Real Emergent Gameplay Please Stand Up? (GDC 2004)",
+      "url": "https://www.gdcvault.com/play/1013560/Would-the-Real-Emergent-Gameplay",
+      "alternateUrls": [
+        "https://www.youtube.com/watch?v=yLVceaULKLU"
+      ],
+      "author": "Harvey Smith and Randy Smith",
+      "discipline": "system-design; levels",
+      "observedEvidence": "GDC Vault listing and unofficial 2017-10-20 YouTube reconstruction (slides + original audio). Transcript snippets: emergence from connected mechanics; general stimuli rather than object-pair hardcoding. Not frame-reviewed.",
+      "status": "source_claim",
+      "applicability": "How to increase possibility space without scripting every combo. Complements S08.",
+      "limitations": "No first-party video inspected. Unofficial reconstruction may omit slides. Randy Smith's separate 'object-oriented level design' essay was not found as a stable canonical URL.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2004"
+    },
+    {
+      "id": "S10",
+      "title": "An Approach to Holistic Level Design (GDC 2017)",
+      "url": "https://www.youtube.com/watch?v=CpOoTAVeEcU",
+      "alternateUrls": [
+        "https://www.youtube.com/@stevelee_gamedev"
+      ],
+      "author": "Steve Lee (then Arkane Studios)",
+      "discipline": "levels/puzzles/player-journeys; art-direction",
+      "observedEvidence": "GDC YouTube 2017-07-18, ~49:38. Description and transcript snippets: holistic = gameplay + presentation + story as one; immersive-sim informed (Dishonored 2, BioShock); architecture-school parallel. Distinct from The Level Design Book (S11).",
+      "status": "source_claim",
+      "applicability": "3D action-adventure and immersive-sim spaces; teaching level designers to own more than encounter blocking.",
+      "limitations": "Talk not frame-reviewed. Lee flags genre bias. Not a general 2D/puzzle/management-game process.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2017-07-18"
+    },
+    {
+      "id": "S11",
+      "title": "The Level Design Book — How to make a level",
+      "url": "https://book.leveldesignbook.com/process/overview",
+      "alternateUrls": [
+        "https://book.leveldesignbook.com",
+        "https://book.leveldesignbook.com/appendix/about",
+        "https://book.leveldesignbook.com/appendix/license"
+      ],
+      "author": "Robert Yang (founder); Andrew Yoder and volunteer contributors",
+      "discipline": "levels/puzzles/player-journeys",
+      "observedEvidence": "Process page fetched. Eight-phase menu (pre-production, optional combat, layout, blockout, scripting, lighting, env art, release). Tailor-the-process warnings. License CC BY-NC-SA 4.0. Self-labeled heavily under construction. Recent updates January 2025 (recommended talks) and November 2025 (Trenchbroom/tools cleanup). Disclaimer: usually FPS/TPS action.",
+      "status": "demonstrated_evidence",
+      "applicability": "Spatial games. Blockout-before-art freeze. Group vs solo planning weight.",
+      "limitations": "Incomplete pages possible. Shooter-weighted. Not authored by Steve Lee (common conflation). Volunteer living doc; structure may change.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2021-10-28",
+      "updateDate": "2025-11"
+    },
+    {
+      "id": "S12",
+      "title": "A Game Design Vocabulary: Exploring the Foundational Principles Behind Good Game Design",
+      "url": "https://www.oreilly.com/library/view/a-game-design/9780133155181",
+      "alternateUrls": [
+        "https://ptgmedia.pearsoncmg.com/images/9780321886927/samplepages/0321886925.pdf",
+        "https://lizengland.com/blog/review-a-game-design-vocabulary-by-anna-anthropy-and-naomi-clark/"
+      ],
+      "author": "Anna Anthropy and Naomi Clark",
+      "discipline": "ideation; core-loops; narrative; solo-production",
+      "observedEvidence": "Publisher listings (Addison-Wesley, 2014-02/03, ISBN 978-0-321-88692-7). Sample pages: verbs/objects/scenes; Anthropy part I, Clark part II. Liz England 2015-04-20 review describes it as short, practical, immediately usable.",
+      "status": "source_claim",
+      "applicability": "Naming the core verb; scene-level craft; teaching; small authored games; alternative to genre-first ideation.",
+      "limitations": "Full book not read. Less operational for large live economies. England notes it was relatively unknown even in 2015.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2014-02-20"
+    },
+    {
+      "id": "S13",
+      "title": "Game Design: Theory & Practice (2nd edition) — author site",
+      "url": "http://paranoidproductions.com/gamedesign/",
+      "alternateUrls": [
+        "https://www.gamedev.net/reference/articles/article2184.asp"
+      ],
+      "author": "Richard Rouse III",
+      "discipline": "production-planning; documentation; playtesting",
+      "observedEvidence": "Author site fetched. 1st ed. 2001-02, 2nd ed. 2004-09 (Wordware). Covers brainstorming through playtesting; interviews (Meier, Wright, Mechner, Church, others); full Suffering design document in 2nd ed.",
+      "status": "source_claim",
+      "applicability": "What a complete GDD can contain; historical process coverage; documentation after a focus is chosen.",
+      "limitations": "2004 platform/live-ops chapters are historical. Risk of document-first culture if used before paper prototypes (conflicts with S02). Full book not read.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2004-09"
+    },
+    {
+      "id": "S14",
+      "title": "The Gamer's Brain — GDC talks and book record",
+      "url": "https://www.youtube.com/watch?v=XIpDLa585ao",
+      "alternateUrls": [
+        "https://www.taylorfrancis.com/books/mono/10.1201/9781003199519/gamer-brain-celia-hodent",
+        "https://www.gamedeveloper.com/design/video-making-better-games-through-neuroscience---and-good-ux",
+        "https://schedule.gdconf.com/speaker/hodent-celia/28972"
+      ],
+      "author": "Celia Hodent",
+      "discipline": "art-direction-and-readable-UI; playtesting/accessibility; UX",
+      "observedEvidence": "GDC 2015 talk on GDC YouTube (upload 2017-08-13) metadata and transcript snippets: intended vs actual experience, perception/attention/memory, UX guidelines, Wason-card demo. Parts 2 and 3 exist. Book 2017; 2nd edition CRC listed eBook 2026-03-05. GDC speaker bio lists Ubisoft, LucasArts, Epic/Fortnite UX.",
+      "status": "source_claim",
+      "applicability": "Readable UI, onboarding, cognitive load, hypothesis-driven playtests. Steps 3, 6, 7.",
+      "limitations": "Talks not frame-reviewed. Full books not read. Neuroscience popularization can be over-claimed if used as authority rather than testable guidelines. Fortnite-scale UX org does not transfer to solo.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2015"
+    },
+    {
+      "id": "S15",
+      "title": "Xbox Accessibility Guidelines V3.2",
+      "url": "https://learn.microsoft.com/en-us/xbox/accessibility/guidelines",
+      "alternateUrls": [
+        "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/105",
+        "https://learn.microsoft.com/en-us/gaming/game-publishing/concepts/certification/certification-mgats"
+      ],
+      "author": "Microsoft Xbox / Gaming Accessibility (ms.author edigonzales on Learn page)",
+      "discipline": "playtesting/accessibility; readable-UI; audio",
+      "observedEvidence": "Official Learn page fetched. v3.2 published 2023-06-08. Page ms.date 2026-08-14, updated_at 2026-08-18. Explicitly not a legal compliance checklist. Per-XAG structure: goal, overview, scoping questions, implementation, examples, player impact, resources. Guidelines 101–123 listed.",
+      "status": "demonstrated_evidence",
+      "applicability": "Scoping at ideation; implementation guidelines for input, time, contrast, audio buses, motion, documentation. Any platform can use the questions.",
+      "limitations": "Xbox-example-heavy. Not law. MGATS testing service not used here. Completeness of every XAG body was sampled, not every guideline page fully read.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": "2023-06-08",
+      "updateDate": "2026-08-18"
+    },
+    {
+      "id": "S16",
+      "title": "Steam Playtest (Steamworks Documentation)",
+      "url": "https://partner.steamgames.com/doc/features/playtest",
+      "alternateUrls": [
+        "https://partner.steamgames.com/doc/store/testing",
+        "https://partner.steamgames.com/steamdirect"
+      ],
+      "author": "Valve (Steamworks)",
+      "discipline": "playtesting; business/GTM/distribution",
+      "observedEvidence": "Partner docs fetched 2026-09-22. Child AppID, store-page signup, Limited vs Open, random grants, country filter, deactivate Not Playable, no unique store page, cannot charge, not NDA, friend invites experimental, reset procedure, confidential-unannounced warning, demo/early-access distinction. Steam Direct $100 fee documented on related pages.",
+      "status": "demonstrated_evidence",
+      "applicability": "Public scale playtests after a coming-soon page; official alternative to fake demos. Step 9/14 overlay.",
+      "limitations": "Untested in this research (no partner account used). PC-storefront-specific. Not a lab. Leak risk if misused for unannounced games. Valve's wishlist-noninterference claim not independently measured.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": null
+    },
+    {
+      "id": "S17",
+      "title": "Accessibility Features (Steamworks Documentation)",
+      "url": "https://partner.steamgames.com/doc/accessibility_features",
+      "author": "Valve (Steamworks)",
+      "discipline": "playtesting/accessibility; GTM",
+      "observedEvidence": "Docs fetched 2026-09-22. Store widget, search filters, Accessibility Feature Wizard. Tags for difficulty, save-anytime, volume buses, narration, subtitles, color, contrast, camera comfort, input-only modes, no-QTE, own-pace, chat TTS/STT. Explicit warning not to tag 'playable without vision' if only menus are narrated.",
+      "status": "demonstrated_evidence",
+      "applicability": "Honest store communication after features exist. Complements S15 as player-facing labels, not as the design method.",
+      "limitations": "Tags are not a design process. Wizard answers can be gamed. ESA Accessible Games Initiative (2025) may change tag landscape; mapping incomplete.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": null
+    },
+    {
+      "id": "S18",
+      "title": "Xbox-GDK-Samples (including AccessibilitySample)",
+      "url": "https://github.com/microsoft/Xbox-GDK-Samples",
+      "alternateUrls": [
+        "https://github.com/microsoft/Xbox-GDK-Samples/tree/main/Samples/System/AccessibilitySample",
+        "https://github.com/microsoft/Xbox-GDK-Samples/blob/main/LICENSE"
+      ],
+      "author": "Microsoft Xbox Advanced Technology Group",
+      "discipline": "playtesting/accessibility; production-tooling",
+      "observedEvidence": "README and LICENSE fetched. MIT License, Copyright Microsoft. Public repo. Samples require October 2025 GDK; old layout deprecated. AccessibilitySample described as cross-platform accessibility demonstration. Commit history present (52 commits reported on main). Stars not used as quality.",
+      "status": "demonstrated_evidence",
+      "applicability": "Reference implementation if shipping on GDK/Xbox/PC Game Pass. Proof that Microsoft publishes maintained accessibility sample code.",
+      "limitations": "GDK-oriented; many creators will never compile it. Sample telemetry block sends executable name to Microsoft unless removed. Not a design method. Unity samples still on old layout per README.",
+      "dateChecked": "2026-09-22",
+      "publicationDate": null,
+      "updateDate": "2025-10"
+    }
+  ],
+  "discoveryLeadsNotCounted": [
+    {
+      "title": "Dan Fornace Game Design Tip 58 — pillars should excite players",
+      "url": "https://x.com/danfornace/status/1375130355963944964",
+      "note": "X discovery 2021-03-25. Traced to Fullerton experience goals (S02) and ordinary store-copy practice. Not a primary method."
+    },
+    {
+      "title": "Marina Díez — 4/5 design pillars as ingredients",
+      "url": "https://x.com/Ninfa_dp/status/1413525175962906631",
+      "note": "X discovery 2021-07-09. Industry shorthand; testability still requires S02 situation language."
+    },
+    {
+      "title": "Brian Schmidt GDC speaker biography",
+      "url": "https://schedule.gdconf.com/speaker/schmidt-brian/19866",
+      "note": "Audio discipline lead. Xbox audio architecture, GameSoundCon. Supporting, not one of the 18 counted sources."
+    },
+    {
+      "title": "Guy Whitmore GDC 2014 interactive music slides",
+      "url": "https://archive.org/download/GDC2014Whitmore/GDC2014-Whitmore.pdf",
+      "note": "Slide deck present on archive.org. Adaptive music graphs. Talk not frame-reviewed."
+    },
+    {
+      "title": "GQ profile — Eric Barone / Stardew Valley solo production",
+      "url": "https://www.gq.com/story/stardew-valley-eric-barone-profile",
+      "note": "Demonstrated survivor case (2018-03-20), not a generalizable method. Cited in synthesis as such."
+    }
+  ]
+}

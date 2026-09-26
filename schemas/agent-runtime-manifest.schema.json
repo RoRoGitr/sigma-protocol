@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/agent-runtime-manifest.schema.json",
+  "title": "Sigma Agent Runtime Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "mode", "platforms", "graph", "memory", "reviewChain"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["coordinator_only", "coordinator_first"]
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["codex", "claude-code"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["structuralProvider", "semanticProvider", "fallbackProvider"],
+      "properties": {
+        "structuralProvider": { "type": "string" },
+        "semanticProvider": { "type": "string" },
+        "fallbackProvider": { "type": "string" }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project", "local"],
+      "properties": {
+        "project": { "type": "string" },
+        "local": { "type": "string" },
+        "user": { "type": "string" }
+      }
+    },
+    "reviewChain": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "implementation_worker" },
+        { "const": "devils_advocate" },
+        { "const": "gap_analysis" },
+        { "const": "testing" }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    }
+  }
+}

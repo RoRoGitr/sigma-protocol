@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-23T00:54:09.986Z",
+  "taxonomy": [
+    "steps",
+    "orchestration",
+    "deploy",
+    "ops",
+    "audit",
+    "platform",
+    "sales",
+    "marketing",
+    "deprecated",
+    "dev"
+  ],
+  "count": 16,
+  "items": [
+    {
+      "id": "agents/aaron-ross",
+      "name": "aaron-ross",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/aaron-ross.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/ari-gold",
+      "name": "ari-gold",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/ari-gold.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/belfort",
+      "name": "belfort",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/belfort.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/chris-voss",
+      "name": "chris-voss",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/chris-voss.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/client-engineer",
+      "name": "client-engineer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/client-engineer.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/cole-gordon",
+      "name": "cole-gordon",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/cole-gordon.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/cso",
+      "name": "cso",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/cso.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/design-lead",
+      "name": "design-lead",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/design-lead.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/frontend-engineer",
+      "name": "frontend-engineer",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/frontend-engineer.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/game-art-director",
+      "name": "game-art-director",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/game-art-director.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/game-design-lead",
+      "name": "game-design-lead",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/game-design-lead.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/game-quality-lead",
+      "name": "game-quality-lead",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/game-quality-lead.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/game-technical-director",
+      "name": "game-technical-director",
+      "category": "dev",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/engineering/game-technical-director.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/jeremy-miner",
+      "name": "jeremy-miner",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/jeremy-miner.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/josh-braun",
+      "name": "josh-braun",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/josh-braun.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "agents/sheila-bella",
+      "name": "sheila-bella",
+      "category": "sales",
+      "status": "active",
+      "canonicalSourcePath": "src/agents/sales/sheila-bella.md",
+      "generatedPaths": [
+        "AGENTS.md"
+      ]
+    }
+  ]
+}

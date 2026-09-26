@@ -1,0 +1,100 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Complete Marketing Pages",
+        "description": "Implement landing page hero, features section, pricing page with 3-tier table, blog listing, contact form with Resend, and legal pages with responsive design and dark mode support.",
+        "details": "Use Next.js 14+ App Router to create /, /pricing, /blog, /contact, /privacy, /terms pages. Implement animated gradient hero with Tailwind CSS and Framer Motion. Build features icon grid and pricing comparison table using shadcn/ui components (Table, Card). Integrate Resend for contact form with server action validation using Zod and React Hook Form. Ensure responsive design with Tailwind breakpoints and smooth page transitions via Next.js layout animations.",
+        "testStrategy": "Test page rendering across mobile/tablet/desktop viewports using Playwright. Verify dark mode toggle functionality. Test contact form submission with mock Resend API. Check Lighthouse performance >90 and console error-free rendering.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Polish Authentication UI",
+        "description": "Complete login/signup pages with OAuth (Google/GitHub), forgot password flow, callback handling, form validation, error states, and session management.",
+        "details": "Enhance existing Supabase Auth pages at /login, /signup, /forgot-password, /auth/callback. Add password strength indicator using zxcvbn library. Implement OAuth buttons with Supabase.auth.signInWithOAuth(). Use React Hook Form + Zod for validation. Add loading spinners with shadcn/ui Skeleton. Handle session persistence with Supabase onAuthStateChange listener and redirect to /dashboard post-login using Next.js middleware.",
+        "testStrategy": "E2E test full auth flows (email/password, OAuth) with Playwright. Verify error messages display correctly. Test session persistence across page refreshes. Confirm redirects work after successful auth.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Build Dashboard & Settings Pages",
+        "description": "Implement dashboard home with stats/recent activity, and settings pages for profile (avatar upload), notifications, appearance, and security.",
+        "details": "Create /dashboard, /settings/profile, /settings/notifications, /settings/appearance, /settings/security routes. Use shadcn/ui DataTable, Card, AvatarUpload components. Integrate Supabase Storage for avatar uploads via @supabase/storage-js. Persist settings to Supabase users/notifications tables using server actions. Implement real-time theme sync with localStorage and CSS variables. Add 2FA setup with Supabase Auth MFA.",
+        "testStrategy": "Test settings persistence by verifying database changes. Validate avatar upload/download flow. Check theme changes apply immediately. Test form validation prevents invalid submissions.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Stripe Billing Integration",
+        "description": "Complete billing overview, plan upgrade flow, payment method management, invoice history, and subscription cancellation.",
+        "details": "Create /billing, /billing/upgrade, /billing/payment-methods pages. Integrate Stripe Checkout via stripe-js and @stripe/stripe-js. Handle webhooks at /api/stripe/webhook for subscription events using Stripe CLI tunneling. Use Supabase edge functions for webhook verification. Implement plan limits enforcement via subscription metadata. Add invoice PDF download via Stripe API.",
+        "testStrategy": "Test Stripe Checkout flow with test cards. Verify webhook events update Supabase subscription status. Test plan limits block premium features for free users. Confirm cancellation flow shows confirmation modal.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Develop Admin Panel",
+        "description": "Build admin dashboard with metrics, user management table (search/filter/pagination), user details, subscription analytics, and system health.",
+        "details": "Create /admin route protected by admin role check via Supabase RLS. Use shadcn/ui DataTable with server-side pagination/search via Supabase postgres filters. Implement user impersonation with Supabase service role tokens. Add Recharts for subscription analytics. Include system health checks (Supabase connection, Stripe sync status). Log all admin actions to audit table.",
+        "testStrategy": "Test admin role protection blocks non-admin access. Verify user search/filter/pagination returns correct results. Test impersonation switches user context safely. Check analytics charts render with mock data.",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Enable AI Chat Module",
+        "description": "Complete AI chat interface with streaming responses, message history, credits deduction, and persistence.",
+        "details": "Enable existing AI module at /chat. Implement streaming with Server-Sent Events (SSE) using OpenAI API or xAI Grok via Vercel AI SDK. Persist chat history in Supabase chats/messages tables. Deduct credits via existing credits system hooks on message send. Use shadcn/ui Chat components with optimistic updates and loading states.",
+        "testStrategy": "Test streaming displays messages progressively. Verify credits deduct correctly per message. Confirm chat history loads on page refresh. Test error handling for API rate limits/timeouts.",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Complete Items CRUD Example",
+        "description": "Implement full CRUD operations for items example with table/grid views, forms, optimistic updates, and data seeding.",
+        "details": "Complete /items, /items/[id] routes using Next.js App Router. Implement table/grid toggle with shadcn/ui Table and Masonry layout. Use React Query for optimistic CRUD mutations against Supabase items table. Add create/edit forms with Zod validation. Implement delete confirmation modal. Seed example data via Supabase SQL or Prisma seed script.",
+        "testStrategy": "Test full CRUD cycle creates/reads/updates/deletes items. Verify optimistic updates revert on error. Check loading/error states display correctly. Confirm seeded data appears on first load.",
+        "priority": "low",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-13T01:15:37.059Z",
+      "updated": "2026-01-13T01:15:37.059Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

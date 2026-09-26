@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sigma-protocol.dev/schemas/runtime-baseline.schema.json",
+  "title": "Sigma Runtime Baseline",
+  "description": "Machine-readable Step 0 boot state for Sigma Protocol projects.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "mode",
+    "runtime_selection",
+    "runtime_status",
+    "research_mode",
+    "research_tools",
+    "boilerplate",
+    "stack_integrations",
+    "blocking_issues",
+    "generated_at"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://sigma-protocol.dev/schemas/runtime-baseline.schema.json"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["protocol-dev", "boilerplate-project", "custom-project"]
+    },
+    "runtime_selection": {
+      "type": "string",
+      "enum": ["claude-code", "codex", "both"]
+    },
+    "runtime_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selected", "healthy"],
+      "properties": {
+        "selected": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["claude-code", "codex"]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "healthy": {
+          "type": "boolean"
+        },
+        "claude-code": {
+          "$ref": "#/definitions/RuntimeHealth"
+        },
+        "codex": {
+          "$ref": "#/definitions/RuntimeHealth"
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "research_mode": {
+      "type": "string",
+      "enum": ["full", "reduced", "blocked"]
+    },
+    "research_tools": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["web_research", "documentation_lookup", "code_context_lookup", "recommended"],
+      "properties": {
+        "web_research": {
+          "$ref": "#/definitions/ToolSelection"
+        },
+        "documentation_lookup": {
+          "$ref": "#/definitions/ToolSelection"
+        },
+        "code_context_lookup": {
+          "$ref": "#/definitions/ToolSelection"
+        },
+        "recommended": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "boilerplate": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["detected", "template"],
+          "properties": {
+            "detected": {
+              "type": "boolean",
+              "const": true
+            },
+            "template": {
+              "type": "string",
+              "minLength": 1
+            },
+            "template_version": {
+              "type": "string"
+            },
+            "origin_repo": {
+              "type": "string"
+            },
+            "project_name": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "stack_integrations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StackIntegration"
+      }
+    },
+    "blocking_issues": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "linear": {
+      "type": "object",
+      "description": "Linear task-tracker detection (Linear replaced the SigmaHQ kanban 2026-07-11). Optional, additive: configured requires LINEAR_API_KEY in Keychain plus a named Linear project.",
+      "additionalProperties": false,
+      "required": ["configured"],
+      "properties": {
+        "configured": {
+          "type": "boolean"
+        },
+        "project": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "minLength": 1 }
+          ]
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "definitions": {
+    "RuntimeHealth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["detected", "healthy"],
+      "properties": {
+        "detected": {
+          "type": "boolean"
+        },
+        "healthy": {
+          "type": "boolean"
+        },
+        "binary": {
+          "type": "string",
+          "enum": ["healthy", "missing", "unknown"]
+        },
+        "auth": {
+          "type": "string",
+          "enum": ["healthy", "warning", "missing", "unknown", "not_applicable"]
+        },
+        "config": {
+          "type": "string",
+          "enum": ["healthy", "warning", "missing", "unknown", "not_applicable"]
+        },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "ToolSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "providers"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["configured", "reduced", "missing"]
+        },
+        "providers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "StackIntegration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "source"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": ["configured", "recommended", "deferred", "skipped", "missing"]
+        },
+        "source": {
+          "type": "string",
+          "enum": ["boilerplate", "stack-profile", "user-input", "step-2", "protocol-dev"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

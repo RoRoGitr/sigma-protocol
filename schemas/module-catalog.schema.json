@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigma-protocol.dev/schemas/module-catalog.schema.json",
+  "title": "Sigma Module Catalog",
+  "type": "object",
+  "required": ["version", "modules"],
+  "properties": {
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "platform"],
+        "properties": {
+          "id": { "type": "string" },
+          "platform": { "enum": ["web", "mobile", "both"] },
+          "defaultIncluded": { "type": "boolean" }
+        }
+      }
+    },
+    "categories": { "type": "object" }
+  }
+}

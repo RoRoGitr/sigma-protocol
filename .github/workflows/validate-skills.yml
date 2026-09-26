@@ -1,0 +1,36 @@
+name: validate-skills
+
+# Skill-routing integrity gate: every agent `skills:` ref must resolve, and every
+# src/skills SKILL.md frontmatter `name:` must match its directory. Keeps the
+# harness-as-company skill system from rotting. Cross-surface (--sync) drift is a
+# local check only — the global pool isn't present in CI.
+
+on:
+  pull_request:
+    paths:
+      - 'src/skills/**'
+      - 'src/agents/**'
+      - 'scripts/validate-skills.mjs'
+      - 'scripts/skills-allowlist.json'
+  push:
+    branches: [main]
+    paths:
+      - 'src/skills/**'
+      - 'src/agents/**'
+
+permissions: {}   # least privilege — this job only reads the checkout
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v6.0.3
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v6.4.0
+        with:
+          node-version: '24'
+      - name: Validate skill-routing integrity
+        run: node scripts/validate-skills.mjs
+      - name: Validate mirror corruption + drift (non-strict)
+        run: node scripts/verify/validate-mirrors.mjs

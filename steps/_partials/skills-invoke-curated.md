@@ -1,0 +1,4 @@
+- `shadcn` — curated preflight (web/desktop React)
+- `rn-component-library` — curated preflight (mobile Expo)
+- `react-native-patterns` — curated preflight (mobile Expo)
+- `companion-system` — curated preflight (gamification / collectibles)

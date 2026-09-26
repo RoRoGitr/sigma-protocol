@@ -1,0 +1,24 @@
+{
+  "$schema": "../sigma-prd-canonical.schema.json",
+  "prd_id": "F01.002",
+  "title": "Password reset flow",
+  "slug": "password-reset",
+  "goal": {
+    "objective": "Add POST /auth/forgot-password and POST /auth/reset-password endpoints with one-time email tokens (1h TTL).",
+    "stopping_condition": "tests/auth/reset.test.ts passes end-to-end including token expiry case.",
+    "files_to_read_first": [
+      "src/auth/index.ts"
+    ],
+    "proof_commands": [
+      "npm test -- src/auth/reset"
+    ]
+  },
+  "mission": {
+    "milestone": "M1: Auth foundation",
+    "expected_behavior": "Given a user submits an email to POST /auth/forgot-password, when the email matches an account, then a one-time reset token is generated, persisted with 1h TTL, and emailed to the user.",
+    "verification_steps": ["VC-AUTH-RESET-001"],
+    "fulfills": ["VC-AUTH-RESET-001"],
+    "skill_name": "backend-engineer",
+    "estimated_complexity": "small"
+  }
+}

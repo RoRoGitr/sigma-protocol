@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+
+"$repo_root/scripts/hooks/pre-commit-secrets.sh"
+
+global_pre_commit="$HOME/.githooks/pre-commit"
+if [[ -x "$global_pre_commit" ]]; then
+  "$global_pre_commit"
+fi

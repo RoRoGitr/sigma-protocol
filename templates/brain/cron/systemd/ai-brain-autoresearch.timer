@@ -1,0 +1,10 @@
+[Unit]
+Description=Run AI Brain daily autoresearch at 03:00
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+Unit=ai-brain-autoresearch.service
+
+[Install]
+WantedBy=timers.target

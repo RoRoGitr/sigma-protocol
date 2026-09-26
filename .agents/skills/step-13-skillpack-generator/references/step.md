@@ -1,0 +1,601 @@
+---
+version: "4.1.0"
+last_updated: "2026-09-19"
+description: "Step 13: Skillpack Generator — author project skills and agents under src/, assign agents to engineering tickets"
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+parameters:
+  - --force
+---
+
+<!-- HITL-GATE-POLICY:start -->
+## ⛔ HITL Gate Contract (read before running any phase)
+
+This step is **human-in-the-loop**. Every `<HARD-GATE>` below is a **hard stop**. Obey these rules exactly — they override any default to "keep going."
+
+**Runtime adapter:** `AskUserQuestion` below means the host's supported user-question mechanism, not a required tool identifier. Use an available structured question tool only when it permits this kind of question. Otherwise ask in a normal response and end the turn at the gate. A tool that cannot collect approval is not an approval substitute. Frontmatter controls are host-specific: supported `allowed-tools` can preapprove tool access. Tool access does not authorize actions outside the user's scope or satisfy a phase, release or production approval.
+
+1. **Ask, then wait.** At each `<HARD-GATE>` you MUST call `AskUserQuestion` and receive an **actual answer from the user** before starting the next phase. Producing the analysis for a phase is allowed; *advancing past its gate* is not, until the user answers.
+2. **A non-answer is NOT approval.** If `AskUserQuestion` returns no response, times out, or says the user is away — **PAUSE the step and wait**. Do not "proceed on best judgment," do not draft the remaining phases, do not infer approval from silence. Save what you have, tell the user the step is paused at Phase _X_ awaiting their answer, and stop. Re-ask when they return.
+3. **One gate per phase — never collapse them.** Ask each phase's gate at its own phase boundary (A, then B, then C…). Do not batch several phases into a single question, and do not run multiple phases and ask once at the end. The founder decides at every boundary.
+4. **The only way to skip gates** is an explicit, up-front instruction from the user in *this* run — e.g. "run all phases without stopping," "autonomous mode," or "don't ask me, just draft it." Absent that explicit opt-in, gates are mandatory. Being mid-task, low on time, or unattended is never such an opt-in.
+5. **Everything before an approval is a draft.** Nothing a gate guards is "locked" or "done" until the user has approved it at that gate.
+
+**Explicit unattended runs:** Record the user's opt-in and its scope once. Complete authorized phases and local verification without repeatedly asking for the same permission. Mark decisions made under that delegation as assumptions or delegated decisions, not fabricated user answers. Unattended drafting does not grant release, spending, destructive-action or production authority. A genuine missing decision may block one part while independent authorized work continues.
+
+> If you find yourself about to write the next phase without a user answer to the current gate, STOP — that is the exact failure this contract prevents.
+<!-- HITL-GATE-POLICY:end -->
+
+<!-- GAME-DOMAIN:start -->
+## Conditional game-domain adaptation
+
+Apply this section only when `docs/stack-profile.json` records `projectDomain: "game"`. A missing value means `general`; do not infer a game domain from product language. Keep this step's number, phases, outputs, gates, business functions, GTM, context, and handoff intact.
+
+Read the selected entry from the canonical game-development catalog when it is available. Use only the workflows and questions applicable to the recorded game profile. If applicability is unknown, record it as unresolved; defer or skip work only with a reason. The catalog adapts this step. It does not create an alternate numbered sequence.
+
+- Default to a solo creator. Contributor idea packs are separately authored, workspace-visible planning inputs; synthesis is an explicit creator decision that preserves selected revisions, attribution, disagreement, and rejected alternatives.
+- Treat prototypes, art, audio, engine setup, imports, builds, performance measurements, multiplayer checks, and playtests as external execution. This Protocol step may prepare a decision, brief, checklist, or evidence requirement. Mark execution evidence `NOT-EXECUTED` until real evidence is attached and reviewed.
+- Choose the smallest experiment that tests the current uncertainty. Do not require paper prototypes, outside testers, fixed art freezes, an engine, a team size, a schedule, or a downstream production method unless the creator records why it applies.
+- Keep claims classified: source text, observed evidence, source claim, untested integration, or proposed adaptation. Preserve the catalog source IDs and linked research when creating game artifacts.
+
+<!-- GAME-DOMAIN:end -->
+
+<!-- SKILLS-INVOKE:start -->
+## Required skills — invoke the live skills (do NOT rely on embedded summaries)
+
+This step's output quality depends on these skills. **Invoke each via the host's installed Skill catalog by name at the relevant phase.** If the host cannot resolve that name, read the project source at `src/skills/<skill>/SKILL.md`, then the bundled `.agents/skills/<skill>/SKILL.md` when present. Do not rely on embedded summaries.
+
+- `game-development` — conditional when `projectDomain: "game"`; select this step's catalog entry and applicable workflow
+
+- `skill-creator`
+- `skill-writer`
+- `skill-optimizer`
+- `shadcn` — component-library bundle (web/desktop)
+- `rn-component-library` — component-library bundle (mobile)
+- `agentic-ui` — when stack profile includes agentic UX
+- `companion-system` — gamification / trophies / collectibles
+- `motion-landing-design` — marketing surfaces
+
+- `holes` — mandatory pre-approval gap pass (invoke via `$holes` or Skill tool at the step's final gate)
+
+If a skill is unavailable on this surface, state that and continue; never silently skip it.
+<!-- SKILLS-INVOKE:end -->
+
+
+# /step-13-skillpack-generator — Skillpack Generator
+
+**On start, announce:** "Running Step 13: Skillpack Generator. I'll author project-specific skills and agents under src/, wire the component-library methodology bundle, and assign agents to engineering tickets."
+
+**Canonical-first policy**
+- Authored skills live in `src/skills/<category>/<skill>/SKILL.md` (or `src/skills/<skill>/SKILL.md` for flat layout)
+- Authored agents live in `src/agents/<category>/<agent>.md`
+- **No platform mirrors.** Do not generate `.claude/`, `.codex/`, `.cursor/`, `.factory/`, or `platforms/*` adapter trees — operators import from `src/` directly or via their own CLI.
+- Rendered step commands live in `commands/` (not Step 13 output)
+
+# Runtime policy (platform-agnostic)
+
+Sigma Protocol ships as **canonical sources**, not per-vendor mirrors:
+
+| Layer | Path | Role |
+|-------|------|------|
+| Steps | `steps/` | Canonical step contracts (phases, HARD-GATEs, SKILLS-INVOKE) |
+| Rendered commands | `commands/` | Expanded step files (partials inlined) for slash-command import |
+| Authored skills | `src/skills/<category>/<skill>/SKILL.md` | Invoke via Skill tool at the phase listed in each step |
+| Authored agents | `src/agents/<category>/<agent>.md` | Project agent definitions for Step 14 dispatch |
+| Project brain | `AGENTS.md` | Cross-agent project context (Step 12 output) |
+| Runtime state | `.sigma/runtime/`, `.sigma/memory/`, `.sigma/tools/` | Step 14 scaffold |
+
+**Do not** duplicate canonical content into per-vendor mirror trees. Native discovery adapters are allowed: a thin `CLAUDE.md` containing `@AGENTS.md`, skill installation into a supported discovery directory, and host-specific agent configuration. Keep one instruction body; record adapter ownership. Operators control CLI permissions, hooks, models and MCP configuration.
+
+**Skill invocation rule:** Resolve listed skills from the installed catalog. This repository authors skills in `src/skills/` and also ships bundled-only skills in `.agents/skills/`; generated projects may use category directories. Read only the skill and references relevant to the phase. Missing skill → state the gap; do not silently pretend it ran. Claude tool names in examples map to the current host's equivalent capabilities; never invent a tool or grant permissions from a document.
+
+**Research rule:** Use built-in web search. Do not require Exa, Firecrawl, or operator-local storage paths.
+
+**Evidence and freshness:** Verify changing framework, model, library and legal claims against primary sources. Record the URL, publication/version when available, review date, and the concrete decision affected. Distinguish a foundational method from a new revision; do not label an entire skill current because one source was checked. Illustrative dates and numbers must not become live receipts.
+
+<goal>
+You are the Skillpack Architect. Execute ALL phases (A through E) in order.
+
+CRITICAL:
+- Do NOT skip any phase. Do NOT combine phases.
+- Each phase ends with a HARD-GATE — halt and wait for user approval.
+
+| Phase | Purpose | Output |
+|-------|---------|--------|
+| A | Context Import & Skill/Agent Inventory | Current authored bundles, indexes, and engineering tickets loaded |
+| B | Skill/Agent Plan with DNA Classification | Category map, DNA vs Skills classification, TDD plan |
+| C | Authored Source Generation | `src/skills/`, `src/agents/`, indexes, eval harnesses |
+| D | Linear Agent Assignment | Engineering issues mapped to agents, batch confirmation |
+| E | Verification & Handoff | Index updates, $holes pass, Step 14 handoff |
+
+Required Outputs:
+- `src/skills/<category>/<skill>/SKILL.md` (authored source)
+- `src/agents/<category>/<agent>.md` (authored source)
+- `.sigma/indexes/skills-index.json`, `.sigma/indexes/agents-index.json`
+- **Methodology component-library bundle** (see below) — linked or copied into project skillpack when stack profile matches
+- `src/skills/<department>/eval-harness-<dept>/SKILL.md` — one eval-harness skill per department agent
+- `.sigma/tools/eval-runner.sh` — eval harness execution script wired to `docs/evals/*.json`
+
+Quality gate: 95+/100 on verification schema.
+
+Checkpoint slice rule:
+- present only the current phase slice at each checkpoint
+- summarize `What was decided`, `What changed`, and `What remains open`
+- end with a clear approval or revision question for that slice only
+</goal>
+
+---
+
+## Step Boundary
+
+Step 13 OWNS:
+- src/skills/ and src/agents/ (canonical authored source)
+- .sigma/indexes/skills-index.json, .sigma/indexes/agents-index.json
+- Skill/agent evaluation plans and any project-native eval runner the approved stack supports
+
+Step 13 IMPORTS:
+- Step 12 AGENTS.md for project context alignment
+- Step 11 PRDs for skill domain mapping (including Section 13 Eval Contracts)
+- Step 10 feature breakdown for agent scope decisions
+- `docs/references/CURATED-COMPONENT-LIBRARIES.md` for methodology skill bundle
+- Linear engineering issues (label `eng-task`, from Step 11) for agent assignment when configured
+
+Step 13 does NOT OWN:
+- AGENTS.md (Step 12)
+- .sigma/runtime/, .sigma/memory/ expansion (Step 14)
+- Platform-specific mirror directories
+- The golden task JSON files themselves (authored in PRD Section 13, owned by the PRD author)
+
+---
+
+## Eval Harness Planning
+
+When a project has PRD eval contracts and a supported runner, Step 13 may emit a focused eval-harness skill or use the existing project-native evaluation surface. Do not invent a department skill, CI integration or runner where none exists. Preserve any required independent-model review from Steps 11/14 or project policy; missing reviewer capability leaves that gate blocked. Every selected evaluation route must name its generator/judge identity when applicable, rubric version, fixtures, and executable receipt.
+
+### What an eval-harness skill does
+
+An eval-harness skill is a thin skill that wires a department agent to:
+1. Read `docs/evals/<feature-id>-golden.json` files for its department's features.
+2. Execute each golden task via the department agent (generator role).
+3. Score each output with deterministic checks where possible and a documented judge model only where qualitative review is necessary.
+4. Emit pass/fail per task against the `pass_threshold` in the golden JSON.
+5. Return a structured result: `{ passed: N, failed: M, score: X.X, task_results: [...] }`.
+
+### Eval-harness skill location
+
+```
+src/skills/<dept>/eval-harness-<dept>/SKILL.md
+```
+
+Example: `src/skills/engineering/eval-harness-engineering/SKILL.md`
+
+### Eval-harness skill template
+
+```markdown
+---
+name: eval-harness-<dept>
+description: "Run the eval golden-task suite for the [dept] department: reads docs/evals/<feature-id>-golden.json files, executes each task via the [dept] generator agent, scores via judge model ([judge-model]), emits pass/fail per CI gate threshold."
+version: "1.0.0"
+department: <dept>
+---
+
+# Eval Harness — [Department]
+
+## When to invoke
+Invoke before any staging deploy that touches a [dept] feature. Also run in CI as a required gate.
+
+## Execution
+
+1. List golden task files: `ls docs/evals/*.json | grep -E '<dept-feature-ids>'`.
+2. For each file: read `input`, `expected_output`, `scoring_criteria`, `pass_threshold`.
+3. Run the department agent (generator model: [generator-model]) with `input` as the prompt.
+4. Call the judge model ([judge-model]) with: input, expected_output, actual_output, scoring_criteria.
+5. Record score per dimension (correctness, faithfulness, relevance).
+6. Compare to `pass_threshold` — emit PASS or FAIL per task.
+7. Return structured result. Exit non-zero if any task fails.
+
+## Runner
+
+```bash
+bash .sigma/tools/eval-runner.sh --dept <dept> [--feature-id <id>] [--ci]
+```
+
+## Judge model
+
+Use the independently configured judge required by the upstream/project eval contract. A same-model check is supplemental and must be labeled; it does not clear a required cross-model gate. Where no cross-model requirement exists, select a risk-appropriate deterministic, human or model-assisted evaluation and record the limitation.
+```
+
+### eval-runner.sh generation
+
+When the approved project runtime supports it, an eval runner may:
+- Accepts `--dept`, `--feature-id`, and `--ci` flags.
+- Resolves golden JSON files for the specified scope.
+- Runs the structured judge prompt via the operator CLI's headless mode (e.g. `codex exec`, `claude -p`, or equivalent read-only reviewer).
+- Exits 0 only if all tasks at or above their `pass_threshold`.
+- In `--ci` mode: outputs a machine-readable JSON summary to stdout for pipeline parsing.
+
+---
+
+**Inherited review requirements:** Project and upstream Step 11/14 cross-model requirements remain binding. The lightweight or same-model evaluation options below apply only where no such requirement exists. If a required independent model/provider is unavailable, record the gate as blocked; deterministic checks or same-model self-review cannot silently replace it.
+
+## Phase A — Context Import & Skill/Agent Inventory
+
+**Goal:** Load all current sources and identify what exists.
+
+Read these sources if they exist:
+- `AGENTS.md`
+- `docs/specs/MASTER_PRD.md`
+- `docs/design/DESIGN-SYSTEM.md`
+- `docs/technical/TECHNICAL-SPEC.md`
+- `docs/specs/AGENT-RUNTIME.md`
+- `docs/prds/`
+- `.sigma/indexes/skills-index.json`
+- `.sigma/indexes/agents-index.json`
+
+Detect current authored surfaces:
+- `src/skills/`
+- `src/agents/`
+- `.sigma/indexes/skills-index.json`
+- `.sigma/indexes/agents-index.json`
+
+Also inventory installed and configured host scopes without modifying them: repository `.agents/skills`, `.claude/skills`, host-managed/admin/user scopes, plugin manifests, and duplicate-name collisions. For each active skill or agent record canonical owner, source URL/ref, license, dependencies, activation surface, and collision status.
+
+Read Linear engineering issues if configured (Linear replaced the SigmaHQ kanban 2026-07-11):
+
+If `runtime-baseline.json` shows `linear.configured: true` (LINEAR_API_KEY in Keychain + `linear.project`):
+- Query `linear.project` for issues labeled `eng-task` (created by Step 11) — see Step 0 → Linear Operations Reference
+- These issues will be assigned to agents in Phase D
+
+Do not treat archived legacy modules as active Step 13 outputs.
+
+<HARD-GATE>
+Do NOT proceed to Phase B until user approves context scope.
+Use AskUserQuestion: "Context loaded. Approve skill/agent planning scope?"
+Options: [Approve scope, Adjust scope, Skip to specific phase]
+</HARD-GATE>
+
+---
+
+## Phase B — Skill/Agent Plan with DNA Classification
+
+**Goal:** Decide what the project-specific overlay layer must cover, classify DNA vs Skills, and define TDD baselines.
+
+### Required categories
+Use Sigma's supported categories when relevant:
+- `steps`, `ops`, `audit`, `dev`, `deploy`
+- `marketing`, `orchestration`, `platform`, `deprecated`
+
+### Planning rules
+- Reuse canonical authored source, not runtime adapter files, as the basis for new overlays.
+- Skills should describe when to use them, what they read first, and what project-specific constraints override general guidance.
+- Before encoding a framework or vendor practice, verify it in the primary documentation current for this run. Record the source URL, pinned ref or checksum when available, license, support status, and verification date in the skill or a referenced evidence file. Mark an unverified claim as an assumption; do not present it as framework guidance. Treat maintained owner sources as current references; do not promote deprecated catalogs as new authority.
+- Skills may include optional support files under `references/`, `scripts/`, or `assets/` when the runtime benefits from them.
+- Agents should describe responsibility, scope boundaries, and handoff expectations.
+- Agents should state whether they are coordinator, worker, reviewer, or tester surfaces for Step 14.
+- Do not split numbered steps into hidden substeps or revive removed pseudo-step labels.
+
+### Agent DNA vs Skills Classification
+
+This maps to the global vs project architecture from Step 12:
+- **Skills** live in `src/skills/` — project-specific knowledge loaded on demand via Skill tool
+- Step 13 generates the PROJECT layer only — global methodology agents are maintained separately by the operator
+
+Every authored skill and agent must be classified:
+
+**DNA (embed in agent definition — immutable across projects):**
+- Anti-slop writing rules
+- Verification gates (95/100 threshold)
+- HARD-GATE enforcement
+- Coordinator-first delegation
+- Gap analysis methodology
+
+**Skills (invoke per project from stack-profile.json):**
+- Framework patterns (React, Next.js, Supabase, etc.)
+- MCP tool bindings
+- Platform-specific conventions
+- API integration patterns
+
+Present the classification table for each planned skill/agent:
+
+| Skill/Agent | Type | DNA Components | Tech Skills | Category |
+|-------------|------|----------------|-------------|----------|
+
+### TDD-for-Skills
+
+Each authored skill follows the pressure-test cycle:
+1. Define the skill's activation condition and expected behavior
+2. Write a baseline scenario: "Given [context], when [skill invoked], then [expected output]"
+3. Author the skill
+4. Verify against the baseline scenario
+5. Refactor — simplify without losing coverage
+
+Skills that can't pass their own baseline scenario are not ready for runtime.
+
+### Skill Quality Benchmarking
+
+Each skill must produce an eval test suite alongside the skill itself. Generate `tests/eval.csv` in each skill directory:
+
+```csv
+id,should_trigger,prompt,expected_behavior
+test-01,true,"explicit /skill-name invocation","Skill activates, produces expected output"
+test-02,true,"implicit scenario matching description","Skill auto-triggers on domain match"
+test-03,false,"similar but out-of-scope request","Skill does NOT activate (negative control)"
+```
+
+**Eval criteria (4 categories):**
+- **Outcome** — did the skill produce the correct result?
+- **Process** — did the skill invoke the right tools in the right order?
+- **Style** — does the output follow anti-slop rules and project conventions?
+- **Efficiency** — minimal redundant tool calls, no unnecessary file reads?
+
+**Two grading methods:**
+- **Deterministic graders:** shell scripts that check file system outcomes (files created, tests passing, etc.)
+- **LLM rubric graders:** structured rubric evaluated by a second model for qualitative aspects
+
+Choose the number of cases by risk and state it in the eval plan. Include at least one positive trigger and one negative/scope case for every active skill; add deterministic fixtures for file, command, or schema behavior and a rubric only where deterministic checks cannot assess the outcome.
+
+<HARD-GATE>
+Do NOT proceed to Phase C until user approves the skill/agent plan.
+Use AskUserQuestion: "Skill/agent plan with DNA classification complete. Approve?"
+Options: [Approve plan, Revise classification, Add/remove skills, Redo TDD baselines]
+</HARD-GATE>
+
+---
+
+## Methodology Component-Library Bundle (mandatory when stack profile matches)
+
+After Phase B planning, ensure the project skillpack **includes or references** these methodology skills from the Sigma repo (copy into `src/skills/` only when the project needs a fork; otherwise index them in `skills-index.json` with `source: sigma-protocol`):
+
+| Skill | When required | Reads first |
+|-------|---------------|-------------|
+| `shadcn` | Web/desktop + `componentLibrary: shadcn/ui` | `docs/references/CURATED-COMPONENT-LIBRARIES.md` |
+| `rn-component-library` | Mobile / Expo / Reusables | same + `docs/design/DESIGN-SYSTEM.md` |
+| `agentic-ui` | Decision 3 Yes/Partially (AI agent UX) | `docs/ux/UX-DESIGN.md` agentic section |
+| `companion-system` | Gamification / trophies / collectibles | Step 3 companion rows |
+| `motion-landing-design` | Marketing surfaces in Step 9 | `docs/landing-page/` |
+
+Each entry in `.sigma/indexes/skills-index.json` must record: `name`, `path`, `category`, `activation`, and `invokePhase` (which step phase loads it).
+
+<HARD-GATE>
+Do NOT proceed to Phase C until the component-library bundle is listed in the skill plan.
+</HARD-GATE>
+
+---
+
+## Phase C — Authored Source Generation
+
+**Goal:** Write or update canonical authored source bundles under `src/`. Do **not** emit platform mirror directories.
+
+### Authored skill requirements
+Each authored skill bundle under `src/skills/<category>/<skill>/` must:
+- contain `SKILL.md`
+- point back to canonical project docs
+- describe activation conditions clearly
+- include project anchors and non-negotiables
+- avoid runtime-specific assumptions unless explicitly necessary
+
+### SKILL.md Frontmatter Schema (portable Agent Skills core)
+
+Use the portable core defined by the Agent Skills specification. `name` and `description` are the required routing metadata. Keep host-specific controls in a clearly labeled extension block only when the target runtime documents support for them.
+
+```yaml
+---
+name: skill-name                    # Required: lowercase, hyphens, max 64 chars, matches directory name
+description: "Use when [specific task]; reads [named source]; produces [concrete output]." # Required routing metadata
+---
+```
+
+For example, a Claude Code adapter may add its documented invocation controls in a separate adapter file. Do not assume that Codex, Claude Code, or another host accepts the same extension fields.
+
+**Description rules:**
+- State the task, input, and output in one concise sentence: "Use when implementing a React screen from an approved flow; read the flow bundle and return the named files plus verification evidence."
+- Include scope limits when they prevent a likely false trigger.
+- Do not claim that a description is the only routing input; hosts may use additional metadata or user intent.
+- Do not claim celebrity expertise or framework authority without current primary-source evidence.
+
+**Size guideline:** Keep SKILL.md concise enough for the measured context budget; under 500 lines is a useful guideline, not a proof of quality. Move detailed reference material to `references/` or `assets/` directories.
+
+**String substitutions available:** `$ARGUMENTS`, `$1`-`$9`, `${SKILL_DIR}`, `${SESSION_ID}` (exact names depend on operator CLI — use neutral placeholders in authored skills)
+
+**Dynamic context:** Use host-specific command expansion only in a documented adapter after a capability probe. The portable source must describe the required data and a no-expansion fallback.
+
+### Authored agent requirements
+Each agent under `src/agents/<category>/<agent>.md` must:
+- define responsibility clearly
+- avoid overlapping ownership without reason
+- state expected inputs, outputs, and review boundaries
+- state whether the agent is a coordinator, worker, reviewer, or tester in the Step 14 runtime
+
+### Index + agent requirements (no platform mirrors)
+
+Record every authored skill in `.sigma/indexes/skills-index.json` with `path`, `category`, and `invokePhase`.
+Record every agent in `.sigma/indexes/agents-index.json`.
+
+Do **not** copy skills into `.claude/`, `.codex/`, `.cursor/`, or `platforms/` — operators load from `src/` directly.
+
+### Optional global methodology skills
+
+These ship in `src/skills/` (or `.agents/skills/` pool). Reference them in agent `skills:` lists; do not duplicate bodies:
+
+| Skill | Path | When to bind |
+|-------|------|--------------|
+| `ponytail` | `src/skills/ponytail/SKILL.md` | Implementation/build agents (YAGNI ladder) |
+| `macos-design` | `src/skills/macos-design/SKILL.md` | Native macOS desktop UIs |
+| `ux-psychology-pro` | `src/skills/ux-psychology-pro/SKILL.md` | Design/review interfaces |
+
+### Skill composition rules
+- Skills do NOT reference other skills — they are independent atoms
+- Composition happens ONLY at the agent level through the agent's `skills:` list
+- The agent is the composer, the skill is the atom
+
+<HARD-GATE>
+Do NOT proceed to Phase D until user approves authored source.
+Use AskUserQuestion: "Authored skills and agents generated. Approve?"
+Options: [Approve all, Revise skills, Revise agents, Revise indexes]
+</HARD-GATE>
+
+---
+
+## Phase D — Linear Agent Assignment
+
+**Goal:** Map engineering issues from the Linear project to the agents just created.
+
+### When Linear is configured
+
+1. Read all engineering issues from Linear (GraphQL — see Step 0 → Linear Operations Reference):
+   ```graphql
+   query { issues(filter: {
+     project: { name: { eq: "<linear.project>" } },
+     labels: { name: { eq: "eng-task" } },
+     state: { name: { eq: "Todo" } }
+   }) { nodes { id identifier title description } } }
+   ```
+2. Auto-map each ticket to an agent based on domain:
+   - Frontend tickets (*.tsx, *.css, UI, components) → sigma-frontend
+   - Backend tickets (API, database, auth, middleware) → sigma-backend
+   - Design tickets (tokens, themes, styles) → sigma-design-systems
+   - Testing tickets (tests, QA, verification) → sigma-qa
+   - Security tickets (auth, RBAC, encryption) → sigma-security
+   - Ops tickets (CI/CD, deploy, infra) → sigma-ops
+   - Custom domain agents (from Step 13 authored agents) → matching agent
+
+**Mapping signal priority:** Use the `Agent:` field from the issue description (set by Step 11) as the primary assignment. Fall back to domain auto-mapping by file extensions in the `Files:` field when no agent is suggested.
+
+**Priority mapping (consistent with Step 10):** P0 → `high`, P1 → `medium`, P2 → `low`. Inherit the priority from the parent feature issue — do NOT re-assess priority at the issue level.
+
+3. Present the FULL mapping table for batch confirmation:
+
+| Issue ID | Title | Domain | Assigned Agent |
+|----------|-------|--------|----------------|
+
+<HARD-GATE>
+Do NOT proceed to Phase E until user approves agent assignments.
+Use AskUserQuestion: "Agent assignment mapping complete. Review and approve?"
+Options: [Approve all assignments, Override specific assignments, Re-map with different agents]
+</HARD-GATE>
+
+4. On approval, record each assignment on the issue via GraphQL `issueUpdate`: set (or append) the `Agent: {agent-name}` line in the issue description. Agents are not Linear users — do NOT use the Linear assignee field for agent mapping. Step 14 reads the `Agent:` field to build the dispatch queue (and dispatches through the Orca execution lane when available).
+
+### When Linear is NOT configured
+
+If the project tracks on GitHub Issues, do the same assignment on GitHub: read the repo's `eng-task`-labeled issues (`gh issue list --label eng-task --json number,title,body`), and on approval record the `Agent: {agent-name}` line in the issue body or as a comment (`gh issue edit`/`gh issue comment`) — agents are not GitHub users, so do not use the GitHub assignee field. Step 14 reads the `Agent:` field either way.
+
+If no tracker is configured at all, skip this phase — agent assignment happens manually or via Step 14 coordinator policy. Document which agents WOULD be assigned to which domains for future reference.
+
+---
+
+## Phase E — Verification & Handoff
+
+**Goal:** Verify authored source and indexes are coherent, then hand off to Step 14.
+
+### Index & Invoke Metadata
+
+Update machine-readable indexes under `.sigma/indexes/` so each skill or agent records:
+- canonical source path (`src/skills/...` or `src/agents/...`)
+- category
+- `invokePhase` (which step phase loads it)
+- status (`active`, `deprecated`, or `archived`)
+
+### Mandatory: Run $holes
+
+Before final checkpoint, invoke `$holes` to find:
+- Skills without clear activation conditions
+- Agents with overlapping ownership
+- DNA vs Skills misclassification
+- Missing component-library bundle entries when stack profile requires them
+- Engineering issues without agent assignments (when Linear configured)
+- TDD baseline scenarios that don't pass
+
+Fix findings before presenting.
+
+### Writing Standards (embedded)
+
+- No stock AI phrases in skill/agent definitions: "Comprehensive", "Robust", "Seamless"
+- Activation conditions are specific: "When user runs /deploy" not "deployment-related tasks"
+- Agent responsibilities are concrete actions, not vague domains
+- Write like a platform engineer authoring SDK docs, not a PM describing capabilities
+
+### Required verification
+- `src/skills/` exists and contains bundle-style authored source
+- `src/agents/` exists and contains category-based authored source
+- `.sigma/indexes/skills-index.json` and `.sigma/indexes/agents-index.json` reflect authored source paths and invokePhase
+- Component-library bundle indexed when stack profile matches (shadcn, rn-component-library, agentic-ui, etc.)
+- no active Step 13 requirement depends on archived legacy skill modules
+- generated coordinator and worker surfaces are explicit enough for Step 14 runtime wiring
+- every active external skill/tool has a pinned source/ref or checksum, license, support status, changed-file review, allowed-tool and secret/network behavior, and rollback path
+- each skill has risk-proportional positive and negative trigger cases, an expected artifact, failure behavior, and a reproducible evaluation command or an explicit `NOT-EXECUTED` reason
+
+### Downstream Handoff
+
+Step 13 produces artifacts consumed by Step 14:
+
+| Artifact | Consumed By | Purpose |
+|----------|-------------|---------|
+| `src/skills/<category>/<skill>/SKILL.md` | Step 14 | Canonical skill source for runtime loading |
+| `src/agents/<category>/<agent>.md` | Step 14 | Agent definitions with coordinator/worker/reviewer roles |
+| `.sigma/indexes/skills-index.json` | Step 14 | Skill discovery and binding |
+| `.sigma/indexes/agents-index.json` | Step 14 | Agent roster for coordinator wiring |
+| Linear `eng-task` issues with `Agent:` set | Step 14 | Agent-to-issue mapping for dispatch |
+
+Step 14 MUST find coordinator vs worker vs reviewer classifications in `agents-index.json` to wire the runtime correctly.
+
+<HARD-GATE>
+FINAL GATE — Do NOT proceed to Step 14 without explicit approval.
+Use AskUserQuestion: "Step 13 complete. Ready for Step 14 — Agent Runtime Bootstrap?"
+Options: [Proceed to Step 14, Revise skills/agents, Adjust agent assignments]
+</HARD-GATE>
+
+---
+
+Before presenting the final human approval checkpoint, run `@step-verify --step=N` (replace N with this step's number). Use the current step's verification schema and pass threshold; when it defines none, scores below 80 are blockers. Fix gaps and re-run until that threshold passes or the user explicitly waives with recorded rationale.
+
+<verification>
+## Step 13 Verification Schema
+
+### Required Outputs (30 points)
+| Item | Path | Points |
+|------|------|--------|
+| Authored Skills | src/skills/ | 10 |
+| Authored Agents | src/agents/ | 10 |
+| Component-library bundle indexed | .sigma/indexes/skills-index.json | 10 |
+
+### Metadata & Indexes (20 points)
+| Check | Points |
+|-------|--------|
+| At least 1 authored skill bundle | 5 |
+| At least 1 authored agent | 5 |
+| skills-index.json records canonical source | 5 |
+| agents-index.json records canonical source | 5 |
+
+### DNA Compliance (25 points)
+| Check | Points |
+|-------|--------|
+| DNA vs Skills classification documented per skill/agent | 8 |
+| Eval test suite (eval.csv) with 10+ test prompts per skill | 7 |
+| Anti-slop rules embedded in skill definitions | 5 |
+| Linear agent assignments completed (when configured) | 5 |
+
+### Quality Indicators (15 points)
+| Check | Points |
+|-------|--------|
+| Skills index records invokePhase + component-library bundle | 5 |
+| Agents have clear coordinator/worker/reviewer roles | 5 |
+| No active dependency on archived legacy modules | 5 |
+
+### Boundary Integrity (10 points)
+| Check | Points |
+|-------|--------|
+| Canonical source first (src/ is truth) | 4 |
+| Step 14 handoff explicit | 3 |
+| $holes pass completed | 3 |
+
+### Pass Threshold
+95/100 minimum.
+</verification>
+
+$END$

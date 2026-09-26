@@ -1,0 +1,216 @@
+{
+  "head": "651fe48a47d0def670e40da846389f500fff5aa5",
+  "branch": "main",
+  "preexisting_changes": [
+    {
+      "status": " M",
+      "path": ".agents/skills/executing-plans/SKILL.md",
+      "sha256": "588b7e806552630074cf04e26415463c2f904bf3fc13abe293abaffbdbec6d72"
+    },
+    {
+      "status": " M",
+      "path": ".agents/skills/sigma-protocol-guide/SKILL.md",
+      "sha256": "88901e14af10282eb5b3c7a12f0088374b3552ca9f6824a66e6c1c13f21a26ae"
+    },
+    {
+      "status": " M",
+      "path": ".agents/skills/skill-registry/SKILL.md",
+      "sha256": "734170d6cba9a202cc2ff127d4fa69c01bf291ee6ccc158df62395b1aed879db"
+    },
+    {
+      "status": " M",
+      "path": ".agents/skills/subagent-driven-development/SKILL.md",
+      "sha256": "986ae8322e967a9344a18a596624b17c3f711d434976fc226b608e42b14c7379"
+    },
+    {
+      "status": " M",
+      "path": ".agents/skills/worktree-patterns/SKILL.md",
+      "sha256": "0f8e4e1b6a3cf879af19eb84a1fb0ada2e8136c126d471bb0f109e338234d682"
+    },
+    {
+      "status": " M",
+      "path": ".claude/rules/swarm-orchestration.md",
+      "sha256": "b1506c5a949e3fdbf8cd02d86bc8872b3a4664649a0ce142671a17ed442a8ac7"
+    },
+    {
+      "status": " M",
+      "path": "AGENTS.md",
+      "sha256": "88e3141fb8b12364f687351cfd57ec7bf18827d2a851c5e5a6b9b8529b48338c"
+    },
+    {
+      "status": " M",
+      "path": "CLAUDE.md",
+      "sha256": "e995656fcad01233f8926d88a3c9ecd2d52ff7bbd714dcf401760ecd962469d3"
+    },
+    {
+      "status": " M",
+      "path": "commands/step-4-flow-tree.md",
+      "sha256": "edc53f1f4ed414ee128b9502c2605a7b6a2ed230459b24f6b94c7d226962762a"
+    },
+    {
+      "status": " M",
+      "path": "scripts/detect-cli.sh",
+      "sha256": "00d49a9d1c1ed1799d67edb14ebbaaa86b90cbe36b6ad79ac98c622ef6bfa52f"
+    },
+    {
+      "status": " M",
+      "path": "scripts/fusion/detect-providers.mjs",
+      "sha256": "1a9f662e93525f1e6ff6fbd864c97c40a82060db512c91741f4b614c29d561a1"
+    },
+    {
+      "status": " M",
+      "path": "scripts/fusion/fusion.mjs",
+      "sha256": "cabd666c1a1609f0bdd8eb48cd10398fe943dd5bcc53da87e3856c05b0105f00"
+    },
+    {
+      "status": " M",
+      "path": "scripts/fusion/setup-providers.mjs",
+      "sha256": "811e3c2770647def3b868e340900fc1bd02c809c21d5bc5b8195e12905d35d57"
+    },
+    {
+      "status": " M",
+      "path": "scripts/ops-overnight.sh",
+      "sha256": "2404b9405d4ff01297a2594ac6a5f78636c5e131b857bc4a885f2ba9005fd352"
+    },
+    {
+      "status": " M",
+      "path": "scripts/pipeline/sprint-step-guard.sh",
+      "sha256": "201abc8897c8849e8914db9d3b3b0a8deb7518be35452ecc34adeb05ac68e802"
+    },
+    {
+      "status": " M",
+      "path": "scripts/sigma-dispatch.sh",
+      "sha256": "9e9fbd0f0c3395daf79b6632bdfa070bf1138e68db8b974b71e1cd24c2d8f5a0"
+    },
+    {
+      "status": " M",
+      "path": "src/skills/sigma-protocol-guide/SKILL.md",
+      "sha256": "88901e14af10282eb5b3c7a12f0088374b3552ca9f6824a66e6c1c13f21a26ae"
+    },
+    {
+      "status": " M",
+      "path": "src/skills/worktree-patterns/SKILL.md",
+      "sha256": "0f8e4e1b6a3cf879af19eb84a1fb0ada2e8136c126d471bb0f109e338234d682"
+    },
+    {
+      "status": " M",
+      "path": "steps/step-4-flow-tree",
+      "sha256": "105171e56ebab9c3273724ec15d997322cdb55e2c18e23035ca624142e4ab5d4"
+    },
+    {
+      "status": " M",
+      "path": "tests/test_fusion.sh",
+      "sha256": "daf2179a8b681822ffdacf5538f7c335d825388cf6e2dc17215df93c07372fdd"
+    },
+    {
+      "status": " M",
+      "path": "tests/test_fusion_adapter.sh",
+      "sha256": "53feeee3e6718840b56f05f0107a81eece426f40070bdbc95eeac7c59585cf25"
+    },
+    {
+      "status": " M",
+      "path": "tests/test_setup_providers.sh",
+      "sha256": "d20bdec5af0d2978d12adf8602ce8876707caee595e0f6b04376d6b1eef2d3d5"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/agent-goal-skill/doctrine.md",
+      "sha256": "1f94d51dd5b2ea7fe450407ba25a800120af0e0823529c89c3e5450e81aafe52"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/differential-review/adversarial.md",
+      "sha256": "3cb823f38c6e551cbcf5f72325d2bb219dacdad774072519c31d50d92db19800"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/differential-review/methodology.md",
+      "sha256": "16b335d24cf2145e3dc4a37f50056550d29db2efa20e6df78fec95ec1e6fb0b4"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/differential-review/patterns.md",
+      "sha256": "52abb18abbc73502a3d3b2f36a7a035adc1db40fd812d1d5424cf065036a06e9"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/differential-review/reporting.md",
+      "sha256": "0016876dc6f158e926448bff1b6f634796757c7afe09dff177cfe30250724fc4"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/meta-ad-builder/prompting",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/shadcn/LICENSE.md",
+      "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/shadcn/cli.md",
+      "sha256": "851ab7c603ae4bafb7d8b617b5b20203bf8113ccb4ff7eb0f9953ebd7f8839be"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/shadcn/customization.md",
+      "sha256": "12e4d5fd4ae05ec4cef759035d3a70fec474d857298fe0a0effa8880112f8a54"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/shadcn/rules",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/subagent-driven-development/LICENSE",
+      "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/subagent-driven-development/code-quality-reviewer-prompt.md",
+      "sha256": "ed88ac31fcb801920d6559fda9e17b92d1e5a8b409897a5cd02a149a3cda721e"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/subagent-driven-development/implementer-prompt.md",
+      "sha256": "55ca96226d624e7f586dc571b43ebb6f55c86547f762fe00878e81db869c8431"
+    },
+    {
+      "status": "??",
+      "path": ".agents/skills/subagent-driven-development/spec-reviewer-prompt.md",
+      "sha256": "aa6ce50894123e8aafe48082e0402b4245a5f9666ba26311d5de7951e32cd5fd"
+    },
+    {
+      "status": "??",
+      "path": "src/skills/agent-goal-skill/doctrine.md",
+      "sha256": "1f94d51dd5b2ea7fe450407ba25a800120af0e0823529c89c3e5450e81aafe52"
+    },
+    {
+      "status": "??",
+      "path": "src/skills/shadcn/LICENSE.md",
+      "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+    },
+    {
+      "status": "??",
+      "path": "src/skills/shadcn/cli.md",
+      "sha256": "851ab7c603ae4bafb7d8b617b5b20203bf8113ccb4ff7eb0f9953ebd7f8839be"
+    },
+    {
+      "status": "??",
+      "path": "src/skills/shadcn/customization.md",
+      "sha256": "12e4d5fd4ae05ec4cef759035d3a70fec474d857298fe0a0effa8880112f8a54"
+    },
+    {
+      "status": "??",
+      "path": "src/skills/shadcn/rules",
+      "sha256": null
+    },
+    {
+      "status": "??",
+      "path": "tests/test_provider_retirement.mjs",
+      "sha256": "bd8f5897f95ceb3951fe09e6ab55ff073439ba94bf814c314151665cef149c59"
+    }
+  ]
+}

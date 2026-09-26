@@ -1,0 +1,425 @@
+---
+version: "1.0.0"
+last_updated: "2026-06-10"
+description: "Step 15: Observability Contract — wire per-feature instrumentation contracts before every ship; no feature leaves staging without traces and evals"
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
+  - Grep
+  - AskUserQuestion
+parameters:
+  - --feature-id
+---
+
+<!-- include: _partials/hitl-gate-policy.md -->
+
+<!-- include: _partials/game-domain.md -->
+
+<!-- SKILLS-INVOKE:start -->
+## Required skills — invoke the live skills (do NOT rely on embedded summaries)
+
+<!-- include: _partials/skills-invoke-intro.md -->
+
+- `game-development` — conditional when `projectDomain: "game"`; select this step's catalog entry and applicable workflow
+
+- `observability`
+- `quality-gates`
+
+<!-- include: _partials/skills-invoke-holes.md -->
+
+If a skill is unavailable on this surface, state that and continue; never silently skip it.
+<!-- SKILLS-INVOKE:end -->
+
+
+# /step-15-observability-contract — Per-Feature Instrumentation Contract
+
+**On start, announce:** "Running Step 15: Observability Contract. I'll write an Instrumentation Contract for every feature before it ships — defining success metrics, trace points, eval set references, and kill conditions. No feature leaves staging without this contract."
+
+<!-- include: _partials/runtime-single-surface-policy.md -->
+
+<goal>
+You are the Observability Lead. Execute ALL phases (A through D) in order.
+
+| Phase | Purpose | Output |
+|-------|---------|--------|
+| A | Feature Import & Instrumentation Inventory | Confirmed feature list + existing trace coverage gap |
+| B | Contract Design per Feature | Success metric, leading indicators, cost meter, trace points, eval ref |
+| C | INSTRUMENTATION-CONTRACT.md Generation | Master contract doc + per-feature entries |
+| D | Ship Gate Verification + Hardening | Gate check, $holes pass, CI wire-up notes |
+
+Required Outputs:
+- `docs/observability/INSTRUMENTATION-CONTRACT.md` (master contract + per-feature entries)
+- Per-feature trace point stubs referenced in TASKS.md / PRD Section 12 agentic notes
+
+Quality gate: every feature has a kill condition and at least one success metric with a pass threshold.
+
+**Ship gate (non-negotiable):** A feature that passes the Step 14 runtime checks but has no Instrumentation Contract is not shippable. The contract is the difference between "we deployed it" and "we know it's working."
+</goal>
+
+---
+
+## Step Boundary
+
+- **Step 15 owns:** Instrumentation Contract per feature, success metrics, leading indicators, cost budgets, eval set references, trace point specifications (tool calls, model calls with tokens/latency/cost, HITL checkpoints), dashboard URL stubs, kill conditions, and the ship gate.
+- **Step 15 does NOT own:** implementation of the traces (that is the implementing agent's job per Section 12 of each PRD), eval golden task authorship (Step 11's Eval Contract section), runtime wiring (Step 14), or dashboard creation.
+- **Do NOT** duplicate PRD content. The Instrumentation Contract cross-references PRD sections — it does not re-author them.
+
+---
+
+## Observability Hierarchy
+
+Every feature contract covers three layers:
+
+### Layer 1: Business Success Metrics
+What does "working" look like to the user and the business?
+
+| Field | Definition |
+|-------|-----------|
+| `success_metric` | The primary KPI — a single, measurable number (e.g., "7-day retention ≥ 40%") |
+| `pass_threshold` | The value that means the feature is working (e.g., "> 35% at D7") |
+| `leading_indicators` | Signals visible within hours, not weeks (e.g., "onboarding completion > 70%") |
+| `kill_condition` | If this threshold is breached, the feature is rolled back immediately |
+
+### Layer 2: Cost Budget
+Every agent-assisted feature has a cost dimension.
+
+| Field | Definition |
+|-------|-----------|
+| `cost_meter` | Unit: cost per primary action (e.g., "≤ $0.003 per AI generation") |
+| `token_budget` | Max tokens per session/request for model-calling features |
+| `cost_alert_threshold` | Percentage above cost_meter that triggers an alert |
+
+### Layer 3: Trace Points
+What must be instrumented at the code level?
+
+| Trace Type | What to Capture |
+|------------|----------------|
+| **Tool calls** | Tool name, input size, output size, latency ms, success/error |
+| **Model calls** | Model id, prompt tokens, completion tokens, total cost, latency ms, error rate |
+| **HITL checkpoints** | Checkpoint id, user action (approve/reject/modify), latency to response |
+| **Feature entry** | Feature id, user id (hashed), session id, timestamp |
+| **Feature exit** | Feature id, outcome (success/error/abandoned), duration ms |
+
+For agentic features, also correlate `workflow_id`, `task_id`, `parent_task_id`, `agent_id`, subject/tenant, tool server, approval checkpoint, retry attempt, and outcome. Keep operational telemetry separate from eval telemetry: traces show what occurred in production; eval fixtures decide whether behavior meets the PRD. Apply the project's data policy before export: redact prompts, tool arguments, tokens, and PII as required.
+
+Use a versioned telemetry vocabulary. Record the selected OpenTelemetry semantic-convention version and label experimental GenAI attributes as opt-in; do not assume `gen_ai.*` fields remain stable. Reference checked 2026-09-19: [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/).
+
+---
+
+## INSTRUMENTATION-CONTRACT.md Specification
+
+### Master file header
+
+```markdown
+# Instrumentation Contract
+<!-- generated by step-15-observability-contract -->
+<!-- updated: YYYY-MM-DD -->
+
+## Ship Gate Policy
+
+No feature leaves staging without a completed Instrumentation Contract entry here.
+Deployment pipeline check: `docs/observability/INSTRUMENTATION-CONTRACT.md` must
+contain a `status: contracted` entry for every feature being deployed.
+
+## Summary
+
+| Feature | Success Metric | Kill Condition | Status |
+|---------|----------------|----------------|--------|
+| F01-auth | Login success rate ≥ 99% | < 95% for 10 min | contracted |
+```
+
+### Per-feature contract entry format
+
+```markdown
+## [F-ID]: [FEATURE-NAME]
+
+**PRD:** docs/prds/F[N]-[FEATURE-NAME].md
+**Status:** contracted | pending | waived (requires operator sign-off)
+**Contracted on:** YYYY-MM-DD
+**Telemetry convention:** OpenTelemetry GenAI [version] | experimental attributes: [none/list]
+**Data policy:** [redaction policy and retention owner]
+
+### Success Metric
+- **Primary:** [single measurable KPI]
+- **Pass threshold:** [value that means working]
+- **Measurement window:** [e.g., "first 48h post-deploy", "rolling 7-day"]
+- **Data source:** [where this number comes from — analytics dashboard, log query, etc.]
+
+### Leading Indicators
+[2-3 signals measurable within hours of deploy]
+- [Indicator]: target [value], alert if [threshold]
+- [Indicator]: target [value], alert if [threshold]
+
+### Cost Budget (if model-calling or tool-invoking)
+- **Cost per primary action:** ≤ $[N]
+- **Token budget per request:** [N] prompt + [N] completion
+- **Cost alert threshold:** alert if > [N]% above budget for [N] consecutive requests
+- **Cost tracking:** [where: e.g., "LLM observability span `gen_ai.usage.*`"]
+
+### Kill Condition
+> If [condition], roll back feature flag for this feature within [time window].
+
+Examples:
+- Error rate > 5% for 10 consecutive minutes → auto-rollback
+- Cost > 2× budget for > 100 requests → pause + alert operator
+- Primary success metric < [kill threshold] at [measurement window] → escalate + manual review
+
+### Eval Set Reference
+- **Eval contract location:** PRD Section [N] — Eval Contract
+- **Golden task file:** docs/evals/[feature-id]-golden.json (if authored)
+- **Judge model:** [model id] (must differ from generator model)
+- **CI gate:** eval suite must pass before staging deploy
+
+### Trace Points
+
+#### Workflow correlation (agentic features only)
+| Trace name | Required attributes | Redaction / alert condition |
+|------------|---------------------|-----------------------------|
+| `workflow.[operation]` | `workflow_id`, `task_id`, `parent_task_id`, `agent_id`, `subject_hash`, `tenant_id`, `retry_attempt`, `outcome` | No raw prompt/tool payload; alert on retry/cancel policy breach |
+
+#### Tool calls
+| Trace name | Span attributes | Alert condition |
+|------------|----------------|-----------------|
+| `tool.[name]` | `tool.name`, `input.tokens`, `output.tokens`, `duration_ms`, `error` | error rate > 2% |
+
+#### Model calls
+| Trace name | Span attributes | Alert condition |
+|------------|----------------|-----------------|
+| `gen_ai.[operation]` | `gen_ai.system`, `gen_ai.request.model`, `gen_ai.usage.prompt_tokens`, `gen_ai.usage.completion_tokens`, `gen_ai.usage.cost_usd`, `duration_ms` | cost > budget; latency > [N]ms p95 |
+
+#### HITL checkpoints
+| Checkpoint id | What user decides | Latency target | Escalation if no response |
+|---------------|------------------|----------------|--------------------------|
+| `[checkpoint-id]` | [approve/reject/modify] | ≤ [N] min | [escalation action] |
+
+#### Protocol-specific traces (only when applicable)
+- MCP: tool server, authorization result, error class, and latency.
+- A2A: task lifecycle, Agent Card/version, authentication result, and artifact delivery.
+- ACP: session and permission events for an IDE integration.
+
+### Dashboard URL
+[URL to the feature's observability dashboard — e.g., PostHog feature flag dashboard, Grafana panel, Datadog notebook]
+
+If dashboard not yet created: `PENDING — create before first production deploy.`
+
+### Implementation Notes for Agents
+When implementing this feature (per PRD Section 12), the implementing agent MUST:
+1. Wrap every model call with an OpenTelemetry `gen_ai.*` span (attributes above).
+2. Wrap every tool call with a `tool.*` span.
+3. Emit a feature-entry event at the first user interaction.
+4. Emit a feature-exit event with outcome and duration.
+5. Respect the token budget — truncate context before exceeding it and log the truncation.
+6. Never catch-and-swallow errors silently — all errors must emit a span with `error: true`.
+7. Keep production spans and eval-run records distinct; both link to the contract version without copying sensitive payloads.
+```
+
+---
+
+## Phase A — Feature Import & Instrumentation Inventory
+
+### Upstream Requirements
+
+| Artifact | Source Step | Required |
+|----------|-----------|----------|
+| `docs/prds/F[N]-[FEATURE-NAME].md` | Step 11 | **Yes** — Eval Contract section (Section 13, added in v3.0+) |
+| Tracker issues (`wave:*`, `eng-task`) — or `.sigma/backlogs/implementation/TASKS.md` for offline tracking | Step 11.5 | Conditional — task list for contract status cross-check. If Linear is configured (LINEAR_API_KEY in Keychain + `linear.project` in runtime-baseline.json), read the wave-labeled Linear issues per `steps/_partials/linear-tracking.md`; otherwise read the project's wave-labeled GitHub Issues or fall back to `TASKS.md`. Never the retired SigmaHQ kanban. |
+| `docs/specs/AGENT-RUNTIME.md` | Step 14 | Advisory — understand what runtime tooling is already wired |
+| `docs/observability/INSTRUMENTATION-CONTRACT.md` | Step 15 (prior run) | Conditional — if file exists, update it rather than overwrite |
+
+### Preflight (auto)
+
+1. Run `date +"%Y-%m-%d"`.
+2. Read all `docs/prds/F[N]-*.md` — extract feature IDs and check for Eval Contract sections.
+3. If `docs/observability/INSTRUMENTATION-CONTRACT.md` exists: read it, identify features already contracted, flag gaps.
+4. If no PRDs exist → halt: "Step 15 requires approved Step 11 PRDs. Run Step 11 first."
+
+**Gap report:** For each feature, report:
+- `has_eval_contract`: yes | no (from PRD Section 13 or equivalent)
+- `has_trace_points`: yes | no (from PRD Section 12)
+- `has_kill_condition`: yes | no (from PRD Section 11)
+- `contract_status`: contracted | pending
+
+<HARD-GATE>
+Do NOT proceed to Phase B until user approves the feature + gap inventory.
+Use AskUserQuestion: "Found [N] features needing contracts. [M] have partial instrumentation. Proceed?"
+Options: [Proceed — write all contracts, Write P0/P1 features only, Write specific feature (--feature-id), Review gaps first]
+</HARD-GATE>
+
+---
+
+## Phase B — Contract Design per Feature
+
+For each feature (in priority order P0 first):
+
+1. Read PRD Section 1 (Problem & Outcome) → derive `success_metric` and `pass_threshold`.
+2. Read PRD Section 11 (Rollout, Metrics & Risks) → import `success metrics` and `risks` — these inform `leading_indicators` and `kill_condition`.
+3. Read PRD Section 6 (API / Server Action Contract) → identify all model calls and tool invocations → enumerate trace points.
+4. Read PRD Section 13 (Eval Contract, if present) → import eval set reference.
+5. Check PRD Section 9 (Security) → identify HITL checkpoints (any action requiring user confirmation before execution).
+6. If the feature calls a language model: compute the token budget from the PRD context window spec or Step 8 technical spec.
+7. For agentic features, define workflow/task correlation and required redaction. Add MCP, A2A, or ACP fields only when Step 2/8 selected that boundary.
+
+### Cost budget derivation
+
+If the PRD does not specify a token budget:
+- S appetite features: default to 2,000 prompt + 500 completion per request.
+- M appetite features: default to 8,000 prompt + 2,000 completion per request.
+- L appetite features: default to 32,000 prompt + 8,000 completion per request.
+- Note: "Defaulted from appetite. Update when actual usage data is available."
+
+---
+
+## Phase C — INSTRUMENTATION-CONTRACT.md Generation
+
+Write or update `docs/observability/INSTRUMENTATION-CONTRACT.md`.
+
+**Create `docs/observability/` if it does not exist.**
+
+Writing order: P0 features first, then P1, P2, P3 within each group.
+
+**Update behavior:** If the file already exists, append new feature entries and update the summary table. Never overwrite contracted entries — only update entries with `status: pending`.
+
+### Cross-reference into PRD agentic notes
+
+For each PRD that has a new Instrumentation Contract, add a cross-reference to PRD Section 12:
+
+```markdown
+**Observability Contract:** docs/observability/INSTRUMENTATION-CONTRACT.md#[F-ID]-[FEATURE-NAME]
+The implementing agent MUST instrument all trace points listed there before opening a PR.
+```
+
+This is a write-back — update the PRD file with the cross-reference line. If the PRD already has this line, skip.
+
+---
+
+## Phase D — Ship Gate Verification + Hardening
+
+### Mandatory: Run $holes
+
+Before final checkpoint, invoke `$holes` on each contract entry to find:
+- Missing kill conditions (every feature must have one).
+- Success metrics with no pass threshold.
+- Trace points with no alert condition.
+- Model-calling features with no cost budget.
+- Agentic features missing telemetry convention/version, workflow correlation, redaction, or applicable protocol lifecycle evidence.
+- HITL checkpoints with no escalation path.
+- Dashboard URLs marked PENDING (flag — they must be created before first production deploy).
+
+Fix all findings before proceeding.
+
+### CI Wire-up Notes
+
+Add a `docs/observability/CI-WIRE-UP.md` stub (or update it if it exists) with:
+
+```markdown
+# Observability CI Wire-Up Notes
+
+## Ship Gate Check
+
+Before any staging deploy, the pipeline MUST verify:
+1. `docs/observability/INSTRUMENTATION-CONTRACT.md` contains `status: contracted`
+   for every feature being deployed.
+2. The eval suite for each contracted feature passes (see Eval Contract in each PRD).
+3. No model-calling feature is deployed without `gen_ai.*` spans in the diff.
+4. Agentic features declare telemetry convention/version, redaction, workflow correlation, and only the protocol fields that apply.
+
+## Instrumentation Checklist (per feature PR)
+
+- [ ] Feature entry/exit events emitted
+- [ ] All model calls wrapped with `gen_ai.*` spans
+- [ ] All tool calls wrapped with `tool.*` spans
+- [ ] Token budget respected (add truncation log if exceeded)
+- [ ] HITL checkpoints emit spans with user action + latency
+- [ ] Kill condition is reachable (the metric that triggers it is being measured)
+- [ ] Production telemetry and eval evidence are stored and judged separately
+```
+
+### Writing Standards
+
+- Kill conditions use concrete numbers: "error rate > 5% for 10 consecutive minutes" — not "error rate is too high."
+- Cost budgets are unit-denominated: "≤ $0.003 per AI generation" — not "should be cheap."
+- Dashboard URLs are real paths or `PENDING` — never placeholder text.
+- No AI-isms: no "comprehensive observability," "robust monitoring," "seamless tracing."
+
+### Success Criteria
+
+- [ ] One contract entry per Step 11 PRD-eligible feature
+- [ ] Every entry has a success metric with a pass threshold
+- [ ] Every entry has a kill condition with a concrete trigger
+- [ ] Every model-calling feature has a cost budget and token budget
+- [ ] Every HITL checkpoint is listed with escalation path
+- [ ] All trace point spans use OpenTelemetry `gen_ai.*` / `tool.*` naming
+- [ ] Agentic entries record telemetry version, redaction, workflow correlation, and applicable protocol traces
+- [ ] Dashboard URLs present (or PENDING with a note)
+- [ ] CI-WIRE-UP.md updated
+- [ ] PRD Section 12 cross-references written back
+- [ ] $holes pass completed
+- [ ] User approved the contract
+
+<HARD-GATE>
+FINAL GATE — Do NOT mark Step 15 complete without explicit approval.
+Use AskUserQuestion: "Instrumentation Contracts complete for [N] features. Ready to ship?"
+Options: [Approve — proceed to deploy, Review specific feature contract, Revise cost budgets, Update dashboard URLs]
+</HARD-GATE>
+
+### Downstream Handoff
+
+Step 15 produces artifacts consumed by:
+
+| Artifact | Consumed By | Purpose |
+|----------|-------------|---------|
+| `docs/observability/INSTRUMENTATION-CONTRACT.md` | Implementing agents (PRD Section 12), deploy pipeline, operator | Ship gate, runtime accountability |
+| `docs/observability/CI-WIRE-UP.md` | CI/CD pipeline | Pre-deploy checklist |
+| PRD Section 12 cross-references | Implementing agents | Trace point implementation requirements |
+
+### Go-To-Market handoff → `/gtm` (natural next phase)
+
+After Step 15 approval, the **Build Track is complete** — the product is planned end to end. The methodology now flows into go-to-market the same way Step 1 flows into Step 1.5: the natural next move is **`/gtm`**, the Go-To-Market conductor.
+
+`/gtm` owns the launch motion and sequences the Run Tracks (`/run-marketing`, `/run-sales`, `/run-growth`, and the rest) — it is the conductor across them, not a parallel track. Under the hood the walkthrough engine still drives one `/run-*` department at a time.
+
+<HARD-GATE>
+Do NOT auto-start go-to-market. Run the continuation engine, then ask:
+
+```bash
+python3 scripts/run-track-continue.py
+```
+
+Use AskUserQuestion: "Build Track complete. Move into go-to-market with `/gtm` now?"
+
+- **Yes → `/gtm`** — hand off to the GTM conductor, which sequences the Run Tracks (starts with `/run-legal` L0 entity formation).
+- **Not yet** → `@dev-loop` or pause.
+- **Skip a department** → `python3 scripts/run-track-continue.py --mark-declined {dept}`
+
+This gate obeys the HITL Gate Contract at the top of this step: a non-answer is a pause, not a proceed.
+</HARD-GATE>
+
+Full rules: `steps/_partials/run-track-continuation.md` · `@continue --source=run-track`
+
+<!-- include: _partials/step-verify-handoff.md -->
+
+<verification>
+## Step 15 Verification Schema
+
+### Required Outputs (40 points)
+| Item | Path | Points |
+|------|------|--------|
+| Instrumentation contract | docs/observability/INSTRUMENTATION-CONTRACT.md | 20 |
+| CI wire-up notes | docs/observability/CI-WIRE-UP.md | 10 |
+| PRD Section 12 cross-refs | docs/prds/*.md | 10 |
+
+### Quality (35 points)
+| Check | Points |
+|-------|--------|
+| Success metric + kill condition per feature | 12 |
+| OTel span naming on trace points | 8 |
+| Cost/token budgets on AI features | 8 |
+| $holes pass completed | 7 |
+
+### Pass Threshold
+95/100 minimum.
+</verification>
+
+$END$

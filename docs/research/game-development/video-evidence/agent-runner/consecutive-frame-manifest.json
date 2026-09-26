@@ -1,0 +1,86 @@
+[
+  {
+    "index": 0,
+    "source_frame": 26550,
+    "timestamp_seconds": 885.885,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0001.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 1,
+    "source_frame": 26551,
+    "timestamp_seconds": 885.918367,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0002.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 2,
+    "source_frame": 26552,
+    "timestamp_seconds": 885.951733,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0003.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 3,
+    "source_frame": 26553,
+    "timestamp_seconds": 885.9851,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0004.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 4,
+    "source_frame": 26554,
+    "timestamp_seconds": 886.018467,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0005.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 5,
+    "source_frame": 26555,
+    "timestamp_seconds": 886.051833,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0006.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 6,
+    "source_frame": 26556,
+    "timestamp_seconds": 886.0852,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0007.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 7,
+    "source_frame": 26557,
+    "timestamp_seconds": 886.118567,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0008.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 8,
+    "source_frame": 26558,
+    "timestamp_seconds": 886.151933,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0009.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 9,
+    "source_frame": 26559,
+    "timestamp_seconds": 886.1853,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0010.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 10,
+    "source_frame": 26560,
+    "timestamp_seconds": 886.218667,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0011.png",
+    "reason": "native-frame"
+  },
+  {
+    "index": 11,
+    "source_frame": 26561,
+    "timestamp_seconds": 886.252033,
+    "path": "/private/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0012.png",
+    "reason": "native-frame"
+  }
+]

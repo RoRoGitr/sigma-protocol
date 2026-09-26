@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schemas/boilerplate-catalog.schema.json",
+  "version": "1.0.0",
+  "updated": "2026-06-29",
+  "module_catalog": "templates/boilerplates/_shared/module-catalog.json",
+  "integration_packs": "docs/references/integration-packs-catalog.md",
+  "ui_handoff": "templates/boilerplates/UI-STANDARD-HANDOFF.md",
+  "scaffold_command": "@new-project",
+  "framework_templates": [
+    {
+      "id": "nextjs-saas",
+      "name": "Next.js SaaS (flagship)",
+      "platform": "web",
+      "stack": ["nextjs", "supabase", "stripe", "ai-sdk", "shadcn-ui"],
+      "status": "ready",
+      "path": "templates/boilerplates/nextjs-saas",
+      "use_when": ["full saas", "subscriptions", "credits", "marketing + app shell"],
+      "component_library": "shadcn/ui",
+      "integrations": ["supabase", "stripe", "posthog", "resend"]
+    },
+    {
+      "id": "expo-mobile",
+      "name": "Expo Mobile",
+      "platform": "mobile",
+      "stack": ["expo", "nativewind", "supabase", "revenuecat"],
+      "status": "ready",
+      "path": "templates/boilerplates/expo-mobile",
+      "use_when": ["ios/android app", "iap", "push notifications"],
+      "component_library": "react-native-reusables",
+      "integrations": ["supabase", "revenuecat", "expo-notifications", "posthog"]
+    },
+    {
+      "id": "nextjs-ai",
+      "name": "Next.js AI (Convex)",
+      "platform": "web",
+      "stack": ["nextjs", "convex", "ai-sdk"],
+      "status": "ready",
+      "path": "templates/boilerplates/nextjs-ai",
+      "use_when": ["real-time ai", "streaming chat", "convex backend"],
+      "component_library": "shadcn/ui",
+      "integrations": ["convex"]
+    },
+    {
+      "id": "nextjs-portable",
+      "name": "Next.js Portable",
+      "platform": "web",
+      "stack": ["nextjs", "drizzle", "better-auth", "postgres"],
+      "status": "ready",
+      "path": "templates/boilerplates/nextjs-portable",
+      "use_when": ["self-hostable", "any postgres", "docker deploy"],
+      "component_library": "shadcn/ui",
+      "integrations": ["stripe"]
+    },
+    {
+      "id": "tanstack-saas",
+      "name": "TanStack Start SaaS",
+      "platform": "web",
+      "stack": ["tanstack-start", "supabase", "stripe"],
+      "status": "ready",
+      "path": "templates/boilerplates/tanstack-saas",
+      "use_when": ["typed routing", "vite full-stack", "modern saas"],
+      "component_library": "shadcn/ui",
+      "integrations": ["supabase", "stripe"]
+    }
+  ],
+  "product_templates": [
+    {
+      "id": "products/mobile/learning-platform",
+      "name": "Learning Platform (mobile)",
+      "platform": "mobile",
+      "extends": "expo-mobile",
+      "status": "built",
+      "path": "templates/boilerplates/products/mobile/learning-platform",
+      "use_when": ["courses", "xp/streaks", "achievements", "gamification"],
+      "component_library": "react-native-reusables",
+      "curated_refs": ["gamification", "charts-mobile"]
+    },
+    {
+      "id": "products/mobile/fintech",
+      "name": "Fintech / Trading (mobile + landing)",
+      "platform": "both",
+      "extends": "expo-mobile",
+      "status": "built",
+      "path": "templates/boilerplates/products/mobile/fintech",
+      "use_when": ["trading", "portfolio charts", "subscriptions", "waitlist landing"],
+      "component_library": "react-native-reusables",
+      "curated_refs": ["charts-mobile", "charts-web"]
+    },
+    {
+      "id": "products/courses-lms",
+      "name": "Courses LMS (web)",
+      "platform": "web",
+      "extends": "nextjs-saas",
+      "status": "stub",
+      "path": "templates/boilerplates/products/courses-lms",
+      "use_when": ["lms", "video courses", "certificates"]
+    },
+    {
+      "id": "products/ai-tools",
+      "name": "AI Tools Suite",
+      "platform": "web",
+      "extends": "nextjs-ai",
+      "status": "stub",
+      "path": "templates/boilerplates/products/ai-tools",
+      "use_when": ["multi-tool ai", "credits", "api access"]
+    }
+  ]
+}

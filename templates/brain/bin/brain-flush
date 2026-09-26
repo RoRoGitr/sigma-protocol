@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SCRIPT="$HOME/.claude/brain/scripts/flush.py"
+if [[ $# -lt 2 ]]; then
+  echo "Usage: brain-flush <context-file.md> <session-id>" >&2
+  exit 2
+fi
+if command -v uv >/dev/null 2>&1; then
+  exec uv run --directory "$HOME/.claude/brain" python "$SCRIPT" "$@"
+fi
+exec python3 "$SCRIPT" "$@"

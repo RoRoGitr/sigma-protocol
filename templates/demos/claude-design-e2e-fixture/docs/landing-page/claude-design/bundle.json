@@ -1,0 +1,12 @@
+{
+  "$comment": "Fixture landing-page bundle for Hybrid track. Exists to exercise Hybrid detection.",
+  "meta": {
+    "source": "claude-design-e2e-fixture",
+    "track": "hybrid"
+  },
+  "tokens": {
+    "primary": "#4f46e5",
+    "heading-font": "Geist",
+    "body-font": "Geist"
+  }
+}

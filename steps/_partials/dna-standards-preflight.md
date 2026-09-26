@@ -1,0 +1,1 @@
+- Read `.sigma/standards.json` if present (emitted by Step 3). Use its `dna_conformance` assertions as hard constraints for this step's outputs. If missing → record an advisory in the step report ("DNA standards file absent — Step 3 may not have completed; DNA gate will skip") and continue; do not invent substitute DNA rules.

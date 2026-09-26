@@ -1,0 +1,146 @@
+[
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0001.jpg",
+    "sha256": "b5b21c5f787f0f409a4ccba95cedda5460b47bb542dc714bc421bd60839bd4ca",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0030.jpg",
+    "sha256": "5053ece8420b02bbe32d6c3019fcd071d4670289b166599bd9bc0f8bb2a73696",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0059.jpg",
+    "sha256": "57cc528731e88af498c7bcbdb3b79aa9511e1f420137d9bed16fd35cb8e9a481",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0093.jpg",
+    "sha256": "0526df27cfee3a0e5dd91aea60fc331eebc269444a12f2d7a91cdb25d2627bb2",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0123.jpg",
+    "sha256": "d88f8f1c04f669705a780867c449d6286f32e76467082d89bfbdf31a1351a64b",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0153.jpg",
+    "sha256": "5538185c3098b6b431da9dbded757c2e1ec2ad94971d41a79648755c527f7b48",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0185.jpg",
+    "sha256": "636042f1965f65799d8488373506ece66ce1966a953759b5ca8fb91e828b5891",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0217.jpg",
+    "sha256": "13489bb12a98d1e68d01008379b30a8b5962145fa39a772e139ffd7315fde736",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0247.jpg",
+    "sha256": "05a39f7ede0847cc668a6f3593018150a15d09ba11c7c1f8f7c27e2e2741fb5a",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0276.jpg",
+    "sha256": "562f9226194656c82b31309c71d1ebee18de14bcbf914da70909e58cc1e4f39b",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0306.jpg",
+    "sha256": "a2f5e4cc82c86665e3f8f263fbf21a57d723aa3fb36e3ff57e672b2b769bffad",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/private/tmp/sigma-game-videos/agent-runner/frames/frame_0336.jpg",
+    "sha256": "044a1700e7d4866df959eac97638dab5c18597f94d8e3438e84199ed89f780f8",
+    "inspected": true,
+    "coverage": "sampled overview"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0001.png",
+    "sha256": "31a6c3c41f5ab4a9d3619a8882353dd036b853451ad4cbca4c0c414962521f9c",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0002.png",
+    "sha256": "3291cd6f788a10db347c71f02711aa9f5e8ed7f26205966dbc7010e3c644b1ea",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0003.png",
+    "sha256": "e9ac51f26ee00c17d5a9aa3170a3117c79618c6dde78e4ca3e4f355d5d730c99",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0004.png",
+    "sha256": "b3c4f0f16974a86e7d38b6256c69c03cdae08961b9d87762b58c51d89208d27f",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0005.png",
+    "sha256": "ec2e65fea927b2fbade2adf391e1990b26f684b97034646fd86f0d457ebb0539",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0006.png",
+    "sha256": "66f34bbea5fe9ffa5c6ef092a7229bfeeb8ac91c125d3863ec723b3cdad18832",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0007.png",
+    "sha256": "14dbf127cc6774ed54371a48cd1ce2696dbffbbb826de186ad490a062142a2ca",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0008.png",
+    "sha256": "7cc890bedd55ab67907fe8df692b9f7139becc0d535696e535c7a7565dd49d36",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0009.png",
+    "sha256": "68f98599e08c7ee00f24a4d6437a81804db644210c3f38ce7c5994a798ec3106",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0010.png",
+    "sha256": "a2e0297edd65de806c8e23ca5164f982f33d8fdfcfc25fc6988022f85194cfc1",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0011.png",
+    "sha256": "4128882e5d677fafb92d5623be2e33119b205670d776875e91852fc6fd207bbd",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  },
+  {
+    "path": "/tmp/sigma-game-videos/runner-contact/frames/native_26550_26561_0012.png",
+    "sha256": "61929780cfae6ad8ec75d3442ed65508e45237865f54b622aa0abae55caeb380",
+    "inspected": true,
+    "coverage": "exact consecutive frame"
+  }
+]

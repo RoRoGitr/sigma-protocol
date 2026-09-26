@@ -1,0 +1,239 @@
+#!/usr/bin/env bash
+# hq — shared SigmaHQ command surface for Codex, Claude Code, and humans.
+
+set -euo pipefail
+
+HQ_HOME="${SIGMAHQ_HOME:-${CLAUDE_CODE_COMMANDBOARD:-$HOME/.commandboard}}"
+export SIGMAHQ_HOME="$HQ_HOME"
+export CLAUDE_CODE_COMMANDBOARD="${CLAUDE_CODE_COMMANDBOARD:-$HQ_HOME}"
+
+usage() {
+  cat <<USAGE
+Usage: hq <command> [args]
+
+Commands:
+  sync [--open|--no-open|--quiet]       Refresh briefing, schedule, stats, and dashboard
+  board                                 Refresh and open dashboard
+  today                                 Show today's board and schedule
+  health [--json]                       Check local SigmaHQ install
+  schedule [YYYY-MM-DD]                 Show a generated schedule
+  workspace <workspace>                 Print workspace path
+  tasks <workspace>                     List workspace tasks
+  prompt <workspace>                    Print execution prompt for a workspace
+  done <workspace> <task-id>            Mark task done and refresh SigmaHQ
+  move <workspace> <task-id> <status>   Move task and refresh SigmaHQ
+  daily-refresh install --time HH:MM    Install daily refresh
+  daily-refresh remove                  Remove daily refresh
+
+Workspace examples:
+  personal
+  products/sigma-protocol
+  tools/sigmahq-ops
+USAGE
+}
+
+die() {
+  echo "hq: $*" >&2
+  exit 1
+}
+
+open_file() {
+  local file="$1"
+  open "$file" 2>/dev/null || xdg-open "$file" 2>/dev/null || echo "$file"
+}
+
+workspace_path() {
+  local workspace="${1:-personal}"
+  if [[ "$workspace" = /* ]]; then
+    printf '%s\n' "$workspace"
+    return
+  fi
+  printf '%s/workspaces/%s\n' "$HQ_HOME" "$workspace"
+}
+
+refresh_after_task_change() {
+  if [[ -x "$HQ_HOME/state-maintenance.py" ]]; then
+    PYTHONDONTWRITEBYTECODE=1 python3 "$HQ_HOME/state-maintenance.py" --all >/dev/null 2>&1 || true
+  fi
+  if [[ -x "$HQ_HOME/sync-dashboard.sh" ]]; then
+    bash "$HQ_HOME/sync-dashboard.sh" --no-open --quiet >/dev/null 2>&1 || true
+  fi
+}
+
+cmd_sync() {
+  local open_flag=1
+  local quiet=0
+  while [[ "$#" -gt 0 ]]; do
+    case "$1" in
+      --open) open_flag=1 ;;
+      --no-open) open_flag=0 ;;
+      --quiet) quiet=1 ;;
+      --help|-h) usage; exit 0 ;;
+      *) die "unknown sync flag: $1" ;;
+    esac
+    shift
+  done
+
+  [[ -x "$HQ_HOME/sync-dashboard.sh" ]] || die "sync script not found: $HQ_HOME/sync-dashboard.sh"
+  if [[ "$quiet" -eq 1 ]]; then
+    bash "$HQ_HOME/sync-dashboard.sh" --no-open --quiet >/dev/null
+  elif [[ "$open_flag" -eq 1 ]]; then
+    bash "$HQ_HOME/sync-dashboard.sh"
+  else
+    bash "$HQ_HOME/sync-dashboard.sh" --no-open
+  fi
+}
+
+cmd_today() {
+  local today
+  today="$(date +%Y-%m-%d 2>/dev/null || python3 -c 'import datetime; print(datetime.date.today())')"
+  [[ -f "$HQ_HOME/board.md" ]] && cat "$HQ_HOME/board.md"
+  echo ""
+  if [[ -f "$HQ_HOME/schedules/$today.md" ]]; then
+    cat "$HQ_HOME/schedules/$today.md"
+  else
+    echo "No schedule generated for $today. Run: hq sync --no-open"
+  fi
+}
+
+cmd_health() {
+  local json=0
+  if [[ "${1:-}" == "--json" ]]; then
+    json=1
+  elif [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+    usage
+    exit 0
+  elif [[ -n "${1:-}" ]]; then
+    die "unknown health flag: $1"
+  fi
+
+  PYTHONDONTWRITEBYTECODE=1 python3 - "$HQ_HOME" "$json" <<'PYEOF'
+import json
+import os
+import shutil
+import sys
+from pathlib import Path
+
+home = Path(sys.argv[1]).expanduser()
+as_json = sys.argv[2] == "1"
+today = __import__("datetime").date.today().isoformat()
+
+checks = {
+    "sigmahq_home": home.is_dir(),
+    "kanban_md": shutil.which("kanban-md") is not None,
+    "sync_dashboard": (home / "sync-dashboard.sh").is_file(),
+    "hq_cli": (home / "bin" / "hq").is_file(),
+    "dashboard_template": (home / "dashboard.html").is_file(),
+    "dashboard_live": (home / "dashboard-live.html").is_file(),
+    "briefing_json": (home / "briefing.json").is_file(),
+    "today_schedule_json": (home / "schedules" / f"{today}.json").is_file(),
+    "today_schedule_md": (home / "schedules" / f"{today}.md").is_file(),
+    "state_maintenance": (home / "state-maintenance.py").is_file(),
+    "daily_refresh_installer": (home / "install-daily-refresh.sh").is_file(),
+    "sigmahq_home_env": bool(os.environ.get("SIGMAHQ_HOME")),
+    "claude_compat_env": bool(os.environ.get("CLAUDE_CODE_COMMANDBOARD")),
+    "claude_mission_hook": (Path.home() / ".claude" / "hooks" / "mission-session-start.sh").is_file(),
+    "codex_available": (Path.home() / ".codex").is_dir(),
+}
+
+launch_agent = Path.home() / "Library" / "LaunchAgents" / "com.sigmahq.daily-refresh.plist"
+checks["daily_refresh_scheduled"] = launch_agent.is_file()
+
+ok = all(value for key, value in checks.items() if key not in {"sigmahq_home_env", "claude_compat_env", "claude_mission_hook", "codex_available", "daily_refresh_scheduled"})
+payload = {"ok": ok, "home": str(home), "checks": checks}
+
+if as_json:
+    print(json.dumps(payload, indent=2))
+else:
+    print(f"SigmaHQ: {'ok' if ok else 'needs attention'}")
+    print(f"Home: {home}")
+    for key, value in checks.items():
+        mark = "OK" if value else "MISS"
+        print(f"{mark:4} {key}")
+PYEOF
+}
+
+cmd_schedule() {
+  local day="${1:-}"
+  if [[ -z "$day" ]]; then
+    day="$(date +%Y-%m-%d 2>/dev/null || python3 -c 'import datetime; print(datetime.date.today())')"
+  fi
+  local file="$HQ_HOME/schedules/$day.md"
+  [[ -f "$file" ]] || die "schedule not found: $file. Run: hq sync --no-open"
+  cat "$file"
+}
+
+cmd_tasks() {
+  local workspace="${1:-personal}"
+  local path
+  path="$(workspace_path "$workspace")"
+  [[ -d "$path" ]] || die "workspace not found: $path"
+  kanban-md list --dir "$path" --table
+}
+
+cmd_prompt() {
+  local workspace="${1:-personal}"
+  local path
+  path="$(workspace_path "$workspace")"
+  [[ -d "$path" ]] || die "workspace not found: $path"
+  cat <<PROMPT
+You are working on the $workspace project. Read your task board:
+kanban-md list --dir "$path" --table
+
+Start with the highest priority active task. When you finish a task, run:
+hq done "$workspace" <task-id>
+PROMPT
+}
+
+cmd_done() {
+  local workspace="${1:-}"
+  local task_id="${2:-}"
+  [[ -n "$workspace" && -n "$task_id" ]] || die "usage: hq done <workspace> <task-id>"
+  local path
+  path="$(workspace_path "$workspace")"
+  [[ -d "$path" ]] || die "workspace not found: $path"
+  kanban-md move --dir "$path" "$task_id" done
+  refresh_after_task_change
+}
+
+cmd_move() {
+  local workspace="${1:-}"
+  local task_id="${2:-}"
+  local status="${3:-}"
+  [[ -n "$workspace" && -n "$task_id" && -n "$status" ]] || die "usage: hq move <workspace> <task-id> <status>"
+  local path
+  path="$(workspace_path "$workspace")"
+  [[ -d "$path" ]] || die "workspace not found: $path"
+  kanban-md move --dir "$path" "$task_id" "$status"
+  refresh_after_task_change
+}
+
+cmd_daily_refresh() {
+  local action="${1:-}"
+  shift || true
+  [[ -x "$HQ_HOME/install-daily-refresh.sh" ]] || die "daily refresh installer not found: $HQ_HOME/install-daily-refresh.sh"
+  case "$action" in
+    install) bash "$HQ_HOME/install-daily-refresh.sh" "$@" ;;
+    remove) bash "$HQ_HOME/install-daily-refresh.sh" --remove ;;
+    *) die "usage: hq daily-refresh install --time HH:MM | hq daily-refresh remove" ;;
+  esac
+}
+
+cmd="${1:-}"
+shift || true
+
+case "$cmd" in
+  sync) cmd_sync "$@" ;;
+  board) cmd_sync --no-open; open_file "$HQ_HOME/dashboard-live.html" ;;
+  today) cmd_today ;;
+  health) cmd_health "$@" ;;
+  schedule|plan) cmd_schedule "$@" ;;
+  workspace) workspace_path "${1:-personal}" ;;
+  tasks) cmd_tasks "$@" ;;
+  prompt) cmd_prompt "$@" ;;
+  done) cmd_done "$@" ;;
+  move) cmd_move "$@" ;;
+  daily-refresh) cmd_daily_refresh "$@" ;;
+  ""|--help|-h|help) usage ;;
+  *) die "unknown command: $cmd" ;;
+esac

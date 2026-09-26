@@ -1,0 +1,18 @@
+# AI Brain configuration
+# The installer writes the real copy to ~/.claude/brain/.brain-config.yaml.
+
+vault_path: ~/Documents/AI Brain
+brain_name: AI Brain
+vault_kind: folder
+
+# Daily autoresearch is gated by this cooldown before it runs again.
+autoresearch_cooldown_hours: 24
+
+# Background workers check the optional agent-spawn-guard before spawning.
+spawn_min_battery: 15
+
+# Optional project path fragments mapped to vault slugs.
+# Example:
+# project_map:
+#   my-product: my-product
+project_map: {}

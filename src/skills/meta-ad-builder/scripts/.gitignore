@@ -1,0 +1,8 @@
+# Runtime outputs — never commit (live ad IDs, account data, competitor copy, tokens)
+outputs/
+logs/
+.env
+deployment_results.json
+*.jsonl
+__pycache__/
+*.py[cod]

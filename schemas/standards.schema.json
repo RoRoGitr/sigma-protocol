@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sigma-protocol.dev/schemas/standards.schema.json",
+  "title": "Sigma Standards",
+  "description": "Project-level design + quality standards emitted by Step 3 (Phase E). Consumed by dna_conformance assertions in step-verify-gate to enforce DNA invariants across design steps.",
+  "type": "object",
+  "required": ["version", "awardStandard", "qualityBar", "dnaName", "dnaDoc"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version — always 1 for this revision."
+    },
+    "awardStandard": {
+      "type": "boolean",
+      "description": "When true, the award-grade CRAFT bar applies to all downstream design steps. Matches references/award-standard.md threshold."
+    },
+    "qualityBar": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable quality threshold statement, e.g. '95+/100 per step verification schema'."
+    },
+    "dnaName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The minted Design DNA name (two-word invented codename), e.g. 'Machined Slate'. Must match dnaDoc filename slug."
+    },
+    "dnaDoc": {
+      "type": "string",
+      "pattern": "^docs/design/.+\\.md$",
+      "description": "Repo-relative path to the Design DNA constitution markdown, e.g. 'docs/design/machined-slate-DNA.md'."
+    },
+    "uiProfile": {
+      "type": ["string", "null"],
+      "description": "Repo-relative path to ui-profile.json, or null if not yet emitted. e.g. 'docs/design/ui-profile.json'."
+    },
+    "antiSlopRules": {
+      "type": "array",
+      "description": "Project-specific anti-slop rules derived from the DNA's anti-DNA and award-standard tells. Each entry is a plain-English rule whose violation pattern is greppable in generated output. The dna_conformance gate greps each rule's key tell against step outputs.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "generatedAt": {
+      "type": ["string", "null"],
+      "description": "ISO 8601 timestamp of when this file was written by Step 3, or null. Example: '2026-06-15T10:30:00Z'.",
+      "pattern": "^(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})|null)?$"
+    }
+  }
+}

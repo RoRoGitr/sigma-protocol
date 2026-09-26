@@ -1,0 +1,38 @@
+# SigmaHQ — Daily Board
+
+<!-- ============================================================
+     INSTRUCTIONS
+     This file is your living daily board. Update it each session.
+     - [x] = done   [~] = in progress   [ ] = todo   [!] = blocked
+     - Priority: P0 (drop-everything) → P3 (nice-to-have)
+     - Replaced by install-sigmahq.sh: {{USER_NAME}} → $USER, {{TODAY_DATE}} → date
+
+     Sync the dashboard after updating:
+       hq sync --no-open
+     ============================================================ -->
+
+**Owner**: {{USER_NAME}}
+**Updated**: {{TODAY_DATE}}
+**Focus**: What's the #1 thing you're building toward today?
+
+---
+
+## Today's Priority
+
+- [ ] [P0] **Your first real task** — Run `/mission new` to articulate your north-star outcome, then create your first kanban task.
+
+## Active Projects
+
+| Project | Status | Priority | Kanban |
+|---------|--------|----------|--------|
+| *(add your projects here)* | — | — | `~/.commandboard/workspaces/personal/` |
+
+## Blockers
+
+*(nothing blocked yet — add here when something is stuck)*
+
+## Notes
+
+- SigmaHQ installed ✅
+- Run `hq board` to view the dashboard
+- Run `/mission new` to set a north-star outcome for your work

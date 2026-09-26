@@ -1,0 +1,50 @@
+{
+  "name": "learning-platform",
+  "version": "1.0.0",
+  "category": "products/mobile",
+  "description": "AI-powered mobile learning platform with gamification, community feed, scheduling, and subscription monetization",
+  "framework": "expo",
+  "stack": {
+    "runtime": "react-native",
+    "router": "expo-router",
+    "styling": "nativewind",
+    "state": "zustand",
+    "animations": "react-native-reanimated + moti",
+    "forms": "react-hook-form + zod",
+    "icons": "lucide-react-native"
+  },
+  "features": [
+    "ai-tutor-chat",
+    "voice-practice",
+    "lesson-library",
+    "practice-exercises",
+    "gamification",
+    "community-feed",
+    "tutor-scheduling",
+    "subscription-tiers",
+    "onboarding-flow",
+    "authentication",
+    "profile-achievements",
+    "streak-tracking"
+  ],
+  "screens": {
+    "auth": 12,
+    "onboarding": 7,
+    "home": 8,
+    "learn": 14,
+    "practice": 16,
+    "schedule": 10,
+    "profile": 14,
+    "subscription": 6,
+    "states": 7,
+    "launch": 3
+  },
+  "source": "sigma-protocol",
+  "prdSystem": true,
+  "configurable": [
+    "src/config/subject.ts",
+    "src/config/integrations.ts",
+    "src/theme/tokens.ts",
+    "tailwind.config.js"
+  ]
+}

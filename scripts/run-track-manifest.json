@@ -1,0 +1,514 @@
+{
+  "version": "2.0.0",
+  "orchestrators": [
+    "run-marketing",
+    "run-sales",
+    "run-content",
+    "run-growth",
+    "run-community",
+    "run-ops",
+    "run-finance",
+    "run-legal"
+  ],
+  "steps": [
+    {
+      "slug": "run-m-1-gtm-audit",
+      "step_id": "M1",
+      "department": "marketing",
+      "primary_skill": "01-market-research",
+      "artifact": "docs/run-track/marketing/M1-GTM-AUDIT.md"
+    },
+    {
+      "slug": "run-m-2-avatar-positioning",
+      "step_id": "M2",
+      "department": "marketing",
+      "primary_skill": "02-customer-avatar",
+      "artifact": "docs/run-track/marketing/M2-AVATAR-POSITIONING.md"
+    },
+    {
+      "slug": "run-m-3-stack-tracking",
+      "step_id": "M3",
+      "department": "marketing",
+      "primary_skill": "gtm-stack-setup",
+      "artifact": "docs/run-track/marketing/M3-STACK-CHECKLIST.md"
+    },
+    {
+      "slug": "run-m-4-messaging-system",
+      "step_id": "M4",
+      "department": "marketing",
+      "primary_skill": "03-brand-voice",
+      "artifact": "docs/run-track/marketing/M4-MESSAGING-SYSTEM.md"
+    },
+    {
+      "slug": "run-m-5-channel-plan",
+      "step_id": "M5",
+      "department": "marketing",
+      "primary_skill": "08-ads-strategy",
+      "artifact": "docs/run-track/marketing/M5-CHANNEL-PLAN.md"
+    },
+    {
+      "slug": "run-m-6-content-engine",
+      "step_id": "M6",
+      "department": "marketing",
+      "primary_skill": "12-content-ideation",
+      "artifact": "docs/run-track/marketing/M6-CONTENT-CALENDAR.md"
+    },
+    {
+      "slug": "run-m-7-lifecycle-email",
+      "step_id": "M7",
+      "department": "marketing",
+      "primary_skill": "06-email-sequences",
+      "artifact": "docs/run-track/marketing/M7-EMAIL-SEQUENCES.md"
+    },
+    {
+      "slug": "run-m-8-launch-runbook",
+      "step_id": "M8",
+      "department": "marketing",
+      "primary_skill": "10-launch-playbook",
+      "artifact": "docs/run-track/marketing/M8-LAUNCH-RUNBOOK.md"
+    },
+    {
+      "slug": "run-m-9-optimize-cadence",
+      "step_id": "M9",
+      "department": "marketing",
+      "primary_skill": "09-retargeting-strategy",
+      "artifact": "docs/run-track/marketing/M9-OPTIMIZE-CADENCE.md"
+    },
+    {
+      "slug": "run-m-10-retention-loop",
+      "step_id": "M10",
+      "department": "marketing",
+      "primary_skill": "retention-engine",
+      "artifact": "docs/run-track/marketing/M10-RETENTION-LOOP.md"
+    },
+    {
+      "slug": "run-s-1-icp-accounts",
+      "step_id": "S1",
+      "department": "sales",
+      "primary_skill": "icp-definition",
+      "artifact": "docs/run-track/sales/S1-ICP-ACCOUNTS.md"
+    },
+    {
+      "slug": "run-s-2-crm-pipeline",
+      "step_id": "S2",
+      "department": "sales",
+      "primary_skill": "crm-pipeline-setup",
+      "artifact": "docs/run-track/sales/S2-CRM-PIPELINE.md"
+    },
+    {
+      "slug": "run-s-3-outbound-playbook",
+      "step_id": "S3",
+      "department": "sales",
+      "primary_skill": "outreach-sequencing",
+      "artifact": "docs/run-track/sales/S3-OUTBOUND-SEQUENCE.md"
+    },
+    {
+      "slug": "run-s-4-discovery-sop",
+      "step_id": "S4",
+      "department": "sales",
+      "primary_skill": "discovery",
+      "artifact": "docs/run-track/sales/S4-DISCOVERY-SOP.md"
+    },
+    {
+      "slug": "run-s-5-proposal-system",
+      "step_id": "S5",
+      "department": "sales",
+      "primary_skill": "high-ticket-closing",
+      "artifact": "docs/run-track/sales/S5-PROPOSAL-TEMPLATE.md"
+    },
+    {
+      "slug": "run-s-6-inbound-dm",
+      "step_id": "S6",
+      "department": "sales",
+      "primary_skill": "dm-funnel",
+      "artifact": "docs/run-track/sales/S6-INBOUND-DM.md"
+    },
+    {
+      "slug": "run-s-7-followup-system",
+      "step_id": "S7",
+      "department": "sales",
+      "primary_skill": "follow-up-system",
+      "artifact": "docs/run-track/sales/S7-FOLLOWUP-CADENCE.md"
+    },
+    {
+      "slug": "run-s-8-pipeline-ops",
+      "step_id": "S8",
+      "department": "sales",
+      "primary_skill": "objection-handling",
+      "artifact": "docs/run-track/sales/S8-PIPELINE-OPS.md"
+    },
+    {
+      "slug": "run-c-1-brief-intake",
+      "step_id": "C1",
+      "department": "content",
+      "primary_skill": "03-brand-voice",
+      "artifact": "docs/run-track/content/C1-BRIEF-INTAKE.md"
+    },
+    {
+      "slug": "run-c-2-video-research",
+      "step_id": "C2",
+      "department": "content",
+      "primary_skill": "22-video-research",
+      "artifact": "docs/run-track/content/C2-VIDEO-RESEARCH.md"
+    },
+    {
+      "slug": "run-c-3-longform-scripts",
+      "step_id": "C3",
+      "department": "content",
+      "primary_skill": "14-video-script",
+      "artifact": "docs/run-track/content/C3-LONGFORM-SCRIPTS.md"
+    },
+    {
+      "slug": "run-c-4-thumbnails-titles",
+      "step_id": "C4",
+      "department": "content",
+      "primary_skill": "15-thumbnail-prompts",
+      "artifact": "docs/run-track/content/C4-THUMBNAILS-TITLES.md"
+    },
+    {
+      "slug": "run-c-5-shortform-pack",
+      "step_id": "C5",
+      "department": "content",
+      "primary_skill": "19-short-form-scripts",
+      "artifact": "docs/run-track/content/C5-SHORTFORM-PACK.md"
+    },
+    {
+      "slug": "run-c-6-social-copy",
+      "step_id": "C6",
+      "department": "content",
+      "primary_skill": "20-linkedin-writer",
+      "artifact": "docs/run-track/content/C6-SOCIAL-COPY.md"
+    },
+    {
+      "slug": "run-c-7-atomization-map",
+      "step_id": "C7",
+      "department": "content",
+      "primary_skill": "13-content-matrix",
+      "artifact": "docs/run-track/content/C7-ATOMIZATION-MAP.md"
+    },
+    {
+      "slug": "run-c-8-publish-handoff",
+      "step_id": "C8",
+      "department": "content",
+      "primary_skill": "17-community-update",
+      "artifact": "docs/run-track/content/C8-PUBLISH-HANDOFF.md"
+    },
+    {
+      "slug": "run-g-1-funnel-map",
+      "step_id": "G1",
+      "department": "growth",
+      "primary_skill": "funnel-instrumentation-setup",
+      "artifact": "docs/run-track/growth/G1-FUNNEL-MAP.md"
+    },
+    {
+      "slug": "run-g-2-baseline-metrics",
+      "step_id": "G2",
+      "department": "growth",
+      "primary_skill": "funnel-instrumentation-setup",
+      "artifact": "docs/run-track/growth/G2-BASELINE-METRICS.md"
+    },
+    {
+      "slug": "run-g-3-hypothesis-backlog",
+      "step_id": "G3",
+      "department": "growth",
+      "primary_skill": "ab-test-spec",
+      "artifact": "docs/run-track/growth/G3-HYPOTHESIS-BACKLOG.md"
+    },
+    {
+      "slug": "run-g-4-ab-test-spec",
+      "step_id": "G4",
+      "department": "growth",
+      "primary_skill": "ab-test-spec",
+      "artifact": "docs/run-track/growth/G4-AB-TEST-SPEC.md"
+    },
+    {
+      "slug": "run-g-5-cro-sprint",
+      "step_id": "G5",
+      "department": "growth",
+      "primary_skill": "ab-test-spec",
+      "artifact": "docs/run-track/growth/G5-CRO-SPRINT.md"
+    },
+    {
+      "slug": "run-g-6-retargeting-arch",
+      "step_id": "G6",
+      "department": "growth",
+      "primary_skill": "09-retargeting-strategy",
+      "artifact": "docs/run-track/growth/G6-RETARGETING-ARCH.md"
+    },
+    {
+      "slug": "run-g-7-activation-cohorts",
+      "step_id": "G7",
+      "department": "growth",
+      "primary_skill": "retention-engine",
+      "artifact": "docs/run-track/growth/G7-ACTIVATION-COHORTS.md"
+    },
+    {
+      "slug": "run-g-8-seo-organic-loop",
+      "step_id": "G8",
+      "department": "growth",
+      "primary_skill": "16-seo-content",
+      "artifact": "docs/run-track/growth/G8-SEO-ORGANIC-LOOP.md"
+    },
+    {
+      "slug": "run-co-1-platform-audit",
+      "step_id": "Co1",
+      "department": "community",
+      "primary_skill": "community-analytics",
+      "artifact": "docs/run-track/community/Co1-PLATFORM-AUDIT.md"
+    },
+    {
+      "slug": "run-co-2-welcome-flow",
+      "step_id": "Co2",
+      "department": "community",
+      "primary_skill": "17-community-update",
+      "artifact": "docs/run-track/community/Co2-WELCOME-FLOW.md"
+    },
+    {
+      "slug": "run-co-3-content-rhythm",
+      "step_id": "Co3",
+      "department": "community",
+      "primary_skill": "17-community-update",
+      "artifact": "docs/run-track/community/Co3-CONTENT-RHYTHM.md"
+    },
+    {
+      "slug": "run-co-4-moderation",
+      "step_id": "Co4",
+      "department": "community",
+      "primary_skill": "community-analytics",
+      "artifact": "docs/run-track/community/Co4-MODERATION.md"
+    },
+    {
+      "slug": "run-co-5-feedback-loop",
+      "step_id": "Co5",
+      "department": "community",
+      "primary_skill": "community-analytics",
+      "artifact": "docs/run-track/community/Co5-FEEDBACK-LOOP.md"
+    },
+    {
+      "slug": "run-co-6-advocacy",
+      "step_id": "Co6",
+      "department": "community",
+      "primary_skill": "retention-engine",
+      "artifact": "docs/run-track/community/Co6-ADVOCACY.md"
+    },
+    {
+      "slug": "run-o-1-ops-baseline",
+      "step_id": "O1",
+      "department": "ops",
+      "primary_skill": "system-health",
+      "artifact": "docs/run-track/ops/O1-OPS-BASELINE.md"
+    },
+    {
+      "slug": "run-o-2-sprint-rhythm",
+      "step_id": "O2",
+      "department": "ops",
+      "primary_skill": "sprint-plan",
+      "artifact": "docs/run-track/ops/O2-SPRINT-RHYTHM.md"
+    },
+    {
+      "slug": "run-o-3-release-gates",
+      "step_id": "O3",
+      "department": "ops",
+      "primary_skill": "qa-plan",
+      "artifact": "docs/run-track/ops/O3-RELEASE-GATES.md"
+    },
+    {
+      "slug": "run-o-4-observability",
+      "step_id": "O4",
+      "department": "ops",
+      "primary_skill": "observability",
+      "artifact": "docs/run-track/ops/O4-OBSERVABILITY.md"
+    },
+    {
+      "slug": "run-o-5-incident-response",
+      "step_id": "O5",
+      "department": "ops",
+      "primary_skill": "maintenance-plan",
+      "artifact": "docs/run-track/ops/O5-INCIDENT-RUNBOOK.md"
+    },
+    {
+      "slug": "run-o-6-wbr",
+      "step_id": "O6",
+      "department": "ops",
+      "primary_skill": "weekly-review",
+      "artifact": "docs/run-track/ops/O6-WBR-CADENCE.md"
+    },
+    {
+      "slug": "run-o-7-sop-vendors",
+      "step_id": "O7",
+      "department": "ops",
+      "primary_skill": "maintenance-plan",
+      "artifact": "docs/run-track/ops/O7-SOP-VENDORS.md"
+    },
+    {
+      "slug": "run-o-8-contractor-onboarding",
+      "step_id": "O8",
+      "department": "ops",
+      "primary_skill": "maintenance-plan",
+      "artifact": "docs/run-track/ops/O8-CONTRACTOR-ONBOARDING.md"
+    },
+    {
+      "slug": "run-fn-1-unit-economics",
+      "step_id": "Fn1",
+      "department": "finance",
+      "primary_skill": "cost-optimizer",
+      "artifact": "docs/run-track/finance/Fn1-UNIT-ECONOMICS.md"
+    },
+    {
+      "slug": "run-fn-2-pricing-architecture",
+      "step_id": "Fn2",
+      "department": "finance",
+      "primary_skill": "04-offer-architect",
+      "artifact": "docs/run-track/finance/Fn2-PRICING-ARCHITECTURE.md"
+    },
+    {
+      "slug": "run-fn-3-forecast",
+      "step_id": "Fn3",
+      "department": "finance",
+      "primary_skill": "estimation-engine",
+      "artifact": "docs/run-track/finance/Fn3-FORECAST.md"
+    },
+    {
+      "slug": "run-fn-4-cost-audit",
+      "step_id": "Fn4",
+      "department": "finance",
+      "primary_skill": "cost-optimizer",
+      "artifact": "docs/run-track/finance/Fn4-COST-AUDIT.md"
+    },
+    {
+      "slug": "run-fn-5-runway",
+      "step_id": "Fn5",
+      "department": "finance",
+      "primary_skill": "cost-optimizer",
+      "artifact": "docs/run-track/finance/Fn5-RUNWAY.md"
+    },
+    {
+      "slug": "run-fn-6-spend-gates",
+      "step_id": "Fn6",
+      "department": "finance",
+      "primary_skill": "cost-optimizer",
+      "artifact": "docs/run-track/finance/Fn6-SPEND-GATES.md"
+    },
+    {
+      "slug": "run-fn-7-data-room",
+      "step_id": "Fn7",
+      "department": "finance",
+      "primary_skill": "estimation-engine",
+      "artifact": "docs/run-track/finance/Fn7-DATA-ROOM.md"
+    },
+    {
+      "slug": "run-l-0-entity-formation",
+      "step_id": "L0",
+      "department": "legal",
+      "primary_skill": "entity-formation-setup",
+      "artifact": "docs/run-track/legal/L0-ENTITY-FORMATION.md"
+    },
+    {
+      "slug": "run-l-1-intake-batna",
+      "step_id": "L1",
+      "department": "legal",
+      "primary_skill": "writing-clearly",
+      "artifact": "docs/run-track/legal/L1-INTAKE-BATNA.md"
+    },
+    {
+      "slug": "run-l-2-msa-baseline",
+      "step_id": "L2",
+      "department": "legal",
+      "primary_skill": "writing-clearly",
+      "artifact": "docs/run-track/legal/L2-MSA-BASELINE.md"
+    },
+    {
+      "slug": "run-l-3-nda-strategy",
+      "step_id": "L3",
+      "department": "legal",
+      "primary_skill": "writing-clearly",
+      "artifact": "docs/run-track/legal/L3-NDA-STRATEGY.md"
+    },
+    {
+      "slug": "run-l-4-ip-trademark",
+      "step_id": "L4",
+      "department": "legal",
+      "primary_skill": "deep-research",
+      "artifact": "docs/run-track/legal/L4-IP-TRADEMARK.md"
+    },
+    {
+      "slug": "run-l-5-vendor-dpa",
+      "step_id": "L5",
+      "department": "legal",
+      "primary_skill": "saas-security-patterns",
+      "artifact": "docs/run-track/legal/L5-VENDOR-DPA.md"
+    },
+    {
+      "slug": "run-l-6-compliance",
+      "step_id": "L6",
+      "department": "legal",
+      "primary_skill": "saas-security-patterns",
+      "artifact": "docs/run-track/legal/L6-COMPLIANCE.md"
+    },
+    {
+      "slug": "run-l-7-incident-narratives",
+      "step_id": "L7",
+      "department": "legal",
+      "primary_skill": "saas-security-patterns",
+      "artifact": "docs/run-track/legal/L7-INCIDENT-NARRATIVES.md"
+    },
+    {
+      "slug": "run-l-8-demand-playbook",
+      "step_id": "L8",
+      "department": "legal",
+      "primary_skill": "deep-research",
+      "artifact": "docs/run-track/legal/L8-DEMAND-PLAYBOOK.md"
+    }
+  ],
+  "atom_skills": [
+    "gtm-stack-setup",
+    "crm-pipeline-setup",
+    "content-production-queue",
+    "funnel-instrumentation-setup",
+    "ab-test-spec",
+    "weekly-review",
+    "entity-formation-setup"
+  ],
+  "waves": {
+    "1": {
+      "orchestrators": [
+        "run-marketing",
+        "run-sales"
+      ],
+      "depts": [
+        "marketing",
+        "sales"
+      ]
+    },
+    "2": {
+      "orchestrators": [
+        "run-content",
+        "run-growth"
+      ],
+      "depts": [
+        "content",
+        "growth"
+      ]
+    },
+    "3": {
+      "orchestrators": [
+        "run-community",
+        "run-ops"
+      ],
+      "depts": [
+        "community",
+        "ops"
+      ]
+    },
+    "4": {
+      "orchestrators": [
+        "run-finance",
+        "run-legal"
+      ],
+      "depts": [
+        "finance",
+        "legal"
+      ]
+    }
+  }
+}

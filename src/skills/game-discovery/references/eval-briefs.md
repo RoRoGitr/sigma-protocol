@@ -1,0 +1,1 @@
+See `game-development` evaluation scenarios. Discovery pass criterion: records the creator's game/general choice once, defaults to solo, and proposes an experiment tied to uncertainty without treating it as executed.

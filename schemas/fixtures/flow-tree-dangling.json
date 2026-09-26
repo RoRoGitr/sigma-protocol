@@ -1,0 +1,65 @@
+{
+  "$schema": "../flow-tree.schema.json",
+  "meta": {
+    "appName": "Sigma Demo",
+    "platform": "web",
+    "generatedAt": "2026-06-14",
+    "totalScreens": 3
+  },
+  "modules": [
+    {
+      "id": "auth",
+      "name": "Authentication",
+      "platform": "web",
+      "required": true,
+      "screens": ["login", "register"],
+      "dependsOn": []
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard",
+      "platform": "web",
+      "required": true,
+      "screens": ["home"],
+      "dependsOn": ["auth"]
+    }
+  ],
+  "screens": [
+    {
+      "id": "login",
+      "title": "Login",
+      "moduleId": "auth",
+      "priority": "P0",
+      "platform": "web",
+      "complexity": "Simple",
+      "prdFeatures": ["AUTH-001"]
+    },
+    {
+      "id": "register",
+      "title": "Register",
+      "moduleId": "auth",
+      "priority": "P0",
+      "platform": "web",
+      "complexity": "Medium",
+      "prdFeatures": ["AUTH-002"]
+    },
+    {
+      "id": "home",
+      "title": "Home Dashboard",
+      "moduleId": "nonexistent-module",
+      "priority": "P1",
+      "platform": "web",
+      "complexity": "Complex",
+      "prdFeatures": ["DASH-001"]
+    }
+  ],
+  "flows": [
+    {
+      "id": "onboarding",
+      "name": "Onboarding",
+      "description": "New user registers and lands on dashboard",
+      "screens": ["register", "home"],
+      "entryCondition": "Unauthenticated user visits the app"
+    }
+  ]
+}
