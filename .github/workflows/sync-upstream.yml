@@ -1,0 +1,46 @@
+name: sync-upstream
+
+# Pulls new commits from the original public repo into this private copy.
+# Runs every 6 hours and on demand. If upstream goes private or disappears,
+# the fetch fails and the run ends with a warning instead of an error.
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge upstream main
+        env:
+          UPSTREAM: https://github.com/Dallionking/sigma-protocol-public.git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if ! git fetch --no-tags "$UPSTREAM" main:refs/remotes/upstream/main 2>fetch.err; then
+            cat fetch.err
+            echo "::warning::Upstream is unreachable (likely made private). Nothing synced."
+            exit 0
+          fi
+
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "Already up to date with upstream."
+            exit 0
+          fi
+
+          git merge --no-edit upstream/main -m "Sync from upstream ($(git rev-parse --short upstream/main))"
+          git push origin HEAD:main
